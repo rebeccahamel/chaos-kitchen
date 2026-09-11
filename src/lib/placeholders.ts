@@ -17,7 +17,7 @@ export type StepPart =
 
 export type RenderedPart =
   | { kind: 'text'; text: string }
-  | { kind: 'ingredient'; id: string; text: string };
+  | { kind: 'ingredient'; id: string; text: string; placeholder: Placeholder };
 
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
@@ -123,15 +123,19 @@ export function validateStep(step: string, ingredients: Map<string, Ingredient>)
 export function renderStepParts(step: string, ingredients: Map<string, Ingredient>, units: UnitDef[], factor = 1): RenderedPart[] {
   return parseStep(step).map((part) => {
     if (part.kind === 'text') return part;
-    const { id, mode, fraction } = part.placeholder;
+    const { id } = part.placeholder;
     const ingredient = ingredients.get(id);
     if (!ingredient) throw new Error(`${part.raw}: unbekannte Zutaten-Id „${id}“`);
-    const text =
-      mode === 'name'
-        ? formatIngredientName(ingredient, units, { factor })
-        : formatIngredient(ingredient, units, { factor, fraction });
-    return { kind: 'ingredient', id, text };
+    const text = renderPlaceholder(part.placeholder, ingredient, units, factor);
+    return { kind: 'ingredient', id, text, placeholder: part.placeholder };
   });
+}
+
+/** Text for one placeholder at the given scale factor; used in the browser when the yield changes. */
+export function renderPlaceholder(placeholder: Placeholder, ingredient: Ingredient, units: UnitDef[], factor = 1): string {
+  return placeholder.mode === 'name'
+    ? formatIngredientName(ingredient, units, { factor })
+    : formatIngredient(ingredient, units, { factor, fraction: placeholder.fraction });
 }
 
 /** Renders a step as plain text with all placeholders replaced. */

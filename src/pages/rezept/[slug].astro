@@ -1,6 +1,6 @@
 ---
-// One page per recipe (SPEC.md §6.2). Amounts are rendered at the base yield here;
-// the yield control that changes them in the browser is the next step.
+// One page per recipe (SPEC.md §6.2). The page is rendered at the base yield; the script
+// at the bottom rescales the ingredient list and the step placeholders in the browser (§5.3).
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
@@ -11,7 +11,7 @@ import { describeIngredient } from '../../lib/format.ts';
 import { loadLists } from '../../lib/lists.ts';
 import { recipePhoto } from '../../lib/photos.ts';
 import { renderStepParts } from '../../lib/placeholders.ts';
-import { formatDuration, hasGroups, ingredientsById, totalTime } from '../../lib/recipe.ts';
+import { flattenIngredients, formatDuration, hasGroups, ingredientsById, totalTime } from '../../lib/recipe.ts';
 import { url } from '../../lib/site.ts';
 import { tagLabel } from '../../lib/tags.ts';
 import { findUnit, unitLabel } from '../../lib/units.ts';
@@ -52,10 +52,18 @@ const photo = recipePhoto(recipe.id);
 const preview = photo ? await getImage({ src: photo, width: 1200, height: 900, format: 'jpg' }) : placeholder;
 const ogImage = new URL(preview.src, Astro.site).href;
 const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Data for the yield control in the browser
+const clientData = JSON.stringify({
+  baseYield: data.yield.amount,
+  yieldUnit: yieldUnit ?? null,
+  units,
+  ingredients: flattenIngredients(data.ingredients),
+}).replace(/</g, '\\u003c');
 ---
 
 <Base title={data.title} description={data.description} ogImage={ogImage}>
-  <article class="recipe">
+  <article class="recipe" id="recipe">
     <a class="back" id="back" href={url()}>‹ Alle Rezepte</a>
 
     <div class="hero">
@@ -93,14 +101,20 @@ const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'l
       }
     </dl>
 
-    <p class="yield">
-      <span class="yield-amount">{data.yield.amount}</span>
-      <span>{yieldLabel}</span>
-      {data.yield.note && <span class="note">{data.yield.note}</span>}
-    </p>
-
     <section class="ingredients">
       <h2>Zutaten</h2>
+
+      <div class="yield" id="yield">
+        <div class="yield-control">
+          <button type="button" class="yield-button" id="yield-minus" aria-label="Menge um 1 verringern">−</button>
+          <input class="yield-input" id="yield-input" type="number" inputmode="numeric" min="1" step="1" value={data.yield.amount} aria-label="Menge" />
+          <button type="button" class="yield-button" id="yield-plus" aria-label="Menge um 1 erhöhen">+</button>
+          <span class="yield-unit" id="yield-unit">{yieldLabel}</span>
+        </div>
+        <button type="button" class="linklike" id="yield-reset" hidden>Zurücksetzen</button>
+        {data.yield.note && <span class="note">{data.yield.note}</span>}
+      </div>
+
       {
         data.ingredients.map((group) => (
           <div class="group">
@@ -112,7 +126,7 @@ const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'l
                   <li class="ingredient" data-id={ingredient.id}>
                     <span class="amount">{[text.amount, text.unit].filter(Boolean).join(' ')}</span>
                     <span class="name">
-                      {text.name}
+                      <span class="name-text">{text.name}</span>
                       {ingredient.note && <span class="note">, {ingredient.note}</span>}
                       {text.optional && <span class="note"> (optional)</span>}
                     </span>
@@ -138,7 +152,13 @@ const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'l
                   <p>
                     <span class="visually-hidden">Schritt {step.number}: </span>
                     {step.parts.map((part) =>
-                      part.kind === 'ingredient' ? <mark class="mention" data-id={part.id}>{part.text}</mark> : part.text,
+                      part.kind === 'ingredient' ? (
+                        <mark class="mention" data-id={part.id} data-mode={part.placeholder.mode} data-fraction={part.placeholder.fraction}>
+                          {part.text}
+                        </mark>
+                      ) : (
+                        part.text
+                      ),
                     )}
                   </p>
                 </li>
@@ -149,6 +169,8 @@ const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'l
       }
     </section>
   </article>
+
+  <script type="application/json" id="recipe-data" set:html={clientData} />
 </Base>
 
 <style>
@@ -222,15 +244,59 @@ const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'l
 
   .yield {
     display: flex;
-    align-items: baseline;
-    gap: 8px;
-    font-size: 18px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
   }
 
-  .yield-amount {
+  .yield-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 12px 5px 5px;
+    background: var(--papier);
+    border: 1px solid var(--karamell);
+    border-radius: 999px;
+  }
+
+  .yield-button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: var(--rost);
+    color: var(--papier);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .yield-button:hover {
+    background: var(--kuerbis);
+  }
+
+  .yield-input {
+    width: 3.2em;
+    padding: 0;
+    border: none;
+    background: transparent;
+    text-align: center;
     font-family: var(--font-display);
-    font-size: 26px;
+    font-size: 24px;
     color: var(--kuerbis);
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  .yield-input::-webkit-outer-spin-button,
+  .yield-input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  .yield-unit {
+    font-size: 18px;
+    padding-left: 4px;
   }
 
   .ingredients,
@@ -317,4 +383,87 @@ const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'l
       // not a URL: keep the plain link
     }
   }
+</script>
+
+<script>
+  // Yield control (SPEC.md §5.3): rescales the ingredient list and every step placeholder.
+  import { describeIngredient } from '../../lib/format.ts';
+  import { renderPlaceholder, type Placeholder } from '../../lib/placeholders.ts';
+  import { unitLabel } from '../../lib/units.ts';
+  import type { Ingredient, UnitDef } from '../../lib/types.ts';
+
+  interface RecipeData {
+    baseYield: number;
+    yieldUnit: UnitDef | null;
+    units: UnitDef[];
+    ingredients: Ingredient[];
+  }
+
+  const data = JSON.parse(document.getElementById('recipe-data')?.textContent ?? '{}') as RecipeData;
+  const ingredients = new Map(data.ingredients.map((ingredient) => [ingredient.id, ingredient]));
+
+  const article = document.getElementById('recipe') as HTMLElement;
+  const input = document.getElementById('yield-input') as HTMLInputElement;
+  const minus = document.getElementById('yield-minus') as HTMLButtonElement;
+  const plus = document.getElementById('yield-plus') as HTMLButtonElement;
+  const unitEl = document.getElementById('yield-unit') as HTMLElement;
+  const reset = document.getElementById('yield-reset') as HTMLButtonElement;
+  const rows = Array.from(article.querySelectorAll<HTMLElement>('.ingredient[data-id]'));
+  const mentions = Array.from(article.querySelectorAll<HTMLElement>('.mention[data-id]'));
+
+  let current = data.baseYield;
+
+  function render() {
+    const factor = current / data.baseYield;
+
+    for (const row of rows) {
+      const ingredient = ingredients.get(row.dataset.id ?? '');
+      if (!ingredient) continue;
+      const text = describeIngredient(ingredient, data.units, { factor });
+      const amount = row.querySelector('.amount');
+      const name = row.querySelector('.name-text');
+      if (amount) amount.textContent = [text.amount, text.unit].filter(Boolean).join(' ');
+      if (name) name.textContent = text.name;
+    }
+
+    for (const mention of mentions) {
+      const ingredient = ingredients.get(mention.dataset.id ?? '');
+      if (!ingredient) continue;
+      const placeholder: Placeholder = {
+        id: ingredient.id,
+        mode: mention.dataset.mode === 'name' ? 'name' : 'full',
+        fraction: mention.dataset.fraction ? Number(mention.dataset.fraction) : undefined,
+      };
+      mention.textContent = renderPlaceholder(placeholder, ingredient, data.units, factor);
+    }
+
+    input.value = String(current);
+    if (data.yieldUnit) unitEl.textContent = unitLabel(data.yieldUnit, current);
+    reset.hidden = current === data.baseYield;
+    minus.disabled = current <= 1;
+  }
+
+  function setYield(value: number, reason: 'change' | 'reset') {
+    const next = Math.max(1, Math.round(value));
+    if (!Number.isFinite(next) || next === current) return;
+    current = next;
+    render();
+    // Kochmodus listens to this to clear ticked items when the yield is reset (SPEC.md §6.3).
+    article.dispatchEvent(new CustomEvent('recipe:yield', { detail: { yield: current, reason } }));
+  }
+
+  minus.addEventListener('click', () => setYield(current - 1, 'change'));
+  plus.addEventListener('click', () => setYield(current + 1, 'change'));
+  reset.addEventListener('click', () => setYield(data.baseYield, 'reset'));
+
+  input.addEventListener('input', () => {
+    const value = Number(input.value);
+    if (input.value !== '' && Number.isFinite(value) && value >= 1) setYield(value, 'change');
+  });
+  input.addEventListener('blur', () => render()); // empty or invalid input falls back to the last valid yield
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') input.blur();
+  });
+
+  render();
 </script>

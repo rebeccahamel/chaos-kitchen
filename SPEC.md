@@ -303,6 +303,9 @@ Scale factor = chosen yield ÷ `yield.amount`. Amounts are scaled first, then ro
 - Plus and minus change the yield by 1. Minimum 1.
 - A "Zurücksetzen" link restores the base yield when it has been changed.
 - Changing the yield instantly updates the ingredient list and all step placeholders.
+- The number field accepts whole numbers. An empty or invalid entry falls back to the last
+  valid yield when the field loses focus.
+- Without JavaScript the page shows the base yield; the control simply does nothing.
 
 ---
 

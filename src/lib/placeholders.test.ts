@@ -82,7 +82,7 @@ test('fish curry: name-only placeholders and ranges', () => {
 test('renderStepParts marks ingredient mentions for the UI', () => {
   const byId = ingredientsById(vorlage.ingredients);
   assert.deepEqual(renderStepParts('{zwiebel} würfeln.', byId, units), [
-    { kind: 'ingredient', id: 'zwiebel', text: '2 Zwiebeln' },
+    { kind: 'ingredient', id: 'zwiebel', text: '2 Zwiebeln', placeholder: { id: 'zwiebel', mode: 'full' } },
     { kind: 'text', text: ' würfeln.' },
   ]);
   assert.throws(() => renderStep('{nix}', byId, units));
