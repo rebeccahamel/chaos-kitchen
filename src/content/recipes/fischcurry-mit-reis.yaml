@@ -1,0 +1,35 @@
+title: Fischcurry mit Reis
+description: Cremiges rotes Kokoscurry mit zartem Fisch, Kaiserschoten und Paprika – in 30 Minuten auf dem Tisch.
+author: mama
+added: 2026-09-11
+yield: { amount: 4, unit: Portionen }
+time: { prep: 30 }
+tags: [hauptgericht, asiatisch]
+
+ingredients:
+  - { id: reis, amount: 2, unit: Tasse, name: Reis }
+  - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+  - { id: ingwer, amount: 1, unit: Stück, name: Ingwer, note: daumengroß }
+  - { id: zitronengras, amount: 2, unit: Stange, name: Zitronengras }
+  - { id: chili, amount: 1, name: kleine Chilischote, plural: kleine Chilischoten }
+  - { id: oel, amount: 2, unit: EL, name: Öl }
+  - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
+  - { id: kaiserschoten, amount: 200, unit: g, name: Kaiserschoten }
+  - { id: paprika, amount: 1, name: rote Paprika, plural: rote Paprika }
+  - { id: kokosmilch, amount: 1, unit: Dose, name: Kokosmilch }
+  - { id: gemuesebruehe, amount: 500, unit: ml, name: Gemüsebrühe }
+  - { id: currypaste, amount: [2, 3], unit: EL, name: rote Currypaste, note: grüne geht auch }
+  - { id: fisch, amount: [400, 600], unit: g, name: Fisch, note: "festfleischig, z. B. Seeteufel" }
+  - { id: koriander, name: Koriander, note: "frisch, zum Bestreuen" }
+  - { id: salz, name: Salz, note: zum Abschmecken }
+  - { id: pfeffer, name: Pfeffer, note: zum Abschmecken }
+
+steps:
+  - "{reis} nach Packungsangabe zubereiten."
+  - "In der Zwischenzeit {knoblauch}, {ingwer}, {zitronengras} und {chili} waschen, putzen und alles fein hacken, reiben oder pressen. In einer großen Pfanne {oel} erhitzen und die Aromaten bei mittlerer Hitze anschwitzen."
+  - "{zwiebel} putzen, fein würfeln und in die Pfanne geben."
+  - "{kaiserschoten} und {paprika} waschen, putzen und in mundgerechte Stücke schneiden. In die Pfanne geben und alles bei mittlerer Hitze 5 Minuten andünsten."
+  - "{kokosmilch}, {gemuesebruehe} und {currypaste} in die Pfanne einrühren, einmal aufkochen und dann die Hitze reduzieren. Die Sauce 10 Minuten köcheln lassen."
+  - "{fisch} in mundgerechte Stücke schneiden. 5 Minuten vor Ende der Reisgarzeit die Fischstücke in die Sauce geben und bei geringer Hitze gar ziehen lassen. Der Fisch soll eher pochiert als gekocht werden, damit er nicht zu trocken wird und seine Form hält."
+  - "{koriander:name} waschen, die Blätter abzupfen und nach Belieben hacken."
+  - "Die Sauce mit {salz:name}, {pfeffer:name} und eventuell noch etwas Currypaste abschmecken. Mit Reis und Koriander servieren."

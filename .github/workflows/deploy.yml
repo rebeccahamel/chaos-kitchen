@@ -1,0 +1,56 @@
+# Builds the site and deploys it to GitHub Pages on every push to main (SPEC.md §8).
+# If tests or the build fail, nothing is deployed and the previous version stays online.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # allows a manual run from the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deployments at the same time; a newer push cancels a waiting one.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Build the site (includes data validation)
+        run: npm run build
+
+      - name: Upload the built site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

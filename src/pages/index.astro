@@ -1,0 +1,54 @@
+---
+// TEMPORARY, unstyled: proves that the recipe collection, scaling and placeholders
+// work end to end. Replaced by the real overview page once the design is agreed (SPEC.md §12).
+import { getCollection } from 'astro:content';
+import { loadLists } from '../lib/lists.ts';
+import { flattenIngredients, flattenSteps, ingredientsById, totalTime } from '../lib/recipe.ts';
+import { formatIngredient } from '../lib/format.ts';
+import { renderStep } from '../lib/placeholders.ts';
+
+const { units } = loadLists();
+const recipes = await getCollection('recipes');
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Rezepte – Rohansicht</title>
+  </head>
+  <body>
+    <p><em>Vorläufige Rohansicht ohne Gestaltung.</em></p>
+    {
+      recipes.map((recipe) => {
+        const byId = ingredientsById(recipe.data.ingredients);
+        return (
+          <article>
+            <h1>{recipe.data.title}</h1>
+            <p>{recipe.data.description}</p>
+            <p>
+              Von {recipe.data.author}, {recipe.data.added.toLocaleDateString('de-DE')}, {totalTime(recipe.data.time)} min,
+              {' '}{recipe.data.yield.amount} {recipe.data.yield.unit}
+            </p>
+            <h2>Zutaten</h2>
+            <ul>
+              {flattenIngredients(recipe.data.ingredients).map((ingredient) => (
+                <li>
+                  {formatIngredient(ingredient, units)}
+                  {ingredient.note ? `, ${ingredient.note}` : ''}
+                </li>
+              ))}
+            </ul>
+            <h2>Zubereitung</h2>
+            <ol>
+              {flattenSteps(recipe.data.steps).map((step) => (
+                <li>{renderStep(step, byId, units)}</li>
+              ))}
+            </ol>
+          </article>
+        );
+      })
+    }
+  </body>
+</html>

@@ -1,0 +1,22 @@
+# Allowed units. Recipes may use the singular or the plural form; both resolve to the same entry.
+# category decides the rounding when a recipe is scaled (SPEC.md §5.1):
+#   weight, volume  -> steps of 1 / 5 / 10, from 1000 shown as kg / l
+#   spoon           -> quarters (¼, ½, ¾)
+#   count           -> halves (½)
+- { unit: g,        plural: g,         category: weight }
+- { unit: kg,       plural: kg,        category: weight }
+- { unit: ml,       plural: ml,        category: volume }
+- { unit: l,        plural: l,         category: volume }
+- { unit: EL,       plural: EL,        category: spoon }
+- { unit: TL,       plural: TL,        category: spoon }
+- { unit: Tasse,    plural: Tassen,    category: spoon }
+- { unit: Prise,    plural: Prisen,    category: count }
+- { unit: Dose,     plural: Dosen,     category: count }
+- { unit: Päckchen, plural: Päckchen,  category: count }
+- { unit: Bund,     plural: Bund,      category: count }
+- { unit: Zehe,     plural: Zehen,     category: count }
+- { unit: Scheibe,  plural: Scheiben,  category: count }
+- { unit: Stange,   plural: Stangen,   category: count }
+- { unit: Stück,    plural: Stück,     category: count }
+- { unit: Portion,  plural: Portionen, category: count }
+- { unit: Blech,    plural: Bleche,    category: count }

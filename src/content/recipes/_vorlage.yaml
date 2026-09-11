@@ -1,0 +1,69 @@
+# Rezept-Vorlage
+# Copy this file, rename it to the recipe slug (e.g. omas-gulasch.yaml) and fill it in.
+# Files starting with "_" are ignored by the build.
+# Lines starting with "#" are comments and can be deleted.
+
+title: Rezepttitel
+description: Ein oder zwei Sätze, die Lust auf das Gericht machen.
+author: oma                    # id from people.yaml
+added: 2026-09-11              # date added, YYYY-MM-DD
+
+# What the amounts below are for. unit must exist in units.yaml.
+# note is optional and never scaled (e.g. "für eine 26er Springform").
+yield: { amount: 4, unit: Portionen }
+
+# Minutes. cook and rest are optional.
+time: { prep: 20, cook: 30 }
+
+# Tag ids from tags.yaml. An empty list [] is allowed.
+tags: [hauptgericht, vegetarisch]
+
+# Ingredients: either a flat list (below) or groups (see the example further down).
+# Fields:
+#   id        required, unique in this recipe, only a-z, 0-9 and "-"
+#   name      required, singular form
+#   plural    for counted items without unit (Zwiebel -> Zwiebeln)
+#   amount    number, or a range like [2, 3]; leave out for "nach Geschmack"
+#   unit      from units.yaml; leave out for counted items
+#   note      shown after the name in the ingredient list only (not in steps), never scaled
+#   optional  true -> shown as "(optional)"
+#   whole     true -> always whole numbers (eggs)
+ingredients:
+  - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+  - { id: knoblauch, amount: [1, 2], unit: Zehe, name: Knoblauch }
+  - { id: butter, amount: 40, unit: g, name: Butter }
+  - { id: ei, amount: 2, name: Ei, plural: Eier, whole: true }
+  - { id: petersilie, amount: 2, unit: EL, name: Petersilie, note: gehackt, optional: true }
+  - { id: salz, name: Salz, note: nach Geschmack }
+
+# Steps: always in double quotes.
+# Placeholders:
+#   {id}        amount + unit + name, scaled       -> "2 Zwiebeln"
+#   {id:1/2}    part of the amount, scaled          -> "20 g Butter"
+#   {id:name}   name only, singular/plural matches  -> "Zwiebeln"
+steps:
+  - "{zwiebel} und {knoblauch} fein würfeln."
+  - "{butter:1/2} in einer Pfanne erhitzen und die {zwiebel:name} darin glasig dünsten."
+  - "{ei} mit der restlichen Butter ({butter:1/2}) verrühren und zugeben."
+  - "Mit {salz} abschmecken und mit {petersilie} bestreuen."
+
+# --- Example with groups (delete if not needed) --------------------------
+# Step numbering continues across groups. Ids must be unique across all groups.
+#
+# ingredients:
+#   - group: Für den Teig
+#     items:
+#       - { id: mehl, amount: 250, unit: g, name: Mehl }
+#       - { id: zucker-teig, amount: 80, unit: g, name: Zucker }
+#   - group: Für die Füllung
+#     items:
+#       - { id: quark, amount: 500, unit: g, name: Quark }
+#       - { id: zucker-fuellung, amount: 100, unit: g, name: Zucker }
+#
+# steps:
+#   - group: Teig
+#     items:
+#       - "{mehl} und {zucker-teig} mischen."
+#   - group: Füllung
+#     items:
+#       - "{quark} mit {zucker-fuellung} glatt rühren."

@@ -1,0 +1,18 @@
+# Allowed tags, grouped by category. Recipes reference tags by id.
+# Adding a tag here is all that is needed to use it in a recipe.
+- category: Gang
+  tags:
+    - { id: hauptgericht, label: Hauptgericht }
+    - { id: dessert, label: Dessert }
+    - { id: kuchen-und-gebaeck, label: Kuchen & Gebäck }
+- category: Ernährung
+  tags:
+    - { id: vegetarisch, label: vegetarisch }
+- category: Saison & Anlass
+  tags:
+    - { id: winter, label: Winter }
+    - { id: kaffeetafel, label: Kaffeetafel }
+- category: Küche
+  tags:
+    - { id: hausmannskost, label: Hausmannskost }
+    - { id: asiatisch, label: Asiatisch }
