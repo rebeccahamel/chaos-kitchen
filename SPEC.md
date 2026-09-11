@@ -1,6 +1,8 @@
 # Familien-Rezeptseite – Specification
 
-Status: planning complete, version 1 scope agreed (2026-09-11).
+Status (2026-09-11): version 1 is built and live at https://rebeccahamel.github.io/chaos-kitchen/
+(data layer, deploy workflow, design, overview, recipe page with yield control and Kochmodus).
+What is still open and what comes next: §12.
 Owner and only editor: Becci (via her GitHub account). Family members only read.
 
 This file is the single source of truth for what the site does. If the implementation
@@ -47,33 +49,44 @@ Constraints:
 ├─ package.json
 ├─ tsconfig.json
 ├─ .github/workflows/deploy.yml  build + deploy to GitHub Pages
-├─ public/                       static files copied as-is (favicon etc.)
+├─ public/
+│  └─ favicon.svg                static files copied as-is
 └─ src/
    ├─ content/
    │  └─ recipes/
    │     ├─ _vorlage.yaml        template, excluded from the build
-   │     └─ omas-quarkkuchen.yaml
+   │     └─ fischcurry-mit-reis.yaml
    ├─ data/
    │  ├─ people.yaml             authors and their avatars
    │  ├─ tags.yaml               allowed tags, grouped by category
    │  └─ units.yaml              allowed units, plurals, rounding category
    ├─ assets/
    │  ├─ recipes/                recipe photos, named <slug>.jpg|jpeg|png|webp
-   │  ├─ avatars/                avatar illustrations, named <person-id>.png|webp|svg
-   │  └─ placeholder-recipe.*    shown when a recipe has no photo yet
+   │  ├─ avatars/                avatar illustrations, file name as in people.yaml
+   │  ├─ fonts/                  self-hosted woff2 files and their OFL licences (§13.2)
+   │  └─ placeholder-recipe.svg  shown when a recipe has no photo yet
+   ├─ styles/
+   │  └─ global.css              design tokens, font faces, base styles (§13)
    ├─ content.config.ts          collection definition, uses lib/recipe-schema.ts
    ├─ lib/
    │  ├─ types.ts                shared types
    │  ├─ lists.ts                reads and validates src/data/*.yaml (build time only)
    │  ├─ recipe-schema.ts        recipe schema and cross-checks (§7), build time only
    │  ├─ build-checks.ts         file names, photos, avatars (§7) as an Astro integration
-   │  ├─ units.ts, scale.ts, format.ts, placeholders.ts, recipe.ts
-   │  │                          pure functions: scaling, rounding, display text, placeholders
+   │  ├─ units.ts, scale.ts, format.ts, placeholders.ts, recipe.ts, search.ts, tags.ts
+   │  │                          pure functions, also used in the browser: scaling, rounding,
+   │  │                          display text, placeholders, search normalisation, tag labels
+   │  ├─ site.ts                 site name and URL helper for the base path (§8)
+   │  ├─ photos.ts               finds recipe photos and avatar files (Astro only)
    │  ├─ *.test.ts               unit tests, run with `npm test`
    │  └─ test-support.ts         test helpers (loads the real lists and recipe files)
    ├─ types/                     small type declarations for packages that ship none
    ├─ components/
+   │  ├─ Avatar.astro            illustration or initial on the person's colour
+   │  ├─ RecipeCard.astro        card on the overview, carries the data attributes for filtering
+   │  └─ RecipePhoto.astro       4:3 photo in responsive sizes, or the placeholder
    ├─ layouts/
+   │  └─ Base.astro              page frame: head (noindex, link preview), header, footer
    └─ pages/
       ├─ index.astro             overview with search, filters, sorting
       ├─ impressum.astro         Impressum (§6.7)
@@ -351,6 +364,8 @@ Scale factor = chosen yield ÷ `yield.amount`. Amounts are scaled first, then ro
 - Ingredients and steps can be ticked off by tapping. Ticked items are visually muted.
 - Ticked state is kept for the browser session and cleared when the Kochmodus is
   turned off or the yield is reset.
+- Implementation: a floating bar at the bottom of the recipe page (§13.3); mode and ticks
+  are stored in the browser's session storage per recipe, like the chosen yield (§5.3).
 
 ### 6.4 Link previews
 
@@ -463,14 +478,28 @@ Optional fields added later must not require changes to existing recipe files.
 
 ---
 
-## 12. Open points
+## 12. Open points and next steps
 
-- **Visual design:** confirmed 2026-09-11, see §13.
-- **Sample recipes:** 5–10 real recipes, including awkward ones (eggs in baking, a two-part
-  recipe, amounts like "eine Prise", ranges), written before or during the first build to
-  test the data model.
-- Defaults to confirm once the site is usable: total time includes rest time; yield
-  changes in steps of 1.
+Done (2026-09-11): data layer and validation (§4, §5, §7), deploy workflow (§8), design (§13),
+overview (§6.1), recipe page with yield control (§6.2, §5.3), Kochmodus (§6.3), link previews
+(§6.4), images (§6.5), Impressum page with dummy data (§6.7).
+
+Next, in the suggested order:
+
+1. **README.md in German** (§10): how to add a recipe step by step, where photos go, how to
+   add a tag or a person, what to do when the build fails.
+2. **Real recipes and photos:** 5–10 recipes from the family, including awkward ones (eggs in
+   baking, a two-part recipe, "eine Prise", ranges). Claude Code transcribes from text or
+   photos of handwritten cards. Photos go to `src/assets/recipes/<slug>.jpg`.
+3. **Impressum details:** replace the dummy data marked with [ ] in `src/pages/impressum.astro`.
+4. **Avatars:** illustrations for `src/assets/avatars/` when they exist; until then initials.
+5. **Defaults to confirm after some use:** total time includes rest time; yield changes in
+   steps of 1; times shown as "30 min" / "1 h 30 min" (alternative: "Min." / "Std.").
+
+Known small things:
+
+- The "Von" filter on the overview shows only people who have at least one recipe.
+- `@types/node` is pinned to major version 22 while Node 24 is used; harmless, editor types only.
 
 ---
 

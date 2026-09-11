@@ -8,7 +8,11 @@ making changes, and keep it up to date when decisions change.
 
 Becci owns and maintains this project. She is new to web development.
 
-- Explain what you changed and why in plain language, briefly, after each task.
+- Explain what you are about to do before each step, and what you changed and why after it,
+  in plain language and briefly.
+- Becci commits and pushes herself. End a task with the PowerShell commands for that.
+  Every push to `main` deploys the live site through GitHub Actions.
+- Current status and next steps live in SPEC.md §12. Start a session by reading it.
 - Prefer simple, readable solutions over clever ones. Avoid unnecessary abstraction.
 - Ask before architectural changes, before adding any dependency, and before changing the
   data model. Give a one-line reason for each proposed dependency.
@@ -42,7 +46,14 @@ Run `npm run build` before declaring a task done. It must pass without errors.
 - The site is served under a base path (`/<repo-name>/`). Never hardcode root-relative
   links; always build URLs with the base path.
 - Scaling, rounding and placeholder rendering live in `src/lib/` as small, pure functions with
-  unit tests covering the rules in SPEC.md §4.6 and §5.
+  unit tests covering the rules in SPEC.md §4.6 and §5. These modules also run in the browser,
+  so they must not import Node modules; only `lists.ts`, `build-checks.ts`, `recipe-schema.ts`
+  and `photos.ts` are build-time only.
+- Relative imports inside `src/lib` keep the `.ts` extension; the tests run on Node's own
+  TypeScript support without a build step.
+- Build validation messages are German, because Becci reads them when a recipe file is wrong.
+- Fonts are self-hosted from `src/assets/fonts/`; never load fonts or anything else from a
+  third-party server (SPEC.md §6.7).
 
 ## Data model changes
 
