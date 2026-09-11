@@ -476,7 +476,28 @@ const clientData = JSON.stringify({
   const rows = Array.from(article.querySelectorAll<HTMLElement>('.ingredient[data-id]'));
   const mentions = Array.from(article.querySelectorAll<HTMLElement>('.mention[data-id]'));
 
-  let current = data.baseYield;
+  // The chosen yield is kept for the browser session, like the Kochmodus ticks.
+  const storageKey = `yield:${location.pathname}`;
+
+  function loadYield(): number {
+    try {
+      const saved = Number(sessionStorage.getItem(storageKey));
+      return Number.isInteger(saved) && saved >= 1 ? saved : data.baseYield;
+    } catch {
+      return data.baseYield;
+    }
+  }
+
+  function saveYield(value: number) {
+    try {
+      if (value === data.baseYield) sessionStorage.removeItem(storageKey);
+      else sessionStorage.setItem(storageKey, String(value));
+    } catch {
+      // storage unavailable: the yield still works for this page view
+    }
+  }
+
+  let current = loadYield();
 
   function render() {
     const factor = current / data.baseYield;
@@ -513,6 +534,7 @@ const clientData = JSON.stringify({
     if (!Number.isFinite(next) || next === current) return;
     current = next;
     render();
+    saveYield(current);
     // Kochmodus listens to this to clear ticked items when the yield is reset (SPEC.md §6.3).
     article.dispatchEvent(new CustomEvent('recipe:yield', { detail: { yield: current, reason } }));
   }

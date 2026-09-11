@@ -306,6 +306,8 @@ Scale factor = chosen yield ÷ `yield.amount`. Amounts are scaled first, then ro
 - The number field accepts whole numbers. An empty or invalid entry falls back to the last
   valid yield when the field loses focus.
 - Without JavaScript the page shows the base yield; the control simply does nothing.
+- The chosen yield is kept for the browser session per recipe, so a reload while cooking
+  keeps it (same lifetime as the Kochmodus ticks in §6.3).
 
 ---
 
