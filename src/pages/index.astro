@@ -1,54 +1,369 @@
 ---
-// TEMPORARY, unstyled: proves that the recipe collection, scaling and placeholders
-// work end to end. Replaced by the real overview page once the design is agreed (SPEC.md §12).
+// Overview with search, filters and sorting (SPEC.md §6.1). All cards are in the HTML;
+// the script at the bottom hides, shows and reorders them in the browser.
 import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Avatar from '../components/Avatar.astro';
+import RecipeCard from '../components/RecipeCard.astro';
 import { loadLists } from '../lib/lists.ts';
-import { flattenIngredients, flattenSteps, ingredientsById, totalTime } from '../lib/recipe.ts';
-import { formatIngredient } from '../lib/format.ts';
-import { renderStep } from '../lib/placeholders.ts';
+import { SITE_NAME } from '../lib/site.ts';
 
-const { units } = loadLists();
-const recipes = await getCollection('recipes');
+const lists = loadLists();
+const recipes = (await getCollection('recipes')).sort(
+  (a, b) => b.data.added.getTime() - a.data.added.getTime() || a.data.title.localeCompare(b.data.title, 'de'),
+);
+const authors = lists.people.filter((person) => recipes.some((r) => r.data.author === person.id));
+const timeOptions = [
+  ['', 'Alle'],
+  ['30', 'bis 30 min'],
+  ['60', 'bis 60 min'],
+  ['mehr', 'länger'],
+];
 ---
 
-<html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Rezepte – Rohansicht</title>
-  </head>
-  <body>
-    <p><em>Vorläufige Rohansicht ohne Gestaltung.</em></p>
-    {
-      recipes.map((recipe) => {
-        const byId = ingredientsById(recipe.data.ingredients);
-        return (
-          <article>
-            <h1>{recipe.data.title}</h1>
-            <p>{recipe.data.description}</p>
-            <p>
-              Von {recipe.data.author}, {recipe.data.added.toLocaleDateString('de-DE')}, {totalTime(recipe.data.time)} min,
-              {' '}{recipe.data.yield.amount} {recipe.data.yield.unit}
-            </p>
-            <h2>Zutaten</h2>
-            <ul>
-              {flattenIngredients(recipe.data.ingredients).map((ingredient) => (
-                <li>
-                  {formatIngredient(ingredient, units)}
-                  {ingredient.note ? `, ${ingredient.note}` : ''}
-                </li>
-              ))}
-            </ul>
-            <h2>Zubereitung</h2>
-            <ol>
-              {flattenSteps(recipe.data.steps).map((step) => (
-                <li>{renderStep(step, byId, units)}</li>
-              ))}
-            </ol>
-          </article>
-        );
-      })
+<Base title={SITE_NAME} description="Die Lieblingsrezepte unserer Familie.">
+  <div class="toolbar">
+    <form class="search" role="search" onsubmit="return false">
+      <label class="visually-hidden" for="q">Rezept oder Zutat suchen</label>
+      <input id="q" type="search" placeholder="Rezept oder Zutat suchen …" autocomplete="off" />
+    </form>
+
+    <details class="filters" id="filters">
+      <summary>Filter &amp; Sortierung <span class="active-count" id="active-count"></span></summary>
+      <div class="filter-groups">
+        {
+          lists.tags.map((category) => (
+            <fieldset class="group">
+              <legend class="label">{category.category}</legend>
+              <div class="chips">
+                {category.tags.map((tag) => (
+                  <button type="button" class="tag chip" data-filter="tag" data-group={category.category} data-value={tag.id} aria-pressed="false">
+                    {tag.label}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          ))
+        }
+        <fieldset class="group">
+          <legend class="label">Von</legend>
+          <div class="chips">
+            {
+              authors.map((person) => (
+                <button type="button" class="tag chip" data-filter="von" data-value={person.id} aria-pressed="false">
+                  <Avatar person={person} size="sm" />
+                  {person.name}
+                </button>
+              ))
+            }
+          </div>
+        </fieldset>
+        <fieldset class="group">
+          <legend class="label">Zeit</legend>
+          <div class="chips">
+            {
+              timeOptions.map(([value, label]) => (
+                <button type="button" class="tag chip" data-filter="zeit" data-value={value} aria-pressed={value === '' ? 'true' : 'false'}>
+                  {label}
+                </button>
+              ))
+            }
+          </div>
+        </fieldset>
+        <div class="group">
+          <label class="label" for="sort">Sortierung</label>
+          <select id="sort">
+            <option value="neu">Neu hinzugefügt</option>
+            <option value="alpha">Alphabetisch</option>
+            <option value="zeit">Zubereitungszeit</option>
+          </select>
+        </div>
+      </div>
+    </details>
+
+    <p class="status">
+      <span id="count" aria-live="polite">{recipes.length} {recipes.length === 1 ? 'Rezept' : 'Rezepte'}</span>
+      <button type="button" class="linklike" id="reset" hidden>Filter zurücksetzen</button>
+    </p>
+  </div>
+
+  <div class="cards" id="cards">
+    {recipes.map((recipe) => <RecipeCard recipe={recipe} lists={lists} />)}
+  </div>
+
+  <div class="empty" id="empty" hidden>
+    <p>Nichts gefunden.</p>
+    <p class="note">Weniger Filter oder ein anderes Suchwort helfen vielleicht.</p>
+  </div>
+</Base>
+
+<style>
+  .toolbar {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .search input {
+    width: 100%;
+    padding: 11px 16px;
+    border: 1px solid var(--karamell);
+    border-radius: 999px;
+    background: var(--papier);
+    font-size: 17px;
+  }
+
+  .search input::placeholder {
+    color: var(--kastanie);
+  }
+
+  .filters {
+    border: 1px solid var(--karamell);
+    border-radius: var(--radius);
+    background: var(--papier);
+  }
+
+  .filters summary {
+    padding: 10px 16px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .active-count {
+    color: var(--kastanie);
+    font-weight: 400;
+  }
+
+  .filter-groups {
+    display: grid;
+    gap: 16px;
+    padding: 4px 16px 16px;
+    border-top: 1px solid var(--karamell);
+  }
+
+  .group {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .group legend {
+    padding: 0;
+    margin-bottom: 8px;
+  }
+
+  .chip {
+    cursor: pointer;
+  }
+
+  .chip:hover {
+    border-color: var(--senf);
+  }
+
+  .chip[aria-pressed='true'] {
+    background: var(--senf-hell);
+    border-color: var(--senf);
+    font-weight: 700;
+  }
+
+  select {
+    width: max-content;
+    padding: 6px 10px;
+    border: 1px solid var(--karamell);
+    border-radius: 8px;
+    background: var(--papier);
+  }
+
+  .status {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    font-size: 15px;
+    color: var(--kastanie);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .empty {
+    display: grid;
+    gap: 4px;
+    padding: 40px 0;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--kuerbis);
+  }
+
+  .empty .note {
+    font-family: var(--font-body);
+    font-size: 16px;
+  }
+
+  @media (min-width: 720px) {
+    .filter-groups {
+      grid-template-columns: 1fr 1fr;
     }
-  </body>
-</html>
+  }
+</style>
+
+<script>
+  import { matchesSearch } from '../lib/search.ts';
+
+  type Sort = 'neu' | 'alpha' | 'zeit';
+
+  interface State {
+    q: string;
+    tags: Set<string>;
+    von: Set<string>;
+    zeit: string;
+    sort: Sort;
+  }
+
+  const container = document.getElementById('cards') as HTMLElement;
+  const cards = Array.from(container.querySelectorAll<HTMLElement>('.card'));
+  const search = document.getElementById('q') as HTMLInputElement;
+  const sortSelect = document.getElementById('sort') as HTMLSelectElement;
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('button[data-filter]'));
+  const countEl = document.getElementById('count') as HTMLElement;
+  const resetButton = document.getElementById('reset') as HTMLButtonElement;
+  const emptyEl = document.getElementById('empty') as HTMLElement;
+  const filters = document.getElementById('filters') as HTMLDetailsElement;
+  const activeCount = document.getElementById('active-count') as HTMLElement;
+
+  // tag id → category, for "OR within a category, AND across categories"
+  const tagGroups = new Map<string, string>();
+  for (const chip of chips) {
+    if (chip.dataset.filter === 'tag') tagGroups.set(chip.dataset.value ?? '', chip.dataset.group ?? '');
+  }
+
+  function readState(): State {
+    const params = new URLSearchParams(location.search);
+    const sort = params.get('sort');
+    return {
+      q: params.get('q') ?? '',
+      tags: new Set(params.getAll('tag')),
+      von: new Set(params.getAll('von')),
+      zeit: params.get('zeit') ?? '',
+      sort: sort === 'alpha' || sort === 'zeit' ? sort : 'neu',
+    };
+  }
+
+  function writeState(state: State) {
+    const params = new URLSearchParams();
+    if (state.q) params.set('q', state.q);
+    for (const tag of state.tags) params.append('tag', tag);
+    for (const person of state.von) params.append('von', person);
+    if (state.zeit) params.set('zeit', state.zeit);
+    if (state.sort !== 'neu') params.set('sort', state.sort);
+    const query = params.toString();
+    history.replaceState(null, '', location.pathname + (query ? `?${query}` : ''));
+  }
+
+  function showState(state: State) {
+    search.value = state.q;
+    sortSelect.value = state.sort;
+    for (const chip of chips) {
+      const { filter, value = '' } = chip.dataset;
+      const pressed =
+        filter === 'tag' ? state.tags.has(value) : filter === 'von' ? state.von.has(value) : state.zeit === value;
+      chip.setAttribute('aria-pressed', String(pressed));
+    }
+  }
+
+  function matchesTime(minutes: number, zeit: string): boolean {
+    if (zeit === '30') return minutes <= 30;
+    if (zeit === '60') return minutes <= 60;
+    if (zeit === 'mehr') return minutes > 60;
+    return true;
+  }
+
+  function isVisible(card: HTMLElement, state: State): boolean {
+    const tags = (card.dataset.tags ?? '').split(' ').filter(Boolean);
+    const wanted = new Map<string, string[]>();
+    for (const tag of state.tags) {
+      const group = tagGroups.get(tag) ?? '';
+      wanted.set(group, [...(wanted.get(group) ?? []), tag]);
+    }
+    for (const groupTags of wanted.values()) {
+      if (!groupTags.some((tag) => tags.includes(tag))) return false;
+    }
+    if (state.von.size > 0 && !state.von.has(card.dataset.author ?? '')) return false;
+    if (!matchesTime(Number(card.dataset.time), state.zeit)) return false;
+    return matchesSearch(card.dataset.search ?? '', state.q);
+  }
+
+  function compare(a: HTMLElement, b: HTMLElement, sort: Sort): number {
+    const byTitle = (a.dataset.title ?? '').localeCompare(b.dataset.title ?? '', 'de');
+    if (sort === 'alpha') return byTitle;
+    if (sort === 'zeit') return Number(a.dataset.time) - Number(b.dataset.time) || byTitle;
+    return (b.dataset.added ?? '').localeCompare(a.dataset.added ?? '') || byTitle;
+  }
+
+  function apply(state: State) {
+    let visible = 0;
+    for (const card of cards) {
+      const show = isVisible(card, state);
+      card.hidden = !show;
+      if (show) visible += 1;
+    }
+    container.append(...[...cards].sort((a, b) => compare(a, b, state.sort)));
+
+    countEl.textContent = `${visible} ${visible === 1 ? 'Rezept' : 'Rezepte'}`;
+    emptyEl.hidden = visible > 0;
+
+    const active = state.tags.size + state.von.size + (state.zeit ? 1 : 0);
+    activeCount.textContent = active > 0 ? `(${active} aktiv)` : '';
+    resetButton.hidden = active === 0 && state.q === '';
+  }
+
+  let state = readState();
+
+  function update() {
+    apply(state);
+    writeState(state);
+  }
+
+  search.addEventListener('input', () => {
+    state.q = search.value;
+    update();
+  });
+
+  sortSelect.addEventListener('change', () => {
+    state.sort = sortSelect.value as Sort;
+    update();
+  });
+
+  for (const chip of chips) {
+    chip.addEventListener('click', () => {
+      const { filter, value = '' } = chip.dataset;
+      if (filter === 'tag' || filter === 'von') {
+        const set = filter === 'tag' ? state.tags : state.von;
+        if (set.has(value)) set.delete(value);
+        else set.add(value);
+      } else {
+        state.zeit = value;
+      }
+      showState(state);
+      update();
+    });
+  }
+
+  resetButton.addEventListener('click', () => {
+    state = { q: '', tags: new Set(), von: new Set(), zeit: '', sort: state.sort };
+    showState(state);
+    update();
+    search.focus();
+  });
+
+  showState(state);
+  apply(state);
+  if (state.tags.size > 0 || state.von.size > 0 || state.zeit !== '' || matchMedia('(min-width: 720px)').matches) {
+    filters.open = true;
+  }
+</script>

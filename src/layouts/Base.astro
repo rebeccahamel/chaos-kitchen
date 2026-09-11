@@ -1,0 +1,83 @@
+---
+// Page frame for every page: head with noindex and link preview data (SPEC.md §6.4, §8),
+// header with the wordmark, footer with the Impressum link (§6.7).
+import '../styles/global.css';
+import { SITE_NAME, url } from '../lib/site.ts';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** absolute URL of the preview image for messengers */
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} – ${SITE_NAME}`;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#f7f0e6" />
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href={url()}>{SITE_NAME}</a>
+    </header>
+    <main class="site-main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <a href={url('impressum/')}>Impressum</a>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--karamell);
+    padding-block: 14px;
+    padding-inline: var(--gutter);
+  }
+
+  .wordmark {
+    display: block;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: 0.18em;
+    color: var(--kuerbis);
+    text-decoration: none;
+  }
+
+  .site-main {
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding-block: 24px 56px;
+    padding-inline: var(--gutter);
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--karamell);
+    padding-block: 18px;
+    padding-inline: var(--gutter);
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .site-footer a {
+    color: var(--kastanie);
+  }
+</style>

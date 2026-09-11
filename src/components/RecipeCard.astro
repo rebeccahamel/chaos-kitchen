@@ -1,0 +1,95 @@
+---
+// One card on the overview (SPEC.md §6.1). The data attributes feed the search,
+// filter and sort script on the overview page.
+import type { CollectionEntry } from 'astro:content';
+import Avatar from './Avatar.astro';
+import RecipePhoto from './RecipePhoto.astro';
+import { flattenIngredients, formatDuration, totalTime } from '../lib/recipe.ts';
+import { normalizeForSearch } from '../lib/search.ts';
+import { recipeUrl } from '../lib/site.ts';
+import { tagLabel } from '../lib/tags.ts';
+import type { Lists } from '../lib/types.ts';
+
+interface Props {
+  recipe: CollectionEntry<'recipes'>;
+  lists: Lists;
+}
+
+const { recipe, lists } = Astro.props;
+const { data } = recipe;
+const person = lists.people.find((p) => p.id === data.author);
+const minutes = totalTime(data.time);
+const searchText = normalizeForSearch([data.title, ...flattenIngredients(data.ingredients).map((i) => i.name)].join(' '));
+---
+
+<article
+  class="card"
+  data-search={searchText}
+  data-tags={data.tags.join(' ')}
+  data-author={data.author}
+  data-time={minutes}
+  data-added={data.added.toISOString().slice(0, 10)}
+  data-title={data.title}
+>
+  <a class="card-link" href={recipeUrl(recipe.id)}>
+    <RecipePhoto slug={recipe.id} alt={data.title} sizes="(min-width: 960px) 340px, (min-width: 620px) 50vw, 100vw" />
+    <h2 class="card-title">{data.title}</h2>
+  </a>
+  <div class="card-body">
+    <p class="meta">
+      {person && <Avatar person={person} size="sm" />}
+      <span>{person?.name} · {formatDuration(minutes)}</span>
+    </p>
+    {
+      data.tags.length > 0 && (
+        <ul class="chips">
+          {data.tags.slice(0, 3).map((tag) => (
+            <li class="tag">{tagLabel(lists.tags, tag)}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--papier);
+    border: 1px solid var(--karamell);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .card-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .card-title {
+    padding: 12px 14px 4px;
+    font-size: 22px;
+    color: var(--kuerbis);
+  }
+
+  .card-link:hover .card-title {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .card-body {
+    display: grid;
+    gap: 8px;
+    padding: 0 14px 14px;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--kastanie);
+  }
+</style>

@@ -106,7 +106,7 @@ author: oma
 added: 2026-09-11
 yield: { amount: 12, unit: Stück, note: für eine 26er Springform }
 time: { prep: 30, cook: 60, rest: 60 }
-tags: [kuchen-und-gebaeck, vegetarisch, kaffeetafel]
+tags: [dessert, vegetarisch, herbst]
 
 ingredients:
   - group: Für den Teig
@@ -206,29 +206,39 @@ A placeholder with an unknown id or invalid syntax is a build error.
 
 ```yaml
 - id: oma
-  name: Oma Hilde          # family role or first name only
+  name: Oma                # family role or first name only
   avatar: oma.webp          # file in src/assets/avatars/; optional
   color: "#8a5a44"          # background colour for the initials fallback
 ```
 
+Decided 2026-09-11: authors are Mama, Papa, Aleksi, Becci, Oma and Omale. No avatar files yet;
+the initials fallback is used until illustrations exist.
+
 `src/data/tags.yaml` – four categories for version 1: Gang, Ernährung, Saison & Anlass, Küche.
+Content decided 2026-09-11 (Becci adds tags as they come along):
 
 ```yaml
 - category: Gang
   tags:
-    - { id: hauptgericht, label: Hauptgericht }
+    - { id: fruehstueck, label: Frühstück }
+    - { id: schnelles-abendessen, label: schnelles Abendessen }
     - { id: dessert, label: Dessert }
-    - { id: kuchen-und-gebaeck, label: Kuchen & Gebäck }
+    - { id: heissgetraenk, label: Heißgetränk }
 - category: Ernährung
   tags:
     - { id: vegetarisch, label: vegetarisch }
+    - { id: vegan, label: vegan }
+    - { id: fisch, label: Fisch }
 - category: Saison & Anlass
   tags:
+    - { id: fruehling, label: Frühling }
+    - { id: sommer, label: Sommer }
+    - { id: herbst, label: Herbst }
     - { id: winter, label: Winter }
-    - { id: kaffeetafel, label: Kaffeetafel }
 - category: Küche
   tags:
-    - { id: hausmannskost, label: Hausmannskost }
+    - { id: asiatisch, label: asiatisch }
+    - { id: italienisch, label: italienisch }
 ```
 
 `src/data/units.yaml` – every unit has a singular, a plural and a rounding category.
@@ -351,6 +361,7 @@ URL), so a link shared in a messenger shows a preview card.
 
 ### 6.6 General
 
+- Site name: **CHAOS KITCHEN**, shown in the header and in every page title.
 - Mobile first; comfortable on a phone held in one hand in the kitchen.
 - All UI text in German.
 - Accessibility baseline: visible keyboard focus, sufficient contrast, reduced motion respected,
@@ -359,11 +370,15 @@ URL), so a link shared in a messenger shows a preview card.
 ### 6.7 Impressum
 
 - Own page at `/impressum/`, linked as "Impressum" from the footer of every page.
-- Content: the details legally required for a German website (name, postal address,
-  e-mail address). Becci provides the exact text. Plain text, no form, no map.
+- Content: Impressum (§ 5 DDG, § 18 MStV: name, postal address, e-mail) and a short
+  Datenschutzerklärung (Art. 13 DSGVO: hosting on GitHub Pages with server logs, no cookies,
+  no analytics, no third-party content, self-hosted fonts, rights of data subjects).
+- Stored as plain text in `src/pages/impressum.astro` (decided 2026-09-11). Until Becci
+  fills in the real details, the page shows dummy data marked with [ ].
 - Like every other page it carries the `noindex, nofollow` meta tag (§8).
-- This is the only place on the site that shows personal data; see §9 and the open
-  point in §12 about where the text is stored.
+- This is the only place on the site that shows personal data; see §9.
+- Consequence for the design: fonts are served from the site itself, never from Google Fonts,
+  so the Datenschutzerklärung stays true.
 
 ---
 
@@ -445,19 +460,56 @@ Optional fields added later must not require changes to existing recipe files.
 
 ## 12. Open points
 
-- **Visual design:** colour palette, typography and layout character are not decided.
-  Before building UI, Claude Code proposes a short design plan (palette, typefaces,
-  layout sketch) grounded in the subject – a family's own recipe collection – and
-  avoiding generic template looks, then confirms it with Becci.
-- **Site name** and **repository name** (the repository name becomes part of the URL).
-- **Impressum storage:** the site is public either way, but a plain-text Impressum in the
-  repository also makes the address searchable on GitHub. Options, simplest first:
-  (a) plain text in the page file; (b) address as an image; (c) address in a GitHub Actions
-  secret that is inserted at build time, so it never sits in the repository. Decide before
-  the page is built.
-- **Content of the central lists:** the actual tags per category and the list of people.
+- **Visual design:** confirmed 2026-09-11, see §13.
 - **Sample recipes:** 5–10 real recipes, including awkward ones (eggs in baking, a two-part
   recipe, amounts like "eine Prise", ranges), written before or during the first build to
   test the data model.
 - Defaults to confirm once the site is usable: total time includes rest time; yield
   changes in steps of 1.
+
+---
+
+## 13. Visual design (confirmed 2026-09-11)
+
+Direction: warm tones, off-whites, rich burnt orange for titles, cosy autumn colours.
+Tokens live as CSS custom properties in `src/styles/global.css`.
+
+### 13.1 Palette
+
+| Name | Hex | Use |
+|---|---|---|
+| Leinen | `#F7F0E6` | page background |
+| Papier | `#FFFAF2` | cards, boxes |
+| Kürbis | `#C2551F` | titles, wordmark, step numbers, yield number – large text only |
+| Rost | `#9A3B12` | links, buttons, small accents (enough contrast on Leinen for small text) |
+| Tinte | `#2E1F17` | text |
+| Kastanie | `#7A6353` | secondary text, notes |
+| Karamell | `#E4D2BC` | lines, borders |
+| Senf | `#D9A441`, light `#F3E2B5` | active filter chips, ingredient mentions in steps |
+| Olive | `#5E6B3A` | Kochmodus on |
+
+Author initials use the `color` from `people.yaml`; Oma and Omale both show "O".
+
+### 13.2 Typefaces
+
+- **Young Serif** (regular): wordmark, recipe titles, step numbers, yield number.
+- **Alegreya Sans** (400, 500, 700, 400 italic): everything else.
+- Both SIL Open Font License, self-hosted from `src/assets/fonts/` with the licence texts
+  next to them. Never loaded from Google Fonts (§6.7).
+
+### 13.3 Layout
+
+- Mobile first, content width up to 1080 px, side gutter at least 16 px.
+- Thin header band with the wordmark "CHAOS KITCHEN" linking to the overview;
+  footer with the "Impressum" link.
+- Cards: 4:3 photo, title in Kürbis, author initial and name, total time, up to three tags.
+  One column on phones, two from about 600 px, three from about 900 px.
+- Recipe page: one column at every width (decided). Ingredient list with a bold, right-aligned
+  amount column on the left and name plus note on the right. Step numbers in Kürbis.
+  Ingredients mentioned in a step are marked in light Senf. Kochmodus toggle floats at the
+  bottom of the screen.
+- Missing photo: striped Papier placeholder reading "noch kein Foto".
+- Rounded corners 12 px, hairline borders in Karamell, almost no shadows, no icon set.
+- Times are shown as "30 min", "1 h 30 min", "2 h".
+- Overview URL query: `q` (search), `tag` (repeatable), `von` (author id, repeatable),
+  `zeit` (`30`, `60` or `mehr`), `sort` (`neu`, `alpha`, `zeit`). Absent means default.

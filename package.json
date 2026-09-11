@@ -13,5 +13,8 @@
   "dependencies": {
     "astro": "^7.3.2",
     "js-yaml": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2"
   }
 }

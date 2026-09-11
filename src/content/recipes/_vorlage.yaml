@@ -16,7 +16,7 @@ yield: { amount: 4, unit: Portionen }
 time: { prep: 20, cook: 30 }
 
 # Tag ids from tags.yaml. An empty list [] is allowed.
-tags: [hauptgericht, vegetarisch]
+tags: [schnelles-abendessen, vegetarisch]
 
 # Ingredients: either a flat list (below) or groups (see the example further down).
 # Fields:

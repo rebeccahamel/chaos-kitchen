@@ -1,0 +1,88 @@
+---
+// Impressum and Datenschutzerklärung (SPEC.md §6.7).
+//
+// TODO Becci: replace the dummy data marked with [ ] by the real details.
+// The structure follows § 5 DDG, § 18 MStV and Art. 13 DSGVO. It is a common
+// template for a private, non-commercial website, not legal advice.
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Impressum">
+  <article class="prose">
+    <h1>Impressum</h1>
+
+    <h2>Angaben gemäß § 5 DDG</h2>
+    <p>
+      [Vorname Nachname]<br />
+      [Musterstraße 1]<br />
+      [12345 Musterstadt]<br />
+      Deutschland
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>E-Mail: [kontakt@example.com]</p>
+
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+    <p>[Vorname Nachname], Anschrift wie oben</p>
+
+    <p>
+      Diese Website ist ein privates, nicht kommerzielles Familienprojekt. Die Rezepte und Fotos
+      stammen aus der Familie. Es werden keine Waren oder Dienstleistungen angeboten.
+    </p>
+
+    <h1>Datenschutzerklärung</h1>
+
+    <h2>1. Verantwortliche Stelle</h2>
+    <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist die im Impressum genannte Person.</p>
+
+    <h2>2. Hosting</h2>
+    <p>
+      Diese Website wird bei GitHub Pages gehostet. Anbieter ist GitHub, Inc., 88 Colin P. Kelly Jr.
+      Street, San Francisco, CA 94107, USA. Beim Aufruf der Website erfasst GitHub automatisch
+      technische Zugriffsdaten (sogenannte Server-Logfiles), insbesondere die IP-Adresse, Datum und
+      Uhrzeit des Zugriffs, die aufgerufene Seite und den verwendeten Browser. Diese Daten werden
+      ausschließlich zum sicheren und stabilen Betrieb der Website verarbeitet. Rechtsgrundlage ist
+      Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren Betrieb). GitHub ist unter
+      dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden sich in der
+      <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a>.
+    </p>
+
+    <h2>3. Keine Cookies, keine Analyse, keine Inhalte Dritter</h2>
+    <p>
+      Diese Website setzt keine Cookies, verwendet keine Analyse- oder Tracking-Werkzeuge und bindet
+      keine Inhalte von Drittanbietern ein. Schriften und Bilder werden von der Website selbst
+      ausgeliefert. Es gibt keine Kontaktformulare und keine Nutzerkonten.
+    </p>
+
+    <h2>4. Ihre Rechte</h2>
+    <p>
+      Sie haben gegenüber der verantwortlichen Stelle das Recht auf Auskunft (Art. 15 DSGVO),
+      Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung
+      (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) und Widerspruch (Art. 21 DSGVO).
+      Außerdem haben Sie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren
+      (Art. 77 DSGVO).
+    </p>
+
+    <p class="note">Stand: September 2026</p>
+  </article>
+</Base>
+
+<style>
+  .prose {
+    display: grid;
+    gap: 14px;
+    max-width: 65ch;
+    margin-inline: auto;
+  }
+
+  h1 {
+    font-size: 34px;
+    color: var(--kuerbis);
+    margin-top: 12px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-top: 8px;
+  }
+</style>

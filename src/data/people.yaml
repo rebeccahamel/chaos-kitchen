@@ -1,13 +1,23 @@
 # Authors. Only family roles or first names (SPEC.md §9).
 #   id      used in recipes (author: mama)
 #   name    shown on the site
-#   avatar  optional, file name in src/assets/avatars/
-#   color   background colour for the initials when there is no avatar
+#   avatar  optional, file name in src/assets/avatars/ (none yet: initials are shown)
+#   color   background colour for the initials
 - id: mama
   name: Mama
-  avatar: mama.webp
-  color: "#3f6f5a"
+  color: "#9e3f12"
+- id: papa
+  name: Papa
+  color: "#5b6b3f"
+- id: aleksi
+  name: Aleksi
+  color: "#b8860b"
+- id: becci
+  name: Becci
+  color: "#6e3b4a"
 - id: oma
   name: Oma
-  avatar: oma.webp
   color: "#8a5a44"
+- id: omale
+  name: Omale
+  color: "#4f6f52"

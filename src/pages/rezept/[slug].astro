@@ -1,0 +1,320 @@
+---
+// One page per recipe (SPEC.md §6.2). Amounts are rendered at the base yield here;
+// the yield control that changes them in the browser is the next step.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Avatar from '../../components/Avatar.astro';
+import RecipePhoto from '../../components/RecipePhoto.astro';
+import placeholder from '../../assets/placeholder-recipe.svg';
+import { describeIngredient } from '../../lib/format.ts';
+import { loadLists } from '../../lib/lists.ts';
+import { recipePhoto } from '../../lib/photos.ts';
+import { renderStepParts } from '../../lib/placeholders.ts';
+import { formatDuration, hasGroups, ingredientsById, totalTime } from '../../lib/recipe.ts';
+import { url } from '../../lib/site.ts';
+import { tagLabel } from '../../lib/tags.ts';
+import { findUnit, unitLabel } from '../../lib/units.ts';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('recipes');
+  return recipes.map((recipe) => ({ params: { slug: recipe.id }, props: { recipe } }));
+}
+
+interface Props {
+  recipe: CollectionEntry<'recipes'>;
+}
+
+const { recipe } = Astro.props;
+const { data } = recipe;
+const lists = loadLists();
+const { units } = lists;
+const person = lists.people.find((p) => p.id === data.author);
+
+const yieldUnit = findUnit(units, data.yield.unit);
+const yieldLabel = yieldUnit ? unitLabel(yieldUnit, data.yield.amount) : data.yield.unit;
+
+const times = [
+  ['Gesamt', totalTime(data.time)],
+  ['Zubereitung', data.time.prep],
+  ['Kochen/Backen', data.time.cook],
+  ['Ruhezeit', data.time.rest],
+].filter((entry): entry is [string, number] => entry[1] !== undefined);
+
+const byId = ingredientsById(data.ingredients);
+let stepNumber = 0;
+const stepGroups = data.steps.map((group) => ({
+  group: group.group,
+  items: group.items.map((step) => ({ number: ++stepNumber, parts: renderStepParts(step, byId, units) })),
+}));
+
+const photo = recipePhoto(recipe.id);
+const preview = photo ? await getImage({ src: photo, width: 1200, height: 900, format: 'jpg' }) : placeholder;
+const ogImage = new URL(preview.src, Astro.site).href;
+const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base title={data.title} description={data.description} ogImage={ogImage}>
+  <article class="recipe">
+    <a class="back" id="back" href={url()}>‹ Alle Rezepte</a>
+
+    <div class="hero">
+      <RecipePhoto slug={recipe.id} alt={data.title} priority sizes="(min-width: 760px) 720px, 100vw" />
+    </div>
+
+    <header class="head">
+      <h1>{data.title}</h1>
+      <p class="description">{data.description}</p>
+      <p class="meta">
+        {person && <Avatar person={person} size="sm" />}
+        <span>{person?.name} · hinzugefügt am {added}</span>
+      </p>
+      {
+        data.tags.length > 0 && (
+          <ul class="chips">
+            {data.tags.map((tag) => (
+              <li>
+                <a class="tag" href={url(`?tag=${tag}`)}>{tagLabel(lists.tags, tag)}</a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <dl class="times">
+      {
+        times.map(([label, minutes]) => (
+          <div>
+            <dt>{label}</dt>
+            <dd>{formatDuration(minutes)}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <p class="yield">
+      <span class="yield-amount">{data.yield.amount}</span>
+      <span>{yieldLabel}</span>
+      {data.yield.note && <span class="note">{data.yield.note}</span>}
+    </p>
+
+    <section class="ingredients">
+      <h2>Zutaten</h2>
+      {
+        data.ingredients.map((group) => (
+          <div class="group">
+            {hasGroups(data.ingredients) && group.group && <h3>{group.group}</h3>}
+            <ul class="ingredient-list">
+              {group.items.map((ingredient) => {
+                const text = describeIngredient(ingredient, units);
+                return (
+                  <li class="ingredient" data-id={ingredient.id}>
+                    <span class="amount">{[text.amount, text.unit].filter(Boolean).join(' ')}</span>
+                    <span class="name">
+                      {text.name}
+                      {ingredient.note && <span class="note">, {ingredient.note}</span>}
+                      {text.optional && <span class="note"> (optional)</span>}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+
+    <section class="steps">
+      <h2>Zubereitung</h2>
+      {
+        stepGroups.map((group) => (
+          <div class="group">
+            {hasGroups(data.steps) && group.group && <h3>{group.group}</h3>}
+            <ol class="step-list">
+              {group.items.map((step) => (
+                <li class="step">
+                  <span class="step-number" aria-hidden="true">{step.number}</span>
+                  <p>
+                    <span class="visually-hidden">Schritt {step.number}: </span>
+                    {step.parts.map((part) =>
+                      part.kind === 'ingredient' ? <mark class="mention" data-id={part.id}>{part.text}</mark> : part.text,
+                    )}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))
+      }
+    </section>
+  </article>
+</Base>
+
+<style>
+  .recipe {
+    display: grid;
+    gap: 28px;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .back {
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .back:hover {
+    text-decoration: underline;
+  }
+
+  .hero {
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .head {
+    display: grid;
+    gap: 12px;
+  }
+
+  h1 {
+    font-size: clamp(30px, 6vw, 42px);
+    color: var(--kuerbis);
+  }
+
+  .description {
+    font-size: 19px;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--kastanie);
+  }
+
+  .times {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin: 0;
+    padding-block: 12px;
+    border-top: 1px solid var(--karamell);
+    border-bottom: 1px solid var(--karamell);
+    font-size: 15px;
+  }
+
+  .times div {
+    display: flex;
+    gap: 6px;
+  }
+
+  .times dt {
+    color: var(--kastanie);
+  }
+
+  .times dd {
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .yield {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 18px;
+  }
+
+  .yield-amount {
+    font-family: var(--font-display);
+    font-size: 26px;
+    color: var(--kuerbis);
+  }
+
+  .ingredients,
+  .steps {
+    display: grid;
+    gap: 16px;
+  }
+
+  h2 {
+    font-size: 26px;
+    color: var(--kuerbis);
+  }
+
+  h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+  }
+
+  .ingredient-list {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 16px;
+    list-style: none;
+    background: var(--papier);
+    border: 1px solid var(--karamell);
+    border-radius: var(--radius);
+  }
+
+  .ingredient {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .amount {
+    text-align: right;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .step-list {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 10px;
+  }
+
+  .step-number {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1;
+    color: var(--kuerbis);
+    padding-top: 2px;
+  }
+
+  .mention {
+    background: var(--senf-hell);
+    color: inherit;
+    border-bottom: 2px solid var(--senf);
+    border-radius: 3px;
+    padding-inline: 2px;
+  }
+</style>
+
+<script>
+  // Back link: return to the overview with the search and filters that were active (SPEC.md §6.2).
+  const back = document.getElementById('back') as HTMLAnchorElement;
+  const referrer = document.referrer;
+  if (referrer) {
+    try {
+      const from = new URL(referrer);
+      if (from.origin === location.origin && from.pathname === new URL(back.href).pathname) back.href = referrer;
+    } catch {
+      // not a URL: keep the plain link
+    }
+  }
+</script>

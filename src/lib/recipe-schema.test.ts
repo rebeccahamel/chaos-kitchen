@@ -28,7 +28,7 @@ const quarkkuchen = {
   added: new Date('2026-09-11'),
   yield: { amount: 12, unit: 'Stück', note: 'für eine 26er Springform' },
   time: { prep: 30, cook: 60, rest: 60 },
-  tags: ['kuchen-und-gebaeck', 'vegetarisch', 'kaffeetafel'],
+  tags: ['dessert', 'vegetarisch', 'herbst'],
   ingredients: [
     {
       group: 'Für den Teig',
@@ -153,7 +153,7 @@ test('author, tags and units must exist in the central lists', () => {
 
   const tag = curry();
   tag.tags.push('schnell');
-  assertIssue(tag, /^tags\.2: Tag „schnell“ steht nicht in tags\.yaml/);
+  assertIssue(tag, /^tags\.3: Tag „schnell“ steht nicht in tags\.yaml/);
 
   const yieldUnit = curry();
   yieldUnit.yield.unit = 'Teller';

@@ -22,3 +22,12 @@ export function hasGroups(groups: { group?: string }[]): boolean {
 export function totalTime(time: { prep: number; cook?: number; rest?: number }): number {
   return time.prep + (time.cook ?? 0) + (time.rest ?? 0);
 }
+
+/** "30 min", "1 h", "1 h 30 min" (SPEC.md §13.3) */
+export function formatDuration(minutes: number): string {
+  const hours = Math.floor(minutes / 60);
+  const rest = minutes % 60;
+  if (hours === 0) return `${rest} min`;
+  if (rest === 0) return `${hours} h`;
+  return `${hours} h ${rest} min`;
+}

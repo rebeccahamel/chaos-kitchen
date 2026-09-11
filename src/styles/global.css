@@ -1,0 +1,186 @@
+/* Design tokens and base styles (SPEC.md §13). Fonts are self-hosted, see §6.7. */
+
+@font-face {
+  font-family: 'Young Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/YoungSerif-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/AlegreyaSans-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/AlegreyaSans-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/AlegreyaSans-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/AlegreyaSans-700.woff2') format('woff2');
+}
+
+:root {
+  --leinen: #f7f0e6;
+  --papier: #fffaf2;
+  --kuerbis: #c2551f;
+  --rost: #9a3b12;
+  --tinte: #2e1f17;
+  --kastanie: #7a6353;
+  --karamell: #e4d2bc;
+  --senf: #d9a441;
+  --senf-hell: #f3e2b5;
+  --olive: #5e6b3a;
+
+  --font-display: 'Young Serif', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Alegreya Sans', 'Segoe UI', system-ui, sans-serif;
+
+  --radius: 12px;
+  --content-width: 1080px;
+  --gutter: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--leinen);
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--leinen);
+  color: var(--tinte);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--rost);
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* The filter script hides cards with the hidden attribute; keep it stronger than any display rule. */
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 3px solid var(--senf);
+  outline-offset: 2px;
+}
+
+/* Small uppercase label above a group */
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kastanie);
+}
+
+/* Secondary text such as notes */
+.note {
+  color: var(--kastanie);
+}
+
+/* Tag chips, used on cards, the recipe page and as filter buttons */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--karamell);
+  background: var(--papier);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 14px;
+  color: var(--tinte);
+  text-decoration: none;
+  cursor: default;
+}
+
+a.tag:hover {
+  border-color: var(--senf);
+}
+
+/* A button that looks like a link */
+.linklike {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--rost);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

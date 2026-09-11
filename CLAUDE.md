@@ -54,8 +54,8 @@ Never weaken validation to make a build pass. Fix the data or ask.
 
 ## Design
 
-Before building or restyling UI, propose a short design plan (palette, typefaces, layout
-sketch) and confirm it with Becci. See SPEC.md §12.
+The design plan is confirmed and recorded in SPEC.md §13 (palette, typefaces, layout rules).
+Follow it. Propose and confirm with Becci before deviating from it or restyling.
 
 ## Privacy
 
