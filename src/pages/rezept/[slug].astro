@@ -147,7 +147,7 @@ const clientData = JSON.stringify({
             {hasGroups(data.steps) && group.group && <h3>{group.group}</h3>}
             <ol class="step-list">
               {group.items.map((step) => (
-                <li class="step">
+                <li class="step" data-step={step.number}>
                   <span class="step-number" aria-hidden="true">{step.number}</span>
                   <p>
                     <span class="visually-hidden">Schritt {step.number}: </span>
@@ -168,6 +168,11 @@ const clientData = JSON.stringify({
         ))
       }
     </section>
+
+    <div class="cook-bar">
+      <button type="button" class="cook-toggle" id="cook-toggle" aria-pressed="false">Kochmodus starten</button>
+      <p class="cook-note" id="cook-note" hidden></p>
+    </div>
   </article>
 
   <script type="application/json" id="recipe-data" set:html={clientData} />
@@ -369,6 +374,66 @@ const clientData = JSON.stringify({
     border-radius: 3px;
     padding-inline: 2px;
   }
+
+  /* Kochmodus (SPEC.md §6.3): floating toggle, tap to tick off */
+  .cook-bar {
+    position: sticky;
+    bottom: 0;
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 12px var(--gutter) 14px;
+    background: linear-gradient(to top, var(--leinen) 70%, transparent);
+  }
+
+  .cook-toggle {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    background: var(--rost);
+    color: var(--papier);
+    font-weight: 700;
+    box-shadow: 0 6px 16px rgba(46, 31, 23, 0.18);
+    cursor: pointer;
+  }
+
+  .cook-toggle[aria-pressed='true'] {
+    background: var(--olive);
+  }
+
+  .cook-note {
+    font-size: 14px;
+    color: var(--kastanie);
+    text-align: center;
+  }
+
+  .recipe.cooking .ingredient,
+  .recipe.cooking .step {
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  .recipe.cooking .ingredient:hover,
+  .recipe.cooking .step:hover {
+    background: rgba(217, 164, 65, 0.12);
+  }
+
+  .recipe.cooking .done {
+    color: var(--kastanie);
+  }
+
+  .recipe.cooking .ingredient.done .amount,
+  .recipe.cooking .ingredient.done .name-text {
+    text-decoration: line-through;
+  }
+
+  .recipe.cooking .step.done .step-number,
+  .recipe.cooking .step.done .mention {
+    color: var(--kastanie);
+    background: transparent;
+    border-color: transparent;
+  }
 </style>
 
 <script>
@@ -466,4 +531,145 @@ const clientData = JSON.stringify({
   });
 
   render();
+</script>
+
+<script>
+  // Kochmodus (SPEC.md §6.3): keep the screen awake, tick off ingredients and steps by tapping.
+  // Ticked state is kept for the browser session and cleared when the mode is turned off
+  // or the yield is reset.
+  const article = document.getElementById('recipe') as HTMLElement;
+  const toggle = document.getElementById('cook-toggle') as HTMLButtonElement;
+  const note = document.getElementById('cook-note') as HTMLElement;
+  const items = Array.from(article.querySelectorAll<HTMLElement>('.ingredient[data-id], .step[data-step]'));
+  const storageKey = `kochmodus:${location.pathname}`;
+
+  interface Saved {
+    on: boolean;
+    done: string[];
+  }
+
+  let on = false;
+  let wakeLock: WakeLockSentinel | null = null;
+
+  const keyOf = (item: HTMLElement) => (item.dataset.id ? `i:${item.dataset.id}` : `s:${item.dataset.step}`);
+
+  function save() {
+    try {
+      if (!on) sessionStorage.removeItem(storageKey);
+      else {
+        const done = items.filter((item) => item.classList.contains('done')).map(keyOf);
+        sessionStorage.setItem(storageKey, JSON.stringify({ on, done } satisfies Saved));
+      }
+    } catch {
+      // storage unavailable (private mode): the mode still works for this page view
+    }
+  }
+
+  function load(): Saved | null {
+    try {
+      const raw = sessionStorage.getItem(storageKey);
+      return raw ? (JSON.parse(raw) as Saved) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function showNote(text: string) {
+    note.textContent = text;
+    note.hidden = text === '';
+  }
+
+  async function requestWakeLock() {
+    if (!('wakeLock' in navigator)) {
+      showNote('Antippen zum Abhaken. Dein Browser kann den Bildschirm nicht wach halten, er geht vielleicht aus.');
+      return;
+    }
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release', () => {
+        wakeLock = null;
+      });
+      showNote('Antippen zum Abhaken. Der Bildschirm bleibt an.');
+    } catch {
+      showNote('Antippen zum Abhaken. Der Bildschirm konnte nicht wach gehalten werden, er geht vielleicht aus.');
+    }
+  }
+
+  function releaseWakeLock() {
+    wakeLock?.release();
+    wakeLock = null;
+  }
+
+  function clearDone() {
+    for (const item of items) {
+      item.classList.remove('done');
+      item.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  function setMode(next: boolean) {
+    on = next;
+    article.classList.toggle('cooking', on);
+    toggle.setAttribute('aria-pressed', String(on));
+    toggle.textContent = on ? 'Kochmodus beenden' : 'Kochmodus starten';
+    for (const item of items) {
+      if (on) {
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-pressed', item.classList.contains('done') ? 'true' : 'false');
+      } else {
+        item.removeAttribute('role');
+        item.removeAttribute('tabindex');
+        item.removeAttribute('aria-pressed');
+      }
+    }
+    if (on) {
+      void requestWakeLock();
+    } else {
+      releaseWakeLock();
+      clearDone();
+      showNote('');
+    }
+    save();
+  }
+
+  function toggleItem(item: HTMLElement) {
+    if (!on) return;
+    const done = item.classList.toggle('done');
+    item.setAttribute('aria-pressed', String(done));
+    save();
+  }
+
+  for (const item of items) {
+    item.addEventListener('click', () => toggleItem(item));
+    item.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleItem(item);
+      }
+    });
+  }
+
+  toggle.addEventListener('click', () => setMode(!on));
+
+  // A yield reset clears the ticks; the mode itself stays on.
+  article.addEventListener('recipe:yield', (event) => {
+    if ((event as CustomEvent<{ reason: string }>).detail.reason === 'reset' && on) {
+      clearDone();
+      save();
+    }
+  });
+
+  // The wake lock is released when the tab goes to the background; take it again on return.
+  document.addEventListener('visibilitychange', () => {
+    if (on && document.visibilityState === 'visible' && wakeLock === null) void requestWakeLock();
+  });
+
+  // Restore the session state after a reload while cooking.
+  const saved = load();
+  if (saved?.on) {
+    const done = new Set(saved.done);
+    for (const item of items) if (done.has(keyOf(item))) item.classList.add('done');
+    setMode(true);
+  }
 </script>
