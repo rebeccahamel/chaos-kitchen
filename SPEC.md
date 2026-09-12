@@ -395,8 +395,8 @@ URL), so a link shared in a messenger shows a preview card.
 - Content: Impressum (§ 5 DDG, § 18 MStV: name, postal address, e-mail) and a short
   Datenschutzerklärung (Art. 13 DSGVO: hosting on GitHub Pages with server logs, no cookies,
   no analytics, no third-party content, self-hosted fonts, rights of data subjects).
-- Stored as plain text in `src/pages/impressum.astro` (decided 2026-09-11). Until Becci
-  fills in the real details, the page shows dummy data marked with [ ].
+- Stored as plain text in `src/pages/impressum.astro` (decided 2026-09-11); the real details
+  were filled in on 2026-09-12.
 - Like every other page it carries the `noindex, nofollow` meta tag (§8).
 - This is the only place on the site that shows personal data; see §9.
 - Consequence for the design: fonts are served from the site itself, never from Google Fonts,
@@ -466,7 +466,9 @@ converted to g or ml at the same point (§5.1).
   handwritten card) into the file format.
 - **On the go:** GitHub's web editor. If a file has an error, the build fails, GitHub sends an
   e-mail, and the live site keeps its previous version.
-- A `README.md` explains how to add a recipe step by step, in German.
+- `README.md` (German) and `README.en.md` (English) explain how to add a recipe step by
+  step, where photos go, how to add a tag, a person or a unit, how to edit from a phone, and
+  what to do when the build fails. Both files have the same structure; change them together.
 
 ---
 
@@ -485,17 +487,16 @@ Optional fields added later must not require changes to existing recipe files.
 Done (2026-09-11): data layer and validation (§4, §5, §7), deploy workflow (§8), design (§13),
 overview (§6.1), recipe page with yield control (§6.2, §5.3), Kochmodus (§6.3), link previews
 (§6.4), images (§6.5), Impressum page with dummy data (§6.7).
+Done (2026-09-12): README in German and English (§10); wake lock recovers after a reload (§6.3);
+Impressum filled in with the real details (§6.7).
 
 Next, in the suggested order:
 
-1. **README.md in German** (§10): how to add a recipe step by step, where photos go, how to
-   add a tag or a person, what to do when the build fails.
-2. **Real recipes and photos:** 5–10 recipes from the family, including awkward ones (eggs in
+1. **Real recipes and photos:** 5–10 recipes from the family, including awkward ones (eggs in
    baking, a two-part recipe, "eine Prise", ranges). Claude Code transcribes from text or
    photos of handwritten cards. Photos go to `src/assets/recipes/<slug>.jpg`.
-3. **Impressum details:** replace the dummy data marked with [ ] in `src/pages/impressum.astro`.
-4. **Avatars:** illustrations for `src/assets/avatars/` when they exist; until then initials.
-5. **Defaults to confirm after some use:** total time includes rest time; yield changes in
+2. **Avatars:** illustrations for `src/assets/avatars/` when they exist; until then initials.
+3. **Defaults to confirm after some use:** total time includes rest time; yield changes in
    steps of 1; times shown as "30 min" / "1 h 30 min" (alternative: "Min." / "Std.").
 
 Known small things:
