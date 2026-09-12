@@ -28,6 +28,7 @@ test('counted items switch to the plural above 1', () => {
   assert.equal(formatIngredient(zwiebel, units), '2 Zwiebeln');
   assert.equal(formatIngredient(zwiebel, units, { factor: 0.5 }), '1 Zwiebel');
   assert.equal(formatIngredient(zwiebel, units, { factor: 0.25 }), '½ Zwiebel');
+  assert.equal(formatIngredient(zwiebel, units, { factor: 1 / 16 }), '⅛ Zwiebel');
   assert.equal(formatIngredient(zwiebel, units, { factor: 0.75 }), '1½ Zwiebeln');
 });
 

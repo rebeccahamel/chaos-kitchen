@@ -2,7 +2,7 @@
 # category decides the rounding when a recipe is scaled (SPEC.md §5.1):
 #   weight, volume  -> steps of 1 / 5 / 10, from 1000 shown as kg / l
 #   spoon           -> quarters (¼, ½, ¾)
-#   count           -> halves (½)
+#   count           -> halves (½), below 1 eighths (⅛)
 - { unit: g,        plural: g,         category: weight }
 - { unit: kg,       plural: kg,        category: weight }
 - { unit: ml,       plural: ml,        category: volume }

@@ -1,0 +1,44 @@
+title: Hackbällchen in Senfsoße mit Gemüsereis
+description: Saftige Hackbällchen in cremiger Senf-Honig-Soße, dazu Basmatireis mit Porree und Karotte.
+author: becci
+added: 2026-09-12
+yield: { amount: 4, unit: Portionen }
+time: { prep: 20, cook: 25 }
+tags: [mittagessen, abendessen, fleisch]
+
+ingredients:
+  - group: Für den Gemüsereis
+    items:
+      - { id: reis, amount: 300, unit: g, name: Basmatireis }
+      - { id: porree, amount: 2, unit: Stange, name: Porree }
+      - { id: karotte, amount: 2, name: Karotte, plural: Karotten }
+      - { id: wasser-reis, amount: 600, unit: ml, name: Wasser }
+      - { id: butter, amount: 1, unit: EL, name: Butter, optional: true }
+  - group: Für die Hackbällchen
+    items:
+      - { id: hackfleisch, amount: 500, unit: g, name: gemischtes Hackfleisch }
+      - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: semmelbroesel, amount: 50, unit: g, name: Semmelbrösel }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: senf-mittelscharf, amount: 4, unit: TL, name: mittelscharfer Senf }
+      - { id: oel, amount: 2, unit: EL, name: Öl, note: zum Anbraten }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Soße
+    items:
+      - { id: sahne, amount: 300, unit: ml, name: Kochsahne }
+      - { id: wasser-sosse, amount: 100, unit: ml, name: Wasser }
+      - { id: bruehe, amount: 2, unit: TL, name: Rinderbrühe, note: Instantpulver }
+      - { id: senf-koernig, amount: 2, unit: EL, name: körniger Senf }
+      - { id: honig, amount: 2, unit: TL, name: Honig }
+      - { id: schnittlauch, amount: 0.5, unit: Bund, name: Schnittlauch }
+
+steps:
+  - "{karotte} schälen und grob raspeln. {porree} der Länge nach halbieren und nur den weißen und hellgrünen Teil in feine Streifen schneiden. {zwiebel} fein würfeln."
+  - "{petersilie} fein hacken, {schnittlauch} in feine Röllchen schneiden."
+  - "{wasser-reis} in einem großen Topf mit Deckel zum Kochen bringen und leicht salzen. {reis}, {porree:name} und Karottenraspel hineingeben und bei niedriger Hitze etwa 10 Minuten abgedeckt köcheln lassen. Dann den Topf vom Herd nehmen und mindestens 10 Minuten abgedeckt ziehen lassen."
+  - "Für die Soße {wasser-sosse}, {sahne}, {bruehe}, {senf-koernig} und {honig} in einem hohen Rührgefäß gut verrühren, sodass keine Klümpchen mehr vorhanden sind."
+  - "In einer großen Schüssel {hackfleisch}, Zwiebelwürfel, {semmelbroesel}, {petersilie:name}, {senf-mittelscharf}, {salz} und {pfeffer} mit den Händen gut vermengen und daraus etwa 5 Bällchen pro Portion formen."
+  - "{oel} in einer großen Pfanne bei hoher Hitze erwärmen und die Hackbällchen 2–3 Minuten rundherum scharf anbraten. Bällchen herausnehmen und das Fett abgießen."
+  - "Die Pfanne auswischen, den Sahnemix hineingießen und einmal aufkochen lassen. Mit Salz und Pfeffer abschmecken. Hackbällchen in die Soße geben, Hitze reduzieren und 5–8 Minuten gar ziehen lassen. Wird die Soße zu dick, einen Schluck Wasser zugeben."
+  - "Den Gemüsereis mit einer Gabel auflockern und nach Belieben {butter} untermischen. Reis auf Teller verteilen, Hackbällchen mit Senfsoße dazu anrichten und mit {schnittlauch:name} bestreuen."

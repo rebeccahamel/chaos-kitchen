@@ -293,13 +293,15 @@ Scale factor = chosen yield ÷ `yield.amount`. Amounts are scaled first, then ro
 | weight / volume | 100 to under 1000 | steps of 10 | 270 g |
 | weight / volume | 1000 and more | converted to kg / l, steps of 0,05 | 1,25 kg |
 | spoon | any | quarters, shown as fractions (minimum ¼) | 1½ EL |
-| count (and ingredients without unit) | any | halves, shown as fractions (minimum ½) | 1½ Zwiebeln |
+| count (and ingredients without unit) | 1 and more | halves, shown as fractions | 1½ Zwiebeln |
+| count (and ingredients without unit) | under 1 | eighths, shown as fractions (minimum ⅛) | ¼ Zwiebel, ⅛ Bund |
 | count with `whole: true` | any | whole numbers, halves round up (minimum 1) | 5 Eier |
 
 - Amounts written in kg or l are converted to g or ml internally, so scaling down
   shows "500 g" rather than "0,5 kg".
 - Numbers use a decimal comma. Trailing zeros are dropped ("1,5 kg", "2 kg").
-- Fractions use the characters ¼ ½ ¾ ("1½", "¾").
+- Fractions use the characters ⅛ ¼ ⅜ ½ ⅝ ¾ ⅞ ("1½", "¾", "⅛"). Decided 2026-09-12: eighths below 1
+  so that a recipe can be scaled far down; before, ½ was the minimum.
 - Ranges use an en dash without spaces ("4–6 EL").
 
 ### 5.2 Singular and plural

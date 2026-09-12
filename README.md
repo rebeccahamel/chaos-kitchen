@@ -184,7 +184,7 @@ Ein Avatar-Bild kommt später als quadratisches Bild nach `src/assets/avatars/` 
 
 **Einheit** in [units.yaml](src/data/units.yaml): Einzahl, Mehrzahl und Kategorie. Die
 Kategorie bestimmt, wie beim Umrechnen gerundet wird: `weight` und `volume` in Schritten
-von 1/5/10, `spoon` in Vierteln, `count` in Halben.
+von 1/5/10, `spoon` in Vierteln, `count` in Halben (unter 1 in Achteln).
 
 ```yaml
 - { unit: Becher,   plural: Becher,    category: count }

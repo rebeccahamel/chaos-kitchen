@@ -183,7 +183,7 @@ with `avatar: tante-eva.webp`.
 
 **Unit** in [units.yaml](src/data/units.yaml): singular, plural and category. The category
 decides how scaled amounts are rounded: `weight` and `volume` in steps of 1/5/10, `spoon` in
-quarters, `count` in halves.
+quarters, `count` in halves (eighths below 1).
 
 ```yaml
 - { unit: Becher,   plural: Becher,    category: count }

@@ -4,6 +4,8 @@
 - category: Gang
   tags:
     - { id: fruehstueck, label: Frühstück }
+    - { id: mittagessen, label: Mittagessen }
+    - { id: abendessen, label: Abendessen }
     - { id: schnelles-abendessen, label: schnelles Abendessen }
     - { id: dessert, label: Dessert }
     - { id: heissgetraenk, label: Heißgetränk }
@@ -12,6 +14,7 @@
     - { id: vegetarisch, label: vegetarisch }
     - { id: vegan, label: vegan }
     - { id: fisch, label: Fisch }
+    - { id: fleisch, label: Fleisch }
 - category: Saison & Anlass
   tags:
     - { id: fruehling, label: Frühling }

@@ -49,10 +49,14 @@ test('spoons: quarters, minimum ¼', () => {
   assert.deepEqual(roundAmount(0.1, 'spoon'), { value: 0.25, large: false });
 });
 
-test('counted items: halves, minimum ½', () => {
+test('counted items: halves from 1 upwards, eighths below 1, minimum ⅛', () => {
   assert.deepEqual(roundAmount(1.3, 'count'), { value: 1.5, large: false });
   assert.deepEqual(roundAmount(1.2, 'none'), { value: 1, large: false });
-  assert.deepEqual(roundAmount(0.1, 'none'), { value: 0.5, large: false });
+  assert.deepEqual(roundAmount(0.9, 'none'), { value: 0.875, large: false });
+  assert.deepEqual(roundAmount(0.5, 'count'), { value: 0.5, large: false });
+  assert.deepEqual(roundAmount(0.25, 'count'), { value: 0.25, large: false });
+  assert.deepEqual(roundAmount(0.1, 'none'), { value: 0.125, large: false });
+  assert.deepEqual(roundAmount(0.01, 'none'), { value: 0.125, large: false });
 });
 
 test('whole: whole numbers, halves round up, minimum 1', () => {
@@ -62,9 +66,12 @@ test('whole: whole numbers, halves round up, minimum 1', () => {
   assert.deepEqual(roundAmount(0.2, 'none', { whole: true }), { value: 1, large: false });
 });
 
-test('fraction style uses ¼ ½ ¾', () => {
+test('fraction style uses ⅛ ¼ ⅜ ½ ⅝ ¾ ⅞', () => {
   assert.equal(formatNumber(1.5, 'fraction'), '1½');
   assert.equal(formatNumber(0.25, 'fraction'), '¼');
+  assert.equal(formatNumber(0.125, 'fraction'), '⅛');
+  assert.equal(formatNumber(0.375, 'fraction'), '⅜');
+  assert.equal(formatNumber(2.875, 'fraction'), '2⅞');
   assert.equal(formatNumber(0.75, 'fraction'), '¾');
   assert.equal(formatNumber(2, 'fraction'), '2');
   // not a quarter: falls back to a decimal comma

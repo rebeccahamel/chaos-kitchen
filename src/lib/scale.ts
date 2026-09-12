@@ -53,24 +53,34 @@ export function roundAmount(value: number, rule: RoundingRule, options: Rounding
       return { value: Math.max(0.25, roundToStep(value, 0.25)), large: false };
     case 'count':
     case 'none':
-      return { value: Math.max(0.5, roundToStep(value, 0.5)), large: false };
+      // Halves from 1 upwards; below 1 eighths, so a recipe can be scaled far down (minimum ⅛).
+      if (value < 1) return { value: Math.max(0.125, roundToStep(value, 0.125)), large: false };
+      return { value: roundToStep(value, 0.5), large: false };
   }
 }
 
-/** Number style: fractions (¼ ½ ¾) for spoons and counted items, decimal comma for weights and volumes. */
+/** Number style: fractions (⅛ ¼ ½ ¾ …) for spoons and counted items, decimal comma for weights and volumes. */
 export type NumberStyle = 'fraction' | 'decimal';
 
 export function numberStyleFor(rule: RoundingRule): NumberStyle {
   return rule === 'weight' || rule === 'volume' ? 'decimal' : 'fraction';
 }
 
-const FRACTION_GLYPHS: Record<string, string> = { '0.25': '¼', '0.5': '½', '0.75': '¾' };
+const FRACTION_GLYPHS: Record<string, string> = {
+  '0.125': '⅛',
+  '0.25': '¼',
+  '0.375': '⅜',
+  '0.5': '½',
+  '0.625': '⅝',
+  '0.75': '¾',
+  '0.875': '⅞',
+};
 
 /** Formats a number for display: "1½", "¾", "1,25", "270". */
 export function formatNumber(value: number, style: NumberStyle): string {
   if (style === 'fraction') {
     const whole = Math.floor(value);
-    const rest = Number((value - whole).toFixed(2));
+    const rest = Number((value - whole).toFixed(3));
     if (rest === 0) return String(whole);
     const glyph = FRACTION_GLYPHS[String(rest)];
     if (glyph) return whole === 0 ? glyph : `${whole}${glyph}`;
