@@ -360,7 +360,9 @@ Scale factor = chosen yield ÷ `yield.amount`. Amounts are scaled first, then ro
 - A toggle on the recipe page.
 - While on: the screen stays awake (Screen Wake Lock API). If the browser does not
   support it, the toggle still enables the other features and a short note says the
-  screen may turn off.
+  screen may turn off. If the browser refuses or drops the wake lock (some do so when it is
+  requested without a tap, e.g. right after a reload), it is requested again on the next tap
+  or key press and when the tab becomes visible again.
 - Ingredients and steps can be ticked off by tapping. Ticked items are visually muted.
 - Ticked state is kept for the browser session and cleared when the Kochmodus is
   turned off or the yield is reset.

@@ -601,19 +601,47 @@ const clientData = JSON.stringify({
     note.hidden = text === '';
   }
 
+  // Some browsers refuse a wake lock that is requested without a tap, for example right after
+  // a reload, or drop it later on their own. Then we ask again on the next tap or key press.
+  let retryArmed = false;
+
+  function armRetry() {
+    if (retryArmed) return;
+    retryArmed = true;
+    const retry = () => {
+      retryArmed = false;
+      document.removeEventListener('pointerdown', retry);
+      document.removeEventListener('keydown', retry);
+      if (on && wakeLock === null) void requestWakeLock();
+    };
+    document.addEventListener('pointerdown', retry);
+    document.addEventListener('keydown', retry);
+  }
+
   async function requestWakeLock() {
     if (!('wakeLock' in navigator)) {
       showNote('Antippen zum Abhaken. Dein Browser kann den Bildschirm nicht wach halten, er geht vielleicht aus.');
       return;
     }
+    // A hidden page cannot get a wake lock; the visibilitychange handler asks again on return.
+    if (document.visibilityState !== 'visible') return;
     try {
-      wakeLock = await navigator.wakeLock.request('screen');
-      wakeLock.addEventListener('release', () => {
-        wakeLock = null;
+      const lock = await navigator.wakeLock.request('screen');
+      if (!on) {
+        // The mode was switched off while we were waiting.
+        lock.release();
+        return;
+      }
+      wakeLock = lock;
+      lock.addEventListener('release', () => {
+        if (wakeLock === lock) wakeLock = null;
+        // Released by the browser while we are still cooking: get it back on the next tap.
+        if (on && document.visibilityState === 'visible') armRetry();
       });
       showNote('Antippen zum Abhaken. Der Bildschirm bleibt an.');
     } catch {
-      showNote('Antippen zum Abhaken. Der Bildschirm konnte nicht wach gehalten werden, er geht vielleicht aus.');
+      showNote('Antippen zum Abhaken. Der Bildschirm konnte noch nicht wach gehalten werden, tippe einmal auf die Seite.');
+      armRetry();
     }
   }
 
