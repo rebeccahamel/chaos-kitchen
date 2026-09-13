@@ -27,7 +27,7 @@ test('two files with the same slug are an error', () => {
 });
 
 test('recipes without a photo produce a warning', () => {
-  const warnings = missingPhotos(['a', 'b', 'c'], ['a.jpg', 'c.webp', 'x.png']);
+  const warnings = missingPhotos(['a', 'b', 'c', 'd'], ['a.jpg', 'c.webp', 'x.png', 'd_1.jpg', 'd_2.jpg']);
   assert.deepEqual(warnings, ['Rezept „b“ hat noch kein Foto (src/assets/recipes/b.jpg)']);
 });
 

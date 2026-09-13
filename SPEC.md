@@ -105,8 +105,10 @@ Files starting with `_` in `src/content/recipes/` are ignored by the build.
 - Recipe file name = slug = URL: lowercase, words joined by `-`, no spaces.
   Umlauts are transliterated: ä → ae, ö → oe, ü → ue, ß → ss.
   Example: `Omas Quarkkuchen` → `omas-quarkkuchen.yaml` → `/rezept/omas-quarkkuchen/`.
-- The recipe photo has the same name as the recipe file: `src/assets/recipes/omas-quarkkuchen.jpg`.
-  There is no image field; the build finds the photo by slug. No photo → placeholder.
+- Recipe pictures have the same name as the recipe file: `src/assets/recipes/omas-quarkkuchen.jpg`.
+  Several pictures are numbered: `omas-quarkkuchen_1.jpg`, `omas-quarkkuchen_2.jpg`, … (a file
+  without number counts as the first). There is no image field; the build finds the pictures by
+  slug. No picture → placeholder.
 - Step strings are always written in double quotes (a YAML string starting with `{`
   would otherwise be read as a data structure).
 
@@ -378,7 +380,14 @@ URL), so a link shared in a messenger shows a preview card.
 
 ### 6.5 Images
 
-- Recipe photos: displayed in a 4:3 frame (cropped centrally), delivered in responsive sizes.
+- Recipe pictures: displayed in a 4:3 frame (cropped centrally), delivered in responsive sizes.
+  The first picture is used on cards and for link previews.
+- Several pictures (decided 2026-09-13): the recipe page shows them as a carousel in the same
+  4:3 frame. Swiping works natively (CSS scroll snap), arrows and dots are added by a small
+  script; without JavaScript the strip still scrolls. Illustrations are fine in place of photos.
+- Source files: JPEG, about 1400 px wide, well under 1 MB each; PNG originals are converted
+  before they go into the repository (the build resizes for delivery, but the repo keeps the
+  source).
 - Missing photo: a neutral placeholder image, no broken-image icon.
 - Avatars: square source images, displayed as circles. Missing avatar: initials on the
   person's `color`.
@@ -421,7 +430,7 @@ The build fails with a clear message naming the file and the problem when:
 
 The build shows a warning (but continues) when:
 
-- a recipe has no photo
+- a recipe has no picture (neither `<slug>.jpg` nor `<slug>_1.jpg`)
 - a person has no avatar file
 - an ingredient is never referenced in the steps (often fine, e.g. "Salz nach Geschmack")
 
@@ -491,6 +500,7 @@ overview (§6.1), recipe page with yield control (§6.2, §5.3), Kochmodus (§6.
 (§6.4), images (§6.5), Impressum page with dummy data (§6.7).
 Done (2026-09-12): README in German and English (§10); wake lock recovers after a reload (§6.3);
 Impressum filled in with the real details (§6.7).
+Done (2026-09-13): several pictures per recipe with a carousel (§6.5); first illustrations added.
 
 Next, in the suggested order:
 
@@ -498,7 +508,9 @@ Next, in the suggested order:
    baking, a two-part recipe, "eine Prise", ranges). Claude Code transcribes from text or
    photos of handwritten cards. Photos go to `src/assets/recipes/<slug>.jpg`.
 2. **Avatars:** illustrations for `src/assets/avatars/` when they exist; until then initials.
-3. **Defaults to confirm after some use:** total time includes rest time; yield changes in
+3. **Step pictures (idea, parked 2026-09-13):** a step could point to one of the numbered
+   pictures (`image: 2`) and show it beside the step, HelloFresh-style.
+4. **Defaults to confirm after some use:** total time includes rest time; yield changes in
    steps of 1; times shown as "30 min" / "1 h 30 min" (alternative: "Min." / "Std.").
 
 Known small things:

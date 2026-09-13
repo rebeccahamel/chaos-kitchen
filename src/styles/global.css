@@ -132,6 +132,9 @@ img {
 .chips {
   display: flex;
   flex-wrap: wrap;
+  /* chips keep their own height even when the container is taller (filter groups side by side) */
+  align-content: flex-start;
+  align-items: flex-start;
   gap: 6px;
   margin: 0;
   padding: 0;

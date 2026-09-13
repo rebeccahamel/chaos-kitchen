@@ -6,10 +6,11 @@ import { getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Avatar from '../../components/Avatar.astro';
 import RecipePhoto from '../../components/RecipePhoto.astro';
+import RecipeGallery from '../../components/RecipeGallery.astro';
 import placeholder from '../../assets/placeholder-recipe.svg';
 import { describeIngredient } from '../../lib/format.ts';
 import { loadLists } from '../../lib/lists.ts';
-import { recipePhoto } from '../../lib/photos.ts';
+import { recipePhoto, recipePhotos } from '../../lib/photos.ts';
 import { renderStepParts } from '../../lib/placeholders.ts';
 import { flattenIngredients, formatDuration, hasGroups, ingredientsById, totalTime } from '../../lib/recipe.ts';
 import { url } from '../../lib/site.ts';
@@ -49,6 +50,7 @@ const stepGroups = data.steps.map((group) => ({
 }));
 
 const photo = recipePhoto(recipe.id);
+const photoCount = recipePhotos(recipe.id).length;
 const preview = photo ? await getImage({ src: photo, width: 1200, height: 900, format: 'jpg' }) : placeholder;
 const ogImage = new URL(preview.src, Astro.site).href;
 const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -67,7 +69,13 @@ const clientData = JSON.stringify({
     <a class="back" id="back" href={url()}>‹ Alle Rezepte</a>
 
     <div class="hero">
-      <RecipePhoto slug={recipe.id} alt={data.title} priority sizes="(min-width: 760px) 720px, 100vw" />
+      {
+        photoCount > 1 ? (
+          <RecipeGallery slug={recipe.id} alt={data.title} sizes="(min-width: 760px) 720px, 100vw" />
+        ) : (
+          <RecipePhoto slug={recipe.id} alt={data.title} priority sizes="(min-width: 760px) 720px, 100vw" />
+        )
+      }
     </div>
 
     <header class="head">

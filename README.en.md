@@ -53,7 +53,7 @@ tags: [dessert, vegetarisch, herbst]
 |---|---|---|
 | `title` | yes | Name of the recipe |
 | `description` | yes | One or two sentences for the overview |
-| `author` | yes | Who contributed the recipe, as an id from `people.yaml` (mama, papa, aleksi, becci, oma, omale) |
+| `author` | yes | Who contributed the recipe, as an id from `people.yaml` |
 | `added` | yes | Date the recipe was added, used for "Neu hinzugefügt" |
 | `yield` | yes | What the amounts are for: `amount` (a number) and `unit` (e.g. Portionen, Stück, Blech). `note` is optional |
 | `time` | yes | Minutes. `prep` (active work) is required, `cook` (cooking/baking) and `rest` (resting, chilling, rising) are optional |
@@ -149,8 +149,12 @@ mentioning an ingredient in the steps at all only gives a warning; that is often
 
 - The photo goes into [src/assets/recipes/](src/assets/recipes/) and is named like the
   recipe file, so `omas-quarkkuchen.jpg` for `omas-quarkkuchen.yaml`. Allowed are `.jpg`,
-  `.jpeg`, `.png` and `.webp`.
+  `.jpeg`, `.png` and `.webp`; `.jpg` is best because the files stay small.
+- Several pictures are numbered: `omas-quarkkuchen_1.jpg`, `omas-quarkkuchen_2.jpg` and so
+  on. The first one appears in the overview; on the recipe page you can swipe through all of
+  them or use the arrows.
 - The recipe file says nothing about the photo; the site finds it by name.
+- Illustrations are just as welcome as photos.
 - The image is shown in a 4:3 frame, cropped centrally. Landscape orientation is ideal. About
   1600 pixels wide is plenty; the site generates smaller sizes itself.
 - Only our own photos, no pictures from books or other websites.

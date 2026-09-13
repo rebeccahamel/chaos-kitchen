@@ -40,8 +40,8 @@ Run `npm run build` before declaring a task done. It must pass without errors.
 
 - UI text: German. Code, comments, identifiers, YAML field names, commit messages: English.
 - Recipe files: `src/content/recipes/<slug>.yaml`; slug is lowercase kebab-case, umlauts
-  transliterated (ä→ae, ö→oe, ü→ue, ß→ss). The recipe photo uses the same slug in
-  `src/assets/recipes/`. Files starting with `_` are not recipes.
+  transliterated (ä→ae, ö→oe, ü→ue, ß→ss). Recipe pictures use the same slug in
+  `src/assets/recipes/`, numbered `<slug>_1.jpg`, `<slug>_2.jpg`, … when there are several. Files starting with `_` are not recipes.
 - Step strings in YAML are always double-quoted.
 - The site is served under a base path (`/<repo-name>/`). Never hardcode root-relative
   links; always build URLs with the base path.

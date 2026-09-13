@@ -54,7 +54,7 @@ tags: [dessert, vegetarisch, herbst]
 |---|---|---|
 | `title` | ja | Name des Rezepts |
 | `description` | ja | Ein oder zwei Sätze für die Übersicht |
-| `author` | ja | Wer das Rezept beigesteuert hat, als id aus `people.yaml` (mama, papa, aleksi, becci, oma, omale) |
+| `author` | ja | Wer das Rezept beigesteuert hat, als id aus `people.yaml` |
 | `added` | ja | Datum, an dem das Rezept hinzugefügt wurde, für „Neu hinzugefügt“ |
 | `yield` | ja | Wofür die Mengen gelten: `amount` (Zahl) und `unit` (z. B. Portionen, Stück, Blech). `note` ist freiwillig |
 | `time` | ja | Minuten. `prep` (aktive Arbeit) ist Pflicht, `cook` (Kochen/Backen) und `rest` (Ruhen, Kühlen, Gehen) sind freiwillig |
@@ -150,8 +150,12 @@ Ordnung („Salz nach Geschmack“).
 
 - Das Foto kommt nach [src/assets/recipes/](src/assets/recipes/) und heißt wie die
   Rezeptdatei, also `omas-quarkkuchen.jpg` zu `omas-quarkkuchen.yaml`. Erlaubt sind
-  `.jpg`, `.jpeg`, `.png` und `.webp`.
+  `.jpg`, `.jpeg`, `.png` und `.webp`; am besten `.jpg`, weil die Dateien dann klein bleiben.
+- Mehrere Bilder werden durchnummeriert: `omas-quarkkuchen_1.jpg`, `omas-quarkkuchen_2.jpg`
+  und so weiter. Das erste Bild erscheint in der Übersicht, auf der Rezeptseite kann man
+  durch alle wischen oder mit den Pfeilen blättern.
 - In der Rezeptdatei steht nichts vom Foto; die Seite findet es über den Namen.
+- Gezeichnete Bilder sind genauso willkommen wie Fotos.
 - Das Bild wird im Format 4:3 gezeigt und mittig zugeschnitten. Querformat ist ideal.
   Etwa 1600 Pixel Breite reichen völlig; die Seite erzeugt kleinere Größen selbst.
 - Nur eigene Fotos, keine Bilder aus Büchern oder von anderen Webseiten.

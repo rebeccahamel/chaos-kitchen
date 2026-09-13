@@ -1,0 +1,185 @@
+---
+// Several recipe pictures as a carousel in the 4:3 frame (SPEC.md §6.5).
+// Swiping is native (CSS scroll snap); the arrows and dots are added by the script below,
+// so without JavaScript the strip is still scrollable.
+import { Image } from 'astro:assets';
+import { recipePhotos } from '../lib/photos.ts';
+
+interface Props {
+  slug: string;
+  alt: string;
+  /** how wide the pictures are displayed, so the browser picks a fitting size */
+  sizes?: string;
+}
+
+const { slug, alt, sizes = '100vw' } = Astro.props;
+const photos = recipePhotos(slug);
+const count = photos.length;
+---
+
+<div class="gallery" data-gallery>
+  <div class="track" aria-label={`${count} Bilder`}>
+    {
+      photos.map((photo, index) => (
+        <div class="slide">
+          <Image
+            src={photo}
+            alt={`${alt}, Bild ${index + 1} von ${count}`}
+            width={1200}
+            height={900}
+            layout="constrained"
+            priority={index === 0}
+            sizes={sizes}
+          />
+        </div>
+      ))
+    }
+  </div>
+  <button type="button" class="arrow prev" data-prev aria-label="Vorheriges Bild" hidden>‹</button>
+  <button type="button" class="arrow next" data-next aria-label="Nächstes Bild" hidden>›</button>
+  <div class="dots" data-dots hidden>
+    {photos.map((_, index) => <button type="button" aria-label={`Bild ${index + 1}`} aria-current={index === 0 ? 'true' : undefined} />)}
+  </div>
+</div>
+
+<style>
+  .gallery {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    max-width: 100%;
+    overflow: hidden;
+    background: var(--papier);
+  }
+
+  .track {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .track {
+      scroll-behavior: smooth;
+    }
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    height: 100%;
+    scroll-snap-align: start;
+  }
+
+  .slide :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--karamell);
+    border-radius: 50%;
+    background: var(--papier);
+    color: var(--rost);
+    font: 400 26px/1 var(--font-body);
+    cursor: pointer;
+    padding: 0 0 3px;
+  }
+
+  .arrow:hover,
+  .arrow:focus-visible {
+    background: var(--senf-hell);
+  }
+
+  .arrow:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  .prev {
+    left: 12px;
+  }
+
+  .next {
+    right: 12px;
+  }
+
+  .dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .dots button {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 1px solid var(--karamell);
+    border-radius: 50%;
+    background: var(--papier);
+    cursor: pointer;
+  }
+
+  .dots button[aria-current='true'] {
+    background: var(--rost);
+    border-color: var(--rost);
+  }
+</style>
+
+<script>
+  for (const gallery of document.querySelectorAll<HTMLElement>('[data-gallery]')) {
+    const track = gallery.querySelector<HTMLElement>('.track')!;
+    const slides = Array.from(track.children) as HTMLElement[];
+    const prev = gallery.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = gallery.querySelector<HTMLButtonElement>('[data-next]')!;
+    const dotsBox = gallery.querySelector<HTMLElement>('[data-dots]')!;
+    const dots = Array.from(dotsBox.children) as HTMLButtonElement[];
+    const last = slides.length - 1;
+
+    const current = () => Math.round(track.scrollLeft / track.clientWidth);
+    const goTo = (index: number) => {
+      const target = Math.min(last, Math.max(0, index));
+      track.scrollTo({ left: target * track.clientWidth });
+    };
+
+    prev.addEventListener('click', () => goTo(current() - 1));
+    next.addEventListener('click', () => goTo(current() + 1));
+    dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
+
+    // Keep the dots and the arrows in step with what is visible, also after a swipe.
+    let pending = 0;
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(pending);
+      pending = requestAnimationFrame(() => {
+        const index = current();
+        dots.forEach((dot, i) => {
+          if (i === index) dot.setAttribute('aria-current', 'true');
+          else dot.removeAttribute('aria-current');
+        });
+        prev.disabled = index === 0;
+        next.disabled = index === last;
+      });
+    });
+
+    prev.disabled = true;
+    prev.hidden = false;
+    next.hidden = false;
+    dotsBox.hidden = false;
+  }
+</script>

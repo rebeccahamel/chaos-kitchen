@@ -37,11 +37,17 @@ export function checkRecipeFileNames(fileNames: string[]): { slugs: string[]; er
   return { slugs, errors };
 }
 
-/** One warning per recipe without a photo in src/assets/recipes/. */
+/** The recipe slug a picture file belongs to: "<slug>.jpg" or "<slug>_<n>.jpg" (SPEC.md §4.1). */
+export function photoSlug(fileName: string): string | undefined {
+  const match = /^(.+?)(?:_\d+)?\.([a-z0-9]+)$/i.exec(fileName);
+  return match && PHOTO_EXTENSIONS.includes(match[2].toLowerCase()) ? match[1] : undefined;
+}
+
+/** One warning per recipe without a picture in src/assets/recipes/. */
 export function missingPhotos(slugs: string[], photoFiles: string[]): string[] {
-  const photos = new Set(photoFiles);
+  const withPhoto = new Set(photoFiles.map(photoSlug));
   return slugs
-    .filter((slug) => !PHOTO_EXTENSIONS.some((ext) => photos.has(`${slug}.${ext}`)))
+    .filter((slug) => !withPhoto.has(slug))
     .map((slug) => `Rezept „${slug}“ hat noch kein Foto (src/assets/recipes/${slug}.jpg)`);
 }
 
