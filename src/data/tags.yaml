@@ -6,7 +6,6 @@
     - { id: fruehstueck, label: Frühstück }
     - { id: mittagessen, label: Mittagessen }
     - { id: abendessen, label: Abendessen }
-    - { id: schnelles-abendessen, label: schnelles Abendessen }
     - { id: dessert, label: Dessert }
     - { id: heissgetraenk, label: Heißgetränk }
 - category: Ernährung

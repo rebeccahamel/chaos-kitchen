@@ -230,13 +230,15 @@ Decided 2026-09-11: authors are Mama, Papa, Aleksi, Becci, Oma and Omale. No ava
 the initials fallback is used until illustrations exist.
 
 `src/data/tags.yaml` – four categories for version 1: Gang, Ernährung, Saison & Anlass, Küche.
-Content decided 2026-09-11 (Becci adds tags as they come along):
+Content decided 2026-09-11, extended 2026-09-12, "schnelles Abendessen" dropped 2026-09-13 in favour
+of the time filter (Becci adds tags as they come along):
 
 ```yaml
 - category: Gang
   tags:
     - { id: fruehstueck, label: Frühstück }
-    - { id: schnelles-abendessen, label: schnelles Abendessen }
+    - { id: mittagessen, label: Mittagessen }
+    - { id: abendessen, label: Abendessen }
     - { id: dessert, label: Dessert }
     - { id: heissgetraenk, label: Heißgetränk }
 - category: Ernährung
@@ -244,6 +246,7 @@ Content decided 2026-09-11 (Becci adds tags as they come along):
     - { id: vegetarisch, label: vegetarisch }
     - { id: vegan, label: vegan }
     - { id: fisch, label: Fisch }
+    - { id: fleisch, label: Fleisch }
 - category: Saison & Anlass
   tags:
     - { id: fruehling, label: Frühling }

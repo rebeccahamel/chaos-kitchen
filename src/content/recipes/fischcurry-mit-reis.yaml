@@ -4,7 +4,7 @@ author: mama
 added: 2026-09-11
 yield: { amount: 4, unit: Portionen }
 time: { prep: 30 }
-tags: [schnelles-abendessen, fisch, asiatisch]
+tags: [abendessen, fisch, asiatisch]
 
 ingredients:
   - { id: reis, amount: 2, unit: Tasse, name: Reis }

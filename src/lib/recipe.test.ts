@@ -22,7 +22,7 @@ test('hasGroups is true only when a heading exists', () => {
 });
 
 test('tag labels come from tags.yaml', () => {
-  assert.equal(tagLabel(lists.tags, 'schnelles-abendessen'), 'schnelles Abendessen');
+  assert.equal(tagLabel(lists.tags, 'abendessen'), 'Abendessen');
   assert.equal(tagLabel(lists.tags, 'fisch'), 'Fisch');
   assert.equal(tagLabel(lists.tags, 'unbekannt'), 'unbekannt');
 });
