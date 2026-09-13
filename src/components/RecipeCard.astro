@@ -19,6 +19,8 @@ const { recipe, lists } = Astro.props;
 const { data } = recipe;
 const person = lists.people.find((p) => p.id === data.author);
 const minutes = totalTime(data.time);
+/** Tags shown on the card at first; the rest appear when the "+n" chip is tapped (SPEC.md §6.1). */
+const SHOWN_TAGS = 3;
 const searchText = normalizeForSearch([data.title, ...flattenIngredients(data.ingredients).map((i) => i.name)].join(' '));
 ---
 
@@ -43,9 +45,18 @@ const searchText = normalizeForSearch([data.title, ...flattenIngredients(data.in
     {
       data.tags.length > 0 && (
         <ul class="chips">
-          {data.tags.slice(0, 3).map((tag) => (
-            <li class="tag">{tagLabel(lists.tags, tag)}</li>
+          {data.tags.map((tag, index) => (
+            <li class="tag" data-more={index >= SHOWN_TAGS ? '' : undefined} hidden={index >= SHOWN_TAGS}>
+              {tagLabel(lists.tags, tag)}
+            </li>
           ))}
+          {data.tags.length > SHOWN_TAGS && (
+            <li>
+              <button type="button" class="tag more" data-more-button aria-label={`${data.tags.length - SHOWN_TAGS} weitere Tags anzeigen`}>
+                +{data.tags.length - SHOWN_TAGS}
+              </button>
+            </li>
+          )}
         </ul>
       )
     }
@@ -92,4 +103,26 @@ const searchText = normalizeForSearch([data.title, ...flattenIngredients(data.in
     font-size: 15px;
     color: var(--kastanie);
   }
+
+  .more {
+    cursor: pointer;
+    color: var(--rost);
+    font-weight: 500;
+  }
+
+  .more:hover,
+  .more:focus-visible {
+    border-color: var(--senf);
+  }
 </style>
+
+<script>
+  // "+n" on a card: show the remaining tags in place; the card grows with them.
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-more-button]')) {
+    button.addEventListener('click', () => {
+      const list = button.closest('ul');
+      for (const item of list?.querySelectorAll<HTMLElement>('[data-more]') ?? []) item.hidden = false;
+      button.parentElement?.remove();
+    });
+  }
+</script>

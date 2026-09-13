@@ -335,7 +335,9 @@ Scale factor = chosen yield ÷ `yield.amount`. Amounts are scaled first, then ro
 
 ### 6.1 Overview page (`/`)
 
-- Recipe cards: photo (or placeholder), title, author avatar and name, total time, up to three tags.
+- Recipe cards: photo (or placeholder), title, author avatar and name, total time, the first three
+  tags. More tags are folded behind a "+n" chip that reveals them in place when tapped (decided
+  2026-09-13); the card grows accordingly. Without JavaScript the chip is inert.
 - Search field: matches recipe title and ingredient names.
   Case-insensitive; umlauts and their transliterations match each other (ä = ae, ß = ss).
   No typo tolerance in version 1.
@@ -559,7 +561,8 @@ Author initials use the `color` from `people.yaml`; Oma and Omale both show "O".
 - Masthead (decided 2026-09-13): the wordmark "CHAOS KITCHEN" centred, in Young Serif, larger
   than any headline (28–48 px depending on width; the recipe title is 26–36 px), linking to
   the overview. Footer with the "Impressum" link.
-- Cards: 4:3 photo, title in Kürbis, author initial and name, total time, up to three tags.
+- Cards: 4:3 photo, title in Kürbis, author initial and name, total time, three tags plus a
+  "+n" chip in Rost for the rest.
   One column on phones, two from about 600 px, three from about 900 px.
 - Recipe page: one column at every width (decided). Ingredient list with a bold, right-aligned
   amount column on the left and name plus note on the right. Step numbers in Kürbis.
