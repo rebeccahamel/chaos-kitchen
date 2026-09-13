@@ -45,10 +45,12 @@ const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} – ${SITE_NAME}`;
 </html>
 
 <style>
+  /* Masthead: the wordmark is centred and larger than any headline (SPEC.md §13.3) */
   .site-header {
     border-bottom: 1px solid var(--karamell);
-    padding-block: 14px;
+    padding-block: 18px;
     padding-inline: var(--gutter);
+    text-align: center;
   }
 
   .wordmark {
@@ -56,10 +58,18 @@ const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} – ${SITE_NAME}`;
     max-width: var(--content-width);
     margin-inline: auto;
     font-family: var(--font-display);
-    font-size: 20px;
-    letter-spacing: 0.18em;
+    font-size: clamp(28px, 7.5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
     color: var(--kuerbis);
     text-decoration: none;
+  }
+
+  @media (min-width: 600px) {
+    .wordmark {
+      letter-spacing: 0.18em;
+    }
   }
 
   .site-main {

@@ -556,8 +556,9 @@ Author initials use the `color` from `people.yaml`; Oma and Omale both show "O".
 ### 13.3 Layout
 
 - Mobile first, content width up to 1080 px, side gutter at least 16 px.
-- Thin header band with the wordmark "CHAOS KITCHEN" linking to the overview;
-  footer with the "Impressum" link.
+- Masthead (decided 2026-09-13): the wordmark "CHAOS KITCHEN" centred, in Young Serif, larger
+  than any headline (28–48 px depending on width; the recipe title is 26–36 px), linking to
+  the overview. Footer with the "Impressum" link.
 - Cards: 4:3 photo, title in Kürbis, author initial and name, total time, up to three tags.
   One column on phones, two from about 600 px, three from about 900 px.
 - Recipe page: one column at every width (decided). Ingredient list with a bold, right-aligned
