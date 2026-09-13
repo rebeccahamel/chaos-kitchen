@@ -152,7 +152,7 @@ mentioning an ingredient in the steps at all only gives a warning; that is often
   `.jpeg`, `.png` and `.webp`; `.jpg` is best because the files stay small.
 - Several pictures are numbered: `omas-quarkkuchen_1.jpg`, `omas-quarkkuchen_2.jpg` and so
   on. The first one appears in the overview; on the recipe page you can swipe through all of
-  them or use the arrows.
+  them or use the arrows, round and round.
 - The recipe file says nothing about the photo; the site finds it by name.
 - Illustrations are just as welcome as photos.
 - The image is shown in a 4:3 frame, cropped centrally. Landscape orientation is ideal. About

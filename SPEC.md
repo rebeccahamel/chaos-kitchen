@@ -384,7 +384,9 @@ URL), so a link shared in a messenger shows a preview card.
   The first picture is used on cards and for link previews.
 - Several pictures (decided 2026-09-13): the recipe page shows them as a carousel in the same
   4:3 frame. Swiping works natively (CSS scroll snap), arrows and dots are added by a small
-  script; without JavaScript the strip still scrolls. Illustrations are fine in place of photos.
+  script; without JavaScript the strip still scrolls. The carousel goes around: after the last
+  picture comes the first again, in both directions (copies of the first and last picture at
+  the ends of the strip, the script jumps to the real one when a swipe lands on a copy). Illustrations are fine in place of photos.
 - Source files: JPEG, about 1400 px wide, well under 1 MB each; PNG originals are converted
   before they go into the repository (the build resizes for delivery, but the repo keeps the
   source).

@@ -2,6 +2,9 @@
 // Several recipe pictures as a carousel in the 4:3 frame (SPEC.md §6.5).
 // Swiping is native (CSS scroll snap); the arrows and dots are added by the script below,
 // so without JavaScript the strip is still scrollable.
+// The carousel goes around: a copy of the last picture sits before the first one and a copy
+// of the first after the last. When a swipe lands on a copy, the script jumps to the real
+// picture without animation. The copies stay hidden until the script runs.
 import { Image } from 'astro:assets';
 import { recipePhotos } from '../lib/photos.ts';
 
@@ -15,10 +18,15 @@ interface Props {
 const { slug, alt, sizes = '100vw' } = Astro.props;
 const photos = recipePhotos(slug);
 const count = photos.length;
+const first = photos[0];
+const last = photos[count - 1];
 ---
 
 <div class="gallery" data-gallery>
   <div class="track" aria-label={`${count} Bilder`}>
+    <div class="slide" data-copy aria-hidden="true" hidden>
+      <Image src={last} alt="" width={1200} height={900} layout="constrained" sizes={sizes} />
+    </div>
     {
       photos.map((photo, index) => (
         <div class="slide">
@@ -34,6 +42,9 @@ const count = photos.length;
         </div>
       ))
     }
+    <div class="slide" data-copy aria-hidden="true" hidden>
+      <Image src={first} alt="" width={1200} height={900} layout="constrained" sizes={sizes} />
+    </div>
   </div>
   <button type="button" class="arrow prev" data-prev aria-label="Vorheriges Bild" hidden>‹</button>
   <button type="button" class="arrow next" data-next aria-label="Nächstes Bild" hidden>›</button>
@@ -103,11 +114,6 @@ const count = photos.length;
     background: var(--senf-hell);
   }
 
-  .arrow:disabled {
-    opacity: 0.4;
-    cursor: default;
-  }
-
   .prev {
     left: 12px;
   }
@@ -145,39 +151,52 @@ const count = photos.length;
 <script>
   for (const gallery of document.querySelectorAll<HTMLElement>('[data-gallery]')) {
     const track = gallery.querySelector<HTMLElement>('.track')!;
-    const slides = Array.from(track.children) as HTMLElement[];
     const prev = gallery.querySelector<HTMLButtonElement>('[data-prev]')!;
     const next = gallery.querySelector<HTMLButtonElement>('[data-next]')!;
     const dotsBox = gallery.querySelector<HTMLElement>('[data-dots]')!;
     const dots = Array.from(dotsBox.children) as HTMLButtonElement[];
-    const last = slides.length - 1;
+    const count = dots.length;
 
-    const current = () => Math.round(track.scrollLeft / track.clientWidth);
-    const goTo = (index: number) => {
-      const target = Math.min(last, Math.max(0, index));
-      track.scrollTo({ left: target * track.clientWidth });
+    // Positions in the strip: 0 = copy of the last picture, 1…count = the real pictures,
+    // count + 1 = copy of the first picture.
+    const position = () => Math.round(track.scrollLeft / track.clientWidth);
+    const jumpTo = (pos: number) => {
+      // no animation: used to start on the first picture and to leave a copy unnoticed
+      const behavior = track.style.scrollBehavior;
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = pos * track.clientWidth;
+      track.style.scrollBehavior = behavior;
+    };
+    const goTo = (pos: number) => track.scrollTo({ left: pos * track.clientWidth });
+
+    const showDot = (pos: number) => {
+      const index = (pos - 1 + count) % count;
+      dots.forEach((dot, i) => {
+        if (i === index) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
     };
 
-    prev.addEventListener('click', () => goTo(current() - 1));
-    next.addEventListener('click', () => goTo(current() + 1));
-    dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
-
-    // Keep the dots and the arrows in step with what is visible, also after a swipe.
-    let pending = 0;
+    // After a swipe or an animated scroll has come to rest: leave the copies.
+    let settleTimer = 0;
+    const settle = () => {
+      const pos = position();
+      if (pos === 0) jumpTo(count);
+      else if (pos === count + 1) jumpTo(1);
+      showDot(position());
+    };
     track.addEventListener('scroll', () => {
-      cancelAnimationFrame(pending);
-      pending = requestAnimationFrame(() => {
-        const index = current();
-        dots.forEach((dot, i) => {
-          if (i === index) dot.setAttribute('aria-current', 'true');
-          else dot.removeAttribute('aria-current');
-        });
-        prev.disabled = index === 0;
-        next.disabled = index === last;
-      });
+      showDot(position());
+      clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(settle, 120);
     });
 
-    prev.disabled = true;
+    prev.addEventListener('click', () => goTo(position() - 1));
+    next.addEventListener('click', () => goTo(position() + 1));
+    dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index + 1)));
+
+    for (const copy of gallery.querySelectorAll<HTMLElement>('[data-copy]')) copy.hidden = false;
+    jumpTo(1);
     prev.hidden = false;
     next.hidden = false;
     dotsBox.hidden = false;

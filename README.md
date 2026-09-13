@@ -153,7 +153,7 @@ Ordnung („Salz nach Geschmack“).
   `.jpg`, `.jpeg`, `.png` und `.webp`; am besten `.jpg`, weil die Dateien dann klein bleiben.
 - Mehrere Bilder werden durchnummeriert: `omas-quarkkuchen_1.jpg`, `omas-quarkkuchen_2.jpg`
   und so weiter. Das erste Bild erscheint in der Übersicht, auf der Rezeptseite kann man
-  durch alle wischen oder mit den Pfeilen blättern.
+  durch alle wischen oder mit den Pfeilen blättern, endlos im Kreis.
 - In der Rezeptdatei steht nichts vom Foto; die Seite findet es über den Namen.
 - Gezeichnete Bilder sind genauso willkommen wie Fotos.
 - Das Bild wird im Format 4:3 gezeigt und mittig zugeschnitten. Querformat ist ideal.
