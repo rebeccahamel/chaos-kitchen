@@ -507,7 +507,9 @@ overview (§6.1), recipe page with yield control (§6.2, §5.3), Kochmodus (§6.
 (§6.4), images (§6.5), Impressum page with dummy data (§6.7).
 Done (2026-09-12): README in German and English (§10); wake lock recovers after a reload (§6.3);
 Impressum filled in with the real details (§6.7).
-Done (2026-09-13): several pictures per recipe with a carousel (§6.5); first illustrations added.
+Done (2026-09-13): several pictures per recipe with a looping carousel (§6.5); first illustrations
+added (2 recipes with pictures); centred masthead (§13.3); "+n" tag chip on cards (§6.1);
+tag "schnelles Abendessen" dropped (§4.7). Checked on desktop and phone by Becci.
 
 Next, in the suggested order:
 
