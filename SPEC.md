@@ -1,7 +1,8 @@
 # Familien-Rezeptseite – Specification
 
-Status (2026-09-11): version 1 is built and live at https://rebeccahamel.github.io/chaos-kitchen/
-(data layer, deploy workflow, design, overview, recipe page with yield control and Kochmodus).
+Status (2026-09-22): version 1 is built and live at https://rebeccahamel.github.io/chaos-kitchen/
+(data layer, deploy workflow, design, overview, recipe page with yield control, Kochmodus and
+Bring! button).
 What is still open and what comes next: §12.
 Owner and only editor: Becci (via her GitHub account). Family members only read.
 
@@ -78,6 +79,7 @@ Constraints:
    │  │                          display text, placeholders, search normalisation, tag labels
    │  ├─ site.ts                 site name and URL helper for the base path (§8)
    │  ├─ photos.ts               finds recipe photos and avatar files (Astro only)
+   │  ├─ structured-data.ts     schema.org Recipe data for the Bring! import (§6.4, §6.8)
    │  ├─ *.test.ts               unit tests, run with `npm test`
    │  └─ test-support.ts         test helpers (loads the real lists and recipe files)
    ├─ types/                     small type declarations for packages that ship none
@@ -360,6 +362,7 @@ Scale factor = chosen yield ÷ `yield.amount`. Amounts are scaled first, then ro
 - Tags, linking back to the overview filtered by that tag.
 - Yield control (§5.3), yield note if present.
 - Ingredient list, grouped if the recipe uses groups.
+- Button „Zutaten an Bring! senden“ under the ingredient list (§6.8).
 - Steps, numbered continuously, grouped under headings if the recipe uses groups,
   with live placeholder amounts.
 - Back link to the overview that preserves the previous search and filters.
@@ -378,10 +381,24 @@ Scale factor = chosen yield ÷ `yield.amount`. Amounts are scaled first, then ro
 - Implementation: a floating bar at the bottom of the recipe page (§13.3); mode and ticks
   are stored in the browser's session storage per recipe, like the chosen yield (§5.3).
 
-### 6.4 Link previews
+### 6.4 Link previews and structured data
 
 Each recipe page provides Open Graph metadata (title, description, photo with absolute
 URL), so a link shared in a messenger shows a preview card.
+
+Each recipe page also embeds a schema.org `Recipe` block as JSON-LD (decided 2026-09-22).
+It is invisible; Bring! reads it for the shopping list (§6.8). Built by
+`src/lib/structured-data.ts` from the recipe data:
+
+- name, description, author (first name from `people.yaml`), image (absolute URL, same as the
+  link preview), url, datePublished, recipeYield ("4 Portionen"), prepTime / cookTime /
+  totalTime as ISO 8601 durations ("PT1H30M"), keywords (tag labels).
+- recipeIngredient: one plain string per ingredient at the base yield, meant for machines, not
+  people: decimal point ("0.5 Bund Petersilie"), hyphen for ranges ("1-2 Zehen Knoblauch"),
+  kg / l from 1000 g / ml upwards ("1.5 kg Hackfleisch", both ends of a range together), the
+  plural of the unit or of a counted item above 1, then the note and "optional" after commas
+  ("1 EL Butter, optional"). No amount → the name only ("Salz").
+- recipeInstructions: the steps as plain text with the placeholders filled in at the base yield.
 
 ### 6.5 Images
 
@@ -419,6 +436,29 @@ URL), so a link shared in a messenger shows a preview card.
 - This is the only place on the site that shows personal data; see §9.
 - Consequence for the design: fonts are served from the site itself, never from Google Fonts,
   so the Datenschutzerklärung stays true.
+- The Bring! button (§6.8) is a plain outbound link; the page loads nothing from Bring!. The
+  Datenschutzerklärung has its own section for it (decided 2026-09-22).
+
+### 6.8 Einkaufsliste (Bring!)
+
+Decided 2026-09-22. Under the ingredient list sits the link „Zutaten an Bring! senden“, styled
+as a secondary button (outlined in Rost, no logo, no icon). It points to
+
+`https://api.getbring.com/rest/bringrecipes/deeplink?url=<recipe URL>&source=web&baseQuantity=<base yield>&requestedQuantity=<chosen yield>`
+
+- The yield script keeps `requestedQuantity` in step with the yield control; without
+  JavaScript the link works at the base yield.
+- Tapping the link on a phone opens the Bring! app, which lets the user pick the list and
+  untick items. Bring!'s server fetches the public recipe page and reads the JSON-LD (§6.4);
+  Bring! scales the amounts itself from the two quantities. On a desktop browser the link ends
+  on a Bring! web page instead of the app.
+- Consequences: the button only works against the live site, not against `npm run dev` or
+  `npm run preview`; the `noindex` tag does not stop Bring!'s fetch (checked). To see what
+  Bring! makes of a page: `https://api.getbring.com/rest/bringrecipes/parser?url=<encoded recipe URL>&baseQuantity=4&requestedQuantity=4`
+  returns the parsed recipe as JSON.
+- Bring!'s JavaScript widget (`platform.getbring.com/widgets/import.js`) was rejected: it
+  loads analytics code from a third-party server, which §6.7 rules out. No registration or key
+  is needed for the link.
 
 ---
 
@@ -492,7 +532,7 @@ converted to g or ml at the same point (§5.1).
 
 ## 11. Not in version 1 (later)
 
-Typo-tolerant search, print view, favorites, shopping list, offline use / installable app,
+Typo-tolerant search, print view, favorites, offline use / installable app,
 dark mode, own domain, form-based recipe editor, "Was koche ich heute?" random recipe,
 baking-form conversion, attribution fields (`adaptedBy`, `source`).
 
@@ -510,6 +550,9 @@ Impressum filled in with the real details (§6.7).
 Done (2026-09-13): several pictures per recipe with a looping carousel (§6.5); first illustrations
 added (2 recipes with pictures); centred masthead (§13.3); "+n" tag chip on cards (§6.1);
 tag "schnelles Abendessen" dropped (§4.7). Checked on desktop and phone by Becci.
+Done (2026-09-22): pictures for Hackbällchen Tomcana; Bring! button with schema.org JSON-LD
+(§6.4, §6.8), Datenschutzerklärung extended (§6.7). Still to check by Becci on the phone: the
+import in the Bring! app (notes, optional items, ranges, a changed yield).
 
 Next, in the suggested order:
 
