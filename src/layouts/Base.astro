@@ -1,5 +1,5 @@
 ---
-// Page frame for every page: head with noindex and link preview data (SPEC.md §6.4, §8),
+// Page frame for every page: head with noindex, link preview and structured data (SPEC.md §6.4, §8),
 // header with the wordmark, footer with the Impressum link (§6.7).
 import '../styles/global.css';
 import { SITE_NAME, url } from '../lib/site.ts';
@@ -9,9 +9,11 @@ interface Props {
   description?: string;
   /** absolute URL of the preview image for messengers */
   ogImage?: string;
+  /** schema.org data, read by Bring! for the shopping list (§6.4, §6.8) */
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage, jsonLd } = Astro.props;
 const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} – ${SITE_NAME}`;
 ---
 
@@ -30,6 +32,7 @@ const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} – ${SITE_NAME}`;
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
     {ogImage && <meta property="og:image" content={ogImage} />}
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />}
   </head>
   <body>
     <header class="site-header">

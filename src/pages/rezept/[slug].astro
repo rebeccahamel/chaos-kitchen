@@ -13,7 +13,8 @@ import { loadLists } from '../../lib/lists.ts';
 import { recipePhoto, recipePhotos } from '../../lib/photos.ts';
 import { renderStepParts } from '../../lib/placeholders.ts';
 import { flattenIngredients, formatDuration, hasGroups, ingredientsById, totalTime } from '../../lib/recipe.ts';
-import { url } from '../../lib/site.ts';
+import { recipeUrl, url } from '../../lib/site.ts';
+import { recipeJsonLd } from '../../lib/structured-data.ts';
 import { tagLabel } from '../../lib/tags.ts';
 import { findUnit, unitLabel } from '../../lib/units.ts';
 
@@ -53,6 +54,17 @@ const photo = recipePhoto(recipe.id);
 const photoCount = recipePhotos(recipe.id).length;
 const preview = photo ? await getImage({ src: photo, width: 1200, height: 900, format: 'jpg' }) : placeholder;
 const ogImage = new URL(preview.src, Astro.site).href;
+const pageUrl = new URL(recipeUrl(recipe.id), Astro.site).href;
+const jsonLd = recipeJsonLd(data, lists, { url: pageUrl, image: ogImage });
+
+// Bring! shopping list (SPEC.md §6.8): a plain link, nothing is loaded from Bring! until it is tapped.
+// Bring! fetches the live page, reads the JSON-LD above and scales the amounts itself.
+const bringHref = `https://api.getbring.com/rest/bringrecipes/deeplink?${new URLSearchParams({
+  url: pageUrl,
+  source: 'web',
+  baseQuantity: String(data.yield.amount),
+  requestedQuantity: String(data.yield.amount),
+})}`;
 const added = data.added.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 
 // Data for the yield control in the browser
@@ -64,7 +76,7 @@ const clientData = JSON.stringify({
 }).replace(/</g, '\\u003c');
 ---
 
-<Base title={data.title} description={data.description} ogImage={ogImage}>
+<Base title={data.title} description={data.description} ogImage={ogImage} jsonLd={jsonLd}>
   <article class="recipe" id="recipe">
     <a class="back" id="back" href={url()}>‹ Alle Rezepte</a>
 
@@ -145,6 +157,11 @@ const clientData = JSON.stringify({
           </div>
         ))
       }
+
+      <p class="bring">
+        <a class="bring-link" id="bring-link" href={bringHref} rel="noopener noreferrer">Zutaten an Bring! senden</a>
+        <span class="note">öffnet die Einkaufslisten-App Bring!</span>
+      </p>
     </section>
 
     <section class="steps">
@@ -318,6 +335,32 @@ const clientData = JSON.stringify({
     gap: 16px;
   }
 
+  /* Bring! link: a secondary button, outlined in Rost (SPEC.md §6.8, §13.3) */
+  .bring {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 14px;
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .bring-link {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid var(--rost);
+    border-radius: 999px;
+    background: var(--papier);
+    color: var(--rost);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .bring-link:hover {
+    background: var(--rost);
+    color: var(--papier);
+  }
+
   h2 {
     font-size: 26px;
     color: var(--kuerbis);
@@ -481,6 +524,7 @@ const clientData = JSON.stringify({
   const plus = document.getElementById('yield-plus') as HTMLButtonElement;
   const unitEl = document.getElementById('yield-unit') as HTMLElement;
   const reset = document.getElementById('yield-reset') as HTMLButtonElement;
+  const bringLink = document.getElementById('bring-link') as HTMLAnchorElement;
   const rows = Array.from(article.querySelectorAll<HTMLElement>('.ingredient[data-id]'));
   const mentions = Array.from(article.querySelectorAll<HTMLElement>('.mention[data-id]'));
 
@@ -535,6 +579,11 @@ const clientData = JSON.stringify({
     if (data.yieldUnit) unitEl.textContent = unitLabel(data.yieldUnit, current);
     reset.hidden = current === data.baseYield;
     minus.disabled = current <= 1;
+
+    // The Bring! link sends the chosen yield along (SPEC.md §6.8)
+    const bringUrl = new URL(bringLink.href);
+    bringUrl.searchParams.set('requestedQuantity', String(current));
+    bringLink.href = bringUrl.href;
   }
 
   function setYield(value: number, reason: 'change' | 'reset') {
