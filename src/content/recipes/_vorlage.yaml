@@ -18,6 +18,10 @@ time: { prep: 20, cook: 30 }
 # Tag ids from tags.yaml. An empty list [] is allowed.
 tags: [abendessen, vegetarisch]
 
+# Only for recipes on trial in the weekly plan (MEAL_PLANNER.md §14): hidden from the overview.
+# Remove the line once the recipe joins the collection.
+# trial: true
+
 # Ingredients: either a flat list (below) or groups (see the example further down).
 # Fields:
 #   id        required, unique in this recipe, only a-z, 0-9 and "-"

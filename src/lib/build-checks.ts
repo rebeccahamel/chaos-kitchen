@@ -1,11 +1,12 @@
 // File-level checks that a schema cannot do (SPEC.md §7): recipe file names,
-// duplicate slugs, missing photos and missing avatar files.
+// duplicate slugs, missing photos, missing avatar files, and the weekly plan (§6.9).
 // Runs as a small Astro integration at the start of `astro dev` and `astro build`.
 
 import { existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import type { AstroIntegration } from 'astro';
 import { ID_PATTERN, loadLists } from './lists.ts';
+import { forgottenTrials, loadPlan, readTrialSlugs } from './plan.ts';
 import type { Person } from './types.ts';
 
 export const PHOTO_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp'];
@@ -65,12 +66,22 @@ function listDir(dir: URL): string[] {
 
 /** Runs all file-level checks for a project root. */
 export function runDataChecks(root: URL): CheckResult {
+  const recipesDir = fileURLToPath(new URL('src/content/recipes/', root));
+  const dataDir = fileURLToPath(new URL('src/data/', root));
   const { slugs, errors } = checkRecipeFileNames(listDir(new URL('src/content/recipes/', root)));
-  const lists = loadLists(fileURLToPath(new URL('src/data/', root)));
+  const lists = loadLists(dataDir);
   const warnings = [
     ...missingPhotos(slugs, listDir(new URL('src/assets/recipes/', root))),
     ...missingAvatars(lists.people, listDir(new URL('src/assets/avatars/', root))),
   ];
+
+  // The weekly plan: a wrong plan file stops the build like a wrong recipe file would.
+  try {
+    const plan = loadPlan(slugs, dataDir);
+    warnings.push(...forgottenTrials(plan, readTrialSlugs(recipesDir)));
+  } catch (error) {
+    errors.push((error as Error).message);
+  }
   return { errors, warnings };
 }
 

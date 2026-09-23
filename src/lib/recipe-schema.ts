@@ -97,6 +97,8 @@ export function createRecipeSchema(lists: Lists, warn: WarnFn = (message) => con
         rest: minutes.optional(),
       }),
       tags: z.array(z.string()),
+      // true while a recipe is on trial for the weekly plan: hidden from the overview (MEAL_PLANNER.md §14)
+      trial: z.boolean().optional(),
       ingredients: listOrGroups(ingredientSchema).transform((groups) =>
         groups.map((group) => ({ ...group, items: group.items.map(normalizeIngredient) })),
       ),
