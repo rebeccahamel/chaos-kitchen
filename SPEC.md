@@ -3,6 +3,9 @@
 Status (2026-09-22): version 1 is built and live at https://rebeccahamel.github.io/chaos-kitchen/
 (data layer, deploy workflow, design, overview, recipe page with yield control, Kochmodus and
 Bring! button).
+Branch `meal_planner` (2026-09-23): the weekly plan on the homepage (§6.9) is built and waits for
+the merge; the planning itself happens in Claude Code sessions, see MEAL_PLANNER.md and
+planner/README.md.
 What is still open and what comes next: §12.
 Owner and only editor: Becci (via her GitHub account). Family members only read.
 
@@ -46,6 +49,12 @@ Constraints:
 /
 ├─ CLAUDE.md                     working rules for Claude Code
 ├─ SPEC.md                       this file
+├─ MEAL_PLANNER.md               meal planner: requirements, decisions, plan of action
+├─ planner/
+│  ├─ README.md                  how a planning week works, prompt templates, history format
+│  ├─ profile.example.md         shape of the private household profile
+│  ├─ history/                   one file per planned week (the planner's memory)
+│  └─ private/                   gitignored: real profile and private weekly plans
 ├─ astro.config.mjs              site URL, base path (§8) and the data-checks integration (§7)
 ├─ package.json
 ├─ tsconfig.json
@@ -60,7 +69,8 @@ Constraints:
    ├─ data/
    │  ├─ people.yaml             authors and their avatars
    │  ├─ tags.yaml               allowed tags, grouped by category
-   │  └─ units.yaml              allowed units, plurals, rounding category
+   │  ├─ units.yaml              allowed units, plurals, rounding category
+   │  └─ plan.yaml               the current weekly plan (§6.9)
    ├─ assets/
    │  ├─ recipes/                recipe photos, named <slug>.jpg|jpeg|png|webp
    │  ├─ avatars/                avatar illustrations, file name as in people.yaml
@@ -73,7 +83,9 @@ Constraints:
    │  ├─ types.ts                shared types
    │  ├─ lists.ts                reads and validates src/data/*.yaml (build time only)
    │  ├─ recipe-schema.ts        recipe schema and cross-checks (§7), build time only
-   │  ├─ build-checks.ts         file names, photos, avatars (§7) as an Astro integration
+   │  ├─ build-checks.ts         file names, photos, avatars, weekly plan (§7) as an Astro integration
+   │  ├─ plan.ts                 reads and validates plan.yaml (§6.9), build time only
+   │  ├─ shopping.ts             merged shopping list of several recipes, selection masks (also browser)
    │  ├─ units.ts, scale.ts, format.ts, placeholders.ts, recipe.ts, search.ts, tags.ts
    │  │                          pure functions, also used in the browser: scaling, rounding,
    │  │                          display text, placeholders, search normalisation, tag labels
@@ -86,13 +98,15 @@ Constraints:
    ├─ components/
    │  ├─ Avatar.astro            illustration or initial on the person's colour
    │  ├─ RecipeCard.astro        card on the overview, carries the data attributes for filtering
+   │  ├─ WeekPlan.astro          "Diese Woche" on the homepage (§6.9)
    │  └─ RecipePhoto.astro       4:3 photo in responsive sizes, or the placeholder
    ├─ layouts/
    │  └─ Base.astro              page frame: head (noindex, link preview), header, footer
    └─ pages/
       ├─ index.astro             overview with search, filters, sorting
       ├─ impressum.astro         Impressum (§6.7)
-      └─ rezept/[slug].astro     one page per recipe
+      ├─ rezept/[slug].astro     one page per recipe
+      └─ woche/liste/[selection].astro  hidden week list pages for Bring! (§6.9)
 ```
 
 Files starting with `_` in `src/content/recipes/` are ignored by the build.
@@ -174,6 +188,7 @@ steps:
 | `time.cook` | no | minutes | Cooking or baking time |
 | `time.rest` | no | minutes | Resting, chilling, rising |
 | `tags` | yes (may be empty) | list of tag ids | Each must exist in `tags.yaml` |
+| `trial` | no | true/false | `true` while the recipe is on trial for the weekly plan: hidden from the overview and search, reachable through the plan (§6.9) |
 | `ingredients` | yes | flat list or groups | See 4.4 and 4.5 |
 | `steps` | yes | flat list or groups | See 4.5 and 4.6 |
 
@@ -437,7 +452,8 @@ It is invisible; Bring! reads it for the shopping list (§6.8). Built by
 - Consequence for the design: fonts are served from the site itself, never from Google Fonts,
   so the Datenschutzerklärung stays true.
 - The Bring! button (§6.8) is a plain outbound link; the page loads nothing from Bring!. The
-  Datenschutzerklärung has its own section for it (decided 2026-09-22).
+  Datenschutzerklärung has its own section for it (decided 2026-09-22). The week button on the
+  homepage (§6.9) uses the same mechanism and is covered by the same section.
 
 ### 6.8 Einkaufsliste (Bring!)
 
@@ -460,6 +476,42 @@ as a secondary button (outlined in Rost, no logo, no icon). It points to
   loads analytics code from a third-party server, which §6.7 rules out. No registration or key
   is needed for the link.
 
+### 6.9 Wochenplan (Diese Woche)
+
+Decided 2026-09-23; background and the planning workflow in MEAL_PLANNER.md §14 and
+planner/README.md. The planning happens in Claude Code sessions; the site only shows the result.
+
+- `src/data/plan.yaml` holds one week: an optional `note` and `days`, each with a `date` and
+  optionally `lunch` and `dinner`. A meal is `{ recipe: <slug> }`, `{ leftovers: <date> }`
+  (an earlier day of the plan on which a recipe is cooked) or `{ text: "…" }`. A day without
+  meals is free. A recipe appears at most once per plan; at most 10 different recipes.
+  `days: []` means no plan.
+- **Homepage section "Diese Woche"** above the search, only when there is a plan: the date range,
+  the note, the days with weekday name, lunch and dinner. Recipe meals are mini cards (thumbnail,
+  title, total time) linking to the recipe page; leftovers say "Reste: <title>" with a link;
+  text meals are plain; free days say "frei". One column on phones, weekday / Mittag / Abend
+  columns from 720 px. The section stays until the plan is replaced.
+- **Tick boxes**, one per recipe meal, all ticked at first, with "Alle" / "Keine". They decide
+  which recipes go on the shopping list. Each visitor's ticks are stored in their own browser per
+  week (localStorage keyed by the first day); they never affect anyone else.
+- **Button „Zutaten der Woche an Bring! senden“** (styled like §6.8) and a collapsible merged
+  shopping list of the ticked recipes, computed in the browser. With nothing ticked the button is
+  disabled and the list says so. Without JavaScript the page shows all recipes ticked and the
+  button sends the whole week.
+- **Merging** (`src/lib/shopping.ts`): ingredients of the ticked recipes at each recipe's base
+  yield, merged by name (case and umlauts ignored) and unit (singular = plural); amounts and
+  ranges add up; per-recipe notes are dropped; "(optional)" only when optional everywhere;
+  order of first appearance. Imperfect merges ("Zwiebel" vs "rote Zwiebel") are accepted.
+- **Hidden week pages** `/woche/liste/<selection>/`: Bring! fetches the page behind the link and
+  reads its JSON-LD, so it cannot see the ticks. The build therefore generates one page per
+  possible selection, addressed by a string of 0 and 1 in plan order ("101" = first and third
+  recipe). Each carries one schema.org Recipe named "Wochenplan <dates>" with the merged
+  ingredients, the picture of the first selected recipe, and the list as readable text. 10
+  recipes mean 1023 pages of about 14 KB. Not linked anywhere except from the button. Like all
+  pages they carry `noindex`.
+- **Trial recipes:** new recipes of a week carry `trial: true` (§4.3) and stay off the overview
+  until Becci keeps them (field removed) or drops them (file deleted).
+
 ---
 
 ## 7. Build validation
@@ -474,12 +526,15 @@ The build fails with a clear message naming the file and the problem when:
 - a step placeholder references an unknown id or has invalid syntax
 - a range has `min >= max`
 - two recipe files produce the same slug
+- the weekly plan (§6.9) points at a recipe that does not exist, repeats a recipe, has unsorted or
+  duplicate days, leftovers of a day that is not earlier or cooks nothing, or more than 10 recipes
 
 The build shows a warning (but continues) when:
 
 - a recipe has no picture (neither `<slug>.jpg` nor `<slug>_1.jpg`)
 - a person has no avatar file
 - an ingredient is never referenced in the steps (often fine, e.g. "Salz nach Geschmack")
+- a recipe marked `trial: true` is not in the weekly plan (keep it or delete it)
 
 Validation is never weakened to make a build pass; the data gets fixed instead.
 
@@ -552,6 +607,10 @@ added (2 recipes with pictures); centred masthead (§13.3); "+n" tag chip on car
 tag "schnelles Abendessen" dropped (§4.7). Checked on desktop and phone by Becci.
 Done (2026-09-22): pictures for Hackbällchen Tomcana; Bring! button with schema.org JSON-LD
 (§6.4, §6.8), Datenschutzerklärung extended (§6.7).
+
+Done (2026-09-23, branch `meal_planner`): weekly plan with tick boxes, merged shopping list and
+the Bring! week button (§6.9), trial recipes (§4.3), planner workflow and prompt templates
+(planner/README.md). Not yet merged; the first real week is the live test of the week button.
 
 The remaining small tasks of version 1 (more recipes and photos, avatars, step pictures, defaults
 to confirm) are tracked on the `main` branch, not here.

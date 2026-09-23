@@ -1,6 +1,8 @@
 # Meal planner – working notes
 
-Branch `meal_planner`. Status (2026-09-23): requirements gathered, nothing designed or built yet.
+Branch `meal_planner`. Status (2026-09-23): sessions A and B of the plan of action (§15) are
+done; the site side is built and documented in SPEC.md §6.9, the workflow in planner/README.md.
+Next: merge, live Bring! test, first real week (§15, session C).
 Sources: Becci's standing profile `master_meal_planning.md` and an engineering handoff, both
 written with ChatGPT on 2026-09-22. This file is the condensed, repo-friendly version of both and
 replaces them for this project. When we make decisions they go here first and into SPEC.md once

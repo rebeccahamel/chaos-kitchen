@@ -19,6 +19,7 @@ details are in [SPEC.md](SPEC.md). The site itself, and all recipe text, is in G
 6. [On the go with a phone or tablet](#6-on-the-go-with-a-phone-or-tablet)
 7. [When the build fails](#7-when-the-build-fails)
 8. [Working on your own computer](#8-working-on-your-own-computer)
+9. [The weekly plan](#9-the-weekly-plan)
 
 ## 1. Adding a recipe
 
@@ -239,7 +240,7 @@ A colon or a `#` **inside** a text can also cause trouble. Then put the text in 
 `description: "Schnell gemacht: unser Lieblingsessen."`
 
 **Warnings** (yellow) do not stop the build: missing photo, missing avatar image, an
-ingredient that appears in no step.
+ingredient that appears in no step, a trial recipe (`trial: true`) that is not in the weekly plan.
 
 After the correction just save again; the build runs again automatically.
 
@@ -272,3 +273,15 @@ enough to turn into a finished recipe file.
 
 For everything else (data model, rounding rules, design) see [SPEC.md](SPEC.md); notes for
 working with Claude Code are in [CLAUDE.md](CLAUDE.md).
+
+## 9. The weekly plan
+
+The homepage starts with "Diese Woche": the family's planned lunches and dinners with tick
+boxes, a Bring! button for the ingredients of all ticked recipes, and a merged shopping list. The
+plan lives in [src/data/plan.yaml](src/data/plan.yaml); the file explains its own format. With
+`days: []` the section disappears.
+
+The plan is not written by hand but in a session with Claude Code, which also writes the new
+recipes. How that works is in [planner/README.md](planner/README.md). New recipes of a week carry
+`trial: true` and stay off the overview until, after the week, they are kept (line removed) or
+deleted.

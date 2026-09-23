@@ -56,13 +56,16 @@ import Base from '../layouts/Base.astro';
 
     <h2>4. Link zur Einkaufslisten-App Bring!</h2>
     <p>
-      Auf jeder Rezeptseite gibt es den Link „Zutaten an Bring! senden“. Er führt zur
+      Auf jeder Rezeptseite gibt es den Link „Zutaten an Bring! senden“, auf der Startseite beim
+      Wochenplan den Link „Zutaten der Woche an Bring! senden“. Beide führen zur
       Einkaufslisten-App Bring! der Bring Labs AG, Zürich, Schweiz. Solange der Link nicht
       angeklickt wird, findet keine Verbindung zu Bring! statt; diese Website lädt keine Skripte,
       Bilder oder anderen Inhalte von Bring!. Erst mit dem Klick verlässt man diese Website: Der
       Browser ruft eine Adresse bei Bring! auf und übergibt dabei die Adresse der Rezeptseite und
-      die gewählte Portionszahl. Bring! ruft anschließend die öffentliche Rezeptseite ab, um die
-      Zutaten in die Einkaufsliste zu übernehmen. Für die dabei anfallenden Daten (etwa die
+      die gewählte Portionszahl, beim Wochenplan die Adresse einer Seite mit den Zutaten der
+      ausgewählten Rezepte. Bring! ruft anschließend diese öffentliche Seite ab, um die Zutaten
+      in die Einkaufsliste zu übernehmen. Welche Rezepte der Woche ausgewählt sind, merkt sich
+      nur der eigene Browser; es wird nicht übertragen. Für die dabei anfallenden Daten (etwa die
       IP-Adresse) ist die Bring Labs AG verantwortlich; Näheres steht in der
       <a href="https://www.getbring.com/en/privacy-policy">Datenschutzerklärung von Bring!</a>.
       Die Nutzung des Links ist freiwillig.

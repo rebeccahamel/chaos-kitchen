@@ -20,6 +20,7 @@ technischen Details stehen in [SPEC.md](SPEC.md).
 6. [Unterwegs am Handy oder Tablet](#6-unterwegs-am-handy-oder-tablet)
 7. [Wenn der Build fehlschlägt](#7-wenn-der-build-fehlschlägt)
 8. [Am eigenen Rechner arbeiten](#8-am-eigenen-rechner-arbeiten)
+9. [Der Wochenplan](#9-der-wochenplan)
 
 ## 1. Ein Rezept hinzufügen
 
@@ -241,7 +242,7 @@ Ein Doppelpunkt oder ein `#` **innerhalb** eines Textes kann ebenfalls stören. 
 doppelte Anführungszeichen setzen: `description: "Schnell gemacht: unser Lieblingsessen."`
 
 **Warnungen** (gelb) stoppen den Build nicht: fehlendes Foto, fehlendes Avatar-Bild, eine Zutat,
-die in keinem Schritt vorkommt.
+die in keinem Schritt vorkommt, ein Probe-Rezept (`trial: true`), das nicht im Wochenplan steht.
 
 Nach der Korrektur einfach erneut speichern; der Build läuft automatisch wieder.
 
@@ -274,3 +275,15 @@ reicht, um daraus eine fertige Rezeptdatei zu machen.
 
 Für alles Weitere (Datenmodell, Rundungsregeln, Design) siehe [SPEC.md](SPEC.md); Hinweise für
 die Arbeit mit Claude Code stehen in [CLAUDE.md](CLAUDE.md).
+
+## 9. Der Wochenplan
+
+Die Startseite zeigt oben „Diese Woche“: die geplanten Mittag- und Abendessen der Familie mit
+Häkchen, einem Bring!-Knopf für die Zutaten aller angehakten Rezepte und einer zusammengefassten
+Einkaufsliste. Der Plan steht in [src/data/plan.yaml](src/data/plan.yaml); die Datei erklärt ihr
+Format selbst. Mit `days: []` verschwindet der Abschnitt.
+
+Der Plan entsteht nicht von Hand, sondern in einer Sitzung mit Claude Code, die auch die neuen
+Rezepte schreibt. Wie das abläuft, steht in [planner/README.md](planner/README.md). Neue Rezepte
+einer Woche tragen `trial: true` und erscheinen so lange nicht in der Übersicht, bis sie nach
+der Woche bleiben dürfen (Zeile entfernen) oder gelöscht werden.
