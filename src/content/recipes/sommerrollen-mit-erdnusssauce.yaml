@@ -1,0 +1,68 @@
+title: Sommerrollen mit Erdnusssauce
+description: Frische Reispapierrollen zum Selberrollen am Tisch, mit Glasnudeln, Möhren, Sprossen, Kräutern, Hähnchen, Steak, Tofu und Shiitake. Was übrig bleibt, wird am nächsten Tag ein lauwarmer Glasnudelsalat.
+author: becci
+added: 2026-09-23
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 35, cook: 10 }
+tags: [abendessen, mittagessen, fleisch, asiatisch, sommer]
+
+ingredients:
+  - group: Für die Füllung
+    items:
+      - { id: reispapier, amount: 16, unit: Blatt, name: Reispapier }
+      - { id: glasnudeln, amount: 100, unit: g, name: Glasnudeln }
+      - { id: moehren, amount: 2, name: Möhre, plural: Möhren }
+      - { id: sprossen, amount: 150, unit: g, name: Mungbohnensprossen }
+      - { id: minze, amount: 1, unit: Bund, name: Minze }
+      - { id: koriander, amount: 1, unit: Bund, name: Koriander }
+      - { id: salat, amount: 1, name: Kopfsalat, plural: Kopfsalate, note: kleine Blätter zum Einrollen, optional: true }
+      - { id: mango, amount: 1, name: Mango, plural: Mangos, note: reif, optional: true }
+      - { id: haehnchen, amount: 250, unit: g, name: Hähnchenbrust }
+      - { id: steak, amount: 250, unit: g, name: Rindersteak, note: z. B. Hüfte oder Rumpsteak }
+      - { id: tofu, amount: 200, unit: g, name: Tofu, note: fest }
+      - { id: shiitake, amount: 150, unit: g, name: Shiitake }
+      - { id: sojasauce-marinade, amount: 3, unit: EL, name: Sojasauce }
+      - { id: sesamoel, amount: 1, unit: EL, name: Sesamöl }
+      - { id: ingwer, amount: 1, unit: Stück, name: Ingwer, note: daumengroß }
+      - { id: knoblauch, amount: 2, unit: Zehen, name: Knoblauch }
+      - { id: oel, amount: 2, unit: EL, name: Öl, note: neutral zum Braten }
+  - group: Für die Erdnusssauce
+    items:
+      - { id: erdnussbutter, amount: 4, unit: EL, name: Erdnussbutter }
+      - { id: sojasauce-sauce, amount: 2, unit: EL, name: Sojasauce }
+      - { id: limette-sauce, amount: 1, name: Limette, plural: Limetten }
+      - { id: honig, amount: 1, unit: EL, name: Honig }
+      - { id: knoblauch-sauce, amount: 1, unit: Zehe, name: Knoblauch }
+      - { id: wasser, amount: 60, unit: ml, name: Wasser, note: warm }
+      - { id: sriracha, name: Sriracha, note: nach Geschmack, optional: true }
+  - group: Für den nächsten Tag (lauwarmer Glasnudelsalat)
+    items:
+      - { id: limette-dressing, amount: 2, name: Limette, plural: Limetten }
+      - { id: sojasauce-dressing, amount: 2, unit: EL, name: Sojasauce }
+      - { id: sesamoel-dressing, amount: 1, unit: EL, name: Sesamöl }
+      - { id: honig-dressing, amount: 1, unit: TL, name: Honig }
+      - { id: minze-dressing, name: Minze, note: Reste vom Vortag }
+      - { id: chili, amount: 1, name: rote Chili, plural: rote Chilis, optional: true }
+      - { id: erdnuesse, amount: 40, unit: g, name: Erdnüsse, note: geröstet und gesalzen }
+      - { id: glasnudeln-salat, amount: 50, unit: g, name: Glasnudeln, note: falls keine übrig sind, optional: true }
+
+steps:
+  - group: Vorbereitung
+    items:
+      - "{glasnudeln} nach Packungsanweisung in heißem Wasser einweichen (meist 5 Minuten), abgießen, kalt abschrecken und mit der Küchenschere etwas kürzer schneiden."
+      - "{ingwer} und {knoblauch} fein reiben und mit {sojasauce-marinade} und {sesamoel} verrühren. {haehnchen} und {steak} in fingerdicke Streifen, {tofu} in Stifte schneiden. Alle drei getrennt in je einem Drittel der Marinade 10 Minuten ziehen lassen."
+      - "In der Zwischenzeit {moehren} schälen und in feine Streifen hobeln oder schneiden, {sprossen} waschen, {minze} und {koriander} zupfen, den {salat:name} in kleine Blätter teilen. Die {mango:name} schälen und in Streifen schneiden. Alles in Schälchen auf den Tisch stellen."
+      - "{shiitake} in Scheiben schneiden. {oel} in einer Pfanne stark erhitzen und nacheinander anbraten: Hähnchen 4–5 Minuten, Steak 2 Minuten pro Seite (kurz ruhen lassen, dann in Streifen schneiden), Tofu rundum goldbraun, Shiitake mit einem Spritzer Sojasauce. Warm halten."
+  - group: Erdnusssauce
+    items:
+      - "{erdnussbutter}, {sojasauce-sauce}, den Saft der {limette-sauce:name}, {honig} und den fein geriebenen {knoblauch-sauce:name} verrühren. Nach und nach {wasser} zugeben, bis die Sauce dickflüssig, aber löffelbar ist. {sriracha} extra dazustellen, dann bleiben die Rollen für die Kleine mild."
+  - group: Rollen
+    items:
+      - "Eine große Schüssel mit lauwarmem Wasser auf den Tisch stellen. Je ein Blatt {reispapier:name} 5–10 Sekunden eintauchen, auf einen feuchten Teller legen und kurz warten, bis es weich wird. Insgesamt werden etwa {reispapier} gebraucht."
+      - "Ins untere Drittel ein Salatblatt legen, darauf Glasnudeln, Möhren, Sprossen, Kräuter, Mango und Protein nach Wahl, nicht zu viel. Seiten einklappen und straff aufrollen. Jeder rollt selbst und dippt in die Erdnusssauce."
+  - group: Für den nächsten Tag (lauwarmer Glasnudelsalat)
+    items:
+      - "Übrig gebliebene Glasnudeln, Gemüse, Kräuter und Proteine in eine große Schüssel geben. Falls Nudeln fehlen, {glasnudeln-salat} einweichen. Die Proteine in einer Pfanne kurz anwärmen, damit der Salat lauwarm wird."
+      - "Für das Dressing den Saft der {limette-dressing} mit {sojasauce-dressing}, {sesamoel-dressing} und {honig-dressing} verrühren. {minze-dressing} fein hacken, die {chili:name} in feine Ringe schneiden, beides unterrühren."
+      - "Das Dressing über den Salat geben, gut vermengen und mit {erdnuesse} bestreuen. Reste der Erdnusssauce passen ebenfalls dazu."

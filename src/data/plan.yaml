@@ -6,16 +6,14 @@
 #   { leftovers: <date> }       leftovers from an earlier day of this plan
 #   { text: "…" }               anything else, without a link ("Brot mit Salat", "Essen gehen")
 # A day without lunch and dinner is a free day.
-#
-# Example:
-# note: Diese Woche mit viel Gemüse.
-# days:
-#   - date: 2026-09-28
-#     lunch: { text: "Brot mit Salat" }
-#     dinner: { recipe: fischcurry-mit-reis }
-#   - date: 2026-09-29
-#     lunch: { leftovers: 2026-09-28 }
-#     dinner: { recipe: hackbaellchen-tomcana }
-#   - date: 2026-09-30
 
-days: []
+note: Mittwoch kommen Gäste zum Selberrollen, Donnerstag und Freitag geht es schnell und die Reste sind das Mittagessen danach.
+days:
+  - date: 2026-09-23
+    dinner: { recipe: sommerrollen-mit-erdnusssauce }
+  - date: 2026-09-24
+    lunch: { leftovers: 2026-09-23 }
+    dinner: { recipe: ofenlachs-mit-kuerbis-und-kichererbsen }
+  - date: 2026-09-25
+    lunch: { leftovers: 2026-09-24 }
+    dinner: { recipe: kartoffelgratin-mit-veggie-cordon-bleu }

@@ -1,0 +1,36 @@
+title: Ofenlachs mit Kürbis und Kichererbsen
+description: Ein Blech, zehn Minuten Arbeit. Hokkaido, Kichererbsen und rote Zwiebel rösten mit Paprika und Kreuzkümmel, der Lachs kommt zum Schluss obendrauf, dazu Kräuterjoghurt. Reste schmecken kalt oder lauwarm als Bowl.
+author: becci
+added: 2026-09-23
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 30 }
+tags: [abendessen, mittagessen, fisch, herbst]
+
+ingredients:
+  - group: Für das Blech
+    items:
+      - { id: kuerbis, amount: 900, unit: g, name: Hokkaido-Kürbis }
+      - { id: kichererbsen, amount: 1, unit: Dose, name: Kichererbsen, note: 400 g }
+      - { id: zwiebel, amount: 1, name: rote Zwiebel, plural: rote Zwiebeln }
+      - { id: olivenoel, amount: 3, unit: EL, name: Olivenöl }
+      - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: kreuzkuemmel, amount: 1, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: lachs, amount: 500, unit: g, name: Lachsfilet, note: "ohne Haut, 4 Stücke" }
+      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen }
+      - { id: spinat, amount: 100, unit: g, name: Babyspinat }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für den Kräuterjoghurt
+    items:
+      - { id: joghurt, amount: 200, unit: g, name: Joghurt, note: "griechisch oder 3,5 %" }
+      - { id: knoblauch, amount: 1, unit: Zehe, name: Knoblauch }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze vorheizen. {kuerbis} waschen, entkernen und mit Schale in etwa 1,5 cm große Würfel schneiden. {kichererbsen} abgießen und abspülen, die {zwiebel:name} in Spalten schneiden."
+  - "Kürbis, Kichererbsen und Zwiebel auf einem Blech mit {olivenoel:2/3}, {paprikapulver}, {kreuzkuemmel}, {salz:name} und {pfeffer:name} vermengen und 20 Minuten rösten."
+  - "In der Zwischenzeit {lachs} trocken tupfen, salzen, pfeffern und mit dem restlichen Olivenöl ({olivenoel:1/3}) und dem Abrieb der {zitrone:name} einreiben."
+  - "Für den Kräuterjoghurt {joghurt} mit dem fein geriebenen {knoblauch:name}, gehackter {petersilie}, dem Saft einer halben Zitrone, Salz und Pfeffer verrühren."
+  - "Das Blech aus dem Ofen nehmen, das Gemüse wenden, den Lachs darauflegen und weitere 10 Minuten backen, bis er gerade eben durch ist."
+  - "{spinat} unter das heiße Gemüse heben, bis er zusammenfällt. Mit dem Kräuterjoghurt und der restlichen Zitrone in Spalten servieren. Für die Kleine den Lachs in Flocken zerteilen und die Kichererbsen leicht zerdrücken."

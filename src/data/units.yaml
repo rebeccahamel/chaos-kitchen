@@ -20,3 +20,4 @@
 - { unit: Stück,    plural: Stück,     category: count }
 - { unit: Portion,  plural: Portionen, category: count }
 - { unit: Blech,    plural: Bleche,    category: count }
+- { unit: Blatt,    plural: Blätter,   category: count }
