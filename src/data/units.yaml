@@ -17,10 +17,10 @@
 - { unit: Päckchen, plural: Päckchen,  category: count }
 - { unit: Bund,     plural: Bund,      category: count }
 - { unit: Zehe,     plural: Zehen,     category: count, compound: true }
-- { unit: Scheibe,  plural: Scheiben,  category: count, compound: true }
+- { unit: Scheibe,  plural: Scheiben,  category: count }
 - { unit: Stange,   plural: Stangen,   category: count, compound: true }
 - { unit: Stück,    plural: Stück,     category: count }
 - { unit: Portion,  plural: Portionen, category: count }
 - { unit: Blech,    plural: Bleche,    category: count }
-- { unit: Blatt,    plural: Blätter,   category: count, compound: true }
-- { unit: Zweig,    plural: Zweige,    category: count, compound: true }
+- { unit: Blatt,    plural: Blätter,   category: count }
+- { unit: Zweig,    plural: Zweige,    category: count }

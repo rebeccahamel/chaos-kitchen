@@ -287,3 +287,8 @@ Der Plan entsteht nicht von Hand, sondern in einer Sitzung mit Claude Code, die 
 Rezepte schreibt. Wie das abläuft, steht in [planner/README.md](planner/README.md). Neue Rezepte
 einer Woche tragen `trial: true` und erscheinen so lange nicht in der Übersicht, bis sie nach
 der Woche bleiben dürfen (Zeile entfernen) oder gelöscht werden.
+
+Wenn Bring! eine Zutat falsch versteht („Kopfsalate“ kennt es nicht, „Kopfsalat“ schon), kommt
+eine Zeile in [src/data/bring.yaml](src/data/bring.yaml); die Datei erklärt die zwei Möglichkeiten.
+Kennt Bring! eine Einheit nicht (Zehen, Stangen), bekommt die Einheit in `units.yaml`
+`compound: true`, dann heißt es auf der Liste „3 Knoblauchzehen“.

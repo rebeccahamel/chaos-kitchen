@@ -65,7 +65,12 @@ Review the week. Read planner/README.md and follow it.
 <ratings and verdicts, freely worded, for example:>
 Loved the salmon, keep it. Lentil bowls were fine but too much work, don't keep.
 Ginger chicken: liked, keep. The grain bowl lunch was boring, no reason really.
+Bring! misread "Kopfsalate" and "Reispapierblätter".
 ```
+
+Items Bring! misread go into `src/data/bring.yaml` as a rule (`singular: true` or `as: <text>`),
+or, for a unit that Bring! does not know, as `compound: true` on the unit in `units.yaml`. Bring!
+is not consistent about this, so the rules are learned case by case (SPEC.md §6.4).
 
 ## What Claude Code does while planning
 

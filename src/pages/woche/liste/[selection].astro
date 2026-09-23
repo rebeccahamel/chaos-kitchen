@@ -32,7 +32,8 @@ interface Props {
 }
 
 const { plan, recipes } = Astro.props;
-const { units } = loadLists();
+const lists = loadLists();
+const { units } = lists;
 
 const name = `Wochenplan ${planTitle(plan)}`;
 const titles = recipes.map((recipe) => recipe.data.title);
@@ -43,7 +44,7 @@ const items = consolidateIngredients(ingredientLists, units).map((ingredient) =>
 const pageUrl = new URL(url(`woche/liste/${Astro.params.selection}/`), Astro.site).href;
 const photo = recipePhoto(recipes[0].id);
 const image = photo ? new URL((await getImage({ src: photo, width: 1200, height: 900, format: 'jpg' })).src, Astro.site).href : undefined;
-const jsonLd = weekListJsonLd({ name, description, url: pageUrl, image }, ingredientLists, units);
+const jsonLd = weekListJsonLd({ name, description, url: pageUrl, image }, ingredientLists, units, lists.bring);
 ---
 
 <Base title={name} description={description} ogImage={image} jsonLd={jsonLd}>

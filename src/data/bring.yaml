@@ -1,0 +1,7 @@
+# Item-specific rules for the Bring! shopping list (SPEC.md §6.4). Bring! matches its catalogue
+# word by word and is not consistent, so these rules are learned on the go: whenever an item
+# arrives wrong in the app, add a line here. Matched on the ingredient name as written in recipes
+# (case and umlauts do not matter). The site itself never changes, only the line Bring! reads.
+#   singular: true   always the singular on the Bring! line ("2 Kopfsalat" instead of "2 Kopfsalate")
+#   as: <text>       replace the name on the Bring! line with this text
+- { name: Kopfsalat, singular: true }

@@ -2,7 +2,7 @@
 // Pure functions, also used in the browser: the homepage merges the ticked recipes on the fly,
 // the hidden week pages carry the same list as JSON-LD for Bring!.
 
-import type { Amount, Ingredient, UnitDef } from './types.ts';
+import type { Amount, BringRule, Ingredient, UnitDef } from './types.ts';
 import { findUnit } from './units.ts';
 import { normalizeForSearch } from './search.ts';
 import { ingredientLine } from './structured-data.ts';
@@ -78,8 +78,8 @@ export function unmergedNames(lists: IngredientList[], units: UnitDef[]): { name
 }
 
 /** The merged list as plain schema.org lines ("300 g Basmatireis"), the format Bring! reads. */
-export function shoppingLines(lists: IngredientList[], units: UnitDef[]): string[] {
-  return consolidateIngredients(lists, units).map((ingredient) => ingredientLine(ingredient, units));
+export function shoppingLines(lists: IngredientList[], units: UnitDef[], rules: BringRule[] = []): string[] {
+  return consolidateIngredients(lists, units).map((ingredient) => ingredientLine(ingredient, units, rules));
 }
 
 /**
@@ -117,7 +117,7 @@ export interface WeekListInfo {
  * schema.org Recipe data for a hidden week page: one "recipe" whose ingredients are the merged
  * list of the selected recipes. Bring! imports it as one shopping list (SPEC.md §6.8).
  */
-export function weekListJsonLd(info: WeekListInfo, lists: IngredientList[], units: UnitDef[]): Record<string, unknown> {
+export function weekListJsonLd(info: WeekListInfo, lists: IngredientList[], units: UnitDef[], rules: BringRule[] = []): Record<string, unknown> {
   const data: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Recipe',
@@ -126,6 +126,6 @@ export function weekListJsonLd(info: WeekListInfo, lists: IngredientList[], unit
     url: info.url,
   };
   if (info.image) data.image = info.image;
-  data.recipeIngredient = shoppingLines(lists, units);
+  data.recipeIngredient = shoppingLines(lists, units, rules);
   return data;
 }

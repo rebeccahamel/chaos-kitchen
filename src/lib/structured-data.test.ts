@@ -20,7 +20,7 @@ const salat: Ingredient = { id: 'salat', name: 'Salat', note: 'klein', optional:
 
 test('ingredient lines use plain numbers, units and names', () => {
   assert.equal(ingredientLine(reis, units), '300 g Basmatireis');
-  assert.equal(ingredientLine(karotte, units), '2 Karotte');
+  assert.equal(ingredientLine(karotte, units), '2 Karotten');
   assert.equal(ingredientLine(zwiebel, units), '1 Zwiebel');
   assert.equal(ingredientLine(salz, units), 'Salz');
 });
@@ -30,11 +30,20 @@ test('ranges use a plain hyphen and the plural of the unit', () => {
   assert.equal(ingredientLine({ id: 'k', amount: [1, 2], unit: 'Dose', name: 'Kokosmilch' }, units), '1-2 Dosen Kokosmilch');
 });
 
+test('learned Bring! rules force the singular or another name, matched without case and umlauts', () => {
+  const salat: Ingredient = { id: 's', amount: 2, name: 'Kopfsalat', plural: 'Kopfsalate' };
+  assert.equal(ingredientLine(salat, units), '2 Kopfsalate');
+  assert.equal(ingredientLine(salat, units, [{ name: 'kopfsalat', singular: true }]), '2 Kopfsalat');
+  assert.equal(ingredientLine(salat, units, [{ name: 'Kopfsalat', as: 'Salatkopf' }]), '2 Salatkopf');
+  assert.equal(ingredientLine({ id: 'm', amount: 200, unit: 'g', name: 'Möhren' }, units, [{ name: 'Moehren', as: 'Karotten' }]), '200 g Karotten');
+  assert.equal(ingredientLine(lists.units ? salat : salat, units, lists.bring), '2 Kopfsalat', 'the real bring.yaml has the Kopfsalat rule');
+});
+
 test('compound units are glued onto the name for Bring!, singular below 2', () => {
   assert.equal(ingredientLine(knoblauch, units), '1-2 Knoblauchzehen');
   assert.equal(ingredientLine({ ...knoblauch, amount: 1 }, units), '1 Knoblauchzehe');
   assert.equal(ingredientLine({ id: 'p', amount: 2, unit: 'Stangen', name: 'Porree' }, units), '2 Porreestangen');
-  assert.equal(ingredientLine({ id: 'r', amount: 16, unit: 'Blatt', name: 'Reispapier' }, units), '16 Reispapierblätter');
+  assert.equal(ingredientLine({ id: 'r', amount: 16, unit: 'Blatt', name: 'Reispapier' }, units), '16 Blätter Reispapier', 'Blatt is not compound: Bring! misread Reispapierblätter');
 });
 
 test('g and ml switch to kg and l from 1000 upwards, ranges as a pair', () => {

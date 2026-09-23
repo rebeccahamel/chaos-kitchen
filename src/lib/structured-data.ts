@@ -3,8 +3,9 @@
 // Pure functions; the Recipe type import is type-only and disappears at runtime.
 
 import type { Recipe } from './recipe-schema.ts';
-import type { Ingredient, Lists, UnitDef } from './types.ts';
+import type { BringRule, Ingredient, Lists, UnitDef } from './types.ts';
 import { BASE_TO_LARGE, findUnit, unitLabel } from './units.ts';
+import { normalizeForSearch } from './search.ts';
 import { flattenIngredients, flattenSteps, ingredientsById, totalTime } from './recipe.ts';
 import { renderStep } from './placeholders.ts';
 import { tagLabel } from './tags.ts';
@@ -21,18 +22,27 @@ function plainNumber(value: number): string {
   return String(Math.round(value * 1000) / 1000);
 }
 
+/** The learned rule for an ingredient name, if any (src/data/bring.yaml). */
+function bringRuleFor(name: string, rules: BringRule[]): BringRule | undefined {
+  const key = normalizeForSearch(name);
+  return rules.find((rule) => normalizeForSearch(rule.name) === key);
+}
+
 /**
  * One ingredient as a machine-readable line at base yield: "300 g Basmatireis",
- * "1.5 kg Hackfleisch", "0.5 Bund Petersilie, glatt", "1 EL Butter, optional", "Salz".
- * Text after a comma becomes the note in Bring!. Two Bring!-specific rules (SPEC.md §6.4):
- * counted items keep the singular ("2 Kopfsalat"), and units with compound: true are glued onto
- * the name ("1-2 Knoblauchzehen"), because Bring! matches its catalogue on such words.
+ * "1.5 kg Hackfleisch", "2 Zwiebeln", "0.5 Bund Petersilie, glatt", "1 EL Butter, optional",
+ * "Salz". Text after a comma becomes the note in Bring!. Bring! matches its catalogue word by
+ * word, so two things exist only for this line (SPEC.md §6.4): units with compound: true are
+ * glued onto the name ("1-2 Knoblauchzehen"), and the learned rules in bring.yaml force the
+ * singular ("2 Kopfsalat") or another name.
  */
-export function ingredientLine(ingredient: Ingredient, units: UnitDef[]): string {
+export function ingredientLine(ingredient: Ingredient, units: UnitDef[], rules: BringRule[] = []): string {
   const parts: string[] = [];
+  const rule = bringRuleFor(ingredient.name, rules);
+  const baseName = rule?.as ?? ingredient.name;
 
   if (ingredient.amount === undefined) {
-    parts.push(ingredient.name);
+    parts.push(baseName);
   } else {
     let values = Array.isArray(ingredient.amount) ? [...ingredient.amount] : [ingredient.amount];
     let unitName = ingredient.unit;
@@ -49,11 +59,13 @@ export function ingredientLine(ingredient: Ingredient, units: UnitDef[]): string
     const unitDef = unitName ? findUnit(units, unitName) : undefined;
     if (unitDef?.compound) {
       // "3 Knoblauchzehen": name plus the lower-cased unit as one word
-      parts.push(ingredient.name + unitLabel(unitDef, Math.max(...values)).toLowerCase());
+      parts.push(baseName + unitLabel(unitDef, Math.max(...values)).toLowerCase());
     } else {
       if (unitName) parts.push(unitDef ? unitLabel(unitDef, Math.max(...values)) : unitName);
-      // Counted items keep the singular name; Bring! knows "Kopfsalat", not "Kopfsalate"
-      parts.push(ingredient.name);
+      // Counted items (no unit) take the plural above 1, like the ingredient list, unless a rule says otherwise
+      const counted = !ingredient.unit;
+      const plural = counted && max > 1 && !rule?.singular && !rule?.as;
+      parts.push(plural ? (ingredient.plural ?? ingredient.name) : baseName);
     }
   }
 
@@ -95,7 +107,7 @@ export function recipeJsonLd(recipe: Recipe, lists: Lists, page: PageInfo): Reco
   if (recipe.time.cook !== undefined) data.cookTime = isoDuration(recipe.time.cook);
   data.totalTime = isoDuration(totalTime(recipe.time));
   if (recipe.tags.length > 0) data.keywords = recipe.tags.map((tag) => tagLabel(lists.tags, tag)).join(', ');
-  data.recipeIngredient = flattenIngredients(recipe.ingredients).map((ingredient) => ingredientLine(ingredient, units));
+  data.recipeIngredient = flattenIngredients(recipe.ingredients).map((ingredient) => ingredientLine(ingredient, units, lists.bring));
   data.recipeInstructions = flattenSteps(recipe.steps).map((step) => ({
     '@type': 'HowToStep',
     text: renderStep(step, byId, units),

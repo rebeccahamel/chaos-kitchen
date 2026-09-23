@@ -70,6 +70,7 @@ Constraints:
    │  ├─ people.yaml             authors and their avatars
    │  ├─ tags.yaml               allowed tags, grouped by category
    │  ├─ units.yaml              allowed units, plurals, rounding category
+   │  ├─ bring.yaml              learned item rules for the Bring! shopping list (§6.4)
    │  └─ plan.yaml               the current weekly plan (§6.9)
    ├─ assets/
    │  ├─ recipes/                recipe photos, named <slug>.jpg|jpeg|png|webp
@@ -291,20 +292,28 @@ of the time filter (Becci adds tags as they come along):
 - { unit: Päckchen, plural: Päckchen, category: count }
 - { unit: Bund,     plural: Bund,     category: count }
 - { unit: Zehe,     plural: Zehen,    category: count, compound: true }
-- { unit: Scheibe,  plural: Scheiben, category: count, compound: true }
+- { unit: Scheibe,  plural: Scheiben, category: count }
 - { unit: Stange,   plural: Stangen,  category: count, compound: true }
 - { unit: Stück,    plural: Stück,    category: count }
 - { unit: Portion,  plural: Portionen, category: count }
 - { unit: Blech,    plural: Bleche,   category: count }
-- { unit: Blatt,    plural: Blätter,  category: count, compound: true }
-- { unit: Zweig,    plural: Zweige,   category: count, compound: true }
+- { unit: Blatt,    plural: Blätter,  category: count }
+- { unit: Zweig,    plural: Zweige,   category: count }
 ```
 
 Recipes may use either the singular or plural form of a unit; both resolve to the same entry.
 `compound: true` (optional, decided 2026-09-23) only affects the Bring! shopping list (§6.4): the
 unit is glued onto the name, "3 Knoblauchzehen" instead of "3 Zehen Knoblauch", because Bring! does
 not know such units and would otherwise create an item "Zehen Knoblauch". The site keeps showing
-"3 Zehen Knoblauch".
+"3 Zehen Knoblauch". Blatt and Zweig deliberately have no flag: Bring! misread "Reispapierblätter"
+and "Rosmarinzweige".
+
+`src/data/bring.yaml` – item rules for the Bring! line, learned on the go (§6.4):
+
+```yaml
+- { name: Kopfsalat, singular: true }   # "2 Kopfsalat", Bring! does not know "Kopfsalate"
+# - { name: Mungbohnensprossen, as: Mungobohnensprossen }
+```
 
 ---
 
@@ -418,11 +427,14 @@ It is invisible; Bring! reads it for the shopping list (§6.8). Built by
   people: decimal point ("0.5 Bund Petersilie"), hyphen for ranges ("1-2 Zehen Knoblauch"),
   kg / l from 1000 g / ml upwards ("1.5 kg Hackfleisch", both ends of a range together), the
   plural of the unit above 1, then the note and "optional" after commas ("1 EL Butter,
-  optional"). No amount → the name only ("Salz"). Two rules only for Bring! (decided 2026-09-23
-  after the first live test): counted items keep the singular name at any amount ("2 Kopfsalat"),
-  because Bring! matches its catalogue on the singular; units marked `compound: true` in
-  `units.yaml` are glued onto the name ("3 Knoblauchzehen", "2 Porreestangen", "1 Knoblauchzehe"),
-  because Bring! does not know them as units.
+  optional"). No amount → the name only ("Salz"). Bring! matches its catalogue word by word and
+  not consistently ("Knoblauchzehen" yes, "Reispapierblätter" no; "Kopfsalate" no, "Limetten"
+  yes), so two things exist only for this line (decided 2026-09-23 after the first live tests):
+  units marked `compound: true` in `units.yaml` are glued onto the name ("3 Knoblauchzehen",
+  "2 Porreestangen", "1 Knoblauchzehe"); and `src/data/bring.yaml` holds item rules learned on
+  the go, matched on the ingredient name (case and umlauts ignored): `singular: true` keeps the
+  singular ("2 Kopfsalat"), `as: <text>` replaces the name. Whenever an item arrives wrong in the
+  app, a line is added there; the review session (planner/README.md) asks for such cases.
 - recipeInstructions: the steps as plain text with the placeholders filled in at the base yield.
 
 ### 6.5 Images

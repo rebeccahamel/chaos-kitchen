@@ -27,10 +27,21 @@ export interface TagCategory {
   tags: Tag[];
 }
 
+/** One learned rule for the Bring! shopping list line (src/data/bring.yaml, SPEC.md §6.4). */
+export interface BringRule {
+  /** ingredient name as written in recipes */
+  name: string;
+  /** always the singular name on the Bring! line */
+  singular?: boolean;
+  /** replace the name on the Bring! line with this text */
+  as?: string;
+}
+
 export interface Lists {
   units: UnitDef[];
   people: Person[];
   tags: TagCategory[];
+  bring: BringRule[];
 }
 
 /** A single number or a range [min, max]. */

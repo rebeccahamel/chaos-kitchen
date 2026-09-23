@@ -145,5 +145,5 @@ test('the week page JSON-LD is one schema.org Recipe with the merged ingredients
   assert.equal(data['@type'], 'Recipe');
   assert.equal(data.name, 'Wochenplan 28. September – 2. Oktober');
   assert.equal(data.image, undefined);
-  assert.deepEqual(data.recipeIngredient, ['2 Zwiebel']);
+  assert.deepEqual(data.recipeIngredient, ['2 Zwiebeln']);
 });

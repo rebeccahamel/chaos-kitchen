@@ -1,7 +1,7 @@
 // Reads and validates the central lists in src/data/ (SPEC.md §4.7).
 // Build time only: uses the file system.
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import yaml from 'js-yaml';
 import { z } from 'astro/zod';
@@ -63,6 +63,19 @@ export const tagCategoriesSchema = z
     });
   });
 
+const bringRuleSchema = z
+  .strictObject({ name: text, singular: z.boolean().optional(), as: text.optional() })
+  .refine((rule) => rule.singular !== undefined || rule.as !== undefined, 'eine Regel braucht singular: true oder as: <Text>');
+
+export const bringRulesSchema = z.array(bringRuleSchema).superRefine((rules, ctx) => {
+  const seen = new Set<string>();
+  rules.forEach((rule, index) => {
+    const key = rule.name.toLowerCase();
+    if (seen.has(key)) ctx.addIssue({ code: 'custom', path: [index, 'name'], message: `„${rule.name}“ kommt mehrfach vor` });
+    seen.add(key);
+  });
+});
+
 /** Reads one YAML file and validates it. Throws with a message that names the file and the field. */
 export function loadYamlFile<T>(file: string, schema: z.ZodType<T>): T {
   let raw: unknown;
@@ -86,9 +99,12 @@ export function loadYamlFile<T>(file: string, schema: z.ZodType<T>): T {
 export const DEFAULT_DATA_DIR = resolve('src/data');
 
 export function loadLists(dataDir: string = DEFAULT_DATA_DIR): Lists {
+  const bringFile = join(dataDir, 'bring.yaml');
   return {
     units: loadYamlFile(join(dataDir, 'units.yaml'), unitsSchema),
     people: loadYamlFile(join(dataDir, 'people.yaml'), peopleSchema),
     tags: loadYamlFile(join(dataDir, 'tags.yaml'), tagCategoriesSchema),
+    // the Bring! rules are optional: no file means no rules
+    bring: existsSync(bringFile) ? (loadYamlFile(bringFile, bringRulesSchema) ?? []) : [],
   };
 }

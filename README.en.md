@@ -285,3 +285,8 @@ The plan is not written by hand but in a session with Claude Code, which also wr
 recipes. How that works is in [planner/README.md](planner/README.md). New recipes of a week carry
 `trial: true` and stay off the overview until, after the week, they are kept (line removed) or
 deleted.
+
+When Bring! misreads an ingredient (it does not know "Kopfsalate", but it knows "Kopfsalat"), a
+line goes into [src/data/bring.yaml](src/data/bring.yaml); the file explains the two options. When
+Bring! does not know a unit (Zehen, Stangen), the unit gets `compound: true` in `units.yaml`, and
+the list then says "3 Knoblauchzehen".
