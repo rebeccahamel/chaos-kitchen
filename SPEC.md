@@ -297,6 +297,7 @@ of the time filter (Becci adds tags as they come along):
 - { unit: Portion,  plural: Portionen, category: count }
 - { unit: Blech,    plural: Bleche,   category: count }
 - { unit: Blatt,    plural: Blätter,  category: count }
+- { unit: Zweig,    plural: Zweige,   category: count }
 ```
 
 Recipes may use either the singular or plural form of a unit; both resolve to the same entry.

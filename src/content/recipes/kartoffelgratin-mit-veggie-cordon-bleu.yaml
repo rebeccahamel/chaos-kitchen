@@ -12,11 +12,11 @@ ingredients:
     items:
       - { id: kartoffeln, amount: 1, unit: kg, name: Kartoffeln, note: festkochend }
       - { id: sahne, amount: 250, unit: ml, name: Sahne }
-      - { id: milch, amount: 150, unit: ml, name: Milch }
+      - { id: milch, amount: 250, unit: ml, name: Milch }
       - { id: knoblauch, amount: 1, unit: Zehe, name: Knoblauch }
+      - { id: gratinkaese, amount: 150, unit: g, name: Gratinkäse, note: gerieben }
       - { id: muskat, name: Muskatnuss, note: frisch gerieben }
-      - { id: bergkaese, amount: 100, unit: g, name: Bergkäse, note: gerieben }
-      - { id: butter, amount: 1, unit: EL, name: Butter, note: für die Form }
+      - { id: rosmarin, amount: 3, unit: Zweige, name: Rosmarin, note: frisch }
       - { id: salz, name: Salz }
       - { id: pfeffer, name: Pfeffer }
   - group: Außerdem
@@ -33,9 +33,9 @@ ingredients:
       - { id: oel, amount: 4, unit: EL, name: Olivenöl }
 
 steps:
-  - "Den Backofen auf 200 °C Ober-/Unterhitze vorheizen und eine Auflaufform mit {butter} ausstreichen. {kartoffeln} schälen und in dünne Scheiben hobeln, etwa 2–3 mm."
-  - "{sahne}, {milch} und den fein geriebenen {knoblauch:name} in einem weiten Topf aufkochen, mit {salz:name}, {pfeffer:name} und {muskat} kräftig würzen. Die Kartoffelscheiben zugeben und 8–10 Minuten leise köcheln lassen, bis sie fast gar sind. Das verkürzt die Ofenzeit."
-  - "Alles in die Form geben, glatt streichen, mit {bergkaese} bestreuen und 25–30 Minuten backen, bis die Oberfläche goldbraun ist."
-  - "{cordon-bleu} nach Packungsanweisung im Ofen mitbacken oder in der Heißluftfritteuse zubereiten, meist 12–15 Minuten."
+  - "Den Backofen auf 200 °C Ober-/Unterhitze vorheizen. {kartoffeln} schälen und in dünne Scheiben hobeln, etwa 2–3 mm."
+  - "{knoblauch} fein hacken oder pressen. Die Blätter von {rosmarin} abzupfen und fein hacken. Beides zusammen mit {sahne} und {milch} in einem Messbecher vermischen, und mit {salz:name}, {pfeffer:name} und {muskat} kräftig würzen. Die Kartoffelscheiben in einen Topf geben und mit der Milch-Sahne-Mischung übergießen. Bei mittelhoher Hitze aufkochen und 8–10 Minuten leise köcheln lassen, bis die Kartoffeln fast gar sind."
+  - "Alles in die Auflaufform geben, glatt streichen, mit {gratinkaese} bestreuen und 25–30 Minuten backen, bis die Oberfläche goldbraun ist."
+  - "{cordon-bleu} nach Packungsanweisung in der Pfanne oder Heißluftfritteuse zubereiten, meist 12–15 Minuten."
   - "Für den Salat den {kopfsalat:name} waschen und zupfen, {radieschen} in Scheiben schneiden, {schnittlauch} in Röllchen. {senf}, {essig}, {honig}, Salz und Pfeffer verrühren, {oel} unterschlagen und erst kurz vor dem Servieren mit dem Salat mischen."
-  - "Gratin und Cordon bleu mit dem Salat servieren. Reste vom Gratin am nächsten Tag im Ofen oder in der Mikrowelle aufwärmen."
+  - "Gratin und Cordon bleu mit dem Salat servieren."

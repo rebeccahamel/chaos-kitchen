@@ -21,3 +21,4 @@
 - { unit: Portion,  plural: Portionen, category: count }
 - { unit: Blech,    plural: Bleche,    category: count }
 - { unit: Blatt,    plural: Blätter,   category: count }
+- { unit: Zweig,    plural: Zweige,    category: count }
