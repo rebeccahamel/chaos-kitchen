@@ -117,6 +117,7 @@ test('German title and weekday names for the plan', () => {
   const plan = parse(week);
   assert.ok(plan.success);
   assert.equal(planTitle(plan.data), '28. September – 1. Oktober');
+  assert.equal(planTitle({ days: [{ date: new Date('2026-09-23') }, { date: new Date('2026-09-25') }] }), '23.–25. September');
   assert.equal(planTitle({ days: [{ date: new Date('2026-09-28') }] }), '28. September');
   assert.equal(weekdayName(new Date('2026-09-28')), 'Montag');
   assert.equal(weekdayName(new Date('2026-10-04')), 'Sonntag');

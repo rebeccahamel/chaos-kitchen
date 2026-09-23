@@ -7,7 +7,10 @@ import { join } from 'node:path';
 import yaml from 'js-yaml';
 import { z } from 'astro/zod';
 import { DEFAULT_DATA_DIR, idSchema, loadYamlFile } from './lists.ts';
-import type { Plan, PlanDay, PlanEntry } from './types.ts';
+import { createRecipeSchema } from './recipe-schema.ts';
+import { flattenIngredients } from './recipe.ts';
+import { unmergedNames } from './shopping.ts';
+import type { Lists, Plan, PlanDay, PlanEntry } from './types.ts';
 
 /**
  * Upper limit of different recipes in one plan. Every possible selection of them gets its own
@@ -55,11 +58,13 @@ export function planRecipes(plan: Plan): string[] {
 const dayMonth = new Intl.DateTimeFormat('de-DE', { day: 'numeric', month: 'long', timeZone: 'UTC' });
 const weekday = new Intl.DateTimeFormat('de-DE', { weekday: 'long', timeZone: 'UTC' });
 
-/** "28. September – 2. Oktober", or one date when the plan has a single day. */
+/** "23.–25. September", "28. September – 2. Oktober", or one date when the plan has a single day. */
 export function planTitle(plan: Plan): string {
   const first = plan.days[0].date;
   const last = plan.days[plan.days.length - 1].date;
-  return isoDate(first) === isoDate(last) ? dayMonth.format(first) : `${dayMonth.format(first)} – ${dayMonth.format(last)}`;
+  if (isoDate(first) === isoDate(last)) return dayMonth.format(first);
+  const sameMonth = isoDate(first).slice(0, 7) === isoDate(last).slice(0, 7);
+  return sameMonth ? `${first.getUTCDate()}.–${dayMonth.format(last)}` : `${dayMonth.format(first)} – ${dayMonth.format(last)}`;
 }
 
 /** "Montag" for a plan date (UTC, because YAML dates carry no time zone). */
@@ -153,6 +158,27 @@ export function readTrialSlugs(recipesDir: string): string[] {
     }
   }
   return slugs;
+}
+
+/**
+ * One warning per ingredient name that the plan's recipes use with different units, because such
+ * lines do not merge on the shopping list (SPEC.md §6.9). Reads and validates the recipe files
+ * with the real schema; a file that fails validation is skipped here and reported by the collection.
+ */
+export function unmergedWarnings(plan: Plan | undefined, recipesDir: string, lists: Lists): string[] {
+  if (!plan) return [];
+  const schema = createRecipeSchema(lists, () => {});
+  const ingredientLists = planRecipes(plan).flatMap((slug) => {
+    try {
+      const result = schema.safeParse(yaml.load(readFileSync(join(recipesDir, `${slug}.yaml`), 'utf8')));
+      return result.success ? [flattenIngredients(result.data.ingredients)] : [];
+    } catch {
+      return [];
+    }
+  });
+  return unmergedNames(ingredientLists, lists.units).map(
+    ({ name, units }) => `Wochenplan: „${name}“ kommt mit verschiedenen Einheiten vor (${units.join(', ')}) und wird auf der Einkaufsliste nicht zusammengefasst.`,
+  );
 }
 
 /** One warning per trial recipe that the current plan does not use (MEAL_PLANNER.md §14). */

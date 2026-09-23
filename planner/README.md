@@ -93,6 +93,9 @@ with store, product, price, validity and fetch date.
 - a step for the toddler where a meal is spicy or very salty ("Portion für die Kleine vorher
   abnehmen, dann …"), never a separate recipe;
 - concise steps, weights over spoons where practical;
+- every ingredient gets an amount and a unit where one exists, herbs in Bund or Zweige, so that
+  the same ingredient merges across the week's recipes on the shopping list ("Minze" without
+  unit and "1 Bund Minze" stay two lines; the build warns about such pairs);
 - an amount placeholder is the object of its sentence ("{ei} verquirlen"), never behind "von",
   "mit" or "aus", because a scaled plural would need the dative ("mit 3 Eiern"); use `{id:name}`
   there instead ("mit den Eiern").

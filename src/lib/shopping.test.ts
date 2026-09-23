@@ -9,6 +9,7 @@ import {
   selectedByMask,
   selectionMask,
   shoppingLines,
+  unmergedNames,
   weekListJsonLd,
 } from './shopping.ts';
 import { flattenIngredients } from './recipe.ts';
@@ -116,6 +117,13 @@ test('the real recipes merge into one list without duplicates', () => {
     units,
   ).map((i) => i.id);
   assert.equal(new Set(ids).size, ids.length, 'ids are unique');
+});
+
+test('the same name with different units is reported, not merged', () => {
+  const a: Ingredient[] = [{ id: 'm', amount: 1, unit: 'Bund', name: 'Minze' }, { id: 'k', amount: 2, unit: 'Zehen', name: 'Knoblauch' }];
+  const b: Ingredient[] = [{ id: 'm', name: 'minze' }, { id: 'k', amount: 1, unit: 'Zehe', name: 'Knoblauch' }];
+  assert.deepEqual(unmergedNames([a, b], units), [{ name: 'Minze', units: ['Bund', 'ohne Einheit'] }]);
+  assert.deepEqual(unmergedNames([a], units), []);
 });
 
 test('selection masks: one character per recipe in plan order', () => {

@@ -60,6 +60,23 @@ export function consolidateIngredients(lists: IngredientList[], units: UnitDef[]
   return [...merged.values()];
 }
 
+/**
+ * Names that appear with different units across the recipes and therefore stay separate lines
+ * ("Minze" once without unit, once in Bund). Each entry: name plus the units, for a build warning.
+ */
+export function unmergedNames(lists: IngredientList[], units: UnitDef[]): { name: string; units: string[] }[] {
+  const byName = new Map<string, { name: string; units: Set<string> }>();
+  for (const list of lists) {
+    for (const ingredient of list) {
+      const [name, unit] = mergeKey(ingredient, units).split('|');
+      const entry = byName.get(name) ?? { name: ingredient.name, units: new Set<string>() };
+      entry.units.add(unit === '' ? 'ohne Einheit' : unit);
+      byName.set(name, entry);
+    }
+  }
+  return [...byName.values()].filter((entry) => entry.units.size > 1).map((entry) => ({ name: entry.name, units: [...entry.units] }));
+}
+
 /** The merged list as plain schema.org lines ("300 g Basmatireis"), the format Bring! reads. */
 export function shoppingLines(lists: IngredientList[], units: UnitDef[]): string[] {
   return consolidateIngredients(lists, units).map((ingredient) => ingredientLine(ingredient, units));

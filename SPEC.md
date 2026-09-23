@@ -537,6 +537,8 @@ The build shows a warning (but continues) when:
 - a person has no avatar file
 - an ingredient is never referenced in the steps (often fine, e.g. "Salz nach Geschmack")
 - a recipe marked `trial: true` is not in the weekly plan (keep it or delete it)
+- the weekly plan's recipes use one ingredient name with different units ("Minze" without unit and
+  in Bund), so the lines stay apart on the shopping list (§6.9)
 
 Validation is never weakened to make a build pass; the data gets fixed instead.
 

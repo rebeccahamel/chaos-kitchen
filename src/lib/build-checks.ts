@@ -6,7 +6,7 @@ import { existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import type { AstroIntegration } from 'astro';
 import { ID_PATTERN, loadLists } from './lists.ts';
-import { forgottenTrials, loadPlan, readTrialSlugs } from './plan.ts';
+import { forgottenTrials, loadPlan, readTrialSlugs, unmergedWarnings } from './plan.ts';
 import type { Person } from './types.ts';
 
 export const PHOTO_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp'];
@@ -78,7 +78,7 @@ export function runDataChecks(root: URL): CheckResult {
   // The weekly plan: a wrong plan file stops the build like a wrong recipe file would.
   try {
     const plan = loadPlan(slugs, dataDir);
-    warnings.push(...forgottenTrials(plan, readTrialSlugs(recipesDir)));
+    warnings.push(...forgottenTrials(plan, readTrialSlugs(recipesDir)), ...unmergedWarnings(plan, recipesDir, lists));
   } catch (error) {
     errors.push((error as Error).message);
   }

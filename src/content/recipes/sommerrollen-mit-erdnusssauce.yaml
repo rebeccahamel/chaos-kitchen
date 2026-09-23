@@ -42,7 +42,6 @@ ingredients:
       - { id: sojasauce-dressing, amount: 2, unit: EL, name: Sojasauce }
       - { id: sesamoel-dressing, amount: 1, unit: EL, name: Sesamöl }
       - { id: honig-dressing, amount: 1, unit: TL, name: Honig }
-      - { id: minze-dressing, name: Minze, note: Reste vom Vortag }
       - { id: chili, amount: 1, name: rote Chili, plural: rote Chilis, optional: true }
       - { id: erdnuesse, amount: 40, unit: g, name: Erdnüsse, note: geröstet und gesalzen }
       - { id: glasnudeln-salat, amount: 50, unit: g, name: Glasnudeln, note: falls keine übrig sind, optional: true }
@@ -64,5 +63,5 @@ steps:
   - group: Für den nächsten Tag (lauwarmer Glasnudelsalat)
     items:
       - "Übrig gebliebene Glasnudeln, Gemüse, Kräuter und Proteine in eine große Schüssel geben. Falls Nudeln fehlen, {glasnudeln-salat} einweichen. Die Proteine in einer Pfanne kurz anwärmen, damit der Salat lauwarm wird."
-      - "Für das Dressing den Saft der {limette-dressing} mit {sojasauce-dressing}, {sesamoel-dressing} und {honig-dressing} verrühren. {minze-dressing} fein hacken, die {chili:name} in feine Ringe schneiden, beides unterrühren."
+      - "Für das Dressing den Saft der {limette-dressing} mit {sojasauce-dressing}, {sesamoel-dressing} und {honig-dressing} verrühren. Die restliche {minze:name} fein hacken, die {chili:name} in feine Ringe schneiden, beides unterrühren."
       - "Das Dressing über den Salat geben, gut vermengen und mit {erdnuesse} bestreuen. Reste der Erdnusssauce passen ebenfalls dazu."
