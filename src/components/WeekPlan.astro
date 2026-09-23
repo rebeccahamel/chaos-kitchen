@@ -1,0 +1,502 @@
+---
+// "Diese Woche" on the homepage (MEAL_PLANNER.md §14, SPEC.md §6.9): the week's days with lunch
+// and dinner as mini cards, a tick box per recipe for the shopping list, a Bring! button for
+// the ticked recipes, and the merged list itself. The page is rendered with every recipe ticked;
+// the script at the bottom keeps ticks, list and Bring! link in step in the browser.
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import placeholder from '../assets/placeholder-recipe.svg';
+import { describeIngredient } from '../lib/format.ts';
+import { recipePhoto } from '../lib/photos.ts';
+import { isoDate, planRecipes, planTitle, weekdayName, type Plan, type PlanEntry } from '../lib/plan.ts';
+import { flattenIngredients, formatDuration, totalTime } from '../lib/recipe.ts';
+import { consolidateIngredients, selectionMask } from '../lib/shopping.ts';
+import { recipeUrl, url } from '../lib/site.ts';
+import type { Lists } from '../lib/types.ts';
+
+interface Props {
+  plan: Plan;
+  /** all recipes, trial ones included */
+  recipes: CollectionEntry<'recipes'>[];
+  lists: Lists;
+}
+
+const { plan, recipes, lists } = Astro.props;
+const { units } = lists;
+const bySlug = new Map(recipes.map((recipe) => [recipe.id, recipe]));
+/** the recipes of the week in plan order; their position is the tick box index and the mask digit */
+const planned = planRecipes(plan).map((slug) => bySlug.get(slug)!);
+const indexOf = new Map(planned.map((recipe, index) => [recipe.id, index]));
+
+/** "Reste: Fischcurry mit Reis" for a leftovers entry, or the plain text */
+function leftoversOf(entry: { leftovers: Date }): CollectionEntry<'recipes'> | undefined {
+  const day = plan.days.find((d) => isoDate(d.date) === isoDate(entry.leftovers));
+  const source = [day?.dinner, day?.lunch].find((e): e is { recipe: string } => e !== undefined && 'recipe' in e);
+  return source ? bySlug.get(source.recipe) : undefined;
+}
+
+const slots: [keyof Pick<typeof plan.days[number], 'lunch' | 'dinner'>, string][] = [
+  ['lunch', 'Mittag'],
+  ['dinner', 'Abend'],
+];
+
+// Bring! (SPEC.md §6.8) fetches the hidden week page of the ticked recipes and reads its JSON-LD
+const allMask = selectionMask(planned.map(() => true));
+const listUrlBase = new URL(url('woche/liste/'), Astro.site).href;
+const bringBase = 'https://api.getbring.com/rest/bringrecipes/deeplink?source=web&url=';
+const bringHref = (mask: string) => bringBase + encodeURIComponent(`${listUrlBase}${mask}/`);
+
+const items = consolidateIngredients(
+  planned.map((recipe) => flattenIngredients(recipe.data.ingredients)),
+  units,
+).map((ingredient) => describeIngredient(ingredient, units));
+
+// Data for the script: ingredients per recipe, units, and where the hidden pages live
+const clientData = JSON.stringify({
+  weekKey: isoDate(plan.days[0].date),
+  units,
+  recipes: planned.map((recipe) => ({ slug: recipe.id, ingredients: flattenIngredients(recipe.data.ingredients) })),
+  listUrlBase,
+  bringBase,
+}).replace(/</g, '\\u003c');
+---
+
+<section class="week" id="week" aria-labelledby="week-title">
+  <header class="week-head">
+    <h2 id="week-title">Diese Woche</h2>
+    <p class="week-dates">{planTitle(plan)}</p>
+    {plan.note && <p class="week-note">{plan.note}</p>}
+  </header>
+
+  <ol class="days">
+    {
+      plan.days.map((day) => (
+        <li class="day">
+          <h3 class="weekday">{weekdayName(day.date)}</h3>
+          {!day.lunch && !day.dinner && <p class="free">frei</p>}
+          {slots.map(([slot, label]) => {
+            const entry: PlanEntry | undefined = day[slot];
+            if (!entry) return null;
+            if ('recipe' in entry) {
+              const recipe = bySlug.get(entry.recipe)!;
+              const index = indexOf.get(recipe.id)!;
+              const photo = recipePhoto(recipe.id);
+              return (
+                <div class:list={['slot', slot]}>
+                  <span class="label">{label}</span>
+                  <article class="meal">
+                    <a class="meal-link" href={recipeUrl(recipe.id)}>
+                      {photo ? (
+                        <Image class="thumb" src={photo} alt="" width={160} height={120} sizes="80px" />
+                      ) : (
+                        <img class="thumb" src={placeholder.src} alt="" width="160" height="120" loading="lazy" />
+                      )}
+                      <span class="meal-text">
+                        <span class="meal-title">{recipe.data.title}</span>
+                        <span class="meal-meta">{formatDuration(totalTime(recipe.data.time))}</span>
+                      </span>
+                    </a>
+                    <input
+                      class="pick"
+                      type="checkbox"
+                      data-pick={index}
+                      checked
+                      aria-label={`${recipe.data.title} auf die Einkaufsliste`}
+                    />
+                  </article>
+                </div>
+              );
+            }
+            if ('leftovers' in entry) {
+              const source = leftoversOf(entry);
+              return (
+                <div class:list={['slot', slot]}>
+                  <span class="label">{label}</span>
+                  <p class="plain">
+                    Reste{source && <>: <a href={recipeUrl(source.id)}>{source.data.title}</a></>}
+                  </p>
+                </div>
+              );
+            }
+            return (
+              <div class:list={['slot', slot]}>
+                <span class="label">{label}</span>
+                <p class="plain">{entry.text}</p>
+              </div>
+            );
+          })}
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="shopping">
+    <p class="pick-status">
+      <span id="pick-count">{planned.length === 1 ? '1 Rezept' : `${planned.length} Rezepte`} auf der Einkaufsliste</span>
+      <button type="button" class="linklike" id="pick-all" hidden>Alle</button>
+      <button type="button" class="linklike" id="pick-none">Keine</button>
+    </p>
+    <p class="bring">
+      <a class="bring-link" id="week-bring" href={bringHref(allMask)} rel="noopener noreferrer">Zutaten der Woche an Bring! senden</a>
+      <span class="note">öffnet die Einkaufslisten-App Bring!</span>
+    </p>
+    <details class="list">
+      <summary>Einkaufsliste anzeigen</summary>
+      <ul class="ingredient-list" id="week-list">
+        {
+          items.map((item) => (
+            <li class="ingredient">
+              <span class="amount">{[item.amount, item.unit].filter(Boolean).join(' ')}</span>
+              <span class="name">
+                {item.name}
+                {item.optional && <span class="note"> (optional)</span>}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="note empty" id="week-list-empty" hidden>Kein Rezept ausgewählt.</p>
+    </details>
+  </div>
+
+  <script type="application/json" id="plan-data" set:html={clientData} />
+</section>
+
+<script>
+  // Ticks, "Alle" / "Keine", the Bring! link and the merged list follow each other in the browser.
+  // The ticks are kept per week in the visitor's own browser (localStorage), so a family member's
+  // choice survives until the plan changes and never affects anyone else.
+  import { describeIngredient } from '../lib/format.ts';
+  import { consolidateIngredients, selectionMask } from '../lib/shopping.ts';
+  import type { Ingredient, UnitDef } from '../lib/types.ts';
+
+  interface PlanData {
+    weekKey: string;
+    units: UnitDef[];
+    recipes: { slug: string; ingredients: Ingredient[] }[];
+    listUrlBase: string;
+    bringBase: string;
+  }
+
+  const section = document.getElementById('week');
+  const dataEl = document.getElementById('plan-data');
+  if (section && dataEl) {
+    const data = JSON.parse(dataEl.textContent ?? '{}') as PlanData;
+    const boxes = Array.from(section.querySelectorAll<HTMLInputElement>('input[data-pick]')).sort(
+      (a, b) => Number(a.dataset.pick) - Number(b.dataset.pick),
+    );
+    const count = document.getElementById('pick-count') as HTMLElement;
+    const all = document.getElementById('pick-all') as HTMLButtonElement;
+    const none = document.getElementById('pick-none') as HTMLButtonElement;
+    const bring = document.getElementById('week-bring') as HTMLAnchorElement;
+    const list = document.getElementById('week-list') as HTMLElement;
+    const empty = document.getElementById('week-list-empty') as HTMLElement;
+    const storageKey = `plan:${data.weekKey}`;
+
+    function load(): boolean[] | null {
+      try {
+        const raw = localStorage.getItem(storageKey);
+        const saved = raw ? (JSON.parse(raw) as unknown) : null;
+        return Array.isArray(saved) && saved.length === boxes.length ? saved.map(Boolean) : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function save(selected: boolean[]) {
+      try {
+        if (selected.every(Boolean)) localStorage.removeItem(storageKey);
+        else localStorage.setItem(storageKey, JSON.stringify(selected));
+      } catch {
+        // storage unavailable: the ticks still work for this page view
+      }
+    }
+
+    function renderList(selected: boolean[]) {
+      const lists = data.recipes.filter((_, index) => selected[index]).map((recipe) => recipe.ingredients);
+      const items = consolidateIngredients(lists, data.units).map((ingredient) => describeIngredient(ingredient, data.units));
+      list.replaceChildren(
+        ...items.map((item) => {
+          const li = document.createElement('li');
+          li.className = 'ingredient';
+          const amount = document.createElement('span');
+          amount.className = 'amount';
+          amount.textContent = [item.amount, item.unit].filter(Boolean).join(' ');
+          const name = document.createElement('span');
+          name.className = 'name';
+          name.textContent = item.name;
+          if (item.optional) {
+            const note = document.createElement('span');
+            note.className = 'note';
+            note.textContent = ' (optional)';
+            name.append(note);
+          }
+          li.append(amount, name);
+          return li;
+        }),
+      );
+      list.hidden = items.length === 0;
+      empty.hidden = items.length > 0;
+    }
+
+    function render() {
+      const selected = boxes.map((box) => box.checked);
+      const chosen = selected.filter(Boolean).length;
+      count.textContent = `${chosen === 1 ? '1 Rezept' : `${chosen} Rezepte`} auf der Einkaufsliste`;
+      all.hidden = chosen === boxes.length;
+      none.hidden = chosen === 0;
+      if (chosen === 0) {
+        bring.setAttribute('aria-disabled', 'true');
+        bring.removeAttribute('href');
+      } else {
+        bring.removeAttribute('aria-disabled');
+        bring.href = data.bringBase + encodeURIComponent(`${data.listUrlBase}${selectionMask(selected)}/`);
+      }
+      renderList(selected);
+      save(selected);
+    }
+
+    for (const box of boxes) box.addEventListener('change', render);
+    all.addEventListener('click', () => {
+      for (const box of boxes) box.checked = true;
+      render();
+    });
+    none.addEventListener('click', () => {
+      for (const box of boxes) box.checked = false;
+      render();
+    });
+
+    const saved = load();
+    if (saved) boxes.forEach((box, index) => (box.checked = saved[index]));
+    render();
+  }
+</script>
+
+<style>
+  .week {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 32px;
+    padding: 18px 16px 20px;
+    background: var(--papier);
+    border: 1px solid var(--karamell);
+    border-radius: var(--radius);
+  }
+
+  .week-head {
+    display: grid;
+    gap: 4px;
+  }
+
+  h2 {
+    font-size: 26px;
+    color: var(--kuerbis);
+  }
+
+  .week-dates {
+    font-size: 15px;
+    color: var(--kastanie);
+  }
+
+  .week-note {
+    margin-top: 4px;
+  }
+
+  .days {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .day {
+    display: grid;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--karamell);
+  }
+
+  .weekday {
+    font-size: 19px;
+  }
+
+  .slot {
+    display: grid;
+    gap: 4px;
+  }
+
+  .free,
+  .plain {
+    color: var(--kastanie);
+  }
+
+  .meal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .meal-link {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .meal-link:hover .meal-title {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .thumb {
+    flex: none;
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: var(--leinen);
+  }
+
+  .meal-text {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .meal-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--kuerbis);
+  }
+
+  .meal-meta {
+    font-size: 14px;
+    color: var(--kastanie);
+  }
+
+  .pick {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    accent-color: var(--rost);
+    cursor: pointer;
+  }
+
+  .shopping {
+    display: grid;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--karamell);
+  }
+
+  .pick-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 15px;
+    color: var(--kastanie);
+  }
+
+  .bring {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 14px;
+    font-size: 15px;
+  }
+
+  .bring-link {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid var(--rost);
+    border-radius: 999px;
+    background: var(--papier);
+    color: var(--rost);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .bring-link:hover {
+    background: var(--rost);
+    color: var(--papier);
+  }
+
+  .bring-link[aria-disabled='true'] {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  .list summary {
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .ingredient-list {
+    display: grid;
+    gap: 6px;
+    margin: 10px 0 0;
+    padding: 12px 14px;
+    list-style: none;
+    background: var(--leinen);
+    border-radius: 8px;
+  }
+
+  /* :global because the script rebuilds these rows, and new elements carry no scoped-style attribute */
+  .ingredient-list :global(.ingredient) {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .ingredient-list :global(.amount) {
+    text-align: right;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .ingredient-list :global(.note) {
+    color: var(--kastanie);
+  }
+
+  .empty {
+    margin-top: 10px;
+  }
+
+  @media (min-width: 720px) {
+    .week {
+      padding: 22px 24px 24px;
+    }
+
+    .day {
+      grid-template-columns: 120px 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .weekday {
+      padding-top: 2px;
+    }
+
+    .free {
+      grid-column: 2 / -1;
+    }
+
+    /* lunch always in the middle column, dinner always on the right */
+    .slot.lunch {
+      grid-column: 2;
+    }
+
+    .slot.dinner {
+      grid-column: 3;
+    }
+  }
+</style>

@@ -5,14 +5,19 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Avatar from '../components/Avatar.astro';
 import RecipeCard from '../components/RecipeCard.astro';
+import WeekPlan from '../components/WeekPlan.astro';
 import { loadLists } from '../lib/lists.ts';
+import { hasPlan, loadPlan } from '../lib/plan.ts';
 import { SITE_NAME } from '../lib/site.ts';
 
 const lists = loadLists();
+const all = await getCollection('recipes');
 // Recipes on trial for the weekly plan stay off the overview (MEAL_PLANNER.md §14, SPEC.md §6.9)
-const recipes = (await getCollection('recipes', (recipe) => !recipe.data.trial)).sort(
-  (a, b) => b.data.added.getTime() - a.data.added.getTime() || a.data.title.localeCompare(b.data.title, 'de'),
-);
+const recipes = all
+  .filter((recipe) => !recipe.data.trial)
+  .sort((a, b) => b.data.added.getTime() - a.data.added.getTime() || a.data.title.localeCompare(b.data.title, 'de'));
+// The weekly plan may use trial recipes, so it gets all of them
+const plan = loadPlan(all.map((recipe) => recipe.id));
 const authors = lists.people.filter((person) => recipes.some((r) => r.data.author === person.id));
 const timeOptions = [
   ['', 'Alle'],
@@ -23,6 +28,8 @@ const timeOptions = [
 ---
 
 <Base title={SITE_NAME} description="Die Lieblingsrezepte unserer Familie.">
+  {hasPlan(plan) && <WeekPlan plan={plan} recipes={all} lists={lists} />}
+
   <div class="toolbar">
     <form class="search" role="search" onsubmit="return false">
       <label class="visually-hidden" for="q">Rezept oder Zutat suchen</label>
