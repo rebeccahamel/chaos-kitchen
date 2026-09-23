@@ -92,7 +92,10 @@ with store, product, price, validity and fetch date.
 - tags from `tags.yaml`: course, diet, season and cuisine where they apply;
 - a step for the toddler where a meal is spicy or very salty ("Portion für die Kleine vorher
   abnehmen, dann …"), never a separate recipe;
-- concise steps, weights over spoons where practical.
+- concise steps, weights over spoons where practical;
+- an amount placeholder is the object of its sentence ("{ei} verquirlen"), never behind "von",
+  "mit" or "aus", because a scaled plural would need the dative ("mit 3 Eiern"); use `{id:name}`
+  there instead ("mit den Eiern").
 
 At most 10 different recipes in the plan (`MAX_PLAN_RECIPES`); a normal week has 5–7.
 
