@@ -2,6 +2,7 @@
 // and the warning for trial recipes that are not in the plan.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readdirSync } from 'node:fs';
 import { createPlanSchema, forgottenTrials, hasPlan, isoDate, loadPlan, MAX_PLAN_RECIPES, planRecipes, planTitle, weekdayName } from './plan.ts';
 
 const slugs = ['fischcurry-mit-reis', 'hackbaellchen-tomcana', 'hackbaellchen-in-senfsosse-mit-gemuesereis'];
@@ -132,5 +133,8 @@ test('trial recipes outside the plan produce a warning', () => {
 });
 
 test('the real plan file is valid or absent', () => {
-  assert.doesNotThrow(() => loadPlan(slugs));
+  const realSlugs = readdirSync(new URL('../content/recipes/', import.meta.url))
+    .filter((file) => file.endsWith('.yaml') && !file.startsWith('_'))
+    .map((file) => file.slice(0, -'.yaml'.length));
+  assert.doesNotThrow(() => loadPlan(realSlugs));
 });
