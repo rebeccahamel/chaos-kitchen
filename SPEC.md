@@ -551,19 +551,10 @@ Done (2026-09-13): several pictures per recipe with a looping carousel (§6.5); 
 added (2 recipes with pictures); centred masthead (§13.3); "+n" tag chip on cards (§6.1);
 tag "schnelles Abendessen" dropped (§4.7). Checked on desktop and phone by Becci.
 Done (2026-09-22): pictures for Hackbällchen Tomcana; Bring! button with schema.org JSON-LD
-(§6.4, §6.8), Datenschutzerklärung extended (§6.7). Still to check by Becci on the phone: the
-import in the Bring! app (notes, optional items, ranges, a changed yield).
+(§6.4, §6.8), Datenschutzerklärung extended (§6.7).
 
-Next, in the suggested order:
-
-1. **Real recipes and photos:** 5–10 recipes from the family, including awkward ones (eggs in
-   baking, a two-part recipe, "eine Prise", ranges). Claude Code transcribes from text or
-   photos of handwritten cards. Photos go to `src/assets/recipes/<slug>.jpg`.
-2. **Avatars:** illustrations for `src/assets/avatars/` when they exist; until then initials.
-3. **Step pictures (idea, parked 2026-09-13):** a step could point to one of the numbered
-   pictures (`image: 2`) and show it beside the step, HelloFresh-style.
-4. **Defaults to confirm after some use:** total time includes rest time; yield changes in
-   steps of 1; times shown as "30 min" / "1 h 30 min" (alternative: "Min." / "Std.").
+The remaining small tasks of version 1 (more recipes and photos, avatars, step pictures, defaults
+to confirm) are tracked on the `main` branch, not here.
 
 Known small things:
 
