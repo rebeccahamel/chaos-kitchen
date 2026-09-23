@@ -9,7 +9,8 @@ import { loadLists } from '../lib/lists.ts';
 import { SITE_NAME } from '../lib/site.ts';
 
 const lists = loadLists();
-const recipes = (await getCollection('recipes')).sort(
+// Recipes on trial for the weekly plan stay off the overview (MEAL_PLANNER.md §14, SPEC.md §6.9)
+const recipes = (await getCollection('recipes', (recipe) => !recipe.data.trial)).sort(
   (a, b) => b.data.added.getTime() - a.data.added.getTime() || a.data.title.localeCompare(b.data.title, 'de'),
 );
 const authors = lists.people.filter((person) => recipes.some((r) => r.data.author === person.id));

@@ -1,0 +1,136 @@
+---
+// One hidden page per possible selection of the week's recipes (MEAL_PLANNER.md §14, SPEC.md §6.9).
+// The homepage points its Bring! button at the page that matches the ticked meals; Bring!
+// fetches that page and reads the JSON-LD with the merged ingredients. The address is a string
+// of 0 and 1 in plan order ("1011" = first, third and fourth recipe). Not linked anywhere else.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import { describeIngredient } from '../../../lib/format.ts';
+import { loadLists } from '../../../lib/lists.ts';
+import { recipePhoto } from '../../../lib/photos.ts';
+import { hasPlan, loadPlan, planRecipes, planTitle, type Plan } from '../../../lib/plan.ts';
+import { flattenIngredients } from '../../../lib/recipe.ts';
+import { allSelectionMasks, consolidateIngredients, selectedByMask, weekListJsonLd } from '../../../lib/shopping.ts';
+import { recipeUrl, url } from '../../../lib/site.ts';
+
+export async function getStaticPaths() {
+  const all = await getCollection('recipes');
+  const plan = loadPlan(all.map((recipe) => recipe.id));
+  if (!hasPlan(plan)) return [];
+  const bySlug = new Map(all.map((recipe) => [recipe.id, recipe]));
+  const recipes = planRecipes(plan).map((slug) => bySlug.get(slug)!);
+  return allSelectionMasks(recipes.length).map((selection) => ({
+    params: { selection },
+    props: { plan, recipes: selectedByMask(selection, recipes)! },
+  }));
+}
+
+interface Props {
+  plan: Plan;
+  recipes: CollectionEntry<'recipes'>[];
+}
+
+const { plan, recipes } = Astro.props;
+const { units } = loadLists();
+
+const name = `Wochenplan ${planTitle(plan)}`;
+const titles = recipes.map((recipe) => recipe.data.title);
+const description = `Zutaten für ${recipes.length === 1 ? 'ein Rezept' : `${recipes.length} Rezepte`}: ${titles.join(', ')}`;
+const ingredientLists = recipes.map((recipe) => flattenIngredients(recipe.data.ingredients));
+const items = consolidateIngredients(ingredientLists, units).map((ingredient) => describeIngredient(ingredient, units));
+
+const pageUrl = new URL(url(`woche/liste/${Astro.params.selection}/`), Astro.site).href;
+const photo = recipePhoto(recipes[0].id);
+const image = photo ? new URL((await getImage({ src: photo, width: 1200, height: 900, format: 'jpg' })).src, Astro.site).href : undefined;
+const jsonLd = weekListJsonLd({ name, description, url: pageUrl, image }, ingredientLists, units);
+---
+
+<Base title={name} description={description} ogImage={image} jsonLd={jsonLd}>
+  <article class="week-list">
+    <a class="back" href={url()}>‹ Zur Startseite</a>
+    <h1>Einkaufsliste der Woche</h1>
+    <p class="note">
+      Diese Seite ist für die Einkaufslisten-App Bring! gedacht. Sie fasst die Zutaten der ausgewählten Rezepte
+      zusammen, jeweils in der Menge des Rezepts.
+    </p>
+
+    <h2>{recipes.length === 1 ? 'Rezept' : 'Rezepte'}</h2>
+    <ul class="recipes">
+      {recipes.map((recipe) => <li><a href={recipeUrl(recipe.id)}>{recipe.data.title}</a></li>)}
+    </ul>
+
+    <h2>Zutaten</h2>
+    <ul class="ingredient-list">
+      {
+        items.map((item) => (
+          <li class="ingredient">
+            <span class="amount">{[item.amount, item.unit].filter(Boolean).join(' ')}</span>
+            <span class="name">
+              {item.name}
+              {item.optional && <span class="note"> (optional)</span>}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </article>
+</Base>
+
+<style>
+  .week-list {
+    display: grid;
+    gap: 16px;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .back {
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .back:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: clamp(26px, 5vw, 36px);
+    color: var(--kuerbis);
+  }
+
+  h2 {
+    font-size: 22px;
+    color: var(--kuerbis);
+  }
+
+  .recipes {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .ingredient-list {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 16px;
+    list-style: none;
+    background: var(--papier);
+    border: 1px solid var(--karamell);
+    border-radius: var(--radius);
+  }
+
+  .ingredient {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .amount {
+    text-align: right;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+</style>
