@@ -23,8 +23,10 @@ function plainNumber(value: number): string {
 
 /**
  * One ingredient as a machine-readable line at base yield: "300 g Basmatireis",
- * "1.5 kg Hackfleisch", "1-2 Zehen Knoblauch", "0.5 Bund Petersilie, glatt",
- * "1 EL Butter, optional", "Salz". Text after a comma becomes the note in Bring!.
+ * "1.5 kg Hackfleisch", "0.5 Bund Petersilie, glatt", "1 EL Butter, optional", "Salz".
+ * Text after a comma becomes the note in Bring!. Two Bring!-specific rules (SPEC.md §6.4):
+ * counted items keep the singular ("2 Kopfsalat"), and units with compound: true are glued onto
+ * the name ("1-2 Knoblauchzehen"), because Bring! matches its catalogue on such words.
  */
 export function ingredientLine(ingredient: Ingredient, units: UnitDef[]): string {
   const parts: string[] = [];
@@ -44,14 +46,15 @@ export function ingredientLine(ingredient: Ingredient, units: UnitDef[]): string
 
     parts.push(values.map(plainNumber).join('-'));
 
-    if (unitName) {
-      const unitDef = findUnit(units, unitName);
-      parts.push(unitDef ? unitLabel(unitDef, Math.max(...values)) : unitName);
+    const unitDef = unitName ? findUnit(units, unitName) : undefined;
+    if (unitDef?.compound) {
+      // "3 Knoblauchzehen": name plus the lower-cased unit as one word
+      parts.push(ingredient.name + unitLabel(unitDef, Math.max(...values)).toLowerCase());
+    } else {
+      if (unitName) parts.push(unitDef ? unitLabel(unitDef, Math.max(...values)) : unitName);
+      // Counted items keep the singular name; Bring! knows "Kopfsalat", not "Kopfsalate"
+      parts.push(ingredient.name);
     }
-
-    // Counted items (no unit) take the plural above 1, like the ingredient list
-    const counted = !ingredient.unit;
-    parts.push(counted && max > 1 ? (ingredient.plural ?? ingredient.name) : ingredient.name);
   }
 
   let line = parts.join(' ');

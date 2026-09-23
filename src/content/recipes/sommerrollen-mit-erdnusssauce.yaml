@@ -13,7 +13,7 @@ ingredients:
       - { id: reispapier, amount: 16, unit: Blatt, name: Reispapier }
       - { id: glasnudeln, amount: 100, unit: g, name: Glasnudeln }
       - { id: moehren, amount: 2, name: Möhre, plural: Möhren }
-      - { id: sprossen, amount: 150, unit: g, name: Mungbohnensprossen }
+      - { id: sprossen, amount: 150, unit: g, name: Mungobohnensprossen }
       - { id: minze, amount: 1, unit: Bund, name: Minze }
       - { id: koriander, amount: 1, unit: Bund, name: Koriander }
       - { id: salat, amount: 1, name: Kopfsalat, plural: Kopfsalate, note: kleine Blätter zum Einrollen, optional: true }

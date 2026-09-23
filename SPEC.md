@@ -290,17 +290,21 @@ of the time filter (Becci adds tags as they come along):
 - { unit: Dose,     plural: Dosen,    category: count }
 - { unit: Päckchen, plural: Päckchen, category: count }
 - { unit: Bund,     plural: Bund,     category: count }
-- { unit: Zehe,     plural: Zehen,    category: count }
-- { unit: Scheibe,  plural: Scheiben, category: count }
-- { unit: Stange,   plural: Stangen,  category: count }
+- { unit: Zehe,     plural: Zehen,    category: count, compound: true }
+- { unit: Scheibe,  plural: Scheiben, category: count, compound: true }
+- { unit: Stange,   plural: Stangen,  category: count, compound: true }
 - { unit: Stück,    plural: Stück,    category: count }
 - { unit: Portion,  plural: Portionen, category: count }
 - { unit: Blech,    plural: Bleche,   category: count }
-- { unit: Blatt,    plural: Blätter,  category: count }
-- { unit: Zweig,    plural: Zweige,   category: count }
+- { unit: Blatt,    plural: Blätter,  category: count, compound: true }
+- { unit: Zweig,    plural: Zweige,   category: count, compound: true }
 ```
 
 Recipes may use either the singular or plural form of a unit; both resolve to the same entry.
+`compound: true` (optional, decided 2026-09-23) only affects the Bring! shopping list (§6.4): the
+unit is glued onto the name, "3 Knoblauchzehen" instead of "3 Zehen Knoblauch", because Bring! does
+not know such units and would otherwise create an item "Zehen Knoblauch". The site keeps showing
+"3 Zehen Knoblauch".
 
 ---
 
@@ -413,8 +417,12 @@ It is invisible; Bring! reads it for the shopping list (§6.8). Built by
 - recipeIngredient: one plain string per ingredient at the base yield, meant for machines, not
   people: decimal point ("0.5 Bund Petersilie"), hyphen for ranges ("1-2 Zehen Knoblauch"),
   kg / l from 1000 g / ml upwards ("1.5 kg Hackfleisch", both ends of a range together), the
-  plural of the unit or of a counted item above 1, then the note and "optional" after commas
-  ("1 EL Butter, optional"). No amount → the name only ("Salz").
+  plural of the unit above 1, then the note and "optional" after commas ("1 EL Butter,
+  optional"). No amount → the name only ("Salz"). Two rules only for Bring! (decided 2026-09-23
+  after the first live test): counted items keep the singular name at any amount ("2 Kopfsalat"),
+  because Bring! matches its catalogue on the singular; units marked `compound: true` in
+  `units.yaml` are glued onto the name ("3 Knoblauchzehen", "2 Porreestangen", "1 Knoblauchzehe"),
+  because Bring! does not know them as units.
 - recipeInstructions: the steps as plain text with the placeholders filled in at the base yield.
 
 ### 6.5 Images

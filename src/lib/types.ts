@@ -6,6 +6,8 @@ export interface UnitDef {
   unit: string; // singular, as written in recipes
   plural: string;
   category: UnitCategory;
+  /** shopping list line as one word, "3 Knoblauchzehen" instead of "3 Zehen Knoblauch" (SPEC.md §6.4) */
+  compound?: boolean;
 }
 
 export interface Person {

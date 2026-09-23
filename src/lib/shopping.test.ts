@@ -97,7 +97,7 @@ test('the lines use the schema.org format, with kg from 1000 g upwards', () => {
     { id: 'z', amount: 1, unit: 'Zehe', name: 'Knoblauch' },
     { id: 's', name: 'Salz' },
   ];
-  assert.deepEqual(shoppingLines([a, b], units), ['1.1 kg Hackfleisch', '2-3 Zehen Knoblauch', 'Salz']);
+  assert.deepEqual(shoppingLines([a, b], units), ['1.1 kg Hackfleisch', '2-3 Knoblauchzehen', 'Salz']);
 });
 
 test('the real recipes merge into one list without duplicates', () => {
@@ -145,5 +145,5 @@ test('the week page JSON-LD is one schema.org Recipe with the merged ingredients
   assert.equal(data['@type'], 'Recipe');
   assert.equal(data.name, 'Wochenplan 28. September – 2. Oktober');
   assert.equal(data.image, undefined);
-  assert.deepEqual(data.recipeIngredient, ['2 Zwiebeln']);
+  assert.deepEqual(data.recipeIngredient, ['2 Zwiebel']);
 });

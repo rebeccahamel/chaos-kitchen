@@ -20,13 +20,21 @@ const salat: Ingredient = { id: 'salat', name: 'Salat', note: 'klein', optional:
 
 test('ingredient lines use plain numbers, units and names', () => {
   assert.equal(ingredientLine(reis, units), '300 g Basmatireis');
-  assert.equal(ingredientLine(karotte, units), '2 Karotten');
+  assert.equal(ingredientLine(karotte, units), '2 Karotte');
   assert.equal(ingredientLine(zwiebel, units), '1 Zwiebel');
   assert.equal(ingredientLine(salz, units), 'Salz');
 });
 
 test('ranges use a plain hyphen and the plural of the unit', () => {
-  assert.equal(ingredientLine(knoblauch, units), '1-2 Zehen Knoblauch');
+  assert.equal(ingredientLine({ id: 'sahne', amount: [100, 150], unit: 'ml', name: 'Sahne' }, units), '100-150 ml Sahne');
+  assert.equal(ingredientLine({ id: 'k', amount: [1, 2], unit: 'Dose', name: 'Kokosmilch' }, units), '1-2 Dosen Kokosmilch');
+});
+
+test('compound units are glued onto the name for Bring!, singular below 2', () => {
+  assert.equal(ingredientLine(knoblauch, units), '1-2 Knoblauchzehen');
+  assert.equal(ingredientLine({ ...knoblauch, amount: 1 }, units), '1 Knoblauchzehe');
+  assert.equal(ingredientLine({ id: 'p', amount: 2, unit: 'Stangen', name: 'Porree' }, units), '2 Porreestangen');
+  assert.equal(ingredientLine({ id: 'r', amount: 16, unit: 'Blatt', name: 'Reispapier' }, units), '16 Reispapierblätter');
 });
 
 test('g and ml switch to kg and l from 1000 upwards, ranges as a pair', () => {
@@ -73,7 +81,7 @@ test('a whole recipe becomes a schema.org Recipe', () => {
   const ingredients = data.recipeIngredient as string[];
   assert.equal(ingredients.length, 19);
   assert.equal(ingredients[0], '300 g Basmatireis');
-  assert.ok(ingredients.includes('2 Stangen Porree'));
+  assert.ok(ingredients.includes('2 Porreestangen'));
   assert.ok(ingredients.includes('0.5 Bund Petersilie, glatt'));
   assert.ok(ingredients.includes('1 EL Butter, optional'));
   assert.ok(ingredients.includes('Salz'));
