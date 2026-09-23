@@ -10,3 +10,6 @@ node_modules/
 .env.*
 .DS_Store
 Thumbs.db
+
+# meal planner: private household profile and private weekly plans (MEAL_PLANNER.md §14)
+planner/private/
