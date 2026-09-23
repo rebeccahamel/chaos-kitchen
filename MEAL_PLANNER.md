@@ -55,8 +55,11 @@ Asian meal a week, at most about two Italian. All proteins and all carbs welcome
 carrots, broccoli, peppers, leek, broadly anything. Fruit: peaches, apples, bananas, berries,
 kiwi, nectarines. Most dairy is fine; no strong cheeses such as blue cheese.
 
-**Dislikes.** Mushrooms, for one adult: small amounts are fine when finely chopped into a strong
-sauce or easy to pick out, so not a ban. Overcooked pasta. No other "tired of" foods at the moment.
+**Dislikes.** Cucumber, for one adult, in any form including pickled: treated as an exclusion,
+never used (added 2026-09-23). Raw bell pepper and raw tomato, for the same adult: cooked is fine;
+raw only in a salad or sandwich, and such salads and sandwiches sparingly (added 2026-09-23).
+Mushrooms, for one adult: small amounts are fine when finely chopped into a strong sauce or easy
+to pick out, so not a ban. Overcooked pasta. No other "tired of" foods at the moment.
 
 ---
 
