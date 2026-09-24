@@ -3,7 +3,7 @@
 The planner is a conversation with Claude Code, not a program. Claude Code plans, writes the
 recipe files and the plan file, and keeps the history; the website only shows the result
 (MEAL_PLANNER.md §14). This file is the operating manual: the files, the weekly routine, the two
-prompts, and the rules Claude Code follows while planning.
+prompts, the rules Claude Code follows while planning, and the Todoist step.
 
 ## Files
 
@@ -40,6 +40,7 @@ Week numbers are ISO weeks (Monday first): `2026-W40` is 28 September – 4 Octo
    - `planner/private/profile.md` if the request contained a lasting preference (also note it
      in the chat so Becci sees it).
    Then it ends with the commit and push commands. Pushing `main` publishes the week.
+   Finally it puts the week's meals into Todoist (see "Todoist" below).
 6. **Becci cooks.** The family sees the week on the homepage and uses the Bring! button.
 7. **After the week, Becci reviews** with prompt B: loved / liked / fine / disliked per meal,
    comments, and which recipes stay. Claude Code updates the history file, removes `trial: true`
@@ -118,6 +119,33 @@ MEAL_PLANNER.md §8: the at-a-glance table, the dinners with their key preparati
 shopping strategy (offers, reuse, seasonal produce), the shopping list by section, an
 approximate cost when prices are known. This is where store names, prices and anything
 personal go; nothing of it is needed on the site.
+
+## Todoist
+
+The family's meals live as tasks in Becci's Todoist project **Speiseplan**, so the day's meal
+shows up in her task list. Claude Code writes them through the official Todoist MCP server.
+Its public address is declared in `.mcp.json` at the repository root; the sign-in happens once
+per PC with `/mcp` in Claude Code and is stored outside the repository. This step is the last
+one after GO in prompt A; if the plan changes later, run it again with:
+
+```
+Send the week to Todoist. Read planner/README.md and follow it.
+```
+
+Rules:
+
+- **One task per meal** in `src/data/plan.yaml`, days before today skipped. Lunch is due on its
+  day at 12:00, dinner at 18:30.
+- **The title is the dish only**, no "Mittagessen:" prefix: for a recipe its title, for
+  leftovers "Reste: <title of that dinner>", for a text meal the text as written.
+- **The description holds the link** to the recipe page on the live site,
+  `https://rebeccahamel.github.io/chaos-kitchen/rezept/<slug>/`; for leftovers the link of the
+  original recipe; text meals get no description.
+- **No duplicates.** Before creating, list the open tasks of the project Speiseplan due on the
+  plan's dates and delete them; never touch tasks outside that project or on other dates.
+- No labels, priorities, sections or reminders; Todoist's own defaults apply.
+- Finish with a short table in the chat: date, time, title, so Becci can compare it with the
+  plan. If the Todoist server is not connected, say so and point to `/mcp`.
 
 **Nothing personal in git.** Recipe files, `plan.yaml` and the history never mention ages,
 allergies as such, store branches or addresses. "Toddler portion" and "Portion für die Kleine"

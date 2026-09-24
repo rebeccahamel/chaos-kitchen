@@ -384,6 +384,12 @@ tiny pages, roughly 5 MB and a few seconds of build time. Consolidation merges i
 normalised name and unit at each recipe's base yield; imperfect merges ("Zwiebel" vs "rote
 Zwiebel") are accepted and tuned after a few weeks of use. Works only against the live site.
 
+**Todoist (decided 2026-09-24).** After GO, the week's meals also go into Becci's Todoist project
+"Speiseplan" as one task per meal: lunch due 12:00, dinner 18:30, title is the dish, description
+the recipe link, leftovers as "Reste: …", text meals as written. Existing tasks of the project on
+the same dates are replaced. Written through the official Todoist MCP server (`.mcp.json` holds
+only its public address, the sign-in stays on the PC). Rules in `planner/README.md`.
+
 **Not in the first version.** Cost estimates on the site, per-person profiles, offer history,
 anything from the handoff's "later features" list.
 
