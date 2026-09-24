@@ -1,32 +1,44 @@
 title: Sommerrollen mit Erdnusssauce
-description: Frische Reispapierrollen zum Selberrollen am Tisch, mit Glasnudeln, Möhren, Sprossen, Kräutern, Hähnchen, Steak, Tofu und Shiitake. Was übrig bleibt, wird am nächsten Tag ein lauwarmer Glasnudelsalat.
+description: Frische Reispapierrollen zum Selberrollen am Tisch, mit Glasnudeln, Möhren, Sprossen, Kräutern, Hähnchen, Steak, knusprigem Tofu und Shiitake. Was übrig bleibt, wird am nächsten Tag ein lauwarmer Glasnudelsalat.
 author: becci
 added: 2026-09-23
 trial: true
 yield: { amount: 4, unit: Portionen }
-time: { prep: 35, cook: 10 }
+time: { prep: 35, cook: 15 }
 tags: [abendessen, mittagessen, fleisch, asiatisch, sommer]
 
 ingredients:
   - group: Für die Füllung
     items:
       - { id: reispapier, amount: 16, unit: Blatt, name: Reispapier }
-      - { id: glasnudeln, amount: 100, unit: g, name: Glasnudeln }
+      - { id: glasnudeln, amount: 75, unit: g, name: Glasnudeln }
       - { id: moehren, amount: 2, name: Möhre, plural: Möhren }
-      - { id: sprossen, amount: 150, unit: g, name: Mungobohnensprossen }
+      - { id: sprossen, amount: 75, unit: g, name: Mungobohnensprossen }
       - { id: minze, amount: 1, unit: Bund, name: Minze }
       - { id: koriander, amount: 1, unit: Bund, name: Koriander }
-      - { id: salat, amount: 1, name: Kopfsalat, plural: Kopfsalate, note: kleine Blätter zum Einrollen, optional: true }
-      - { id: mango, amount: 1, name: Mango, plural: Mangos, note: reif, optional: true }
-      - { id: haehnchen, amount: 250, unit: g, name: Hähnchenbrust }
-      - { id: steak, amount: 250, unit: g, name: Rindersteak, note: z. B. Hüfte oder Rumpsteak }
-      - { id: tofu, amount: 200, unit: g, name: Tofu, note: fest }
-      - { id: shiitake, amount: 150, unit: g, name: Shiitake }
-      - { id: sojasauce-marinade, amount: 3, unit: EL, name: Sojasauce }
-      - { id: sesamoel, amount: 1, unit: EL, name: Sesamöl }
+      - { id: salat, amount: 4, unit: Blätter, name: Kopfsalat, plural: Kopfsalate, note: kleine Blätter zum Einrollen, optional: true }
+      - { id: mango, amount: 0.5, name: Mango, plural: Mangos, note: reif, optional: true }
+  - group: Für Hähnchen und Steak
+    items:
+      - { id: haehnchen, amount: 200, unit: g, name: Hähnchenbrust }
+      - { id: steak, amount: 200, unit: g, name: Rindersteak, note: z. B. Hüfte oder Rumpsteak }
       - { id: ingwer, amount: 1, unit: Stück, name: Ingwer, note: daumengroß }
       - { id: knoblauch, amount: 2, unit: Zehen, name: Knoblauch }
+      - { id: sojasauce-marinade, amount: 2, unit: EL, name: Sojasauce }
+      - { id: sesamoel, amount: 1, unit: EL, name: Sesamöl }
       - { id: oel, amount: 2, unit: EL, name: Öl, note: neutral zum Braten }
+  - group: Für den Tofu
+    items:
+      - { id: tofu, amount: 200, unit: g, name: Tofu, note: fest }
+      - { id: sojasauce-tofu, amount: 2, unit: EL, name: Sojasauce }
+      - { id: reisessig-tofu, amount: 1, unit: EL, name: Reisessig }
+      - { id: zucker-tofu, amount: 1, unit: TL, name: Zucker }
+  - group: Für die Shiitake
+    items:
+      - { id: shiitake, amount: 20, unit: g, name: Shiitake, note: getrocknet }
+      - { id: sojasauce-shiitake, amount: 1, unit: EL, name: Sojasauce }
+      - { id: mirin, amount: 1, unit: EL, name: Mirin }
+      - { id: reisessig-shiitake, amount: 1, unit: TL, name: Reisessig }
   - group: Für die Erdnusssauce
     items:
       - { id: erdnussbutter, amount: 4, unit: EL, name: Erdnussbutter }
@@ -49,10 +61,13 @@ ingredients:
 steps:
   - group: Vorbereitung
     items:
+      - "{shiitake} in einer Schüssel mit kochend heißem Wasser übergießen und 10 Minuten einweichen. Abgießen und das Pilzwasser aufheben: Eingefroren ist es die Basis für eine Pilzrahmsuppe. Die harten Stiele entfernen, die Hüte in Streifen schneiden. {sojasauce-shiitake}, {mirin} und {reisessig-shiitake} verrühren, über die Pilze geben und ziehen lassen."
+      - "{ingwer} und {knoblauch} fein reiben und mit {sojasauce-marinade} und {sesamoel} verrühren. {haehnchen} und {steak} im Ganzen darin 10 Minuten ziehen lassen. Das Fleisch wird erst nach dem Braten geschnitten."
       - "{glasnudeln} nach Packungsanweisung in heißem Wasser einweichen (meist 5 Minuten), abgießen, kalt abschrecken und mit der Küchenschere etwas kürzer schneiden."
-      - "{ingwer} und {knoblauch} fein reiben und mit {sojasauce-marinade} und {sesamoel} verrühren. {haehnchen} und {steak} in fingerdicke Streifen, {tofu} in Stifte schneiden. Alle drei getrennt in je einem Drittel der Marinade 10 Minuten ziehen lassen."
       - "In der Zwischenzeit {moehren} schälen und in feine Streifen hobeln oder schneiden, {sprossen} waschen, {minze} und {koriander} zupfen, den {salat:name} in kleine Blätter teilen. Die {mango:name} schälen und in Streifen schneiden. Alles in Schälchen auf den Tisch stellen."
-      - "{shiitake} in Scheiben schneiden. {oel} in einer Pfanne stark erhitzen und nacheinander anbraten: Hähnchen 4–5 Minuten, Steak 2 Minuten pro Seite (kurz ruhen lassen, dann in Streifen schneiden), Tofu rundum goldbraun, Shiitake mit einem Spritzer Sojasauce. Warm halten."
+      - "{oel:1/2} in einer Pfanne stark erhitzen. Das Hähnchen im Ganzen 5–6 Minuten pro Seite braten (eine dicke Brust vorher waagerecht halbieren), das Steak 2–3 Minuten pro Seite. Beides auf einem Brett 5 Minuten ruhen lassen und erst dann quer zur Faser in Streifen schneiden, so bleibt das Fleisch saftig."
+      - "{tofu} trocken tupfen und in Streifen schneiden. Das restliche Öl ({oel:1/2}) in der Pfanne bei mittlerer bis hoher Hitze erhitzen und den Tofu rundum knusprig braten. {sojasauce-tofu}, {reisessig-tofu} und {zucker-tofu} verrühren, in die Pfanne gießen und unter Schwenken in etwa einer Minute einkochen, bis der Tofu glasiert ist. So bleibt er knusprig."
+      - "Die Shiitake mit ihrer Marinade in die Pfanne geben und 2–3 Minuten braten, bis die Flüssigkeit verdampft ist. Alles warm halten."
   - group: Erdnusssauce
     items:
       - "{erdnussbutter}, {sojasauce-sauce}, den Saft der {limette-sauce:name}, {honig} und den fein geriebenen {knoblauch-sauce:name} verrühren. Nach und nach {wasser} zugeben, bis die Sauce dickflüssig, aber löffelbar ist. {sriracha} extra dazustellen, dann bleiben die Rollen für die Kleine mild."
