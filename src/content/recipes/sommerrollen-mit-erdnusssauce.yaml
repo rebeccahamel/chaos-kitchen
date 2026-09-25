@@ -43,14 +43,12 @@ ingredients:
     items:
       - { id: erdnussbutter, amount: 4, unit: EL, name: Erdnussbutter }
       - { id: sojasauce-sauce, amount: 2, unit: EL, name: Sojasauce }
-      - { id: limette-sauce, amount: 1, name: Limette, plural: Limetten }
-      - { id: honig, amount: 1, unit: EL, name: Honig }
       - { id: knoblauch-sauce, amount: 1, unit: Zehe, name: Knoblauch }
       - { id: wasser, amount: 60, unit: ml, name: Wasser, note: warm }
       - { id: sriracha, name: Sriracha, note: nach Geschmack, optional: true }
   - group: Für den nächsten Tag (lauwarmer Glasnudelsalat)
     items:
-      - { id: limette-dressing, amount: 2, name: Limette, plural: Limetten }
+      - { id: limette-dressing, amount: 1, name: Limette, plural: Limetten }
       - { id: sojasauce-dressing, amount: 2, unit: EL, name: Sojasauce }
       - { id: sesamoel-dressing, amount: 1, unit: EL, name: Sesamöl }
       - { id: honig-dressing, amount: 1, unit: TL, name: Honig }
@@ -70,7 +68,7 @@ steps:
       - "Die Shiitake mit ihrer Marinade in die Pfanne geben und 2–3 Minuten braten, bis die Flüssigkeit verdampft ist. Alles warm halten."
   - group: Erdnusssauce
     items:
-      - "{erdnussbutter}, {sojasauce-sauce}, den Saft der {limette-sauce:name}, {honig} und den fein geriebenen {knoblauch-sauce:name} verrühren. Nach und nach {wasser} zugeben, bis die Sauce dickflüssig, aber löffelbar ist. {sriracha} extra dazustellen, dann bleiben die Rollen für die Kleine mild."
+      - "{erdnussbutter}, {sojasauce-sauce} und den fein geriebenen {knoblauch-sauce:name} verrühren. Nach und nach {wasser} zugeben, bis die Sauce dickflüssig, aber löffelbar ist. {sriracha} extra dazustellen, dann bleiben die Rollen für die Kleine mild."
   - group: Rollen
     items:
       - "Eine große Schüssel mit lauwarmem Wasser auf den Tisch stellen. Je ein Blatt {reispapier:name} 5–10 Sekunden eintauchen, auf einen feuchten Teller legen und kurz warten, bis es weich wird. Insgesamt werden etwa {reispapier} gebraucht."
