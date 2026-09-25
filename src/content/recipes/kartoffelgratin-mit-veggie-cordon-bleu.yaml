@@ -33,9 +33,10 @@ ingredients:
       - { id: oel, amount: 4, unit: EL, name: Olivenöl }
 
 steps:
-  - "Den Backofen auf 200 °C Ober-/Unterhitze vorheizen. {kartoffeln} schälen und in dünne Scheiben hobeln, etwa 2–3 mm."
-  - "{knoblauch} fein hacken oder pressen. {rosmarin} waschen, die Blätter abstreifen und fein hacken. Beides zusammen mit {sahne} und {milch} in einem Messbecher vermischen, und mit {salz:name}, {pfeffer:name} und {muskat} kräftig würzen. Die Kartoffelscheiben in einen Topf geben und mit der Milch-Sahne-Mischung übergießen. Bei mittelhoher Hitze aufkochen und 8–10 Minuten leise köcheln lassen, bis die Kartoffeln fast gar sind."
-  - "Alles in die Auflaufform geben, glatt streichen, mit {gratinkaese} bestreuen und 25–30 Minuten backen, bis die Oberfläche goldbraun ist."
-  - "{cordon-bleu} nach Packungsanweisung in der Pfanne oder Heißluftfritteuse zubereiten, meist 12–15 Minuten."
+  - "{kartoffeln} schälen und in dünne Scheiben hobeln, etwa 2–3 mm."
+  - "{knoblauch} fein hacken oder pressen. {rosmarin} waschen, die Blätter abstreifen und fein hacken. Beides zusammen mit {sahne} und {milch} in einem Messbecher vermischen, und mit {salz:name}, {pfeffer:name} und {muskat} kräftig würzen."
+  - " Nun den Backofen auf 200 °C Ober-/Unterhitze vorheizen. Die Kartoffelscheiben in einen Topf geben und mit der Milch-Sahne-Mischung übergießen. Bei mittelhoher Hitze aufkochen und 8–10 Minuten leise köcheln lassen, bis die Kartoffeln fast gar sind."
+  - "Alles in die Auflaufform geben, glatt streichen, mit {gratinkaese} bestreuen und 20-25 Minuten backen, bis die Oberfläche goldbraun ist."
+  - "{cordon-bleu} nach Packungsanweisung in der Pfanne oder Heißluftfritteuse zubereiten, meist 6-8 Minuten."
   - "Für den Salat den {kopfsalat:name} waschen und zupfen, {radieschen} in Scheiben schneiden, {schnittlauch} in Röllchen. {senf}, {essig}, {honig}, Salz und Pfeffer verrühren, {oel} unterschlagen und erst kurz vor dem Servieren mit dem Salat mischen."
   - "Gratin und Cordon bleu mit dem Salat servieren."
