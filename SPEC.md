@@ -637,7 +637,8 @@ Done (2026-09-23, branch `meal_planner`): weekly plan with tick boxes, merged sh
 the Bring! week button (§6.9), trial recipes (§4.3), planner workflow and prompt templates
 (planner/README.md). Merged the same day; the week button passed its live test.
 Done (2026-09-26): the plan covers Monday to Sunday, weekends free by default (§6.9,
-MEAL_PLANNER.md §3); recipe cap stays at 10.
+MEAL_PLANNER.md §3); recipe cap stays at 10. Week 2026-W39 reviewed: Sommerrollen and
+Kartoffelgratin kept, Ofenlachs still open; the plan on the site extended to 28 September.
 
 The remaining small tasks of version 1 (more recipes and photos, avatars, step pictures, defaults
 to confirm) are tracked on the `main` branch, not here.
