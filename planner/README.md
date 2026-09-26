@@ -13,7 +13,7 @@ prompts, the rules Claude Code follows while planning, and the Todoist step.
 | `planner/private/profile.md` | **no** | Everything personal: allergy, ages, stores, schedule. Read every time. |
 | `planner/private/plans/<year>-W<week>.md` | **no** | The private plan for Becci: offers, shopping strategy, cost, the full shopping list by section. |
 | `planner/history/<year>-W<week>.md` | yes | One file per planned week: request, meals, ratings, verdicts. The planner's memory. |
-| `src/data/plan.yaml` | yes | The public plan the homepage renders. |
+| `src/data/plan.yaml` | yes | The public plan the homepage renders: this week and, once planned, the next. |
 | `src/content/recipes/<slug>.yaml` | yes | Recipes. New ones of the week carry `trial: true`. |
 
 Week numbers are ISO weeks (Monday first): `2026-W40` is 28 September – 4 October 2026.
@@ -24,7 +24,8 @@ Week numbers are ISO weeks (Monday first): `2026-W40` is 28 September – 4 Octo
    request in her own words. No form, no restating the profile.
 2. **Claude Code reads** (in this order): `MEAL_PLANNER.md`, `planner/private/profile.md`, the
    last four files in `planner/history/`, the titles and tags of all recipes in
-   `src/content/recipes/`, and the current `src/data/plan.yaml`.
+   `src/content/recipes/`, and the current `src/data/plan.yaml` (a week already there that
+   reaches into the new one, e.g. a Monday lunch of leftovers, stays where it is).
 3. **Claude Code fetches current context** with its web tools: this week's offers at the stores
    in the profile (Edeka, REWE, Aldi) and what is in season. Every offer is noted with its
    validity period and the date it was fetched. If an offer page cannot be read, say so and
@@ -112,9 +113,13 @@ with store, product, price, validity and fetch date.
 At most 10 different recipes in the plan (`MAX_PLAN_RECIPES`); a normal week has 5–7, a full
 seven-day week with cooked lunches comes close to the cap, so use leftovers and text meals there.
 
-**plan.yaml.** One entry per planned meal: `{ recipe: <slug> }`, `{ leftovers: <date> }` for a
-lunch from an earlier dinner, `{ text: "…" }` for anything else. Days that are out get no
-lunch and no dinner. The `note` is one sentence for the family, no personal details.
+**plan.yaml.** The file holds `weeks`, at most two in date order. The new week is added at the
+end; a week whose last day is before today is removed; the weeks must not overlap, so the new
+week starts after the last day already in the file. Within a week, one entry per planned meal:
+`{ recipe: <slug> }`, `{ leftovers: <date> }` for a lunch from an earlier dinner of the same
+week, `{ text: "…" }` for anything else. Days that are out get no lunch and no dinner. The
+`note` is one sentence for the family, no personal details. The homepage shows both weeks as a
+swipeable strip and opens on the one that contains today.
 
 **The private plan** (`planner/private/plans/<week>.md`) follows the output shape in
 MEAL_PLANNER.md §8: the at-a-glance table, the dinners with their key preparation note, the
@@ -136,8 +141,9 @@ Send the week to Todoist. Read planner/README.md and follow it.
 
 Rules:
 
-- **One task per meal** in `src/data/plan.yaml`, days before today skipped. Lunch is due on its
-  day at 12:00, dinner at 18:30.
+- **One task per meal** of the week just planned in `src/data/plan.yaml` (the other week is
+  already in Todoist), days before today skipped. Lunch is due on its day at 12:00, dinner at
+  18:30.
 - **The title is the dish only**, no "Mittagessen:" prefix: for a recipe its title, for
   leftovers "Reste: <title of that dinner>", for a text meal the text as written.
 - **The description holds the link** to the recipe page on the live site,

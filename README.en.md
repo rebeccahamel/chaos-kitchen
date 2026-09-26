@@ -278,8 +278,9 @@ working with Claude Code are in [CLAUDE.md](CLAUDE.md).
 
 The homepage starts with "Diese Woche": the family's planned lunches and dinners with tick
 boxes, a Bring! button for the ingredients of all ticked recipes, and a merged shopping list. The
-plan lives in [src/data/plan.yaml](src/data/plan.yaml); the file explains its own format. With
-`days: []` the section disappears.
+plan lives in [src/data/plan.yaml](src/data/plan.yaml) and may hold two weeks, this one and the
+next; the homepage swipes or clicks between them. The file explains its own format. With
+`weeks: []` the section disappears.
 
 The plan is not written by hand but in a session with Claude Code, which also writes the new
 recipes. How that works is in [planner/README.md](planner/README.md). New recipes of a week carry

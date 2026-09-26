@@ -107,7 +107,7 @@ Constraints:
       ├─ index.astro             overview with search, filters, sorting
       ├─ impressum.astro         Impressum (§6.7)
       ├─ rezept/[slug].astro     one page per recipe
-      └─ woche/liste/[selection].astro  hidden week list pages for Bring! (§6.9)
+      └─ woche/[week]/liste/[selection].astro  hidden week list pages for Bring! (§6.9)
 ```
 
 Files starting with `_` in `src/content/recipes/` are ignored by the build.
@@ -503,35 +503,47 @@ as a secondary button (outlined in Rost, no logo, no icon). It points to
 Decided 2026-09-23; background and the planning workflow in MEAL_PLANNER.md §14 and
 planner/README.md. The planning happens in Claude Code sessions; the site only shows the result.
 
-- `src/data/plan.yaml` holds one week: an optional `note` and `days`, each with a `date` and
-  optionally `lunch` and `dinner`. A meal is `{ recipe: <slug> }`, `{ leftovers: <date> }`
-  (an earlier day of the plan on which a recipe is cooked) or `{ text: "…" }`. A day without
-  meals is free. A recipe appears at most once per plan; at most 10 different recipes.
-  `days: []` means no plan. The days are any dates, normally one Monday-to-Sunday week
-  (decided 2026-09-26: weekends stay free unless the request plans them, MEAL_PLANNER.md §3).
-- **Homepage section "Diese Woche"** above the search, only when there is a plan: the date range,
-  the note, the days with weekday name, lunch and dinner. Recipe meals are mini cards (thumbnail,
-  title, total time) linking to the recipe page; leftovers say "Reste: <title>" with a link;
-  text meals are plain; free days say "frei". One column on phones, weekday / Mittag / Abend
-  columns from 720 px. The section stays until the plan is replaced.
-- **Tick boxes**, one per recipe meal, all ticked at first, with "Alle" / "Keine". They decide
-  which recipes go on the shopping list. Each visitor's ticks are stored in their own browser per
-  week (localStorage keyed by the first day); they never affect anyone else.
-- **Button „Zutaten der Woche an Bring! senden“** (styled like §6.8) and a collapsible merged
-  shopping list of the ticked recipes, computed in the browser. With nothing ticked the button is
+- `src/data/plan.yaml` holds `weeks`: at most two weeks in date order that do not overlap
+  (decided 2026-09-26, so that the next week can be planned and shopped while this one runs).
+  A week is an optional `note` and `days`, each with a `date` and optionally `lunch` and
+  `dinner`. A meal is `{ recipe: <slug> }`, `{ leftovers: <date> }` (an earlier day of the same
+  week on which a recipe is cooked) or `{ text: "…" }`. A day without meals is free. A recipe
+  appears at most once per week; at most 10 different recipes per week. `weeks: []` means no
+  plan. The days of a week are any dates, normally one Monday-to-Sunday week (weekends stay
+  free unless the request plans them, MEAL_PLANNER.md §3). The planner adds the new week at
+  the end and drops a finished week.
+- **Homepage section "Diese Woche"** above the search, only when there is a plan: one slide per
+  week with its label, date range, the note, and the days with weekday name, lunch and dinner.
+  Recipe meals are mini cards (thumbnail, title, total time) linking to the recipe page;
+  leftovers say "Reste: <title>" with a link; text meals are plain; free days say "frei". One
+  column on phones, weekday / Mittag / Abend columns from 720 px. The section stays until the
+  plan is replaced.
+- **Two weeks side by side:** the slides sit in a strip that swipes on phones (CSS scroll snap,
+  like the picture carousel §6.5) with arrows at the top right. A script opens the strip on the
+  last week that has started by today (local date) and labels the slides "Diese Woche",
+  "Nächste Woche" or, for a finished week that is still in the file, "Letzte Woche". Without
+  JavaScript the first week is "Diese Woche", the second "Nächste Woche", and the strip still
+  scrolls.
+- **Tick boxes**, one per recipe meal, all ticked at first, with "Alle" / "Keine" per week. They
+  decide which recipes go on that week's shopping list. Each visitor's ticks are stored in their
+  own browser per week (localStorage keyed by the week's first day); they never affect anyone
+  else or the other week.
+- **Button „Zutaten der Woche an Bring! senden“** (styled like §6.8) per week and a collapsible
+  merged shopping list of the ticked recipes, computed in the browser. With nothing ticked the button is
   disabled and the list says so. Without JavaScript the page shows all recipes ticked and the
   button sends the whole week.
 - **Merging** (`src/lib/shopping.ts`): ingredients of the ticked recipes at each recipe's base
   yield, merged by name (case and umlauts ignored) and unit (singular = plural); amounts and
   ranges add up; per-recipe notes are dropped; "(optional)" only when optional everywhere;
   order of first appearance. Imperfect merges ("Zwiebel" vs "rote Zwiebel") are accepted.
-- **Hidden week pages** `/woche/liste/<selection>/`: Bring! fetches the page behind the link and
-  reads its JSON-LD, so it cannot see the ticks. The build therefore generates one page per
-  possible selection, addressed by a string of 0 and 1 in plan order ("101" = first and third
-  recipe). Each carries one schema.org Recipe named "Wochenplan <dates>" with the merged
-  ingredients, the picture of the first selected recipe, and the list as readable text. 10
-  recipes mean 1023 pages of about 14 KB. Not linked anywhere except from the button. Like all
-  pages they carry `noindex`.
+- **Hidden week pages** `/woche/<first day>/liste/<selection>/`: Bring! fetches the page behind
+  the link and reads its JSON-LD, so it cannot see the ticks. The build therefore generates, per
+  week, one page per possible selection, addressed by the week's first day and a string of 0
+  and 1 in plan order ("2026-09-28/liste/101" = first and third recipe of that week). Each
+  carries one schema.org Recipe named "Wochenplan <dates>" with the merged ingredients, the
+  picture of the first selected recipe, and the list as readable text. 10 recipes mean 1023
+  pages of about 14 KB per week, so at most 2046. Not linked anywhere except from the button.
+  Like all pages they carry `noindex`.
 - **Trial recipes:** new recipes of a week carry `trial: true` (§4.3) and stay off the overview
   until Becci keeps them (field removed) or drops them (file deleted).
 
@@ -549,8 +561,10 @@ The build fails with a clear message naming the file and the problem when:
 - a step placeholder references an unknown id or has invalid syntax
 - a range has `min >= max`
 - two recipe files produce the same slug
-- the weekly plan (§6.9) points at a recipe that does not exist, repeats a recipe, has unsorted or
-  duplicate days, leftovers of a day that is not earlier or cooks nothing, or more than 10 recipes
+- the weekly plan (§6.9) points at a recipe that does not exist, repeats a recipe within a week,
+  has unsorted or duplicate days, leftovers of a day that is not earlier in the same week or
+  cooks nothing, more than 10 recipes in a week, more than 2 weeks, or weeks out of order or
+  overlapping
 
 The build shows a warning (but continues) when:
 
@@ -639,6 +653,8 @@ the Bring! week button (§6.9), trial recipes (§4.3), planner workflow and prom
 Done (2026-09-26): the plan covers Monday to Sunday, weekends free by default (§6.9,
 MEAL_PLANNER.md §3); recipe cap stays at 10. Week 2026-W39 reviewed: Sommerrollen and
 Kartoffelgratin kept, Ofenlachs still open; the plan on the site extended to 28 September.
+The plan file holds up to two weeks and the homepage shows them as a swipeable strip with
+arrows, so next week can be planned and shopped while this one runs (§6.9).
 
 The remaining small tasks of version 1 (more recipes and photos, avatars, step pictures, defaults
 to confirm) are tracked on the `main` branch, not here.

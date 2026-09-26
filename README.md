@@ -280,8 +280,9 @@ die Arbeit mit Claude Code stehen in [CLAUDE.md](CLAUDE.md).
 
 Die Startseite zeigt oben „Diese Woche“: die geplanten Mittag- und Abendessen der Familie mit
 Häkchen, einem Bring!-Knopf für die Zutaten aller angehakten Rezepte und einer zusammengefassten
-Einkaufsliste. Der Plan steht in [src/data/plan.yaml](src/data/plan.yaml); die Datei erklärt ihr
-Format selbst. Mit `days: []` verschwindet der Abschnitt.
+Einkaufsliste. Der Plan steht in [src/data/plan.yaml](src/data/plan.yaml) und kann zwei Wochen
+enthalten, diese und die nächste; auf der Startseite wischt oder klickt man zwischen ihnen. Die
+Datei erklärt ihr Format selbst. Mit `weeks: []` verschwindet der Abschnitt.
 
 Der Plan entsteht nicht von Hand, sondern in einer Sitzung mit Claude Code, die auch die neuen
 Rezepte schreibt. Wie das abläuft, steht in [planner/README.md](planner/README.md). Neue Rezepte
