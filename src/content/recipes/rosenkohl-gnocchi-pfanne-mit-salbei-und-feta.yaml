@@ -1,0 +1,30 @@
+title: Rosenkohl-Gnocchi-Pfanne mit Salbei und Feta
+description: Rosenkohl kräftig angebraten, Gnocchi knusprig in Salbeibutter, dazu Feta und Walnüsse – ein schnelles Herbstessen aus einer Pfanne, in 25 Minuten fertig.
+author: becci
+added: 2026-09-26
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 15 }
+tags: [abendessen, mittagessen, vegetarisch, herbst]
+
+ingredients:
+  - { id: rosenkohl, amount: 500, unit: g, name: Rosenkohl }
+  - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
+  - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+  - { id: olivenoel, amount: 2, unit: EL, name: Olivenöl }
+  - { id: gnocchi, amount: 1, unit: kg, name: Gnocchi, note: "aus dem Kühlregal, 2 Packungen" }
+  - { id: butter, amount: 40, unit: g, name: Butter }
+  - { id: salbei, amount: 1, unit: Bund, name: Salbei, note: "etwa 10 Blätter" }
+  - { id: zitrone, amount: 0.5, name: Zitrone, plural: Zitronen }
+  - { id: feta, amount: 150, unit: g, name: Feta }
+  - { id: walnuesse, amount: 50, unit: g, name: Walnüsse, note: grob gehackt, optional: true }
+  - { id: muskat, name: Muskatnuss }
+  - { id: salz, name: Salz }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{rosenkohl} putzen und halbieren, große Röschen vierteln. {zwiebel} fein würfeln, {knoblauch} in Scheiben schneiden."
+  - "{olivenoel} in einer großen Pfanne erhitzen, den Rosenkohl mit der Schnittfläche nach unten hineinlegen und 4–5 Minuten kräftig anbraten, bis er braune Stellen hat. Zwiebel und Knoblauch dazugeben und 2 Minuten mitbraten. Einen Schluck Wasser angießen, Deckel auflegen und 5 Minuten garen, bis der Rosenkohl bissfest ist. Aus der Pfanne nehmen."
+  - "{butter} in derselben Pfanne aufschäumen lassen, die Blätter vom {salbei:name} hineingeben und {gnocchi} darin 5–6 Minuten goldbraun und knusprig braten, dabei nur ab und zu wenden."
+  - "Den Rosenkohl wieder dazugeben. {zitrone} auspressen und den Saft darübergeben, mit {muskat:name}, {salz:name} und {pfeffer:name} abschmecken."
+  - "{feta} darüberbröseln, {walnuesse} darüberstreuen und sofort servieren. Für die Kleine ein paar Röschen und Gnocchi klein schneiden, Walnüsse weglassen."

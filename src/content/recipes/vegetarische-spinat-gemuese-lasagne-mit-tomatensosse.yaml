@@ -1,0 +1,48 @@
+title: Vegetarische Spinat-Gemüse-Lasagne mit Tomatensoße
+description: Cremige Spinat-Gemüse-Füllung mit Kräuterfrischkäse, dazu eine sämige Tomatensoße und viel Käse obendrauf – unser Familienklassiker nach einem Chefkoch-Rezept, hier für vier Portionen.
+author: becci
+added: 2026-09-26
+yield: { amount: 4, unit: Portionen }
+time: { prep: 25, cook: 55 }
+tags: [abendessen, mittagessen, vegetarisch, italienisch]
+
+ingredients:
+  - group: Für die Spinatfüllung
+    items:
+      - { id: moehren, amount: 2, name: Möhre, plural: Möhren, note: groß }
+      - { id: champignons, amount: 7, name: Champignon, plural: Champignons, note: mittelgroß }
+      - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln, note: groß }
+      - { id: oel, amount: 1, unit: EL, name: Öl }
+      - { id: milch, amount: 5, unit: EL, name: Milch }
+      - { id: spinat, amount: 540, unit: g, name: Rahmspinat, note: TK }
+      - { id: frischkaese, amount: 1, unit: Päckchen, name: Kräuterfrischkäse, note: "ca. 200 g" }
+      - { id: bruehe, amount: 1, unit: EL, name: Gemüsebrühe, note: "Pulver, gestrichen" }
+      - { id: knoblauch-fuellung, amount: 1, unit: Zehe, name: Knoblauch }
+      - { id: chili, amount: 2, unit: Prise, name: Chilipulver }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Tomatensoße
+    items:
+      - { id: butter, amount: 3, unit: EL, name: Butter }
+      - { id: mehl, amount: 2, unit: EL, name: Mehl }
+      - { id: tomaten, amount: 500, unit: ml, name: passierte Tomaten }
+      - { id: sahne, amount: 150, unit: ml, name: Sahne }
+      - { id: knoblauch-sosse, amount: 1, unit: Zehe, name: Knoblauch }
+  - group: Außerdem
+    items:
+      - { id: lasagneplatten, amount: 1, unit: Päckchen, name: Lasagneplatten, note: "250 g" }
+      - { id: kaese, amount: 200, unit: g, name: geriebener Käse, note: "z. B. Cheddar" }
+
+steps:
+  - group: Spinatfüllung
+    items:
+      - "{moehren}, {champignons} und {zwiebel} klein schneiden. {oel} in einer großen Pfanne erhitzen und die Zwiebelwürfel darin glasig braten. Das restliche Gemüse dazugeben und kurz mitbraten."
+      - "{milch} angießen und {spinat} darin erhitzen, bis die Blätter aufgetaut sind und die Rahmsoße leicht eingedickt ist. {frischkaese} und {bruehe} einrühren und 5 Minuten köcheln lassen, bis die Soße schön dick ist."
+      - "{knoblauch-fuellung} dazupressen und mit {salz:name}, {pfeffer:name} und {chili} kräftig abschmecken. Die Füllung darf ruhig gut würzig sein, der Spinat schluckt beim Backen viel Salz."
+  - group: Tomatensoße
+    items:
+      - "{butter} in einem Topf schmelzen, {mehl} einrühren und zu einer glatten Masse verrühren. Unter ständigem Rühren {tomaten} dazugeben, dann {sahne} angießen und alles kurz aufkochen. {knoblauch-sosse} dazupressen und mit Salz und Pfeffer abschmecken, auch hier nicht am Salz sparen."
+  - group: Schichten und backen
+    items:
+      - "Den Backofen auf 180 °C Umluft vorheizen. Den Boden einer Auflaufform dünn mit Tomatensoße und Spinat bedecken, dann abwechselnd {lasagneplatten:name}, Spinatgemisch und Tomatensoße schichten. Insgesamt wird etwa {lasagneplatten} gebraucht. Mit Soße abschließen und {kaese} lückenlos darüberstreuen."
+      - "Etwa 30 Minuten backen, dann 5–10 Minuten im ausgeschalteten Ofen stehen lassen, so bleibt die Lasagne beim Anschneiden in Form. Tipp: Eine Schicht dünn geschnittener Feta auf Spinat und Tomatensoße macht sie noch besser."

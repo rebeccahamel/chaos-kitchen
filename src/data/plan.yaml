@@ -24,5 +24,20 @@ weeks:
       - date: 2026-09-27
         lunch: { leftovers: 2026-09-26 }
         dinner: { recipe: gefuellte-paprika-mit-hackfleisch }
+  - note: Montag und Donnerstag geht es schnell, Dienstag gibt es die Spinat-Gemüse-Lasagne mit Beilagensalat, und die Reste sind jeweils das Mittagessen danach.
+    days:
       - date: 2026-09-28
-        lunch: { leftovers: 2026-09-27 }
+        lunch: { text: "Reste: Gefüllte Paprika" }
+        dinner: { recipe: fischcurry-mit-reis }
+      - date: 2026-09-29
+        lunch: { leftovers: 2026-09-28 }
+        dinner: { recipe: vegetarische-spinat-gemuese-lasagne-mit-tomatensosse }
+      - date: 2026-09-30
+        lunch: { leftovers: 2026-09-29 }
+        dinner: { recipe: haehnchenschenkel-mit-rosmarinkartoffeln-moehren-und-apfel }
+      - date: 2026-10-01
+        lunch: { leftovers: 2026-09-30 }
+        dinner: { recipe: rosenkohl-gnocchi-pfanne-mit-salbei-und-feta }
+      - date: 2026-10-02
+        lunch: { leftovers: 2026-10-01 }
+        dinner: { recipe: hackbaellchen-in-senfsosse-mit-gemuesereis }

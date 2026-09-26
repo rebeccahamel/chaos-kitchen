@@ -1,0 +1,36 @@
+title: Hähnchenschenkel mit Rosmarinkartoffeln, Möhren und Apfel
+description: Ein Blech für den Herbst – knusprige Hähnchenschenkel mit Senf-Honig-Kruste auf Rosmarinkartoffeln, Möhren, roten Zwiebeln und säuerlichen Apfelspalten. Eine Viertelstunde Arbeit, der Ofen macht den Rest.
+author: becci
+added: 2026-09-26
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 55 }
+tags: [abendessen, mittagessen, fleisch, herbst]
+
+ingredients:
+  - group: Für das Blech
+    items:
+      - { id: kartoffeln, amount: 1, unit: kg, name: Kartoffeln, note: festkochend }
+      - { id: moehren, amount: 500, unit: g, name: Möhren }
+      - { id: zwiebeln, amount: 2, name: rote Zwiebel, plural: rote Zwiebeln }
+      - { id: knoblauch, amount: 4, unit: Zehe, name: Knoblauch, note: ungeschält }
+      - { id: rosmarin, amount: 3, unit: Zweig, name: Rosmarin }
+      - { id: olivenoel, amount: 4, unit: EL, name: Olivenöl }
+      - { id: aepfel, amount: 2, name: Apfel, plural: Äpfel, note: "säuerlich, z. B. Elstar oder Boskop" }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Hähnchenschenkel
+    items:
+      - { id: haehnchen, amount: 4, name: Hähnchenschenkel, plural: Hähnchenschenkel, note: "mit Haut und Knochen, je etwa 250 g" }
+      - { id: senf, amount: 1, unit: EL, name: mittelscharfer Senf }
+      - { id: honig, amount: 1, unit: EL, name: Honig }
+      - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen }
+
+steps:
+  - "Den Backofen auf 200 °C Ober-/Unterhitze vorheizen. {kartoffeln} waschen und ungeschält in 2–3 cm große Stücke schneiden, {moehren} schälen und in dicke Stifte schneiden, {zwiebeln} in Spalten. {rosmarin:2/3} abzupfen und grob hacken."
+  - "Kartoffeln, Möhren, Zwiebeln, den gehackten Rosmarin und {knoblauch} auf einem tiefen Blech verteilen, {olivenoel:3/4} darübergeben, salzen, pfeffern und alles gut vermengen."
+  - "{haehnchen} trocken tupfen. {senf}, {honig}, {paprikapulver}, das restliche Olivenöl ({olivenoel:1/4}), den Abrieb der {zitrone:name} und die Nadeln vom restlichen Rosmarin ({rosmarin:1/3}) verrühren, salzen und pfeffern und die Schenkel rundherum damit einreiben."
+  - "Die Schenkel mit der Haut nach oben auf das Gemüse setzen und 35 Minuten braten."
+  - "{aepfel} entkernen und in Spalten schneiden, unter das Gemüse mischen und alles weitere 15–20 Minuten braten, bis die Haut knusprig ist und der Fleischsaft klar austritt. Vor dem Servieren mit dem Saft der Zitrone beträufeln."
+  - "Für die Kleine das Fleisch vom Knochen lösen, die Haut weglassen und Kartoffeln und Möhren klein schneiden."
