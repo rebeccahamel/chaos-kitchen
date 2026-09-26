@@ -72,7 +72,9 @@ Bring! misread "Kopfsalate" and "Reispapierblätter".
 ```
 
 Items Bring! misread go into `src/data/bring.yaml` as a rule (`singular: true` or `as: <text>`),
-or, for a unit that Bring! does not know, as `compound: true` on the unit in `units.yaml`. Bring!
+or, for a unit that Bring! does not know, as `bring: note` on the unit in `units.yaml` (amount
+and unit become the item's specification, "Porree, 2 Stangen"; `bring: compound` only when the
+glued word is in Bring!'s catalogue, like "Knoblauchzehen"). Bring!
 is not consistent about this, so the rules are learned case by case (SPEC.md §6.4).
 
 ## What Claude Code does while planning

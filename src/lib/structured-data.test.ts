@@ -39,11 +39,12 @@ test('learned Bring! rules force the singular or another name, matched without c
   assert.equal(ingredientLine(lists.units ? salat : salat, units, lists.bring), '2 Kopfsalat', 'the real bring.yaml has the Kopfsalat rule');
 });
 
-test('compound units are glued onto the name for Bring!, singular below 2', () => {
+test('units Bring! does not know: glued onto the name (bring: compound) or moved into the specification (bring: note)', () => {
   assert.equal(ingredientLine(knoblauch, units), '1-2 Knoblauchzehen');
   assert.equal(ingredientLine({ ...knoblauch, amount: 1 }, units), '1 Knoblauchzehe');
-  assert.equal(ingredientLine({ id: 'p', amount: 2, unit: 'Stangen', name: 'Porree' }, units), '2 Porreestangen');
-  assert.equal(ingredientLine({ id: 'r', amount: 16, unit: 'Blatt', name: 'Reispapier' }, units), '16 Blätter Reispapier', 'Blatt is not compound: Bring! misread Reispapierblätter');
+  assert.equal(ingredientLine({ id: 'p', amount: 2, unit: 'Stangen', name: 'Porree' }, units), 'Porree, 2 Stangen');
+  assert.equal(ingredientLine({ id: 'p', amount: 1, unit: 'Stange', name: 'Porree', note: 'nur das Weiße' }, units), 'Porree, 1 Stange, nur das Weiße');
+  assert.equal(ingredientLine({ id: 'r', amount: 16, unit: 'Blatt', name: 'Reispapier' }, units), '16 Blätter Reispapier', 'Blatt has no flag: Bring! misread Reispapierblätter');
 });
 
 test('g and ml switch to kg and l from 1000 upwards, ranges as a pair', () => {
@@ -90,7 +91,7 @@ test('a whole recipe becomes a schema.org Recipe', () => {
   const ingredients = data.recipeIngredient as string[];
   assert.equal(ingredients.length, 19);
   assert.equal(ingredients[0], '300 g Basmatireis');
-  assert.ok(ingredients.includes('2 Porreestangen'));
+  assert.ok(ingredients.includes('Porree, 2 Stangen'));
   assert.ok(ingredients.includes('0.5 Bund Petersilie, glatt'));
   assert.ok(ingredients.includes('1 EL Butter, optional'));
   assert.ok(ingredients.includes('Salz'));

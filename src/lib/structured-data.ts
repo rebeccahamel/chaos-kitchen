@@ -32,9 +32,10 @@ function bringRuleFor(name: string, rules: BringRule[]): BringRule | undefined {
  * One ingredient as a machine-readable line at base yield: "300 g Basmatireis",
  * "1.5 kg Hackfleisch", "2 Zwiebeln", "0.5 Bund Petersilie, glatt", "1 EL Butter, optional",
  * "Salz". Text after a comma becomes the note in Bring!. Bring! matches its catalogue word by
- * word, so two things exist only for this line (SPEC.md §6.4): units with compound: true are
- * glued onto the name ("1-2 Knoblauchzehen"), and the learned rules in bring.yaml force the
- * singular ("2 Kopfsalat") or another name.
+ * word, so a few things exist only for this line (SPEC.md §6.4): units with bring: compound are
+ * glued onto the name ("1-2 Knoblauchzehen"), units with bring: note move amount and unit behind
+ * the name into Bring!'s specification ("Porree, 2 Stangen"), and the learned rules in
+ * bring.yaml force the singular ("2 Kopfsalat") or another name.
  */
 export function ingredientLine(ingredient: Ingredient, units: UnitDef[], rules: BringRule[] = []): string {
   const parts: string[] = [];
@@ -54,13 +55,16 @@ export function ingredientLine(ingredient: Ingredient, units: UnitDef[], rules: 
       unitName = BASE_TO_LARGE[unitName];
     }
 
-    parts.push(values.map(plainNumber).join('-'));
-
+    const amount = values.map(plainNumber).join('-');
     const unitDef = unitName ? findUnit(units, unitName) : undefined;
-    if (unitDef?.compound) {
+    if (unitDef?.bring === 'note') {
+      // "Porree, 2 Stangen": the name alone is the item, amount and unit become its specification
+      parts.push(`${baseName}, ${amount} ${unitLabel(unitDef, max)}`);
+    } else if (unitDef?.bring === 'compound') {
       // "3 Knoblauchzehen": name plus the lower-cased unit as one word
-      parts.push(baseName + unitLabel(unitDef, Math.max(...values)).toLowerCase());
+      parts.push(amount, baseName + unitLabel(unitDef, max).toLowerCase());
     } else {
+      parts.push(amount);
       if (unitName) parts.push(unitDef ? unitLabel(unitDef, Math.max(...values)) : unitName);
       // Counted items (no unit) take the plural above 1, like the ingredient list, unless a rule says otherwise
       const counted = !ingredient.unit;

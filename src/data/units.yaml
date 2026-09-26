@@ -3,8 +3,10 @@
 #   weight, volume  -> steps of 1 / 5 / 10, from 1000 shown as kg / l
 #   spoon           -> quarters (¼, ½, ¾)
 #   count           -> halves (½), below 1 eighths (⅛)
-# compound: true    -> on the Bring! shopping list the unit is glued onto the name, because Bring!
+# bring: compound  -> on the Bring! shopping list the unit is glued onto the name, because Bring!
 #                      does not know these units: "3 Knoblauchzehen" instead of "3 Zehen Knoblauch".
+# bring: note      -> amount and unit go into Bring!'s specification field instead:
+#                      "Porree, 2 Stangen" (the site itself still shows "2 Stangen Porree").
 - { unit: g,        plural: g,         category: weight }
 - { unit: kg,       plural: kg,        category: weight }
 - { unit: ml,       plural: ml,        category: volume }
@@ -16,9 +18,9 @@
 - { unit: Dose,     plural: Dosen,     category: count }
 - { unit: Päckchen, plural: Päckchen,  category: count }
 - { unit: Bund,     plural: Bund,      category: count }
-- { unit: Zehe,     plural: Zehen,     category: count, compound: true }
+- { unit: Zehe,     plural: Zehen,     category: count, bring: compound }
 - { unit: Scheibe,  plural: Scheiben,  category: count }
-- { unit: Stange,   plural: Stangen,   category: count, compound: true }
+- { unit: Stange,   plural: Stangen,   category: count, bring: note }
 - { unit: Stück,    plural: Stück,     category: count }
 - { unit: Portion,  plural: Portionen, category: count }
 - { unit: Blech,    plural: Bleche,    category: count }

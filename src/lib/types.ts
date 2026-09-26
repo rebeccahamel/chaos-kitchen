@@ -6,8 +6,11 @@ export interface UnitDef {
   unit: string; // singular, as written in recipes
   plural: string;
   category: UnitCategory;
-  /** shopping list line as one word, "3 Knoblauchzehen" instead of "3 Zehen Knoblauch" (SPEC.md §6.4) */
-  compound?: boolean;
+  /**
+   * Bring! line for units Bring! does not know (SPEC.md §6.4): "compound" glues the unit onto the
+   * name ("3 Knoblauchzehen"), "note" puts amount and unit into the specification ("Porree, 2 Stangen").
+   */
+  bring?: 'compound' | 'note';
 }
 
 export interface Person {

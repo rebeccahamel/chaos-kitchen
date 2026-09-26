@@ -17,8 +17,9 @@ const unitSchema = z.strictObject({
   unit: text,
   plural: text,
   category: z.enum(['weight', 'volume', 'spoon', 'count']),
-  // For the Bring! import: glue the unit onto the name ("3 Knoblauchzehen"), SPEC.md §6.4
-  compound: z.boolean().optional(),
+  // For the Bring! import (SPEC.md §6.4): glue the unit onto the name ("3 Knoblauchzehen") or
+  // move amount and unit into the specification ("Porree, 2 Stangen")
+  bring: z.enum(['compound', 'note'], { error: 'bring ist "compound" oder "note"' }).optional(),
 });
 
 export const unitsSchema = z.array(unitSchema).superRefine((units, ctx) => {

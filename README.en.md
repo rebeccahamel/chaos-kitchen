@@ -289,5 +289,6 @@ deleted.
 
 When Bring! misreads an ingredient (it does not know "Kopfsalate", but it knows "Kopfsalat"), a
 line goes into [src/data/bring.yaml](src/data/bring.yaml); the file explains the two options. When
-Bring! does not know a unit (Zehen, Stangen), the unit gets `compound: true` in `units.yaml`, and
-the list then says "3 Knoblauchzehen".
+Bring! does not know a unit (Zehen, Stangen), the unit gets a `bring:` in `units.yaml`: with
+`compound` the list says "3 Knoblauchzehen", with `note` the amount follows the name as the
+specification, "Porree, 2 Stangen".

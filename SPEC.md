@@ -291,9 +291,9 @@ of the time filter (Becci adds tags as they come along):
 - { unit: Dose,     plural: Dosen,    category: count }
 - { unit: Päckchen, plural: Päckchen, category: count }
 - { unit: Bund,     plural: Bund,     category: count }
-- { unit: Zehe,     plural: Zehen,    category: count, compound: true }
+- { unit: Zehe,     plural: Zehen,    category: count, bring: compound }
 - { unit: Scheibe,  plural: Scheiben, category: count }
-- { unit: Stange,   plural: Stangen,  category: count, compound: true }
+- { unit: Stange,   plural: Stangen,  category: count, bring: note }
 - { unit: Stück,    plural: Stück,    category: count }
 - { unit: Portion,  plural: Portionen, category: count }
 - { unit: Blech,    plural: Bleche,   category: count }
@@ -302,11 +302,15 @@ of the time filter (Becci adds tags as they come along):
 ```
 
 Recipes may use either the singular or plural form of a unit; both resolve to the same entry.
-`compound: true` (optional, decided 2026-09-23) only affects the Bring! shopping list (§6.4): the
-unit is glued onto the name, "3 Knoblauchzehen" instead of "3 Zehen Knoblauch", because Bring! does
-not know such units and would otherwise create an item "Zehen Knoblauch". The site keeps showing
-"3 Zehen Knoblauch". Blatt and Zweig deliberately have no flag: Bring! misread "Reispapierblätter"
-and "Rosmarinzweige".
+`bring` (optional) only affects the Bring! shopping list (§6.4), for units Bring! does not know,
+which would otherwise become part of the item name ("Zehen Knoblauch"). `bring: compound`
+(decided 2026-09-23) glues the unit onto the name, "3 Knoblauchzehen", which works because that
+word is in Bring!'s catalogue. `bring: note` (decided 2026-09-26, after "Porreestangen" failed)
+writes the name first and moves amount and unit behind a comma, "Porree, 2 Stangen", so Bring!
+creates the item Porree with "2 Stangen" as its specification, like typing it in the app. The
+site keeps showing "3 Zehen Knoblauch" and "2 Stangen Porree". Blatt and Zweig deliberately have
+no flag: Bring! misread "Reispapierblätter" and "Rosmarinzweige"; if their plain lines fail too,
+`bring: note` is the answer.
 
 `src/data/bring.yaml` – item rules for the Bring! line, learned on the go (§6.4):
 
@@ -429,9 +433,10 @@ It is invisible; Bring! reads it for the shopping list (§6.8). Built by
   plural of the unit above 1, then the note and "optional" after commas ("1 EL Butter,
   optional"). No amount → the name only ("Salz"). Bring! matches its catalogue word by word and
   not consistently ("Knoblauchzehen" yes, "Reispapierblätter" no; "Kopfsalate" no, "Limetten"
-  yes), so two things exist only for this line (decided 2026-09-23 after the first live tests):
-  units marked `compound: true` in `units.yaml` are glued onto the name ("3 Knoblauchzehen",
-  "2 Porreestangen", "1 Knoblauchzehe"); and `src/data/bring.yaml` holds item rules learned on
+  yes), so a few things exist only for this line (decided 2026-09-23 after the first live tests):
+  units marked `bring: compound` in `units.yaml` are glued onto the name ("3 Knoblauchzehen",
+  "1 Knoblauchzehe"), units marked `bring: note` put amount and unit behind the name as the
+  specification ("Porree, 2 Stangen"); and `src/data/bring.yaml` holds item rules learned on
   the go, matched on the ingredient name (case and umlauts ignored): `singular: true` keeps the
   singular ("2 Kopfsalat"), `as: <text>` replaces the name. Whenever an item arrives wrong in the
   app, a line is added there; the review session (planner/README.md) asks for such cases.
