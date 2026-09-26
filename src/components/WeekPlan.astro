@@ -8,7 +8,7 @@ import { Image } from 'astro:assets';
 import placeholder from '../assets/placeholder-recipe.svg';
 import { describeIngredient } from '../lib/format.ts';
 import { recipePhoto } from '../lib/photos.ts';
-import { isoDate, weekRecipes, weekTitle, weekdayName, type Week, type PlanEntry } from '../lib/plan.ts';
+import { isoDate, weekKey, weekRecipes, weekTitle, weekdayName, type Week, type PlanEntry } from '../lib/plan.ts';
 import { flattenIngredients, formatDuration, totalTime } from '../lib/recipe.ts';
 import { consolidateIngredients, selectionMask } from '../lib/shopping.ts';
 import { recipeUrl, url } from '../lib/site.ts';
@@ -42,7 +42,7 @@ const slots: [keyof Pick<typeof plan.days[number], 'lunch' | 'dinner'>, string][
 
 // Bring! (SPEC.md §6.8) fetches the hidden week page of the ticked recipes and reads its JSON-LD
 const allMask = selectionMask(planned.map(() => true));
-const listUrlBase = new URL(url('woche/liste/'), Astro.site).href;
+const listUrlBase = new URL(url(`woche/${weekKey(plan)}/liste/`), Astro.site).href;
 const bringBase = 'https://api.getbring.com/rest/bringrecipes/deeplink?source=web&url=';
 const bringHref = (mask: string) => bringBase + encodeURIComponent(`${listUrlBase}${mask}/`);
 
@@ -53,7 +53,7 @@ const items = consolidateIngredients(
 
 // Data for the script: ingredients per recipe, units, and where the hidden pages live
 const clientData = JSON.stringify({
-  weekKey: isoDate(plan.days[0].date),
+  weekKey: weekKey(plan),
   units,
   recipes: planned.map((recipe) => ({ slug: recipe.id, ingredients: flattenIngredients(recipe.data.ingredients) })),
   listUrlBase,

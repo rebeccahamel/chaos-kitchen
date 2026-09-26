@@ -1,48 +1,50 @@
 ---
-// One hidden page per possible selection of the week's recipes (MEAL_PLANNER.md §14, SPEC.md §6.9).
-// The homepage points its Bring! button at the page that matches the ticked meals; Bring!
-// fetches that page and reads the JSON-LD with the merged ingredients. The address is a string
-// of 0 and 1 in plan order ("1011" = first, third and fourth recipe). Not linked anywhere else.
+// One hidden page per week and possible selection of its recipes (MEAL_PLANNER.md §14,
+// SPEC.md §6.9). The homepage points each week's Bring! button at the page that matches the
+// ticked meals; Bring! fetches that page and reads the JSON-LD with the merged ingredients.
+// The address is the week's first day and a string of 0 and 1 in plan order
+// ("2026-09-28/liste/1011" = first, third and fourth recipe of that week). Not linked elsewhere.
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { getImage } from 'astro:assets';
-import Base from '../../../layouts/Base.astro';
-import { describeIngredient } from '../../../lib/format.ts';
-import { loadLists } from '../../../lib/lists.ts';
-import { recipePhoto } from '../../../lib/photos.ts';
-import { hasPlan, loadPlan, weekRecipes, weekTitle, type Week } from '../../../lib/plan.ts';
-import { flattenIngredients } from '../../../lib/recipe.ts';
-import { allSelectionMasks, consolidateIngredients, selectedByMask, weekListJsonLd } from '../../../lib/shopping.ts';
-import { recipeUrl, url } from '../../../lib/site.ts';
+import Base from '../../../../layouts/Base.astro';
+import { describeIngredient } from '../../../../lib/format.ts';
+import { loadLists } from '../../../../lib/lists.ts';
+import { recipePhoto } from '../../../../lib/photos.ts';
+import { hasPlan, loadPlan, weekKey, weekRecipes, weekTitle, type Week } from '../../../../lib/plan.ts';
+import { flattenIngredients } from '../../../../lib/recipe.ts';
+import { allSelectionMasks, consolidateIngredients, selectedByMask, weekListJsonLd } from '../../../../lib/shopping.ts';
+import { recipeUrl, url } from '../../../../lib/site.ts';
 
 export async function getStaticPaths() {
   const all = await getCollection('recipes');
   const plan = loadPlan(all.map((recipe) => recipe.id));
   if (!hasPlan(plan)) return [];
-  const week = plan.weeks[0];
   const bySlug = new Map(all.map((recipe) => [recipe.id, recipe]));
-  const recipes = weekRecipes(week).map((slug) => bySlug.get(slug)!);
-  return allSelectionMasks(recipes.length).map((selection) => ({
-    params: { selection },
-    props: { plan: week, recipes: selectedByMask(selection, recipes)! },
-  }));
+  return plan.weeks.flatMap((week) => {
+    const recipes = weekRecipes(week).map((slug) => bySlug.get(slug)!);
+    return allSelectionMasks(recipes.length).map((selection) => ({
+      params: { week: weekKey(week), selection },
+      props: { week, recipes: selectedByMask(selection, recipes)! },
+    }));
+  });
 }
 
 interface Props {
-  plan: Week;
+  week: Week;
   recipes: CollectionEntry<'recipes'>[];
 }
 
-const { plan, recipes } = Astro.props;
+const { week, recipes } = Astro.props;
 const lists = loadLists();
 const { units } = lists;
 
-const name = `Wochenplan ${weekTitle(plan)}`;
+const name = `Wochenplan ${weekTitle(week)}`;
 const titles = recipes.map((recipe) => recipe.data.title);
 const description = `Zutaten für ${recipes.length === 1 ? 'ein Rezept' : `${recipes.length} Rezepte`}: ${titles.join(', ')}`;
 const ingredientLists = recipes.map((recipe) => flattenIngredients(recipe.data.ingredients));
 const items = consolidateIngredients(ingredientLists, units).map((ingredient) => describeIngredient(ingredient, units));
 
-const pageUrl = new URL(url(`woche/liste/${Astro.params.selection}/`), Astro.site).href;
+const pageUrl = new URL(url(`woche/${Astro.params.week}/liste/${Astro.params.selection}/`), Astro.site).href;
 const photo = recipePhoto(recipes[0].id);
 const image = photo ? new URL((await getImage({ src: photo, width: 1200, height: 900, format: 'jpg' })).src, Astro.site).href : undefined;
 const jsonLd = weekListJsonLd({ name, description, url: pageUrl, image }, ingredientLists, units, lists.bring);
