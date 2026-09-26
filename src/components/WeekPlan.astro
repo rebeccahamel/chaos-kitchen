@@ -1,21 +1,23 @@
 ---
-// "Diese Woche" on the homepage (MEAL_PLANNER.md §14, SPEC.md §6.9): the week's days with lunch
-// and dinner as mini cards, a tick box per recipe for the shopping list, a Bring! button for
-// the ticked recipes, and the merged list itself. The page is rendered with every recipe ticked;
-// the script at the bottom keeps ticks, list and Bring! link in step in the browser.
+// "Diese Woche" and "Nächste Woche" on the homepage (MEAL_PLANNER.md §14, SPEC.md §6.9): one
+// slide per planned week with its days as mini cards, a tick box per recipe for the shopping
+// list, a Bring! button for the ticked recipes, and the merged list itself. Two weeks sit side by
+// side in a strip that swipes on phones; arrows switch between them. Every slide is rendered with
+// all recipes ticked; the script at the bottom keeps ticks, list and Bring! link in step per
+// week, opens the strip on the week that contains today, and labels the slides accordingly.
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import placeholder from '../assets/placeholder-recipe.svg';
 import { describeIngredient } from '../lib/format.ts';
 import { recipePhoto } from '../lib/photos.ts';
-import { isoDate, weekKey, weekRecipes, weekTitle, weekdayName, type Week, type PlanEntry } from '../lib/plan.ts';
+import { isoDate, weekKey, weekRecipes, weekTitle, weekdayName, type Plan, type PlanEntry, type Week } from '../lib/plan.ts';
 import { flattenIngredients, formatDuration, totalTime } from '../lib/recipe.ts';
 import { consolidateIngredients, selectionMask } from '../lib/shopping.ts';
 import { recipeUrl, url } from '../lib/site.ts';
 import type { Lists } from '../lib/types.ts';
 
 interface Props {
-  plan: Week;
+  plan: Plan;
   /** all recipes, trial ones included */
   recipes: CollectionEntry<'recipes'>[];
   lists: Lists;
@@ -24,148 +26,172 @@ interface Props {
 const { plan, recipes, lists } = Astro.props;
 const { units } = lists;
 const bySlug = new Map(recipes.map((recipe) => [recipe.id, recipe]));
-/** the recipes of the week in plan order; their position is the tick box index and the mask digit */
-const planned = weekRecipes(plan).map((slug) => bySlug.get(slug)!);
-const indexOf = new Map(planned.map((recipe, index) => [recipe.id, index]));
 
-/** "Reste: Fischcurry mit Reis" for a leftovers entry, or the plain text */
-function leftoversOf(entry: { leftovers: Date }): CollectionEntry<'recipes'> | undefined {
-  const day = plan.days.find((d) => isoDate(d.date) === isoDate(entry.leftovers));
-  const source = [day?.dinner, day?.lunch].find((e): e is { recipe: string } => e !== undefined && 'recipe' in e);
-  return source ? bySlug.get(source.recipe) : undefined;
-}
-
-const slots: [keyof Pick<typeof plan.days[number], 'lunch' | 'dinner'>, string][] = [
+const slots: [keyof Pick<Week['days'][number], 'lunch' | 'dinner'>, string][] = [
   ['lunch', 'Mittag'],
   ['dinner', 'Abend'],
 ];
 
 // Bring! (SPEC.md §6.8) fetches the hidden week page of the ticked recipes and reads its JSON-LD
-const allMask = selectionMask(planned.map(() => true));
-const listUrlBase = new URL(url(`woche/${weekKey(plan)}/liste/`), Astro.site).href;
 const bringBase = 'https://api.getbring.com/rest/bringrecipes/deeplink?source=web&url=';
-const bringHref = (mask: string) => bringBase + encodeURIComponent(`${listUrlBase}${mask}/`);
 
-const items = consolidateIngredients(
-  planned.map((recipe) => flattenIngredients(recipe.data.ingredients)),
-  units,
-).map((ingredient) => describeIngredient(ingredient, units));
+/** Everything one slide needs, computed once per week. */
+const slides = plan.weeks.map((week, index) => {
+  const key = weekKey(week);
+  /** the recipes of the week in plan order; their position is the tick box index and the mask digit */
+  const planned = weekRecipes(week).map((slug) => bySlug.get(slug)!);
+  const indexOf = new Map(planned.map((recipe, i) => [recipe.id, i]));
+  const listUrlBase = new URL(url(`woche/${key}/liste/`), Astro.site).href;
+  const allMask = selectionMask(planned.map(() => true));
+  const items = consolidateIngredients(
+    planned.map((recipe) => flattenIngredients(recipe.data.ingredients)),
+    units,
+  ).map((ingredient) => describeIngredient(ingredient, units));
 
-// Data for the script: ingredients per recipe, units, and where the hidden pages live
-const clientData = JSON.stringify({
-  weekKey: weekKey(plan),
-  units,
-  recipes: planned.map((recipe) => ({ slug: recipe.id, ingredients: flattenIngredients(recipe.data.ingredients) })),
-  listUrlBase,
-  bringBase,
-}).replace(/</g, '\\u003c');
+  /** the recipe a leftovers entry points at, via the day it was cooked */
+  const leftoversOf = (entry: { leftovers: Date }): CollectionEntry<'recipes'> | undefined => {
+    const day = week.days.find((d) => isoDate(d.date) === isoDate(entry.leftovers));
+    const source = [day?.dinner, day?.lunch].find((e): e is { recipe: string } => e !== undefined && 'recipe' in e);
+    return source ? bySlug.get(source.recipe) : undefined;
+  };
+
+  // Data for the script: ingredients per recipe, units, and where the week's hidden pages live
+  const clientData = JSON.stringify({
+    weekKey: key,
+    units,
+    recipes: planned.map((recipe) => ({ slug: recipe.id, ingredients: flattenIngredients(recipe.data.ingredients) })),
+    listUrlBase,
+    bringBase,
+  }).replace(/</g, '\\u003c');
+
+  return {
+    week,
+    key,
+    // the script corrects these by date; without it the first week is this week
+    label: index === 0 ? 'Diese Woche' : 'Nächste Woche',
+    planned,
+    indexOf,
+    items,
+    bringHref: bringBase + encodeURIComponent(`${listUrlBase}${allMask}/`),
+    leftoversOf,
+    clientData,
+  };
+});
 ---
 
-<section class="week" id="week" aria-labelledby="week-title">
-  <header class="week-head">
-    <h2 id="week-title">Diese Woche</h2>
-    <p class="week-dates">{weekTitle(plan)}</p>
-    {plan.note && <p class="week-note">{plan.note}</p>}
-  </header>
+<section class:list={['week', { multi: slides.length > 1 }]} id="week" aria-label="Wochenplan">
+  <button type="button" class="arrow prev" data-prev aria-label="Vorherige Woche" hidden>‹</button>
+  <button type="button" class="arrow next" data-next aria-label="Nächste Woche" hidden>›</button>
 
-  <ol class="days">
+  <div class="track" data-track>
     {
-      plan.days.map((day) => (
-        <li class="day">
-          <h3 class="weekday">{weekdayName(day.date)}</h3>
-          {!day.lunch && !day.dinner && <p class="free">frei</p>}
-          {slots.map(([slot, label]) => {
-            const entry: PlanEntry | undefined = day[slot];
-            if (!entry) return null;
-            if ('recipe' in entry) {
-              const recipe = bySlug.get(entry.recipe)!;
-              const index = indexOf.get(recipe.id)!;
-              const photo = recipePhoto(recipe.id);
-              return (
-                <div class:list={['slot', slot]}>
-                  <span class="label">{label}</span>
-                  <article class="meal">
-                    <a class="meal-link" href={recipeUrl(recipe.id)}>
-                      {photo ? (
-                        <Image class="thumb" src={photo} alt="" width={160} height={120} sizes="80px" />
-                      ) : (
-                        <img class="thumb" src={placeholder.src} alt="" width="160" height="120" loading="lazy" />
-                      )}
-                      <span class="meal-text">
-                        <span class="meal-title">{recipe.data.title}</span>
-                        <span class="meal-meta">{formatDuration(totalTime(recipe.data.time))}</span>
-                      </span>
-                    </a>
-                    <input
-                      class="pick"
-                      type="checkbox"
-                      data-pick={index}
-                      checked
-                      aria-label={`${recipe.data.title} auf die Einkaufsliste`}
-                    />
-                  </article>
-                </div>
-              );
-            }
-            if ('leftovers' in entry) {
-              const source = leftoversOf(entry);
-              return (
-                <div class:list={['slot', slot]}>
-                  <span class="label">{label}</span>
-                  <p class="plain">
-                    Reste{source && <>: <a href={recipeUrl(source.id)}>{source.data.title}</a></>}
-                  </p>
-                </div>
-              );
-            }
-            return (
-              <div class:list={['slot', slot]}>
-                <span class="label">{label}</span>
-                <p class="plain">{entry.text}</p>
-              </div>
-            );
-          })}
-        </li>
+      slides.map((slide) => (
+        <article class="slide" data-week={slide.key}>
+          <header class="week-head">
+            <h2 data-week-label>{slide.label}</h2>
+            <p class="week-dates">{weekTitle(slide.week)}</p>
+            {slide.week.note && <p class="week-note">{slide.week.note}</p>}
+          </header>
+
+          <ol class="days">
+            {slide.week.days.map((day) => (
+              <li class="day">
+                <h3 class="weekday">{weekdayName(day.date)}</h3>
+                {!day.lunch && !day.dinner && <p class="free">frei</p>}
+                {slots.map(([slot, label]) => {
+                  const entry: PlanEntry | undefined = day[slot];
+                  if (!entry) return null;
+                  if ('recipe' in entry) {
+                    const recipe = bySlug.get(entry.recipe)!;
+                    const index = slide.indexOf.get(recipe.id)!;
+                    const photo = recipePhoto(recipe.id);
+                    return (
+                      <div class:list={['slot', slot]}>
+                        <span class="label">{label}</span>
+                        <article class="meal">
+                          <a class="meal-link" href={recipeUrl(recipe.id)}>
+                            {photo ? (
+                              <Image class="thumb" src={photo} alt="" width={160} height={120} sizes="80px" />
+                            ) : (
+                              <img class="thumb" src={placeholder.src} alt="" width="160" height="120" loading="lazy" />
+                            )}
+                            <span class="meal-text">
+                              <span class="meal-title">{recipe.data.title}</span>
+                              <span class="meal-meta">{formatDuration(totalTime(recipe.data.time))}</span>
+                            </span>
+                          </a>
+                          <input
+                            class="pick"
+                            type="checkbox"
+                            data-pick={index}
+                            checked
+                            aria-label={`${recipe.data.title} auf die Einkaufsliste`}
+                          />
+                        </article>
+                      </div>
+                    );
+                  }
+                  if ('leftovers' in entry) {
+                    const source = slide.leftoversOf(entry);
+                    return (
+                      <div class:list={['slot', slot]}>
+                        <span class="label">{label}</span>
+                        <p class="plain">
+                          Reste{source && <>: <a href={recipeUrl(source.id)}>{source.data.title}</a></>}
+                        </p>
+                      </div>
+                    );
+                  }
+                  return (
+                    <div class:list={['slot', slot]}>
+                      <span class="label">{label}</span>
+                      <p class="plain">{entry.text}</p>
+                    </div>
+                  );
+                })}
+              </li>
+            ))}
+          </ol>
+
+          <div class="shopping">
+            <p class="pick-status">
+              <span data-pick-count>{slide.planned.length === 1 ? '1 Rezept' : `${slide.planned.length} Rezepte`} auf der Einkaufsliste</span>
+              <button type="button" class="linklike" data-pick-all hidden>Alle</button>
+              <button type="button" class="linklike" data-pick-none>Keine</button>
+            </p>
+            <p class="bring">
+              <a class="bring-link" data-bring href={slide.bringHref} rel="noopener noreferrer">Zutaten der Woche an Bring! senden</a>
+              <span class="note">öffnet die Einkaufslisten-App Bring!</span>
+            </p>
+            <details class="list">
+              <summary>Einkaufsliste anzeigen</summary>
+              <ul class="ingredient-list" data-list>
+                {slide.items.map((item) => (
+                  <li class="ingredient">
+                    <span class="amount">{[item.amount, item.unit].filter(Boolean).join(' ')}</span>
+                    <span class="name">
+                      {item.name}
+                      {item.optional && <span class="note"> (optional)</span>}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p class="note empty" data-list-empty hidden>Kein Rezept ausgewählt.</p>
+            </details>
+          </div>
+
+          <script type="application/json" data-plan set:html={slide.clientData} />
+        </article>
       ))
     }
-  </ol>
-
-  <div class="shopping">
-    <p class="pick-status">
-      <span id="pick-count">{planned.length === 1 ? '1 Rezept' : `${planned.length} Rezepte`} auf der Einkaufsliste</span>
-      <button type="button" class="linklike" id="pick-all" hidden>Alle</button>
-      <button type="button" class="linklike" id="pick-none">Keine</button>
-    </p>
-    <p class="bring">
-      <a class="bring-link" id="week-bring" href={bringHref(allMask)} rel="noopener noreferrer">Zutaten der Woche an Bring! senden</a>
-      <span class="note">öffnet die Einkaufslisten-App Bring!</span>
-    </p>
-    <details class="list">
-      <summary>Einkaufsliste anzeigen</summary>
-      <ul class="ingredient-list" id="week-list">
-        {
-          items.map((item) => (
-            <li class="ingredient">
-              <span class="amount">{[item.amount, item.unit].filter(Boolean).join(' ')}</span>
-              <span class="name">
-                {item.name}
-                {item.optional && <span class="note"> (optional)</span>}
-              </span>
-            </li>
-          ))
-        }
-      </ul>
-      <p class="note empty" id="week-list-empty" hidden>Kein Rezept ausgewählt.</p>
-    </details>
   </div>
-
-  <script type="application/json" id="plan-data" set:html={clientData} />
 </section>
 
 <script>
-  // Ticks, "Alle" / "Keine", the Bring! link and the merged list follow each other in the browser.
-  // The ticks are kept per week in the visitor's own browser (localStorage), so a family member's
-  // choice survives until the plan changes and never affects anyone else.
+  // Per week: ticks, "Alle" / "Keine", the Bring! link and the merged list follow each other in
+  // the browser. The ticks are kept per week in the visitor's own browser (localStorage), so a
+  // family member's choice survives until the plan changes and never affects anyone else.
+  // For the strip: open on the week that contains today, label the slides, drive the arrows.
   import { describeIngredient } from '../lib/format.ts';
   import { consolidateIngredients, selectionMask } from '../lib/shopping.ts';
   import type { Ingredient, UnitDef } from '../lib/types.ts';
@@ -178,19 +204,19 @@ const clientData = JSON.stringify({
     bringBase: string;
   }
 
-  const section = document.getElementById('week');
-  const dataEl = document.getElementById('plan-data');
-  if (section && dataEl) {
+  function setUpWeek(slide: HTMLElement) {
+    const dataEl = slide.querySelector('[data-plan]');
+    if (!dataEl) return;
     const data = JSON.parse(dataEl.textContent ?? '{}') as PlanData;
-    const boxes = Array.from(section.querySelectorAll<HTMLInputElement>('input[data-pick]')).sort(
+    const boxes = Array.from(slide.querySelectorAll<HTMLInputElement>('input[data-pick]')).sort(
       (a, b) => Number(a.dataset.pick) - Number(b.dataset.pick),
     );
-    const count = document.getElementById('pick-count') as HTMLElement;
-    const all = document.getElementById('pick-all') as HTMLButtonElement;
-    const none = document.getElementById('pick-none') as HTMLButtonElement;
-    const bring = document.getElementById('week-bring') as HTMLAnchorElement;
-    const list = document.getElementById('week-list') as HTMLElement;
-    const empty = document.getElementById('week-list-empty') as HTMLElement;
+    const count = slide.querySelector('[data-pick-count]') as HTMLElement;
+    const all = slide.querySelector('[data-pick-all]') as HTMLButtonElement;
+    const none = slide.querySelector('[data-pick-none]') as HTMLButtonElement;
+    const bring = slide.querySelector('[data-bring]') as HTMLAnchorElement;
+    const list = slide.querySelector('[data-list]') as HTMLElement;
+    const empty = slide.querySelector('[data-list-empty]') as HTMLElement;
     const storageKey = `plan:${data.weekKey}`;
 
     function load(): boolean[] | null {
@@ -270,12 +296,54 @@ const clientData = JSON.stringify({
     if (saved) boxes.forEach((box, index) => (box.checked = saved[index]));
     render();
   }
+
+  const section = document.getElementById('week');
+  const track = section?.querySelector<HTMLElement>('[data-track]');
+  if (section && track) {
+    const slides = Array.from(track.querySelectorAll<HTMLElement>('[data-week]'));
+    for (const slide of slides) setUpWeek(slide);
+
+    // This week is the last one that has started by today (local date, like the family's calendar);
+    // the labels follow. Until the first week starts, it is "this week" anyway.
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    let current = 0;
+    slides.forEach((slide, index) => {
+      if ((slide.dataset.week ?? '') <= today) current = index;
+    });
+    slides.forEach((slide, index) => {
+      const label = slide.querySelector('[data-week-label]');
+      if (label) label.textContent = index === current ? 'Diese Woche' : index > current ? 'Nächste Woche' : 'Letzte Woche';
+    });
+
+    if (slides.length > 1) {
+      const prev = section.querySelector<HTMLButtonElement>('[data-prev]')!;
+      const next = section.querySelector<HTMLButtonElement>('[data-next]')!;
+      const position = () => Math.round(track.scrollLeft / track.clientWidth);
+      const goTo = (pos: number) => track.scrollTo({ left: pos * track.clientWidth });
+      const updateArrows = () => {
+        const pos = position();
+        prev.hidden = pos <= 0;
+        next.hidden = pos >= slides.length - 1;
+      };
+
+      // start on this week without an animation
+      const behavior = track.style.scrollBehavior;
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = current * track.clientWidth;
+      track.style.scrollBehavior = behavior;
+
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      prev.addEventListener('click', () => goTo(position() - 1));
+      next.addEventListener('click', () => goTo(position() + 1));
+      updateArrows();
+    }
+  }
 </script>
 
 <style>
   .week {
-    display: grid;
-    gap: 18px;
+    position: relative;
     margin-bottom: 32px;
     padding: 18px 16px 20px;
     background: var(--papier);
@@ -283,9 +351,70 @@ const clientData = JSON.stringify({
     border-radius: var(--radius);
   }
 
+  /* The strip: one slide per week, swipeable, one week visible at a time. */
+  .track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .track {
+      scroll-behavior: smooth;
+    }
+  }
+
+  .slide {
+    display: grid;
+    flex: 0 0 100%;
+    gap: 18px;
+    min-width: 0;
+    align-content: start;
+    scroll-snap-align: start;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 14px;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--karamell);
+    border-radius: 50%;
+    background: var(--papier);
+    color: var(--rost);
+    font: 400 24px/1 var(--font-body);
+    cursor: pointer;
+    padding: 0 0 3px;
+  }
+
+  .arrow:hover,
+  .arrow:focus-visible {
+    background: var(--senf-hell);
+  }
+
+  .prev {
+    right: 58px;
+  }
+
+  .next {
+    right: 14px;
+  }
+
   .week-head {
     display: grid;
     gap: 4px;
+  }
+
+  /* room for the two arrows beside the heading */
+  .multi .week-head {
+    padding-right: 88px;
   }
 
   h2 {
@@ -474,6 +603,18 @@ const clientData = JSON.stringify({
   @media (min-width: 720px) {
     .week {
       padding: 22px 24px 24px;
+    }
+
+    .arrow {
+      top: 18px;
+    }
+
+    .prev {
+      right: 66px;
+    }
+
+    .next {
+      right: 22px;
     }
 
     .day {

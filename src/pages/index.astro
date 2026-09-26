@@ -28,7 +28,7 @@ const timeOptions = [
 ---
 
 <Base title={SITE_NAME} description="Die Lieblingsrezepte unserer Familie.">
-  {hasPlan(plan) && <WeekPlan plan={plan.weeks[0]} recipes={all} lists={lists} />}
+  {hasPlan(plan) && <WeekPlan plan={plan} recipes={all} lists={lists} />}
 
   <div class="toolbar">
     <form class="search" role="search" onsubmit="return false">
