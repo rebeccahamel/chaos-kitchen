@@ -659,7 +659,11 @@ Done (2026-09-26): the plan covers Monday to Sunday, weekends free by default (�
 MEAL_PLANNER.md §3); recipe cap stays at 10. Week 2026-W39 reviewed: Sommerrollen and
 Kartoffelgratin kept, Ofenlachs still open; the plan on the site extended to 28 September.
 The plan file holds up to two weeks and the homepage shows them as a swipeable strip with
-arrows, so next week can be planned and shopped while this one runs (§6.9).
+arrows, so next week can be planned and shopped while this one runs (§6.9). Week 2026-W40
+planned and in Todoist; `bring: note` for Stange (§4, §6.4); Möhre and Sahne as the only names.
+
+Next: check in the Bring! app that "Porree, 2 Stangen" arrives as Porree with the specification
+"2 Stangen"; verdict for Ofenlachs; review W40 with prompt B around 3 October.
 
 The remaining small tasks of version 1 (more recipes and photos, avatars, step pictures, defaults
 to confirm) are tracked on the `main` branch, not here.
