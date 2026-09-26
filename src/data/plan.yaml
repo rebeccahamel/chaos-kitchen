@@ -7,13 +7,19 @@
 #   { text: "…" }               anything else, without a link ("Brot mit Salat", "Essen gehen")
 # A day without lunch and dinner is a free day.
 
-note: Mittwoch kommen Gäste zum Selberrollen, Donnerstag und Freitag geht es schnell und die Reste sind das Mittagessen danach.
+note: Mittwoch kamen Gäste zum Selberrollen, am Wochenende gibt es Ofenlachs und gefüllte Paprika, die Reste sind jeweils das Mittagessen danach.
 days:
   - date: 2026-09-23
     dinner: { recipe: sommerrollen-mit-erdnusssauce }
   - date: 2026-09-24
     lunch: { leftovers: 2026-09-23 }
-    dinner: { recipe: ofenlachs-mit-kuerbis-und-kichererbsen }
+    dinner: { recipe: kartoffelgratin-mit-veggie-cordon-bleu }
   - date: 2026-09-25
     lunch: { leftovers: 2026-09-24 }
-    dinner: { recipe: kartoffelgratin-mit-veggie-cordon-bleu }
+  - date: 2026-09-26
+    dinner: { recipe: ofenlachs-mit-kuerbis-und-kichererbsen }
+  - date: 2026-09-27
+    lunch: { leftovers: 2026-09-26 }
+    dinner: { recipe: gefuellte-paprika-mit-hackfleisch }
+  - date: 2026-09-28
+    lunch: { leftovers: 2026-09-27 }

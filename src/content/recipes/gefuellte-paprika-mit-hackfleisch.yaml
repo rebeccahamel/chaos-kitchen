@@ -1,0 +1,41 @@
+title: Gefüllte Paprika mit Hackfleisch
+description: Der Ofenklassiker – Paprika mit einer saftigen Hack-Reis-Füllung, dazu Hackbällchen aus dem Rest der Masse, alles in Tomatensauce geschmort. Nach einem Chefkoch-Rezept „nach Uroma Susanne“; Reste schmecken am nächsten Tag noch besser.
+author: becci
+added: 2026-09-26
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 30, cook: 40 }
+tags: [abendessen, mittagessen, fleisch, herbst]
+
+ingredients:
+  - group: Für die Füllung
+    items:
+      - { id: reis, amount: 40, unit: g, name: Reis, note: "ergibt etwa 100 g gekocht" }
+      - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 1, unit: Zehe, name: Knoblauch }
+      - { id: hackfleisch, amount: 500, unit: g, name: gemischtes Hackfleisch }
+      - { id: ei, amount: 1, name: Ei, plural: Eier, whole: true }
+      - { id: salz, name: Salz }
+      - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: pfeffer, name: Pfeffer }
+      - { id: paprika, amount: 4, name: Paprika, plural: Paprika, note: "rot und gelb, je etwa 200 g; oder 10 Spitzpaprika" }
+  - group: Für die Tomatensauce
+    items:
+      - { id: butter, amount: 1, unit: EL, name: Butter }
+      - { id: mehl, amount: 1, unit: EL, name: Mehl }
+      - { id: bruehe, amount: 500, unit: ml, name: Gemüsebrühe }
+      - { id: tomatenmark, amount: 1, unit: Dose, name: Tomatenmark, note: "klein, etwa 70 g" }
+      - { id: zucker, name: Zucker, note: eine Prise }
+
+steps:
+  - group: Füllung
+    items:
+      - "{reis} nach Packungsanweisung kochen und abkühlen lassen; Reis vom Vortag geht genauso gut."
+      - "{zwiebel} und {knoblauch} schälen und fein würfeln. {hackfleisch}, den gekochten Reis, {ei} und die Zwiebel- und Knoblauchwürfel in eine Schüssel geben, 1 TL {salz:name}, {paprikapulver} und {pfeffer:name} dazugeben und alles gründlich zu einem Hackfleischteig verkneten."
+      - "Von den {paprika:name} jeweils einen „Deckel“ abschneiden. Mit einem kleinen, scharfen Messer vorsichtig die Trennwände und Kerne herausschneiden. Insgesamt werden {paprika} gebraucht."
+      - "Die Hack-Reis-Masse mit einem Löffel in die Paprika füllen und die gefüllten Paprika in eine Auflaufform setzen. Aus der restlichen Masse Hackbällchen formen und zwischen den Paprika verteilen."
+  - group: Tomatensauce
+    items:
+      - "Den Backofen auf 180 °C Ober-/Unterhitze vorheizen. {butter} in einem Topf schmelzen, {mehl} unter Rühren dazugeben und kurz anrösten. Mit {bruehe} ablöschen, {tomatenmark} einrühren und die Sauce unter Rühren etwa 3 Minuten aufkochen lassen. Mit {salz:name}, Pfeffer und einer Prise {zucker:name} abschmecken."
+      - "Die Sauce zu den Paprika und Bällchen in die Auflaufform gießen und im Ofen etwa 40 Minuten schmoren, bis die Paprika weich sind. Wird die Oberfläche zu dunkel, zum Schluss abdecken."
+      - "Für die Kleine eine Paprika mit Füllung klein schneiden und mit etwas Sauce vermischen."
