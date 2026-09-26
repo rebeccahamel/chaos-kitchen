@@ -29,9 +29,10 @@ Week numbers are ISO weeks (Monday first): `2026-W40` is 28 September – 4 Octo
    in the profile (Edeka, REWE, Aldi) and what is in season. Every offer is noted with its
    validity period and the date it was fetched. If an offer page cannot be read, say so and
    plan without it.
-4. **Claude Code proposes the week in chat**: a table Monday to Friday with lunch, dinner,
+4. **Claude Code proposes the week in chat**: a table Monday to Sunday with lunch, dinner,
    minutes, which recipes are new and which come from the collection, and one line on the
-   offers and seasonal produce used. Becci adjusts or says GO.
+   offers and seasonal produce used. Saturday and Sunday stay free unless the request plans
+   them (MEAL_PLANNER.md §3). Becci adjusts or says GO.
 5. **After GO, Claude Code writes**, in this order, and runs `npm test` and `npm run build`:
    - new recipe files with `trial: true` (rules below);
    - `src/data/plan.yaml`;
@@ -108,7 +109,8 @@ with store, product, price, validity and fetch date.
   "mit" or "aus", because a scaled plural would need the dative ("mit 3 Eiern"); use `{id:name}`
   there instead ("mit den Eiern").
 
-At most 10 different recipes in the plan (`MAX_PLAN_RECIPES`); a normal week has 5–7.
+At most 10 different recipes in the plan (`MAX_PLAN_RECIPES`); a normal week has 5–7, a full
+seven-day week with cooked lunches comes close to the cap, so use leftovers and text meals there.
 
 **plan.yaml.** One entry per planned meal: `{ recipe: <slug> }`, `{ leftovers: <date> }` for a
 lunch from an earlier dinner, `{ text: "…" }` for anything else. Days that are out get no

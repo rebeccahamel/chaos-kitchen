@@ -507,7 +507,8 @@ planner/README.md. The planning happens in Claude Code sessions; the site only s
   optionally `lunch` and `dinner`. A meal is `{ recipe: <slug> }`, `{ leftovers: <date> }`
   (an earlier day of the plan on which a recipe is cooked) or `{ text: "…" }`. A day without
   meals is free. A recipe appears at most once per plan; at most 10 different recipes.
-  `days: []` means no plan.
+  `days: []` means no plan. The days are any dates, normally one Monday-to-Sunday week
+  (decided 2026-09-26: weekends stay free unless the request plans them, MEAL_PLANNER.md §3).
 - **Homepage section "Diese Woche"** above the search, only when there is a plan: the date range,
   the note, the days with weekday name, lunch and dinner. Recipe meals are mini cards (thumbnail,
   title, total time) linking to the recipe page; leftovers say "Reste: <title>" with a link;
@@ -634,7 +635,9 @@ Done (2026-09-22): pictures for Hackbällchen Tomcana; Bring! button with schema
 
 Done (2026-09-23, branch `meal_planner`): weekly plan with tick boxes, merged shopping list and
 the Bring! week button (§6.9), trial recipes (§4.3), planner workflow and prompt templates
-(planner/README.md). Not yet merged; the first real week is the live test of the week button.
+(planner/README.md). Merged the same day; the week button passed its live test.
+Done (2026-09-26): the plan covers Monday to Sunday, weekends free by default (§6.9,
+MEAL_PLANNER.md §3); recipe cap stays at 10.
 
 The remaining small tasks of version 1 (more recipes and photos, avatars, step pictures, defaults
 to confirm) are tracked on the `main` branch, not here.

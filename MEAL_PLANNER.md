@@ -67,10 +67,12 @@ to pick out, so not a ban. Overcooked pasta. No other "tired of" foods at the mo
 
 ### Week structure
 
-- Default: 5 lunches and 5 dinners, weekdays only. Weekends are normally not planned.
+- The plan covers Monday to Sunday (decided 2026-09-26). Default: 5 lunches and 5 dinners on
+  the weekdays; Saturday and Sunday stay free unless the weekly request plans them.
 - Two weekdays may stay intentionally unplanned (leftovers, eating out, guests, ordering).
   Currently Monday and Thursday are sports or busy days.
-- Any of this can be overridden in the weekly request.
+- Any of this can be overridden in the weekly request. The only hard limit is the site's cap of
+  10 different recipes per week (§14, Bring!); leftovers and text meals do not count.
 
 ### Dinner
 
@@ -192,7 +194,7 @@ finish the adult portions. Meals should lend themselves to this naturally. No se
 recipe unless truly necessary, and toddler food is not made artificially bland.
 
 **Weekly plan output** (the master spec's default shape, useful as the model for whatever the
-site renders): an at-a-glance table Monday to Friday with lunch, dinner and dinner time; the
+site renders): an at-a-glance table Monday to Sunday with lunch, dinner and dinner time; the
 lunches (name, description, prep time, whether it uses leftovers); the dinners (name, description,
 total time, key preparation note, toddler adjustment); a short shopping strategy (offers used,
 major ingredient reuse, seasonal produce, good-value decisions); the consolidated shopping list by
