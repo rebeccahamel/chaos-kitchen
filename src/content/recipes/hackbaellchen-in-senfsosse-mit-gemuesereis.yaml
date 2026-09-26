@@ -1,5 +1,5 @@
 title: Hackbällchen in Senfsoße mit Gemüsereis
-description: Saftige Hackbällchen in cremiger Senf-Honig-Soße, dazu Basmatireis mit Porree und Karotte.
+description: Saftige Hackbällchen in cremiger Senf-Honig-Soße, dazu Basmatireis mit Porree und Möhre.
 author: becci
 added: 2026-09-12
 yield: { amount: 4, unit: Portionen }
@@ -11,7 +11,7 @@ ingredients:
     items:
       - { id: reis, amount: 300, unit: g, name: Basmatireis }
       - { id: porree, amount: 2, unit: Stange, name: Porree }
-      - { id: karotte, amount: 2, name: Karotte, plural: Karotten }
+      - { id: moehre, amount: 2, name: Möhre, plural: Möhren }
       - { id: wasser-reis, amount: 600, unit: ml, name: Wasser }
       - { id: butter, amount: 1, unit: EL, name: Butter, optional: true }
   - group: Für die Hackbällchen
@@ -26,7 +26,7 @@ ingredients:
       - { id: pfeffer, name: Pfeffer }
   - group: Für die Soße
     items:
-      - { id: sahne, amount: 300, unit: ml, name: Kochsahne }
+      - { id: sahne, amount: 300, unit: ml, name: Sahne }
       - { id: wasser-sosse, amount: 100, unit: ml, name: Wasser }
       - { id: bruehe, amount: 2, unit: TL, name: Rinderbrühe, note: Instantpulver }
       - { id: senf-koernig, amount: 2, unit: EL, name: körniger Senf }
@@ -34,9 +34,9 @@ ingredients:
       - { id: schnittlauch, amount: 0.5, unit: Bund, name: Schnittlauch }
 
 steps:
-  - "{karotte} schälen und grob raspeln. {porree} der Länge nach halbieren und nur den weißen und hellgrünen Teil in feine Streifen schneiden. {zwiebel} fein würfeln."
+  - "{moehre} schälen und grob raspeln. {porree} der Länge nach halbieren und nur den weißen und hellgrünen Teil in feine Streifen schneiden. {zwiebel} fein würfeln."
   - "{petersilie} fein hacken, {schnittlauch} in feine Röllchen schneiden."
-  - "{wasser-reis} in einem großen Topf mit Deckel zum Kochen bringen und leicht salzen. {reis}, {porree:name} und Karottenraspel hineingeben und bei niedriger Hitze etwa 10 Minuten abgedeckt köcheln lassen. Dann den Topf vom Herd nehmen und mindestens 10 Minuten abgedeckt ziehen lassen."
+  - "{wasser-reis} in einem großen Topf mit Deckel zum Kochen bringen und leicht salzen. {reis}, {porree:name} und Möhrenraspel hineingeben und bei niedriger Hitze etwa 10 Minuten abgedeckt köcheln lassen. Dann den Topf vom Herd nehmen und mindestens 10 Minuten abgedeckt ziehen lassen."
   - "Für die Soße {wasser-sosse}, {sahne}, {bruehe}, {senf-koernig} und {honig} in einem hohen Rührgefäß gut verrühren, sodass keine Klümpchen mehr vorhanden sind."
   - "In einer großen Schüssel {hackfleisch}, Zwiebelwürfel, {semmelbroesel}, {petersilie:name}, {senf-mittelscharf}, {salz} und {pfeffer} mit den Händen gut vermengen und daraus etwa 5 Bällchen pro Portion formen."
   - "{oel} in einer großen Pfanne bei hoher Hitze erwärmen und die Hackbällchen 2–3 Minuten rundherum scharf anbraten. Bällchen herausnehmen und das Fett abgießen."

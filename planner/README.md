@@ -102,7 +102,8 @@ with store, product, price, validity and fetch date.
   abnehmen, dann …"), never a separate recipe;
 - concise steps, weights over spoons where practical;
 - ingredient names as Bring! and German shops know them ("Mungobohnensprossen", not
-  "Mungbohnensprossen"; "Porree" and "Lauch" both exist, pick one per collection);
+  "Mungbohnensprossen"); one name per thing across the collection, so that lines merge and
+  Bring! sees one item: "Möhre" (not Karotte), "Sahne" (not Kochsahne), "Porree" (not Lauch);
 - every ingredient gets an amount and a unit where one exists, herbs in Bund or Zweige, so that
   the same ingredient merges across the week's recipes on the shopping list ("Minze" without
   unit and "1 Bund Minze" stay two lines; the build warns about such pairs);

@@ -98,7 +98,7 @@ test('a whole recipe becomes a schema.org Recipe', () => {
   const steps = data.recipeInstructions as { '@type': string; text: string }[];
   assert.equal(steps.length, 8);
   assert.equal(steps[0]['@type'], 'HowToStep');
-  assert.ok(steps[0].text.startsWith('2 Karotten schälen'));
+  assert.ok(steps[0].text.startsWith('2 Möhren schälen'));
 
   // must survive the trip into the page as JSON
   assert.deepEqual(JSON.parse(JSON.stringify(data)), data);
