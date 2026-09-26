@@ -78,7 +78,13 @@ export interface PlanDay {
   dinner?: PlanEntry;
 }
 
-export interface Plan {
+/** One planned week: an optional sentence for the family and the days in order. */
+export interface Week {
   note?: string;
   days: PlanDay[];
+}
+
+/** The plan file: this week and, once planned, the next one (SPEC.md §6.9). */
+export interface Plan {
+  weeks: Week[];
 }

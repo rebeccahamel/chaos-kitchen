@@ -1,25 +1,28 @@
-# Wochenplan (MEAL_PLANNER.md §14). Shown on the homepage as "Diese Woche"; with an empty
-# days list the section is hidden. Claude Code writes this file in the weekly planning session.
+# Wochenplan (MEAL_PLANNER.md §14, SPEC.md §6.9). Shown on the homepage as "Diese Woche" and
+# "Nächste Woche"; with an empty weeks list the section is hidden. Claude Code writes this file
+# in the weekly planning session: the new week is added at the end, a finished week is removed.
 #
+# weeks holds at most two weeks in date order, each with an optional note and its days.
 # Each day has a date and optionally a lunch and a dinner. A meal is one of:
 #   { recipe: <slug> }          a recipe of the site, at most once per week (max. 10 recipes)
-#   { leftovers: <date> }       leftovers from an earlier day of this plan
+#   { leftovers: <date> }       leftovers from an earlier day of the same week
 #   { text: "…" }               anything else, without a link ("Brot mit Salat", "Essen gehen")
 # A day without lunch and dinner is a free day.
 
-note: Mittwoch kamen Gäste zum Selberrollen, am Wochenende gibt es Ofenlachs und gefüllte Paprika, die Reste sind jeweils das Mittagessen danach.
-days:
-  - date: 2026-09-23
-    dinner: { recipe: sommerrollen-mit-erdnusssauce }
-  - date: 2026-09-24
-    lunch: { leftovers: 2026-09-23 }
-    dinner: { recipe: kartoffelgratin-mit-veggie-cordon-bleu }
-  - date: 2026-09-25
-    lunch: { leftovers: 2026-09-24 }
-  - date: 2026-09-26
-    dinner: { recipe: ofenlachs-mit-kuerbis-und-kichererbsen }
-  - date: 2026-09-27
-    lunch: { leftovers: 2026-09-26 }
-    dinner: { recipe: gefuellte-paprika-mit-hackfleisch }
-  - date: 2026-09-28
-    lunch: { leftovers: 2026-09-27 }
+weeks:
+  - note: Mittwoch kamen Gäste zum Selberrollen, am Wochenende gibt es Ofenlachs und gefüllte Paprika, die Reste sind jeweils das Mittagessen danach.
+    days:
+      - date: 2026-09-23
+        dinner: { recipe: sommerrollen-mit-erdnusssauce }
+      - date: 2026-09-24
+        lunch: { leftovers: 2026-09-23 }
+        dinner: { recipe: kartoffelgratin-mit-veggie-cordon-bleu }
+      - date: 2026-09-25
+        lunch: { leftovers: 2026-09-24 }
+      - date: 2026-09-26
+        dinner: { recipe: ofenlachs-mit-kuerbis-und-kichererbsen }
+      - date: 2026-09-27
+        lunch: { leftovers: 2026-09-26 }
+        dinner: { recipe: gefuellte-paprika-mit-hackfleisch }
+      - date: 2026-09-28
+        lunch: { leftovers: 2026-09-27 }

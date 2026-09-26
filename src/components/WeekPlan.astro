@@ -8,14 +8,14 @@ import { Image } from 'astro:assets';
 import placeholder from '../assets/placeholder-recipe.svg';
 import { describeIngredient } from '../lib/format.ts';
 import { recipePhoto } from '../lib/photos.ts';
-import { isoDate, planRecipes, planTitle, weekdayName, type Plan, type PlanEntry } from '../lib/plan.ts';
+import { isoDate, weekRecipes, weekTitle, weekdayName, type Week, type PlanEntry } from '../lib/plan.ts';
 import { flattenIngredients, formatDuration, totalTime } from '../lib/recipe.ts';
 import { consolidateIngredients, selectionMask } from '../lib/shopping.ts';
 import { recipeUrl, url } from '../lib/site.ts';
 import type { Lists } from '../lib/types.ts';
 
 interface Props {
-  plan: Plan;
+  plan: Week;
   /** all recipes, trial ones included */
   recipes: CollectionEntry<'recipes'>[];
   lists: Lists;
@@ -25,7 +25,7 @@ const { plan, recipes, lists } = Astro.props;
 const { units } = lists;
 const bySlug = new Map(recipes.map((recipe) => [recipe.id, recipe]));
 /** the recipes of the week in plan order; their position is the tick box index and the mask digit */
-const planned = planRecipes(plan).map((slug) => bySlug.get(slug)!);
+const planned = weekRecipes(plan).map((slug) => bySlug.get(slug)!);
 const indexOf = new Map(planned.map((recipe, index) => [recipe.id, index]));
 
 /** "Reste: Fischcurry mit Reis" for a leftovers entry, or the plain text */
@@ -64,7 +64,7 @@ const clientData = JSON.stringify({
 <section class="week" id="week" aria-labelledby="week-title">
   <header class="week-head">
     <h2 id="week-title">Diese Woche</h2>
-    <p class="week-dates">{planTitle(plan)}</p>
+    <p class="week-dates">{weekTitle(plan)}</p>
     {plan.note && <p class="week-note">{plan.note}</p>}
   </header>
 

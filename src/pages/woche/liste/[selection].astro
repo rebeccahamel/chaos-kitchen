@@ -9,7 +9,7 @@ import Base from '../../../layouts/Base.astro';
 import { describeIngredient } from '../../../lib/format.ts';
 import { loadLists } from '../../../lib/lists.ts';
 import { recipePhoto } from '../../../lib/photos.ts';
-import { hasPlan, loadPlan, planRecipes, planTitle, type Plan } from '../../../lib/plan.ts';
+import { hasPlan, loadPlan, weekRecipes, weekTitle, type Week } from '../../../lib/plan.ts';
 import { flattenIngredients } from '../../../lib/recipe.ts';
 import { allSelectionMasks, consolidateIngredients, selectedByMask, weekListJsonLd } from '../../../lib/shopping.ts';
 import { recipeUrl, url } from '../../../lib/site.ts';
@@ -18,16 +18,17 @@ export async function getStaticPaths() {
   const all = await getCollection('recipes');
   const plan = loadPlan(all.map((recipe) => recipe.id));
   if (!hasPlan(plan)) return [];
+  const week = plan.weeks[0];
   const bySlug = new Map(all.map((recipe) => [recipe.id, recipe]));
-  const recipes = planRecipes(plan).map((slug) => bySlug.get(slug)!);
+  const recipes = weekRecipes(week).map((slug) => bySlug.get(slug)!);
   return allSelectionMasks(recipes.length).map((selection) => ({
     params: { selection },
-    props: { plan, recipes: selectedByMask(selection, recipes)! },
+    props: { plan: week, recipes: selectedByMask(selection, recipes)! },
   }));
 }
 
 interface Props {
-  plan: Plan;
+  plan: Week;
   recipes: CollectionEntry<'recipes'>[];
 }
 
@@ -35,7 +36,7 @@ const { plan, recipes } = Astro.props;
 const lists = loadLists();
 const { units } = lists;
 
-const name = `Wochenplan ${planTitle(plan)}`;
+const name = `Wochenplan ${weekTitle(plan)}`;
 const titles = recipes.map((recipe) => recipe.data.title);
 const description = `Zutaten für ${recipes.length === 1 ? 'ein Rezept' : `${recipes.length} Rezepte`}: ${titles.join(', ')}`;
 const ingredientLists = recipes.map((recipe) => flattenIngredients(recipe.data.ingredients));
