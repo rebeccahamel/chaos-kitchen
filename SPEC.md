@@ -86,7 +86,7 @@ Constraints:
    │  ├─ recipe-schema.ts        recipe schema and cross-checks (§7), build time only
    │  ├─ build-checks.ts         file names, photos, avatars, weekly plan (§7) as an Astro integration
    │  ├─ plan.ts                 reads and validates plan.yaml (§6.9), build time only
-   │  ├─ shopping.ts             merged shopping list of several recipes, selection masks (also browser)
+   │  ├─ shopping.ts             merged shopping list, the Bring! ingredient line, selection masks (also browser)
    │  ├─ units.ts, scale.ts, format.ts, placeholders.ts, recipe.ts, search.ts, tags.ts
    │  │                          pure functions, also used in the browser: scaling, rounding,
    │  │                          display text, placeholders, search normalisation, tag labels
@@ -542,6 +542,9 @@ planner/README.md. The planning happens in Claude Code sessions; the site only s
   yield, merged by name (case and umlauts ignored) and unit (singular = plural); amounts and
   ranges add up; per-recipe notes are dropped; "(optional)" only when optional everywhere;
   order of first appearance. Imperfect merges ("Zwiebel" vs "rote Zwiebel") are accepted.
+  A recipe page's Bring! lines (§6.4) go through the same merge with its own ingredients only,
+  so that Wasser in two groups becomes one line; there a note is kept when every merged line
+  carries the same one (decided 2026-09-27).
 - **Hidden week pages** `/woche/<first day>/liste/<selection>/`: Bring! fetches the page behind
   the link and reads its JSON-LD, so it cannot see the ticks. The build therefore generates, per
   week, one page per possible selection, addressed by the week's first day and a string of 0

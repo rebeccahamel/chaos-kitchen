@@ -1,11 +1,12 @@
-// Merge rules for the week's shopping list (MEAL_PLANNER.md §14) and the selection masks
-// that address the hidden week pages.
+// Merge rules for the week's shopping list (MEAL_PLANNER.md §14), the Bring! ingredient line
+// (SPEC.md §6.4) and the selection masks that address the hidden week pages.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   addAmounts,
   allSelectionMasks,
   consolidateIngredients,
+  ingredientLine,
   selectedByMask,
   selectionMask,
   shoppingLines,
@@ -117,6 +118,76 @@ test('the real recipes merge into one list without duplicates', () => {
     units,
   ).map((i) => i.id);
   assert.equal(new Set(ids).size, ids.length, 'ids are unique');
+});
+
+test('within one recipe (keepNotes) a note survives when every merged line agrees', () => {
+  const recipe: Ingredient[] = [
+    { id: 'w1', amount: 600, unit: 'ml', name: 'Wasser' },
+    { id: 'p', amount: 0.5, unit: 'Bund', name: 'Petersilie', note: 'glatt' },
+    { id: 'o1', amount: 2, unit: 'EL', name: 'Öl', note: 'zum Anbraten' },
+    { id: 'w2', amount: 100, unit: 'ml', name: 'Wasser' },
+    { id: 'o2', amount: 1, unit: 'EL', name: 'Öl', note: 'für das Dressing' },
+    { id: 'z1', amount: 1, name: 'Zitrone', note: 'Bio' },
+    { id: 'z2', amount: 1, name: 'Zitrone', note: 'Bio' },
+  ];
+  const merged = consolidateIngredients([recipe], units, { keepNotes: true });
+  assert.deepEqual(
+    merged.map((i) => [i.name, i.amount, i.note]),
+    [['Wasser', 700, undefined], ['Petersilie', 0.5, 'glatt'], ['Öl', 3, undefined], ['Zitrone', 2, 'Bio']],
+  );
+  assert.equal(consolidateIngredients([recipe], units)[1].note, undefined, 'without keepNotes every note is dropped');
+});
+
+const reis: Ingredient = { id: 'reis', amount: 300, unit: 'g', name: 'Basmatireis' };
+const hackfleisch: Ingredient = { id: 'hackfleisch', amount: 1500, unit: 'g', name: 'Hackfleisch' };
+const bruehe: Ingredient = { id: 'bruehe', amount: [800, 1200], unit: 'ml', name: 'Brühe' };
+const petersilie: Ingredient = { id: 'petersilie', amount: 0.5, unit: 'Bund', name: 'Petersilie', note: 'glatt' };
+const butter: Ingredient = { id: 'butter', amount: 1, unit: 'EL', name: 'Butter', optional: true };
+const knoblauch: Ingredient = { id: 'knoblauch', amount: [1, 2], unit: 'Zehe', name: 'Knoblauch' };
+const karotte: Ingredient = { id: 'karotte', amount: 2, name: 'Karotte', plural: 'Karotten' };
+const zwiebel: Ingredient = { id: 'zwiebel', amount: 1, name: 'Zwiebel', plural: 'Zwiebeln' };
+const salz: Ingredient = { id: 'salz', name: 'Salz' };
+const salat: Ingredient = { id: 'salat', name: 'Salat', note: 'klein', optional: true };
+
+test('ingredient lines put the name first and the amount behind a comma', () => {
+  assert.equal(ingredientLine(reis, units), 'Basmatireis, 300 g');
+  assert.equal(ingredientLine(karotte, units), 'Karotten, 2');
+  assert.equal(ingredientLine(zwiebel, units), 'Zwiebel, 1');
+  assert.equal(ingredientLine(salz, units), 'Salz');
+});
+
+test('ranges use a plain hyphen and the plural of the unit', () => {
+  assert.equal(ingredientLine({ id: 'sahne', amount: [100, 150], unit: 'ml', name: 'Sahne' }, units), 'Sahne, 100-150 ml');
+  assert.equal(ingredientLine({ id: 'k', amount: [1, 2], unit: 'Dose', name: 'Kokosmilch' }, units), 'Kokosmilch, 1-2 Dosen');
+});
+
+test('learned Bring! rules force the singular or another name, matched without case and umlauts', () => {
+  const salat: Ingredient = { id: 's', amount: 2, name: 'Kopfsalat', plural: 'Kopfsalate' };
+  assert.equal(ingredientLine(salat, units), 'Kopfsalate, 2');
+  assert.equal(ingredientLine(salat, units, [{ name: 'kopfsalat', singular: true }]), 'Kopfsalat, 2');
+  assert.equal(ingredientLine(salat, units, [{ name: 'Kopfsalat', as: 'Salatkopf' }]), 'Salatkopf, 2');
+  assert.equal(ingredientLine({ id: 'm', amount: 200, unit: 'g', name: 'Möhren' }, units, [{ name: 'Moehren', as: 'Karotten' }]), 'Karotten, 200 g');
+  assert.equal(ingredientLine(lists.units ? salat : salat, units, lists.bring), 'Kopfsalat, 2', 'the real bring.yaml has the Kopfsalat rule');
+});
+
+test('units Bring! does not know stay behind the comma, so they cannot become part of the name', () => {
+  assert.equal(ingredientLine(knoblauch, units), 'Knoblauch, 1-2 Zehen');
+  assert.equal(ingredientLine({ ...knoblauch, amount: 1 }, units), 'Knoblauch, 1 Zehe');
+  assert.equal(ingredientLine({ id: 'p', amount: 2, unit: 'Stangen', name: 'Porree' }, units), 'Porree, 2 Stangen');
+  assert.equal(ingredientLine({ id: 'p', amount: 1, unit: 'Stange', name: 'Porree', note: 'nur das Weiße' }, units), 'Porree, 1 Stange, nur das Weiße');
+  assert.equal(ingredientLine({ id: 'r', amount: 16, unit: 'Blatt', name: 'Reispapier' }, units), 'Reispapier, 16 Blätter');
+});
+
+test('g and ml switch to kg and l from 1000 upwards, ranges as a pair', () => {
+  assert.equal(ingredientLine(hackfleisch, units), 'Hackfleisch, 1.5 kg');
+  assert.equal(ingredientLine(bruehe, units), 'Brühe, 0.8-1.2 l');
+  assert.equal(ingredientLine({ ...reis, amount: 999 }, units), 'Basmatireis, 999 g');
+});
+
+test('note and optional follow after a comma', () => {
+  assert.equal(ingredientLine(petersilie, units), 'Petersilie, 0.5 Bund, glatt');
+  assert.equal(ingredientLine(butter, units), 'Butter, 1 EL, optional');
+  assert.equal(ingredientLine(salat, units), 'Salat, klein, optional');
 });
 
 test('the same name with different units is reported, not merged', () => {

@@ -1,11 +1,11 @@
-// Consolidated shopping list for several recipes (MEAL_PLANNER.md §14, SPEC.md §6.9).
-// Pure functions, also used in the browser: the homepage merges the ticked recipes on the fly,
-// the hidden week pages carry the same list as JSON-LD for Bring!.
+// Consolidated shopping list for several recipes (MEAL_PLANNER.md §14, SPEC.md §6.9) and the
+// ingredient line Bring! reads (SPEC.md §6.4). Pure functions, also used in the browser: the
+// homepage merges the ticked recipes on the fly, the hidden week pages carry the same list as
+// JSON-LD for Bring!, and a recipe page merges its own duplicate lines the same way.
 
 import type { Amount, BringRule, Ingredient, UnitDef } from './types.ts';
-import { findUnit } from './units.ts';
+import { BASE_TO_LARGE, findUnit, unitLabel } from './units.ts';
 import { normalizeForSearch } from './search.ts';
-import { ingredientLine } from './structured-data.ts';
 
 /** Ingredients of one recipe, already flattened (see flattenIngredients in recipe.ts). */
 export type IngredientList = Ingredient[];
@@ -33,15 +33,20 @@ export function addAmounts(a: Amount | undefined, b: Amount | undefined): Amount
 
 /**
  * Merges the ingredients of several recipes into one list, at each recipe's base yield.
- * Same name (case and umlauts ignored) and same unit add up; notes are dropped because they
- * belong to one recipe; an item is optional only when it is optional everywhere; the order is
- * the order of first appearance. Ids are made from the merge key and unique in the result.
+ * Same name (case and umlauts ignored) and same unit add up; an item is optional only when it
+ * is optional everywhere; the order is the order of first appearance. Ids are made from the
+ * merge key and unique in the result. Notes are dropped because they belong to one recipe;
+ * with keepNotes (used for the duplicates within a single recipe) a note survives when every
+ * merged line carries the same one.
  */
-export function consolidateIngredients(lists: IngredientList[], units: UnitDef[]): Ingredient[] {
+export function consolidateIngredients(lists: IngredientList[], units: UnitDef[], options: { keepNotes?: boolean } = {}): Ingredient[] {
   const merged = new Map<string, Ingredient>();
+  const notes = new Map<string, Set<string | undefined>>();
   for (const list of lists) {
     for (const ingredient of list) {
       const key = mergeKey(ingredient, units);
+      if (!notes.has(key)) notes.set(key, new Set());
+      notes.get(key)!.add(ingredient.note);
       const existing = merged.get(key);
       if (!existing) {
         const { note: _note, ...rest } = ingredient;
@@ -55,6 +60,13 @@ export function consolidateIngredients(lists: IngredientList[], units: UnitDef[]
         optional: existing.optional === true && ingredient.optional === true ? true : undefined,
         whole: existing.whole || ingredient.whole ? true : undefined,
       });
+    }
+  }
+  if (options.keepNotes) {
+    for (const [key, ingredient] of merged) {
+      const seen = notes.get(key) ?? new Set();
+      const [only] = seen;
+      if (seen.size === 1 && only !== undefined) ingredient.note = only;
     }
   }
   return [...merged.values()];
@@ -77,7 +89,59 @@ export function unmergedNames(lists: IngredientList[], units: UnitDef[]): { name
   return [...byName.values()].filter((entry) => entry.units.size > 1).map((entry) => ({ name: entry.name, units: [...entry.units] }));
 }
 
-/** The merged list as plain schema.org lines ("300 g Basmatireis"), the format Bring! reads. */
+/** Plain number for machines: decimal point, no fraction glyphs, at most three decimals. */
+function plainNumber(value: number): string {
+  return String(Math.round(value * 1000) / 1000);
+}
+
+/** The learned rule for an ingredient name, if any (src/data/bring.yaml). */
+function bringRuleFor(name: string, rules: BringRule[]): BringRule | undefined {
+  const key = normalizeForSearch(name);
+  return rules.find((rule) => normalizeForSearch(rule.name) === key);
+}
+
+/**
+ * One ingredient as a machine-readable line at base yield, the name first and the amount
+ * behind a comma: "Basmatireis, 300 g", "Hackfleisch, 1.5 kg", "Zwiebeln, 2",
+ * "Petersilie, 0.5 Bund, glatt", "Butter, 1 EL, optional", "Salz". Bring! takes the words
+ * before the first comma as the item and everything after it as the specification, and it
+ * scales the amount in there (checked 2026-09-27). With the amount in front, Bring! had to guess
+ * where the unit ends and the name begins, which produced "Porreestangen" and
+ * "Reispapierblätter" (SPEC.md §6.4). The learned rules in bring.yaml still force the singular
+ * ("Kopfsalat, 2") or another name when Bring! does not know the name as written.
+ */
+export function ingredientLine(ingredient: Ingredient, units: UnitDef[], rules: BringRule[] = []): string {
+  const rule = bringRuleFor(ingredient.name, rules);
+  let name = rule?.as ?? ingredient.name;
+  let line: string;
+
+  if (ingredient.amount === undefined) {
+    line = name;
+  } else {
+    let values = Array.isArray(ingredient.amount) ? [...ingredient.amount] : [ingredient.amount];
+    let unitName = ingredient.unit;
+    const max = Math.max(...values);
+
+    // g and ml switch to kg and l from 1000 upwards, both ends of a range together (as on the page)
+    if (unitName && unitName in BASE_TO_LARGE && max >= 1000) {
+      values = values.map((v) => v / 1000);
+      unitName = BASE_TO_LARGE[unitName];
+    }
+
+    // Counted items (no unit) take the plural above 1, like the ingredient list, unless a rule says otherwise
+    if (!ingredient.unit && max > 1 && !rule?.singular && !rule?.as) name = ingredient.plural ?? ingredient.name;
+
+    const unitDef = unitName ? findUnit(units, unitName) : undefined;
+    const unit = unitName ? (unitDef ? unitLabel(unitDef, max) : unitName) : undefined;
+    line = `${name}, ${values.map(plainNumber).join('-')}${unit ? ` ${unit}` : ''}`;
+  }
+
+  if (ingredient.note) line += `, ${ingredient.note}`;
+  if (ingredient.optional) line += ', optional';
+  return line;
+}
+
+/** The merged list as plain schema.org lines ("Basmatireis, 300 g"), the format Bring! reads. */
 export function shoppingLines(lists: IngredientList[], units: UnitDef[], rules: BringRule[] = []): string[] {
   return consolidateIngredients(lists, units).map((ingredient) => ingredientLine(ingredient, units, rules));
 }
