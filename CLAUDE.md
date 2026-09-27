@@ -43,8 +43,8 @@ Run `npm run build` before declaring a task done. It must pass without errors.
   transliterated (ä→ae, ö→oe, ü→ue, ß→ss). Recipe pictures use the same slug in
   `src/assets/recipes/`, numbered `<slug>_1.jpg`, `<slug>_2.jpg`, … when there are several. Files starting with `_` are not recipes.
 - Step strings in YAML are always double-quoted.
-- The site is served under a base path (`/<repo-name>/`). Never hardcode root-relative
-  links; always build URLs with the base path.
+- The site is served from the root of its own domain, but every internal link is still built
+  with `url()` from `src/lib/site.ts`, never hardcoded, so a base path can come back at any time.
 - Scaling, rounding and placeholder rendering live in `src/lib/` as small, pure functions with
   unit tests covering the rules in SPEC.md §4.6 and §5. These modules also run in the browser,
   so they must not import Node modules; only `lists.ts`, `build-checks.ts`, `recipe-schema.ts`

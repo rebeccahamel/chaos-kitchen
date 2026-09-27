@@ -2,7 +2,7 @@
 
 🇬🇧 [English version](README.en.md)
 
-Die Seite ist unter <https://rebeccahamel.github.io/chaos-kitchen/> erreichbar. Alle Rezepte
+Die Seite ist unter <https://chaos-kitchen.com/> erreichbar. Alle Rezepte
 liegen als kleine Textdateien in diesem Repository. Wer eine Datei ändert oder hinzufügt und
 auf `main` speichert, veröffentlicht die Änderung: GitHub baut die Seite in etwa einer Minute
 neu.
@@ -253,7 +253,7 @@ installieren, das Repository klonen und in VS Code öffnen. Dann im Terminal (Po
 
 ```powershell
 npm install        # Abhängigkeiten installieren, nur einmal nötig
-npm run dev        # lokale Vorschau unter http://localhost:4321/chaos-kitchen/
+npm run dev        # lokale Vorschau unter http://localhost:4321/
 npm run build      # prüft alle Rezeptdateien so wie GitHub es tut
 npm test           # Tests für Umrechnung und Anzeige
 ```

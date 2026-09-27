@@ -2,7 +2,7 @@
 
 🇩🇪 [Deutsche Version](README.md)
 
-The site lives at <https://rebeccahamel.github.io/chaos-kitchen/>. Every recipe is a small
+The site lives at <https://chaos-kitchen.com/>. Every recipe is a small
 text file in this repository. Whoever changes or adds a file and saves it on `main` publishes
 the change: GitHub rebuilds the site in about a minute.
 
@@ -251,7 +251,7 @@ clone the repository and open it in VS Code. Then in the terminal (PowerShell):
 
 ```powershell
 npm install        # install dependencies, needed only once
-npm run dev        # local preview at http://localhost:4321/chaos-kitchen/
+npm run dev        # local preview at http://localhost:4321/
 npm run build      # checks all recipe files exactly like GitHub does
 npm test           # tests for scaling and display
 ```

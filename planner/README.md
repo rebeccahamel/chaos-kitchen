@@ -150,7 +150,7 @@ Rules:
 - **The title is the dish only**, no "Mittagessen:" prefix: for a recipe its title, for
   leftovers "Reste: <title of that dinner>", for a text meal the text as written.
 - **The description holds the link** to the recipe page on the live site,
-  `https://rebeccahamel.github.io/chaos-kitchen/rezept/<slug>/`; for leftovers the link of the
+  `https://chaos-kitchen.com/rezept/<slug>/`; for leftovers the link of the
   original recipe; text meals get no description.
 - **No duplicates.** Before creating, list the open tasks of the project Speiseplan due on the
   plan's dates and delete them; never touch tasks outside that project or on other dates.

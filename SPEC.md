@@ -1,6 +1,6 @@
 # Familien-Rezeptseite – Specification
 
-Status (2026-09-22): version 1 is built and live at https://rebeccahamel.github.io/chaos-kitchen/
+Status (2026-09-22): version 1 is built and live at https://chaos-kitchen.com/
 (data layer, deploy workflow, design, overview, recipe page with yield control, Kochmodus and
 Bring! button).
 Branch `meal_planner` (2026-09-23): the weekly plan on the homepage (§6.9) is built and waits for
@@ -596,12 +596,14 @@ converted to g or ml at the same point (§5.1).
 
 - GitHub Pages with source "GitHub Actions". The workflow builds the site on every push
   to `main` and deploys it. A failed build leaves the previous version online.
-- The site is a project site at `https://<username>.github.io/<repo-name>/`.
-  `astro.config.mjs` sets `site` and `base` accordingly, and every internal link and
-  asset path must respect the base path.
+- Since 2026-09-26 the site lives on the custom domain `https://chaos-kitchen.com/`, served
+  from the root; `public/CNAME` holds the domain so every deploy keeps it, and GitHub Pages
+  provides the certificate. `astro.config.mjs` sets `site` to that address and no `base`.
+  Every internal link and asset path still goes through `url()` in `src/lib/site.ts`, so a
+  base path (as on the earlier project-site address `https://<username>.github.io/<repo-name>/`)
+  can be reintroduced without touching pages.
 - Search engines: every page carries `<meta name="robots" content="noindex, nofollow">`.
-  (A `robots.txt` would not work for a project site, because it must sit at the domain root.)
-  No sitemap.
+  No `robots.txt`, no sitemap.
 
 ---
 
@@ -662,7 +664,8 @@ The plan file holds up to two weeks and the homepage shows them as a swipeable s
 arrows, so next week can be planned and shopped while this one runs (§6.9). Week 2026-W40
 planned and in Todoist; `bring: note` for Stange (§4, §6.4); Möhre and Sahne as the only names.
 Done (2026-09-27): Ofenlachs loved and kept, so all three W39 recipes are in the collection and
-W39 is closed.
+W39 is closed. Custom domain chaos-kitchen.com (connected 2026-09-26): `base` dropped, `site`
+and `public/CNAME` set, docs updated (§8).
 
 Next: check in the Bring! app that "Porree, 2 Stangen" arrives as Porree with the specification
 "2 Stangen"; review W40 with prompt B around 3 October.
