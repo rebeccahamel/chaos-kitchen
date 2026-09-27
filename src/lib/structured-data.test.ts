@@ -18,44 +18,44 @@ const zwiebel: Ingredient = { id: 'zwiebel', amount: 1, name: 'Zwiebel', plural:
 const salz: Ingredient = { id: 'salz', name: 'Salz' };
 const salat: Ingredient = { id: 'salat', name: 'Salat', note: 'klein', optional: true };
 
-test('ingredient lines use plain numbers, units and names', () => {
-  assert.equal(ingredientLine(reis, units), '300 g Basmatireis');
-  assert.equal(ingredientLine(karotte, units), '2 Karotten');
-  assert.equal(ingredientLine(zwiebel, units), '1 Zwiebel');
+test('ingredient lines put the name first and the amount behind a comma', () => {
+  assert.equal(ingredientLine(reis, units), 'Basmatireis, 300 g');
+  assert.equal(ingredientLine(karotte, units), 'Karotten, 2');
+  assert.equal(ingredientLine(zwiebel, units), 'Zwiebel, 1');
   assert.equal(ingredientLine(salz, units), 'Salz');
 });
 
 test('ranges use a plain hyphen and the plural of the unit', () => {
-  assert.equal(ingredientLine({ id: 'sahne', amount: [100, 150], unit: 'ml', name: 'Sahne' }, units), '100-150 ml Sahne');
-  assert.equal(ingredientLine({ id: 'k', amount: [1, 2], unit: 'Dose', name: 'Kokosmilch' }, units), '1-2 Dosen Kokosmilch');
+  assert.equal(ingredientLine({ id: 'sahne', amount: [100, 150], unit: 'ml', name: 'Sahne' }, units), 'Sahne, 100-150 ml');
+  assert.equal(ingredientLine({ id: 'k', amount: [1, 2], unit: 'Dose', name: 'Kokosmilch' }, units), 'Kokosmilch, 1-2 Dosen');
 });
 
 test('learned Bring! rules force the singular or another name, matched without case and umlauts', () => {
   const salat: Ingredient = { id: 's', amount: 2, name: 'Kopfsalat', plural: 'Kopfsalate' };
-  assert.equal(ingredientLine(salat, units), '2 Kopfsalate');
-  assert.equal(ingredientLine(salat, units, [{ name: 'kopfsalat', singular: true }]), '2 Kopfsalat');
-  assert.equal(ingredientLine(salat, units, [{ name: 'Kopfsalat', as: 'Salatkopf' }]), '2 Salatkopf');
-  assert.equal(ingredientLine({ id: 'm', amount: 200, unit: 'g', name: 'Möhren' }, units, [{ name: 'Moehren', as: 'Karotten' }]), '200 g Karotten');
-  assert.equal(ingredientLine(lists.units ? salat : salat, units, lists.bring), '2 Kopfsalat', 'the real bring.yaml has the Kopfsalat rule');
+  assert.equal(ingredientLine(salat, units), 'Kopfsalate, 2');
+  assert.equal(ingredientLine(salat, units, [{ name: 'kopfsalat', singular: true }]), 'Kopfsalat, 2');
+  assert.equal(ingredientLine(salat, units, [{ name: 'Kopfsalat', as: 'Salatkopf' }]), 'Salatkopf, 2');
+  assert.equal(ingredientLine({ id: 'm', amount: 200, unit: 'g', name: 'Möhren' }, units, [{ name: 'Moehren', as: 'Karotten' }]), 'Karotten, 200 g');
+  assert.equal(ingredientLine(lists.units ? salat : salat, units, lists.bring), 'Kopfsalat, 2', 'the real bring.yaml has the Kopfsalat rule');
 });
 
-test('units Bring! does not know: glued onto the name (bring: compound) or moved into the specification (bring: note)', () => {
-  assert.equal(ingredientLine(knoblauch, units), '1-2 Knoblauchzehen');
-  assert.equal(ingredientLine({ ...knoblauch, amount: 1 }, units), '1 Knoblauchzehe');
+test('units Bring! does not know stay behind the comma, so they cannot become part of the name', () => {
+  assert.equal(ingredientLine(knoblauch, units), 'Knoblauch, 1-2 Zehen');
+  assert.equal(ingredientLine({ ...knoblauch, amount: 1 }, units), 'Knoblauch, 1 Zehe');
   assert.equal(ingredientLine({ id: 'p', amount: 2, unit: 'Stangen', name: 'Porree' }, units), 'Porree, 2 Stangen');
   assert.equal(ingredientLine({ id: 'p', amount: 1, unit: 'Stange', name: 'Porree', note: 'nur das Weiße' }, units), 'Porree, 1 Stange, nur das Weiße');
-  assert.equal(ingredientLine({ id: 'r', amount: 16, unit: 'Blatt', name: 'Reispapier' }, units), '16 Blätter Reispapier', 'Blatt has no flag: Bring! misread Reispapierblätter');
+  assert.equal(ingredientLine({ id: 'r', amount: 16, unit: 'Blatt', name: 'Reispapier' }, units), 'Reispapier, 16 Blätter');
 });
 
 test('g and ml switch to kg and l from 1000 upwards, ranges as a pair', () => {
-  assert.equal(ingredientLine(hackfleisch, units), '1.5 kg Hackfleisch');
-  assert.equal(ingredientLine(bruehe, units), '0.8-1.2 l Brühe');
-  assert.equal(ingredientLine({ ...reis, amount: 999 }, units), '999 g Basmatireis');
+  assert.equal(ingredientLine(hackfleisch, units), 'Hackfleisch, 1.5 kg');
+  assert.equal(ingredientLine(bruehe, units), 'Brühe, 0.8-1.2 l');
+  assert.equal(ingredientLine({ ...reis, amount: 999 }, units), 'Basmatireis, 999 g');
 });
 
 test('note and optional follow after a comma', () => {
-  assert.equal(ingredientLine(petersilie, units), '0.5 Bund Petersilie, glatt');
-  assert.equal(ingredientLine(butter, units), '1 EL Butter, optional');
+  assert.equal(ingredientLine(petersilie, units), 'Petersilie, 0.5 Bund, glatt');
+  assert.equal(ingredientLine(butter, units), 'Butter, 1 EL, optional');
   assert.equal(ingredientLine(salat, units), 'Salat, klein, optional');
 });
 
@@ -90,10 +90,10 @@ test('a whole recipe becomes a schema.org Recipe', () => {
 
   const ingredients = data.recipeIngredient as string[];
   assert.equal(ingredients.length, 19);
-  assert.equal(ingredients[0], '300 g Basmatireis');
+  assert.equal(ingredients[0], 'Basmatireis, 300 g');
   assert.ok(ingredients.includes('Porree, 2 Stangen'));
-  assert.ok(ingredients.includes('0.5 Bund Petersilie, glatt'));
-  assert.ok(ingredients.includes('1 EL Butter, optional'));
+  assert.ok(ingredients.includes('Petersilie, 0.5 Bund, glatt'));
+  assert.ok(ingredients.includes('Butter, 1 EL, optional'));
   assert.ok(ingredients.includes('Salz'));
 
   const steps = data.recipeInstructions as { '@type': string; text: string }[];

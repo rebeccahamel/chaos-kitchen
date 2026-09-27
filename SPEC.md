@@ -291,9 +291,9 @@ of the time filter (Becci adds tags as they come along):
 - { unit: Dose,     plural: Dosen,    category: count }
 - { unit: Päckchen, plural: Päckchen, category: count }
 - { unit: Bund,     plural: Bund,     category: count }
-- { unit: Zehe,     plural: Zehen,    category: count, bring: compound }
+- { unit: Zehe,     plural: Zehen,    category: count }
 - { unit: Scheibe,  plural: Scheiben, category: count }
-- { unit: Stange,   plural: Stangen,  category: count, bring: note }
+- { unit: Stange,   plural: Stangen,  category: count }
 - { unit: Stück,    plural: Stück,    category: count }
 - { unit: Portion,  plural: Portionen, category: count }
 - { unit: Blech,    plural: Bleche,   category: count }
@@ -302,15 +302,11 @@ of the time filter (Becci adds tags as they come along):
 ```
 
 Recipes may use either the singular or plural form of a unit; both resolve to the same entry.
-`bring` (optional) only affects the Bring! shopping list (§6.4), for units Bring! does not know,
-which would otherwise become part of the item name ("Zehen Knoblauch"). `bring: compound`
-(decided 2026-09-23) glues the unit onto the name, "3 Knoblauchzehen", which works because that
-word is in Bring!'s catalogue. `bring: note` (decided 2026-09-26, after "Porreestangen" failed)
-writes the name first and moves amount and unit behind a comma, "Porree, 2 Stangen", so Bring!
-creates the item Porree with "2 Stangen" as its specification, like typing it in the app. The
-site keeps showing "3 Zehen Knoblauch" and "2 Stangen Porree". Blatt and Zweig deliberately have
-no flag: Bring! misread "Reispapierblätter" and "Rosmarinzweige"; if their plain lines fail too,
-`bring: note` is the answer.
+Units carry nothing for Bring!: since 2026-09-27 every Bring! line puts the name first and the
+amount behind a comma ("Porree, 2 Stangen", §6.4), so no unit can be misread as part of the
+name. The earlier per-unit flags `bring: compound` ("3 Knoblauchzehen", 2026-09-23) and
+`bring: note` (2026-09-26, after "Porreestangen" failed) were the special cases of that rule
+and are gone.
 
 `src/data/bring.yaml` – item rules for the Bring! line, learned on the go (§6.4):
 
@@ -428,18 +424,23 @@ It is invisible; Bring! reads it for the shopping list (§6.8). Built by
   link preview), url, datePublished, recipeYield ("4 Portionen"), prepTime / cookTime /
   totalTime as ISO 8601 durations ("PT1H30M"), keywords (tag labels).
 - recipeIngredient: one plain string per ingredient at the base yield, meant for machines, not
-  people: decimal point ("0.5 Bund Petersilie"), hyphen for ranges ("1-2 Zehen Knoblauch"),
-  kg / l from 1000 g / ml upwards ("1.5 kg Hackfleisch", both ends of a range together), the
-  plural of the unit above 1, then the note and "optional" after commas ("1 EL Butter,
-  optional"). No amount → the name only ("Salz"). Bring! matches its catalogue word by word and
-  not consistently ("Knoblauchzehen" yes, "Reispapierblätter" no; "Kopfsalate" no, "Limetten"
-  yes), so a few things exist only for this line (decided 2026-09-23 after the first live tests):
-  units marked `bring: compound` in `units.yaml` are glued onto the name ("3 Knoblauchzehen",
-  "1 Knoblauchzehe"), units marked `bring: note` put amount and unit behind the name as the
-  specification ("Porree, 2 Stangen"); and `src/data/bring.yaml` holds item rules learned on
-  the go, matched on the ingredient name (case and umlauts ignored): `singular: true` keeps the
-  singular ("2 Kopfsalat"), `as: <text>` replaces the name. Whenever an item arrives wrong in the
-  app, a line is added there; the review session (planner/README.md) asks for such cases.
+  people. The name comes first, the amount behind a comma (decided 2026-09-27): "Basmatireis,
+  300 g", "Zwiebeln, 2", "Knoblauch, 1-2 Zehen". Bring! takes the words before the first comma
+  as the item and everything after it as the specification, and it scales that amount with the
+  chosen yield (checked with Bring!'s parser: "Porree, 2 Stangen" became "4 Stangen" at double
+  yield). With the amount in front, Bring! had to guess where the unit ends and the name begins,
+  which produced "Porreestangen", "Reispapierblätter" and "Rosmarinzweige"; the name-first form
+  removes that guess for every unit. Amount rules: decimal point ("Petersilie, 0.5 Bund"),
+  hyphen for ranges, kg / l from 1000 g / ml upwards ("Hackfleisch, 1.5 kg", both ends of a
+  range together), the plural of the unit above 1, counted items in the plural above 1
+  ("Zwiebeln, 2"), then the note and "optional" after further commas ("Butter, 1 EL,
+  optional"). No amount → the name only ("Salz"). Name matching is still Bring!'s word-by-word
+  catalogue lookup ("Kopfsalate" no, "Limetten" yes), so `src/data/bring.yaml` holds item rules
+  learned on the go, matched on the ingredient name (case and umlauts ignored): `singular: true`
+  keeps the singular ("Kopfsalat, 2"), `as: <text>` replaces the name. Whenever an item arrives
+  wrong in the app, a line is added there; the review session (planner/README.md) asks for such
+  cases. Duplicates within one recipe (the same name and unit in two groups, like Wasser for
+  the rice and for the sauce) are merged into one line (§6.9, decided 2026-09-27).
 - recipeInstructions: the steps as plain text with the placeholders filled in at the base yield.
 
 ### 6.5 Images
@@ -665,7 +666,8 @@ arrows, so next week can be planned and shopped while this one runs (§6.9). Wee
 planned and in Todoist; `bring: note` for Stange (§4, §6.4); Möhre and Sahne as the only names.
 Done (2026-09-27): Ofenlachs loved and kept, so all three W39 recipes are in the collection and
 W39 is closed. Custom domain chaos-kitchen.com (connected 2026-09-26): `base` dropped, `site`
-and `public/CNAME` set, docs updated (§8).
+and `public/CNAME` set, docs updated (§8). Bring! lines are now "Name, amount unit" for every
+ingredient and the per-unit flags are gone; duplicates within a recipe merge (§4.7, §6.4).
 
 Next: check in the Bring! app that "Porree, 2 Stangen" arrives as Porree with the specification
 "2 Stangen"; review W40 with prompt B around 3 October.

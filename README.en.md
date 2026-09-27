@@ -288,7 +288,6 @@ recipes. How that works is in [planner/README.md](planner/README.md). New recipe
 deleted.
 
 When Bring! misreads an ingredient (it does not know "Kopfsalate", but it knows "Kopfsalat"), a
-line goes into [src/data/bring.yaml](src/data/bring.yaml); the file explains the two options. When
-Bring! does not know a unit (Zehen, Stangen), the unit gets a `bring:` in `units.yaml`: with
-`compound` the list says "3 Knoblauchzehen", with `note` the amount follows the name as the
-specification, "Porree, 2 Stangen".
+line goes into [src/data/bring.yaml](src/data/bring.yaml); the file explains the two options.
+Units need no rule: the Bring! line always puts the name first and the amount after it as the
+specification ("Porree, 2 Stangen"), so Bring! never takes a unit for part of the name.

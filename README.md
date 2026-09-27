@@ -291,6 +291,5 @@ der Woche bleiben dürfen (Zeile entfernen) oder gelöscht werden.
 
 Wenn Bring! eine Zutat falsch versteht („Kopfsalate“ kennt es nicht, „Kopfsalat“ schon), kommt
 eine Zeile in [src/data/bring.yaml](src/data/bring.yaml); die Datei erklärt die zwei Möglichkeiten.
-Kennt Bring! eine Einheit nicht (Zehen, Stangen), bekommt die Einheit in `units.yaml` ein
-`bring:`: mit `compound` heißt es auf der Liste „3 Knoblauchzehen“, mit `note` steht die Menge
-als Zusatz hinter dem Namen, „Porree, 2 Stangen“.
+Einheiten brauchen keine Regel: auf der Bring!-Zeile steht immer erst der Name, dann die Menge
+als Zusatz („Porree, 2 Stangen“), sodass Bring! keine Einheit für einen Teil des Namens hält.

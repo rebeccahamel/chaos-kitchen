@@ -29,21 +29,22 @@ function bringRuleFor(name: string, rules: BringRule[]): BringRule | undefined {
 }
 
 /**
- * One ingredient as a machine-readable line at base yield: "300 g Basmatireis",
- * "1.5 kg Hackfleisch", "2 Zwiebeln", "0.5 Bund Petersilie, glatt", "1 EL Butter, optional",
- * "Salz". Text after a comma becomes the note in Bring!. Bring! matches its catalogue word by
- * word, so a few things exist only for this line (SPEC.md §6.4): units with bring: compound are
- * glued onto the name ("1-2 Knoblauchzehen"), units with bring: note move amount and unit behind
- * the name into Bring!'s specification ("Porree, 2 Stangen"), and the learned rules in
- * bring.yaml force the singular ("2 Kopfsalat") or another name.
+ * One ingredient as a machine-readable line at base yield, the name first and the amount
+ * behind a comma: "Basmatireis, 300 g", "Hackfleisch, 1.5 kg", "Zwiebeln, 2",
+ * "Petersilie, 0.5 Bund, glatt", "Butter, 1 EL, optional", "Salz". Bring! takes the words
+ * before the first comma as the item and everything after it as the specification, and it
+ * scales the amount in there (checked 2026-09-27). With the amount in front, Bring! had to guess
+ * where the unit ends and the name begins, which produced "Porreestangen" and
+ * "Reispapierblätter" (SPEC.md §6.4). The learned rules in bring.yaml still force the singular
+ * ("Kopfsalat, 2") or another name when Bring! does not know the name as written.
  */
 export function ingredientLine(ingredient: Ingredient, units: UnitDef[], rules: BringRule[] = []): string {
-  const parts: string[] = [];
   const rule = bringRuleFor(ingredient.name, rules);
-  const baseName = rule?.as ?? ingredient.name;
+  let name = rule?.as ?? ingredient.name;
+  let line: string;
 
   if (ingredient.amount === undefined) {
-    parts.push(baseName);
+    line = name;
   } else {
     let values = Array.isArray(ingredient.amount) ? [...ingredient.amount] : [ingredient.amount];
     let unitName = ingredient.unit;
@@ -55,25 +56,14 @@ export function ingredientLine(ingredient: Ingredient, units: UnitDef[], rules: 
       unitName = BASE_TO_LARGE[unitName];
     }
 
-    const amount = values.map(plainNumber).join('-');
+    // Counted items (no unit) take the plural above 1, like the ingredient list, unless a rule says otherwise
+    if (!ingredient.unit && max > 1 && !rule?.singular && !rule?.as) name = ingredient.plural ?? ingredient.name;
+
     const unitDef = unitName ? findUnit(units, unitName) : undefined;
-    if (unitDef?.bring === 'note') {
-      // "Porree, 2 Stangen": the name alone is the item, amount and unit become its specification
-      parts.push(`${baseName}, ${amount} ${unitLabel(unitDef, max)}`);
-    } else if (unitDef?.bring === 'compound') {
-      // "3 Knoblauchzehen": name plus the lower-cased unit as one word
-      parts.push(amount, baseName + unitLabel(unitDef, max).toLowerCase());
-    } else {
-      parts.push(amount);
-      if (unitName) parts.push(unitDef ? unitLabel(unitDef, Math.max(...values)) : unitName);
-      // Counted items (no unit) take the plural above 1, like the ingredient list, unless a rule says otherwise
-      const counted = !ingredient.unit;
-      const plural = counted && max > 1 && !rule?.singular && !rule?.as;
-      parts.push(plural ? (ingredient.plural ?? ingredient.name) : baseName);
-    }
+    const unit = unitName ? (unitDef ? unitLabel(unitDef, max) : unitName) : undefined;
+    line = `${name}, ${values.map(plainNumber).join('-')}${unit ? ` ${unit}` : ''}`;
   }
 
-  let line = parts.join(' ');
   if (ingredient.note) line += `, ${ingredient.note}`;
   if (ingredient.optional) line += ', optional';
   return line;

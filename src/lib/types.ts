@@ -10,7 +10,6 @@ export interface UnitDef {
    * Bring! line for units Bring! does not know (SPEC.md §6.4): "compound" glues the unit onto the
    * name ("3 Knoblauchzehen"), "note" puts amount and unit into the specification ("Porree, 2 Stangen").
    */
-  bring?: 'compound' | 'note';
 }
 
 export interface Person {
