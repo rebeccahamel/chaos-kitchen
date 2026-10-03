@@ -1,0 +1,44 @@
+title: Hackbällchen Tomcana
+description: Mit Frischkäse gefüllte Hackbällchen in fruchtiger Tomatensauce, mit Mozzarella überbacken – dazu Reis oder Nudeln.
+author: becci
+added: 2026-09-14
+yield: { amount: 4, unit: Portionen }
+time: { prep: 25, cook: 35 }
+tags: [mittagessen, abendessen, fleisch, italienisch]
+
+ingredients:
+  - group: Für die Sauce
+    items:
+      - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: tomate, amount: 4, name: mittelgroße Tomate, plural: mittelgroße Tomaten }
+      - { id: sahne, amount: 100, unit: ml, name: Sahne }
+      - { id: tomatenmark, amount: 3, unit: EL, name: Tomatenmark }
+      - { id: bruehe-sauce, amount: 2, unit: TL, name: Gemüsebrühe, note: Instantpulver }
+      - { id: kraeuter, amount: 2, unit: TL, name: italienische Kräuter }
+      - { id: cayenne, name: Cayennepfeffer, note: nach Geschmack }
+  - group: Für die Hackbällchen
+    items:
+      - { id: broetchen, amount: 0.5, name: Brötchen, plural: Brötchen }
+      - { id: ei, amount: 1, name: Ei, plural: Eier, whole: true }
+      - { id: sprudel, name: Sprudelwasser, note: ein Schluck }
+      - { id: hackfleisch, amount: 500, unit: g, name: gemischtes Hackfleisch }
+      - { id: bruehe-hack, amount: 1, unit: TL, name: Gemüsebrühe, note: Instantpulver }
+      - { id: paprikapulver, name: Paprikapulver, note: nach Geschmack }
+      - { id: frischkaese, amount: 100, unit: g, name: Frischkäse }
+      - { id: mozzarella, amount: 1, name: Maxirolle Mozzarella, plural: Maxirollen Mozzarella }
+  - group: Außerdem
+    items:
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+      - { id: beilage, name: Reis oder Nudeln, note: als Beilage }
+      - { id: salat, name: Salat, note: klein, optional: true }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze vorheizen."
+  - "{broetchen} in kleine Würfel schneiden, mit {ei} und {sprudel} vermengen und ein paar Minuten ziehen lassen."
+  - "In der Zwischenzeit {zwiebel}, {knoblauch} und {tomate} waschen, putzen und grob klein schneiden. Zusammen mit {sahne}, {tomatenmark}, {bruehe-sauce}, {kraeuter}, etwas {salz:name}, {pfeffer:name} und {cayenne} in den Standmixer geben und zu einer Sauce pürieren."
+  - "Die inzwischen aufgeweichten Brötchenwürfel mit einer Gabel noch etwas zerdrücken. {hackfleisch}, {bruehe-hack}, {salz:name}, {pfeffer:name} und {paprikapulver} nach Geschmack dazugeben und alles gut vermengen."
+  - "Portionsweise etwas Hackmasse abnehmen, flach drücken, ein wenig {frischkaese:name} in die Mitte setzen und eine Kugel darum formen. Insgesamt werden etwa {frischkaese} gebraucht. Die gefüllten Hackbällchen in eine Auflaufform legen und mit der Sauce übergießen."
+  - "{mozzarella} in Scheiben schneiden und die Hackbällchen damit belegen. Im Ofen 30–35 Minuten backen."
+  - "In der Zwischenzeit {beilage} zubereiten und nach Belieben einen kleinen {salat:name} dazu servieren."

@@ -1,10 +1,10 @@
-// Build validation rules from SPEC.md §7, tested with the real recipe files
+// Build validation rules from SPEC.md §7, tested with the fixture recipe files
 // and the grouped example from SPEC.md §4.2.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createRecipeSchema } from './recipe-schema.ts';
 import { hasGroups } from './recipe.ts';
-import { lists, loadRecipe, readRecipeFile } from './test-support.ts';
+import { lists, loadRealTemplate, loadRecipe, readRecipeFile } from './test-support.ts';
 
 function parse(data: unknown, warnings: string[] = []) {
   return createRecipeSchema(lists, (message) => warnings.push(message)).safeParse(data);
@@ -84,7 +84,13 @@ function curry(): any {
   return structuredClone(readRecipeFile('fischcurry-mit-reis.yaml'));
 }
 
-test('the existing recipe files are valid and produce no warnings', () => {
+test('the real template is valid for the real lists in src/data and produces no warnings', () => {
+  const warnings: string[] = [];
+  assert.doesNotThrow(() => loadRealTemplate(warnings), 'src/content/recipes/_vorlage.yaml must use an author, tags and units from src/data/');
+  assert.deepEqual(warnings, []);
+});
+
+test('the fixture recipe files are valid and produce no warnings', () => {
   for (const file of ['_vorlage.yaml', 'fischcurry-mit-reis.yaml']) {
     const warnings: string[] = [];
     const recipe = loadRecipe(file, warnings);

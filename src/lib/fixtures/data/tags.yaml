@@ -1,0 +1,26 @@
+# Allowed tags, grouped by category. Recipes reference tags by id.
+# Adding a tag here is all that is needed to use it in a recipe.
+# id: lowercase, no umlauts (ä→ae, ö→oe, ü→ue, ß→ss), words joined by "-".
+- category: Gang
+  tags:
+    - { id: fruehstueck, label: Frühstück }
+    - { id: mittagessen, label: Mittagessen }
+    - { id: abendessen, label: Abendessen }
+    - { id: dessert, label: Dessert }
+    - { id: heissgetraenk, label: Heißgetränk }
+- category: Ernährung
+  tags:
+    - { id: vegetarisch, label: vegetarisch }
+    - { id: vegan, label: vegan }
+    - { id: fisch, label: Fisch }
+    - { id: fleisch, label: Fleisch }
+- category: Saison & Anlass
+  tags:
+    - { id: fruehling, label: Frühling }
+    - { id: sommer, label: Sommer }
+    - { id: herbst, label: Herbst }
+    - { id: winter, label: Winter }
+- category: Küche
+  tags:
+    - { id: asiatisch, label: asiatisch }
+    - { id: italienisch, label: italienisch }

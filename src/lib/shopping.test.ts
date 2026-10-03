@@ -101,7 +101,7 @@ test('the lines use the schema.org format, with kg from 1000 g upwards', () => {
   assert.deepEqual(shoppingLines([a, b], units), ['Hackfleisch, 1.1 kg', 'Knoblauch, 2-3 Zehen', 'Salz']);
 });
 
-test('the real recipes merge into one list without duplicates', () => {
+test('whole recipes merge into one list without duplicates', () => {
   const recipes = [
     loadRecipe('fischcurry-mit-reis.yaml'),
     loadRecipe('hackbaellchen-tomcana.yaml'),
@@ -177,7 +177,7 @@ test('learned Bring! rules force the singular or another name, matched without c
   assert.equal(ingredientLine(salat, units, [{ name: 'kopfsalat', singular: true }]), 'Kopfsalat, 2');
   assert.equal(ingredientLine(salat, units, [{ name: 'Kopfsalat', as: 'Salatkopf' }]), 'Salatkopf, 2');
   assert.equal(ingredientLine({ id: 'm', amount: 200, unit: 'g', name: 'Möhren' }, units, [{ name: 'Moehren', as: 'Karotten' }]), 'Karotten, 200 g');
-  assert.equal(ingredientLine(lists.units ? salat : salat, units, lists.bring), 'Kopfsalat, 2', 'the real bring.yaml has the Kopfsalat rule');
+  assert.equal(ingredientLine(salat, units, lists.bring), 'Kopfsalat, 2', 'the fixture bring.yaml has the Kopfsalat rule');
 });
 
 test('units Bring! does not know stay behind the comma, so they cannot become part of the name', () => {

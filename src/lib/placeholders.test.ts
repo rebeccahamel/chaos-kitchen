@@ -1,4 +1,4 @@
-// Step placeholder rules from SPEC.md §4.6, tested with the real recipe files.
+// Step placeholder rules from SPEC.md §4.6, tested with the fixture recipe files.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parseStep, placeholderIds, renderStep, renderStepParts, validateStep } from './placeholders.ts';
