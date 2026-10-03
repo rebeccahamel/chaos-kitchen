@@ -16,7 +16,7 @@ ingredients:
       - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
       - { id: kreuzkuemmel, amount: 1, unit: TL, name: Kreuzkümmel, note: gemahlen }
       - { id: lachs, amount: 500, unit: g, name: Lachsfilet, note: "ohne Haut, 4 Stücke" }
-      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen }
+      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen, note: Bio }
       - { id: spinat, amount: 100, unit: g, name: Babyspinat }
       - { id: salz, name: Salz }
       - { id: pfeffer, name: Pfeffer }

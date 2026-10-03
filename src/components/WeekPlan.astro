@@ -46,7 +46,7 @@ const slides = plan.weeks.map((week, index) => {
   const items = consolidateIngredients(
     planned.map((recipe) => flattenIngredients(recipe.data.ingredients)),
     units,
-  ).map((ingredient) => describeIngredient(ingredient, units));
+  ).map((ingredient) => ({ ...describeIngredient(ingredient, units), note: ingredient.note }));
 
   /** the recipe a leftovers entry points at, via the day it was cooked */
   const leftoversOf = (entry: { leftovers: Date }): CollectionEntry<'recipes'> | undefined => {
@@ -171,6 +171,7 @@ const slides = plan.weeks.map((week, index) => {
                     <span class="amount">{[item.amount, item.unit].filter(Boolean).join(' ')}</span>
                     <span class="name">
                       {item.name}
+                      {item.note && <span class="note">, {item.note}</span>}
                       {item.optional && <span class="note"> (optional)</span>}
                     </span>
                   </li>
@@ -240,7 +241,10 @@ const slides = plan.weeks.map((week, index) => {
 
     function renderList(selected: boolean[]) {
       const lists = data.recipes.filter((_, index) => selected[index]).map((recipe) => recipe.ingredients);
-      const items = consolidateIngredients(lists, data.units).map((ingredient) => describeIngredient(ingredient, data.units));
+      const items = consolidateIngredients(lists, data.units).map((ingredient) => ({
+        ...describeIngredient(ingredient, data.units),
+        note: ingredient.note,
+      }));
       list.replaceChildren(
         ...items.map((item) => {
           const li = document.createElement('li');
@@ -251,6 +255,12 @@ const slides = plan.weeks.map((week, index) => {
           const name = document.createElement('span');
           name.className = 'name';
           name.textContent = item.name;
+          if (item.note) {
+            const note = document.createElement('span');
+            note.className = 'note';
+            note.textContent = `, ${item.note}`;
+            name.append(note);
+          }
           if (item.optional) {
             const note = document.createElement('span');
             note.className = 'note';

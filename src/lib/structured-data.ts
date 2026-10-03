@@ -51,7 +51,7 @@ export function recipeJsonLd(recipe: Recipe, lists: Lists, page: PageInfo): Reco
   data.totalTime = isoDuration(totalTime(recipe.time));
   if (recipe.tags.length > 0) data.keywords = recipe.tags.map((tag) => tagLabel(lists.tags, tag)).join(', ');
   // The same ingredient in two groups (Wasser for the rice and for the sauce) is one line for Bring!
-  data.recipeIngredient = consolidateIngredients([flattenIngredients(recipe.ingredients)], units, { keepNotes: true })
+  data.recipeIngredient = consolidateIngredients([flattenIngredients(recipe.ingredients)], units)
     .map((ingredient) => ingredientLine(ingredient, units, lists.bring));
   data.recipeInstructions = flattenSteps(recipe.steps).map((step) => ({
     '@type': 'HowToStep',

@@ -35,18 +35,18 @@ export function addAmounts(a: Amount | undefined, b: Amount | undefined): Amount
  * Merges the ingredients of several recipes into one list, at each recipe's base yield.
  * Same name (case and umlauts ignored) and same unit add up; an item is optional only when it
  * is optional everywhere; the order is the order of first appearance. Ids are made from the
- * merge key and unique in the result. Notes are dropped because they belong to one recipe;
- * with keepNotes (used for the duplicates within a single recipe) a note survives when every
- * merged line carries the same one.
+ * merge key and unique in the result. Notes say what to buy ("festkochend", "Bio"), so they
+ * stay: a merged line carries every different note of its lines once, in order of first
+ * appearance ("Bio" from one recipe is enough to make all lemons Bio).
  */
-export function consolidateIngredients(lists: IngredientList[], units: UnitDef[], options: { keepNotes?: boolean } = {}): Ingredient[] {
+export function consolidateIngredients(lists: IngredientList[], units: UnitDef[]): Ingredient[] {
   const merged = new Map<string, Ingredient>();
-  const notes = new Map<string, Set<string | undefined>>();
+  const notes = new Map<string, Set<string>>();
   for (const list of lists) {
     for (const ingredient of list) {
       const key = mergeKey(ingredient, units);
       if (!notes.has(key)) notes.set(key, new Set());
-      notes.get(key)!.add(ingredient.note);
+      if (ingredient.note) notes.get(key)!.add(ingredient.note);
       const existing = merged.get(key);
       if (!existing) {
         const { note: _note, ...rest } = ingredient;
@@ -62,12 +62,9 @@ export function consolidateIngredients(lists: IngredientList[], units: UnitDef[]
       });
     }
   }
-  if (options.keepNotes) {
-    for (const [key, ingredient] of merged) {
-      const seen = notes.get(key) ?? new Set();
-      const [only] = seen;
-      if (seen.size === 1 && only !== undefined) ingredient.note = only;
-    }
+  for (const [key, ingredient] of merged) {
+    const seen = [...(notes.get(key) ?? [])];
+    if (seen.length > 0) ingredient.note = seen.join(', ');
   }
   return [...merged.values()];
 }
@@ -141,7 +138,7 @@ export function ingredientLine(ingredient: Ingredient, units: UnitDef[], rules: 
   return line;
 }
 
-/** The merged list as plain schema.org lines ("Basmatireis, 300 g"), the format Bring! reads. */
+/** The merged list as plain schema.org lines ("Kartoffeln, 750 g, festkochend"), the format Bring! reads. */
 export function shoppingLines(lists: IngredientList[], units: UnitDef[], rules: BringRule[] = []): string[] {
   return consolidateIngredients(lists, units).map((ingredient) => ingredientLine(ingredient, units, rules));
 }

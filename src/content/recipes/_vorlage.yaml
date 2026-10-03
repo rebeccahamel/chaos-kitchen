@@ -29,7 +29,8 @@ tags: [abendessen, vegetarisch]
 #   plural    for counted items without unit (Zwiebel -> Zwiebeln)
 #   amount    number, or a range like [2, 3]; leave out for "nach Geschmack"
 #   unit      from units.yaml; leave out for counted items
-#   note      shown after the name in the ingredient list only (not in steps), never scaled
+#   note      shown after the name in the ingredient list only (not in steps), never scaled;
+#             it goes to Bring! with the item, so say what to buy: festkochend, Bio (zest is used)
 #   optional  true -> shown as "(optional)"
 #   whole     true -> always whole numbers (eggs)
 ingredients:

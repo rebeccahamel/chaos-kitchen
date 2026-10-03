@@ -48,7 +48,7 @@ test('same name and unit merge, case and umlauts ignored, order of first appeara
       ['kaese-g', 100, 'g', 'Käse'],
     ],
   );
-  assert.equal(merged[1].note, undefined, 'notes belong to one recipe and are dropped');
+  assert.equal(merged[1].note, 'Type 405', 'a note from one recipe stays on the merged line');
   assert.equal(merged[0].plural, 'Zwiebeln');
 });
 
@@ -120,22 +120,32 @@ test('the real recipes merge into one list without duplicates', () => {
   assert.equal(new Set(ids).size, ids.length, 'ids are unique');
 });
 
-test('within one recipe (keepNotes) a note survives when every merged line agrees', () => {
+test('notes stay on the merged line: every different note once, in order of first appearance', () => {
   const recipe: Ingredient[] = [
     { id: 'w1', amount: 600, unit: 'ml', name: 'Wasser' },
     { id: 'p', amount: 0.5, unit: 'Bund', name: 'Petersilie', note: 'glatt' },
     { id: 'o1', amount: 2, unit: 'EL', name: 'Öl', note: 'zum Anbraten' },
     { id: 'w2', amount: 100, unit: 'ml', name: 'Wasser' },
     { id: 'o2', amount: 1, unit: 'EL', name: 'Öl', note: 'für das Dressing' },
-    { id: 'z1', amount: 1, name: 'Zitrone', note: 'Bio' },
-    { id: 'z2', amount: 1, name: 'Zitrone', note: 'Bio' },
+    { id: 'z1', amount: 1, name: 'Zitrone', plural: 'Zitronen', note: 'Bio' },
   ];
-  const merged = consolidateIngredients([recipe], units, { keepNotes: true });
+  const other: Ingredient[] = [
+    { id: 'z', amount: 0.5, name: 'Zitrone', plural: 'Zitronen' },
+    { id: 'o', amount: 1, unit: 'EL', name: 'Öl', note: 'zum Anbraten' },
+    { id: 'k', amount: 750, unit: 'g', name: 'Kartoffeln', note: 'festkochend' },
+  ];
+  const merged = consolidateIngredients([recipe, other], units);
   assert.deepEqual(
     merged.map((i) => [i.name, i.amount, i.note]),
-    [['Wasser', 700, undefined], ['Petersilie', 0.5, 'glatt'], ['Öl', 3, undefined], ['Zitrone', 2, 'Bio']],
+    [
+      ['Wasser', 700, undefined],
+      ['Petersilie', 0.5, 'glatt'],
+      ['Öl', 4, 'zum Anbraten, für das Dressing'],
+      ['Zitrone', 1.5, 'Bio'],
+      ['Kartoffeln', 750, 'festkochend'],
+    ],
   );
-  assert.equal(consolidateIngredients([recipe], units)[1].note, undefined, 'without keepNotes every note is dropped');
+  assert.deepEqual(shoppingLines([recipe, other], units).slice(3), ['Zitronen, 1.5, Bio', 'Kartoffeln, 750 g, festkochend']);
 });
 
 const reis: Ingredient = { id: 'reis', amount: 300, unit: 'g', name: 'Basmatireis' };

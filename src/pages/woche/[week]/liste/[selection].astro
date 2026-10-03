@@ -42,7 +42,7 @@ const name = `Wochenplan ${weekTitle(week)}`;
 const titles = recipes.map((recipe) => recipe.data.title);
 const description = `Zutaten für ${recipes.length === 1 ? 'ein Rezept' : `${recipes.length} Rezepte`}: ${titles.join(', ')}`;
 const ingredientLists = recipes.map((recipe) => flattenIngredients(recipe.data.ingredients));
-const items = consolidateIngredients(ingredientLists, units).map((ingredient) => describeIngredient(ingredient, units));
+const items = consolidateIngredients(ingredientLists, units).map((ingredient) => ({ ...describeIngredient(ingredient, units), note: ingredient.note }));
 
 const pageUrl = new URL(url(`woche/${Astro.params.week}/liste/${Astro.params.selection}/`), Astro.site).href;
 const photo = recipePhoto(recipes[0].id);
@@ -72,6 +72,7 @@ const jsonLd = weekListJsonLd({ name, description, url: pageUrl, image }, ingred
             <span class="amount">{[item.amount, item.unit].filter(Boolean).join(' ')}</span>
             <span class="name">
               {item.name}
+              {item.note && <span class="note">, {item.note}</span>}
               {item.optional && <span class="note"> (optional)</span>}
             </span>
           </li>

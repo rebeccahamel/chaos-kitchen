@@ -540,11 +540,14 @@ planner/README.md. The planning happens in Claude Code sessions; the site only s
   button sends the whole week.
 - **Merging** (`src/lib/shopping.ts`): ingredients of the ticked recipes at each recipe's base
   yield, merged by name (case and umlauts ignored) and unit (singular = plural); amounts and
-  ranges add up; per-recipe notes are dropped; "(optional)" only when optional everywhere;
-  order of first appearance. Imperfect merges ("Zwiebel" vs "rote Zwiebel") are accepted.
+  ranges add up; "(optional)" only when optional everywhere; order of first appearance.
+  Notes stay, because they say what to buy (decided 2026-10-03, after "festkochend" was missing
+  on the week list): a merged line carries every different note of its lines once, joined by
+  commas, so "Bio" from one recipe makes all lemons of the week Bio ("Zitronen, 1.5, Bio").
+  The note shows behind the name in the list on the homepage and on the hidden week page, and
+  goes into the Bring! line. Imperfect merges ("Zwiebel" vs "rote Zwiebel") are accepted.
   A recipe page's Bring! lines (§6.4) go through the same merge with its own ingredients only,
-  so that Wasser in two groups becomes one line; there a note is kept when every merged line
-  carries the same one (decided 2026-09-27).
+  so that Wasser in two groups becomes one line (decided 2026-09-27).
 - **Hidden week pages** `/woche/<first day>/liste/<selection>/`: Bring! fetches the page behind
   the link and reads its JSON-LD, so it cannot see the ticks. The build therefore generates, per
   week, one page per possible selection, addressed by the week's first day and a string of 0
@@ -672,8 +675,14 @@ W39 is closed. Custom domain chaos-kitchen.com (connected 2026-09-26): `base` dr
 and `public/CNAME` set, docs updated (§8). Bring! lines are now "Name, amount unit" for every
 ingredient and the per-unit flags are gone; duplicates within a recipe merge (§4.7, §6.4).
 
+Done (2026-10-03): week 2026-W40 reviewed. Hähnchenschenkel-Blech (potatoes down to 750 g),
+Rosenkohl-Gnocchi-Pfanne and Gefüllte Paprika (now with potatoes in the sauce) kept. The week's
+shopping list and its Bring! lines keep the ingredient notes (§6.9); Möhren are counted in every
+recipe; lemons whose zest is used carry the note "Bio" (planner/README.md).
+
 Next: check in the Bring! app that "Porree, 2 Stangen" arrives as Porree with the specification
-"2 Stangen"; review W40 with prompt B around 3 October.
+"2 Stangen", and that the notes arrive on the next week list ("Kartoffeln, 750 g, festkochend");
+plan the next week with prompt A.
 
 The remaining small tasks of version 1 (more recipes and photos, avatars, step pictures, defaults
 to confirm) are tracked on the `main` branch, not here.

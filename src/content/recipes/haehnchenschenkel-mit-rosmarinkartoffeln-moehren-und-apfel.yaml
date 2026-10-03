@@ -2,7 +2,6 @@ title: Hähnchenschenkel mit Rosmarinkartoffeln, Möhren und Apfel
 description: Ein Blech für den Herbst – knusprige Hähnchenschenkel mit Senf-Honig-Kruste auf Rosmarinkartoffeln, Möhren, roten Zwiebeln und säuerlichen Apfelspalten. Eine Viertelstunde Arbeit, der Ofen macht den Rest.
 author: becci
 added: 2026-09-26
-trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 55 }
 tags: [abendessen, mittagessen, fleisch, herbst]
@@ -10,8 +9,8 @@ tags: [abendessen, mittagessen, fleisch, herbst]
 ingredients:
   - group: Für das Blech
     items:
-      - { id: kartoffeln, amount: 1, unit: kg, name: Kartoffeln, note: festkochend }
-      - { id: moehren, amount: 500, unit: g, name: Möhren }
+      - { id: kartoffeln, amount: 750, unit: g, name: Kartoffeln, note: festkochend }
+      - { id: moehren, amount: 5, name: Möhre, plural: Möhren }
       - { id: zwiebeln, amount: 2, name: rote Zwiebel, plural: rote Zwiebeln }
       - { id: knoblauch, amount: 4, unit: Zehe, name: Knoblauch, note: ungeschält }
       - { id: rosmarin, amount: 3, unit: Zweig, name: Rosmarin }
@@ -25,7 +24,7 @@ ingredients:
       - { id: senf, amount: 1, unit: EL, name: mittelscharfer Senf }
       - { id: honig, amount: 1, unit: EL, name: Honig }
       - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
-      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen }
+      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen, note: Bio }
 
 steps:
   - "Den Backofen auf 200 °C Ober-/Unterhitze vorheizen. {kartoffeln} waschen und ungeschält in 2–3 cm große Stücke schneiden, {moehren} schälen und in dicke Stifte schneiden, {zwiebeln} in Spalten. {rosmarin:2/3} abzupfen und grob hacken."

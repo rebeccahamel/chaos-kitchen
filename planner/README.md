@@ -105,6 +105,11 @@ with store, product, price, validity and fetch date.
 - ingredient names as Bring! and German shops know them ("Mungobohnensprossen", not
   "Mungbohnensprossen"); one name per thing across the collection, so that lines merge and
   Bring! sees one item: "Möhre" (not Karotte), "Sahne" (not Kochsahne), "Porree" (not Lauch);
+- Möhren are always counted ("5 Möhren"), never weighed, so that they merge into one Bring!
+  line across the week (decided 2026-10-03);
+- the `note` says what to buy and travels to Bring! with the item, also on the week list:
+  "festkochend" for Kartoffeln, the variety, the size of a tin. When the zest of a lemon, lime
+  or orange is used, the note is "Bio" (decided 2026-10-03);
 - every ingredient gets an amount and a unit where one exists, herbs in Bund or Zweige, so that
   the same ingredient merges across the week's recipes on the shopping list ("Minze" without
   unit and "1 Bund Minze" stay two lines; the build warns about such pairs);
