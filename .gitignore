@@ -11,5 +11,5 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# meal planner: private household profile and private weekly plans (MEAL_PLANNER.md §14)
+# meal planner: private household profile and private weekly plans (MEAL_PLANNER.md §11)
 planner/private/

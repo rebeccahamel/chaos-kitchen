@@ -3,7 +3,7 @@
 // Structural checks (required fields, types) come from Zod itself.
 // Cross-checks against the central lists, duplicate ids, ranges and step
 // placeholders are done in the superRefine at the bottom, with German messages
-// because Becci reads them in the build log when a recipe file has a mistake.
+// because the owner reads them in the build log when a recipe file has a mistake.
 
 import { z } from 'astro/zod';
 import type { Ingredient, Lists } from './types.ts';

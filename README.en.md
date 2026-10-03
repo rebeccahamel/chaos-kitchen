@@ -25,7 +25,7 @@ The repository is meant to be taken over for your own household.
 
 ## What you need
 
-- [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/) (LTS version)
+- [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/), version 24 or newer
 - a coding agent that can read and write files in the folder. Built and tested with Claude Code;
   other agents find their way in through [AGENTS.md](AGENTS.md).
 - a GitHub account if you want to publish the site. Without a published site everything works
@@ -47,9 +47,9 @@ The site and the recipes are in German. You can talk to the agent in any languag
    Set up this repository for my household. Read SETUP.md and follow it.
    ```
 
-   The agent asks about your household, creates your profile, clears our weeks and replaces
-   the site address and legal notice with yours. You can keep our recipes as a starter
-   collection or start empty. The details are in [SETUP.md](SETUP.md).
+   The agent asks about your household, creates your profile, clears the previous owner's
+   weeks and replaces the site address and legal notice with yours. You can keep the recipes
+   that come along as a starter collection or start empty. The details are in [SETUP.md](SETUP.md).
 
 3. Plan your first week, see the next section.
 
@@ -67,7 +67,7 @@ Thursday we are out. One dinner may be an experiment.
 The agent proposes the week as a table. You adjust until it fits and say GO. Then it writes the
 recipes, the plan and the shopping list.
 
-**Cook.** The plan is on the homepage: locally with `npm run dev` at <http://localhost:4321/>,
+**Cook.** The plan is on the homepage: locally with `npm run dev` (it prints the address),
 published after the next `git push`.
 
 **Review.** After the week:

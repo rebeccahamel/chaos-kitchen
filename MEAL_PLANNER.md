@@ -41,11 +41,13 @@ The profile answers who the planner cooks for. Its sections, with the kind of ru
   managed with tablets."
 - **Direction:** where the household wants to go over time. "Less meat: about three meat dinners
   a week, reduced gradually."
-- **Likes and dislikes:** favourite meals, cuisines and how often, who dislikes what and how
-  strictly ("no coriander for one adult, a ban"; "mushrooms only finely chopped").
+- **Likes:** favourite meals, cuisines and how often.
+- **Dislikes:** who dislikes what and how strictly ("no coriander for one adult, a ban";
+  "mushrooms only finely chopped").
 - **Week rhythm:** which days are planned, busy days, dinner time, time limits, how lunches work.
 - **Stores and shopping, pantry, equipment:** see §4, §5, §7.
 - **Integrations:** the website's address, the author id for new recipes, Bring!, Todoist.
+- **Changes:** dated one-liners, so it stays visible when and why a rule appeared.
 
 Without a profile the planner cannot plan; it asks for the setup (`SETUP.md`) instead of guessing.
 
@@ -160,6 +162,9 @@ Priority order when recipes and plans are designed:
 7. variety
 8. waste reduction
 9. gradual nutritional improvement
+
+Hard constraints are never traded against anything: every meal meets them. The order says
+what shapes the choice among the meals that do.
 
 > Do not let theoretical optimisation undermine enjoyable family meals.
 

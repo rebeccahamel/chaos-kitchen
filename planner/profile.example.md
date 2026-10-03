@@ -42,12 +42,12 @@ Write rules the way you would say them. Say how strict each one is: "never", "sp
 
 ## Week rhythm
 
-- Plan Monday to Friday, dinners only; lunch is eaten at work and at school.
-- Tuesday is football practice: dinner in 20 minutes or from the day before.
-- Friday is pizza or eating out: leave it unplanned.
-- Dinner at 18:00. Normally at most 40 minutes, on Sunday up to 90 for something special.
-- Sunday dinner is planned and cooked double; the second half is Monday's dinner.
-- 4 servings per recipe.
+- Plan dinners Monday to Thursday; lunch is eaten at work and at school.
+- Monday is cooked double. Tuesday is football practice: dinner is Monday's second half.
+- Friday is pizza or eating out, the weekend is decided on the day: leave them unplanned unless
+  the weekly request asks for them.
+- Dinner at 18:00, normally at most 40 minutes of cooking.
+- 4 servings per recipe, 8 on Monday.
 
 ## Stores and shopping
 

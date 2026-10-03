@@ -36,7 +36,7 @@ End of the owner block.
 
 ## Commands
 
-```powershell
+```
 npm install        # install dependencies
 npm run dev        # local preview with live reload
 npm run build      # production build, runs all data validation
@@ -53,8 +53,8 @@ Run `npm run build` before declaring a task done. It must pass without errors.
   transliterated (ä→ae, ö→oe, ü→ue, ß→ss). Recipe pictures use the same slug in
   `src/assets/recipes/`, numbered `<slug>_1.jpg`, `<slug>_2.jpg`, … when there are several. Files starting with `_` are not recipes.
 - Step strings in YAML are always double-quoted.
-- The site is served from the root of its own domain, but every internal link is still built
-  with `url()` from `src/lib/site.ts`, never hardcoded, so a base path can come back at any time.
+- Every internal link is built with `url()` from `src/lib/site.ts`, never hardcoded, so the
+  site works on its own domain and under a base path alike (SPEC.md §8).
 - Scaling, rounding and placeholder rendering live in `src/lib/` as small, pure functions with
   unit tests covering the rules in SPEC.md §4.6 and §5. These modules also run in the browser,
   so they must not import Node modules; only `lists.ts`, `build-checks.ts`, `recipe-schema.ts`
@@ -83,7 +83,7 @@ Follow it. Propose and confirm with the owner before deviating from it or restyl
 
 ## Privacy
 
-Repository and site are public. Only family roles or first names for people, illustrated
+Treat repository and site as public. Only family roles or first names for people, illustrated
 avatars, no personal data (addresses, phone numbers, full names) anywhere in the repository.
 Everything about the household goes into `planner/private/`, which git ignores.
 The single exception is the Impressum page (SPEC.md §6.7), which holds exactly the legally

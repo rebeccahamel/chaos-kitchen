@@ -30,7 +30,7 @@ language.
 1. **The owner asks.** They open the agent on the `main` branch and paste prompt A with the
    request in their own words. No form, no restating the profile.
 2. **The agent reads** (in this order): `MEAL_PLANNER.md`, `planner/private/profile.md`, the
-   last four files in `planner/history/`, the titles and tags of all recipes in
+   last four files in `planner/history/` (fewer or none in the first weeks), the titles and tags of all recipes in
    `src/content/recipes/`, and the current `src/data/plan.yaml` (a week already there that
    reaches into the new one, e.g. a Monday lunch of leftovers, stays where it is). If the
    profile is missing, it stops and points to `SETUP.md`.
@@ -94,7 +94,8 @@ and carb variation, the priority order in §8.
 
 **Use the collection.** Recipes without `trial: true` are the proven collection. The history says
 when each was last cooked and how it was rated. Aim for the 60/40 familiar/new balance from §3,
-and bring a loved recipe back after 3–4 weeks. A recipe rated "disliked" without a reason is not
+and bring a loved recipe back after 3–4 weeks. With an empty or small collection the balance
+cannot be met: the first weeks are mostly new recipes, and that is fine. A recipe rated "disliked" without a reason is not
 suggested again; one disliked with a reason shapes future choices as §9 describes.
 
 **Offers are inputs, not requirements.** Use one only when it fits; name it in the private plan
@@ -107,7 +108,8 @@ with store, product, price, validity and fetch date.
 - `yield` of 4 Portionen unless the profile or the dish dictates otherwise;
 - ingredient ids, units from `units.yaml` (add a unit in `units.yaml` only when none fits), and
   step placeholders for every ingredient that has an amount;
-- tags from `tags.yaml`: course, diet, season and cuisine where they apply;
+- tags from `tags.yaml`: course, diet, season and cuisine where they apply; add a tag there only
+  when the household needs one to filter by ("glutenfrei");
 - where the profile lists small children: a step for them when a meal is spicy or very salty
   ("Portion für die Kleine vorher abnehmen, dann …"), never a separate recipe;
 - concise steps, weights over spoons where practical;

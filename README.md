@@ -26,7 +26,7 @@ Das Repository ist dafür gedacht, dass du es für deinen eigenen Haushalt über
 
 ## Was du brauchst
 
-- [Git](https://git-scm.com/) und [Node.js](https://nodejs.org/) (LTS-Version)
+- [Git](https://git-scm.com/) und [Node.js](https://nodejs.org/) ab Version 24
 - einen Coding-Agenten, der im Ordner Dateien lesen und schreiben kann. Gebaut und erprobt mit
   Claude Code; andere Agenten finden den Einstieg über [AGENTS.md](AGENTS.md).
 - ein GitHub-Konto, wenn du die Seite veröffentlichen willst. Ohne veröffentlichte Seite
@@ -48,9 +48,9 @@ Seite und Rezepte sind auf Deutsch. Mit dem Agenten kannst du in jeder Sprache r
    Set up this repository for my household. Read SETUP.md and follow it.
    ```
 
-   Der Agent fragt dich nach deinem Haushalt, legt dein Profil an, räumt unsere Wochen weg und
-   ersetzt Adresse und Impressum durch deine. Unsere Rezepte kannst du als Startsammlung
-   behalten oder leer anfangen. Die Einzelheiten stehen in [SETUP.md](SETUP.md).
+   Der Agent fragt dich nach deinem Haushalt, legt dein Profil an, räumt die Wochen des
+   Vorbesitzers weg und ersetzt Adresse und Impressum durch deine. Die mitgelieferten Rezepte
+   kannst du als Startsammlung behalten oder leer anfangen. Die Einzelheiten stehen in [SETUP.md](SETUP.md).
 
 3. Die erste Woche planen, siehe nächster Abschnitt.
 
@@ -68,8 +68,8 @@ Donnerstag sind wir nicht da. Ein Abendessen darf ein Experiment sein.
 Der Agent schlägt die Woche als Tabelle vor. Du änderst, bis es passt, und sagst GO. Dann
 schreibt er Rezepte, Plan und Einkaufsliste.
 
-**Kochen.** Der Plan steht auf der Startseite: lokal mit `npm run dev` unter
-<http://localhost:4321/>, veröffentlicht nach dem nächsten `git push`.
+**Kochen.** Der Plan steht auf der Startseite: lokal mit `npm run dev` (die Adresse steht dann
+im Terminal), veröffentlicht nach dem nächsten `git push`.
 
 **Bewerten.** Nach der Woche:
 
