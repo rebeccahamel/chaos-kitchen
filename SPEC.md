@@ -1,16 +1,15 @@
 # Familien-Rezeptseite – Specification
 
-Status (2026-09-22): version 1 is built and live at https://chaos-kitchen.com/
-(data layer, deploy workflow, design, overview, recipe page with yield control, Kochmodus and
-Bring! button).
-Branch `meal_planner` (2026-09-23): the weekly plan on the homepage (§6.9) is built and waits for
-the merge; the planning itself happens in Claude Code sessions, see MEAL_PLANNER.md and
-planner/README.md.
+Status (2026-10-03): version 1 is built and live at https://chaos-kitchen.com/, with the weekly
+plan on the homepage (§6.9). The planning itself happens in sessions with a coding agent, see
+MEAL_PLANNER.md and planner/README.md. The repository is prepared for being taken over by
+another household (SETUP.md).
 What is still open and what comes next: §12.
-Owner and only editor: Becci (via her GitHub account). Family members only read.
+Owner and only editor: the person named in CLAUDE.md (via their GitHub account). Family members
+only read.
 
 This file is the single source of truth for what the site does. If the implementation
-and this file disagree, clarify with Becci and update this file.
+and this file disagree, clarify with the owner and update this file.
 
 ---
 
@@ -562,7 +561,7 @@ planner/README.md. The planning happens in Claude Code sessions; the site only s
   pages of about 14 KB per week, so at most 2046. Not linked anywhere except from the button.
   Like all pages they carry `noindex`.
 - **Trial recipes:** new recipes of a week carry `trial: true` (§4.3) and stay off the overview
-  until Becci keeps them (field removed) or drops them (file deleted).
+  until the owner keeps them (field removed) or drops them (file deleted).
 
 ---
 
@@ -637,9 +636,17 @@ converted to g or ml at the same point (§5.1).
   handwritten card) into the file format.
 - **On the go:** GitHub's web editor. If a file has an error, the build fails, GitHub sends an
   e-mail, and the live site keeps its previous version.
-- `README.md` (German) and `README.en.md` (English) explain how to add a recipe step by
-  step, where photos go, how to add a tag, a person or a unit, how to edit from a phone, and
-  what to do when the build fails. Both files have the same structure; change them together.
+- `README.md` (German) and `README.en.md` (English) address someone who takes the repository
+  over for their own household (decided 2026-10-03): what the project is, what it needs, the
+  setup prompt (SETUP.md), the two weekly prompts, where things live. Nothing else, so they
+  stay short. Both files have the same structure; change them together. Writing a recipe by
+  hand is covered by §4 and the commented `_vorlage.yaml`; build messages name the file and the
+  problem (§7).
+- **Taking the repository over:** `SETUP.md` is followed by the new owner's agent. It
+  interviews them, writes their private profile, clears history and plan, replaces the owner's
+  block in CLAUDE.md, and removes the previous owner's identity (`public/CNAME`, Impressum,
+  `site`). The unit tests use their own fixtures (`src/lib/fixtures/`), so recipes and people
+  can be replaced freely; one test checks that `_vorlage.yaml` names an existing author.
 
 ---
 
@@ -684,6 +691,11 @@ Done (2026-10-03): week 2026-W40 reviewed. Hähnchenschenkel-Blech (potatoes dow
 Rosenkohl-Gnocchi-Pfanne and Gefüllte Paprika (now with potatoes in the sauce) kept. The week's
 shopping list and its Bring! lines keep the ingredient notes (§6.9); Möhren are counted in every
 recipe; lemons whose zest is used carry the note "Bio" (planner/README.md).
+
+Done (2026-10-03): prepared for other households. README files rewritten for that use only,
+SETUP.md and AGENTS.md added, MEAL_PLANNER.md reduced to general rules (household rules now in
+the private profile, `planner/profile.example.md` as the model), planner manual owner-neutral
+with Todoist optional, tests on their own fixtures (§10).
 
 Next: check in the Bring! app that "Porree, 2 Stangen" arrives as Porree with the specification
 "2 Stangen", and that the notes arrive on the next week list ("Kartoffeln, 750 g, festkochend");

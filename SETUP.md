@@ -112,7 +112,8 @@ Always, whichever website option was chosen. These must never be published under
   placeholder. Keep these details in this one file only.
 - `astro.config.mjs`: `site` (step 8).
 - `src/lib/site.ts`: `SITE_NAME`, if the household wants its own name. `package.json`: `name`.
-- `README.md` and `README.en.md`: the link to the live site and to the repository.
+- `README.md` and `README.en.md`: the link to the live site ("So sieht das bei uns aus" / "This is
+  what ours looks like"). Point it at the new site or remove the line.
 
 ### 8. Website
 
