@@ -71,7 +71,7 @@ export interface StepGroup {
   items: string[];
 }
 
-/** One meal in the weekly plan (MEAL_PLANNER.md §14): a recipe, leftovers of an earlier day, or free text. */
+/** One meal in the weekly plan (MEAL_PLANNER.md §11): a recipe, leftovers of an earlier day, or free text. */
 export type PlanEntry = { recipe: string } | { leftovers: Date } | { text: string };
 
 export interface PlanDay {

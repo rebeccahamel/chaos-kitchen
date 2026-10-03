@@ -1,4 +1,4 @@
-// Merge rules for the week's shopping list (MEAL_PLANNER.md §14), the Bring! ingredient line
+// Merge rules for the week's shopping list (MEAL_PLANNER.md §11), the Bring! ingredient line
 // (SPEC.md §6.4) and the selection masks that address the hidden week pages.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

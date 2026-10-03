@@ -47,12 +47,15 @@ Constraints:
 
 ```
 /
-├─ CLAUDE.md                     working rules for Claude Code
+├─ README.md, README.en.md       what the project is and how to make it your own (§10)
+├─ SETUP.md                      first-time setup for a new household, followed by the agent
+├─ CLAUDE.md                     working rules for Claude Code, with the owner's block
+├─ AGENTS.md                     pointer to CLAUDE.md for other coding agents
 ├─ SPEC.md                       this file
-├─ MEAL_PLANNER.md               meal planner: requirements, decisions, plan of action
+├─ MEAL_PLANNER.md               meal planner: general rules and how the planner works
 ├─ planner/
 │  ├─ README.md                  how a planning week works, prompt templates, history format
-│  ├─ profile.example.md         shape of the private household profile
+│  ├─ profile.example.md         a complete invented household profile as the model
 │  ├─ history/                   one file per planned week (the planner's memory)
 │  └─ private/                   gitignored: real profile and private weekly plans
 ├─ astro.config.mjs              site URL, base path (§8) and the data-checks integration (§7)
@@ -94,7 +97,9 @@ Constraints:
    │  ├─ photos.ts               finds recipe photos and avatar files (Astro only)
    │  ├─ structured-data.ts     schema.org Recipe data for the Bring! import (§6.4, §6.8)
    │  ├─ *.test.ts               unit tests, run with `npm test`
-   │  └─ test-support.ts         test helpers (loads the real lists and recipe files)
+   │  ├─ test-support.ts         test helpers (loads the fixture lists and recipe files)
+   │  └─ fixtures/               the tests' own copies of a few recipes and of the lists, so the
+   │                             household's recipes and people can change without breaking tests
    ├─ types/                     small type declarations for packages that ship none
    ├─ components/
    │  ├─ Avatar.astro            illustration or initial on the person's colour
@@ -506,7 +511,7 @@ as a secondary button (outlined in Rost, no logo, no icon). It points to
 
 ### 6.9 Wochenplan (Diese Woche)
 
-Decided 2026-09-23; background and the planning workflow in MEAL_PLANNER.md §14 and
+Decided 2026-09-23; background and the planning workflow in MEAL_PLANNER.md §11 and
 planner/README.md. The planning happens in Claude Code sessions; the site only shows the result.
 
 - `src/data/plan.yaml` holds `weeks`: at most two weeks in date order that do not overlap

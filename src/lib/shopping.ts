@@ -1,4 +1,4 @@
-// Consolidated shopping list for several recipes (MEAL_PLANNER.md §14, SPEC.md §6.9) and the
+// Consolidated shopping list for several recipes (MEAL_PLANNER.md §11, SPEC.md §6.9) and the
 // ingredient line Bring! reads (SPEC.md §6.4). Pure functions, also used in the browser: the
 // homepage merges the ticked recipes on the fly, the hidden week pages carry the same list as
 // JSON-LD for Bring!, and a recipe page merges its own duplicate lines the same way.

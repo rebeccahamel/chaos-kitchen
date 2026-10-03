@@ -1,4 +1,4 @@
-// The weekly plan in src/data/plan.yaml (MEAL_PLANNER.md §14, SPEC.md §6.9): up to two weeks,
+// The weekly plan in src/data/plan.yaml (MEAL_PLANNER.md §11, SPEC.md §6.9): up to two weeks,
 // this week and the next. Build time only: reads files. The homepage and the hidden week pages
 // call loadPlan(); build-checks.ts runs the same validation at the start of every dev and build.
 
@@ -228,7 +228,7 @@ export function unmergedWarnings(plan: Plan | undefined, recipesDir: string, lis
   });
 }
 
-/** One warning per trial recipe that no week of the plan uses (MEAL_PLANNER.md §14). */
+/** One warning per trial recipe that no week of the plan uses (MEAL_PLANNER.md §11). */
 export function forgottenTrials(plan: Plan | undefined, trialSlugs: string[]): string[] {
   const planned = new Set(plan ? planRecipes(plan) : []);
   return trialSlugs

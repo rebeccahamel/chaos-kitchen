@@ -12,7 +12,7 @@ import { SITE_NAME } from '../lib/site.ts';
 
 const lists = loadLists();
 const all = await getCollection('recipes');
-// Recipes on trial for the weekly plan stay off the overview (MEAL_PLANNER.md §14, SPEC.md §6.9)
+// Recipes on trial for the weekly plan stay off the overview (MEAL_PLANNER.md §11, SPEC.md §6.9)
 const recipes = all
   .filter((recipe) => !recipe.data.trial)
   .sort((a, b) => b.data.added.getTime() - a.data.added.getTime() || a.data.title.localeCompare(b.data.title, 'de'));

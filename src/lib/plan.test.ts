@@ -1,4 +1,4 @@
-// Weekly plan rules from MEAL_PLANNER.md §14: entry shapes, day order, leftovers, the recipe cap,
+// Weekly plan rules from MEAL_PLANNER.md §11: entry shapes, day order, leftovers, the recipe cap,
 // the list of weeks (at most two, in order, not overlapping), and the warning for trial recipes
 // that are not in the plan.
 import { test } from 'node:test';

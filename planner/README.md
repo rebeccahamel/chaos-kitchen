@@ -2,7 +2,7 @@
 
 The planner is a conversation with Claude Code, not a program. Claude Code plans, writes the
 recipe files and the plan file, and keeps the history; the website only shows the result
-(MEAL_PLANNER.md §14). This file is the operating manual: the files, the weekly routine, the two
+(MEAL_PLANNER.md §11). This file is the operating manual: the files, the weekly routine, the two
 prompts, the rules Claude Code follows while planning, and the Todoist step.
 
 ## Files

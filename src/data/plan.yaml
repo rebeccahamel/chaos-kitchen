@@ -1,4 +1,4 @@
-# Wochenplan (MEAL_PLANNER.md §14, SPEC.md §6.9). Shown on the homepage as "Diese Woche" and
+# Wochenplan (MEAL_PLANNER.md §11, SPEC.md §6.9). Shown on the homepage as "Diese Woche" and
 # "Nächste Woche"; with an empty weeks list the section is hidden. Claude Code writes this file
 # in the weekly planning session: the new week is added at the end, a finished week is removed.
 #
