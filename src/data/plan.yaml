@@ -10,34 +10,20 @@
 # A day without lunch and dinner is a free day.
 
 weeks:
-  - note: Mittwoch kamen Gäste zum Selberrollen, am Wochenende gibt es Ofenlachs und gefüllte Paprika, die Reste sind jeweils das Mittagessen danach.
+  - note: Fünf neue Rezepte zum Ausprobieren. Montag, Dienstag und Donnerstag geht es schnell, Mittwoch gibt es Dal, das sich gut verdoppeln und einfrieren lässt, und die Reste sind meist das Mittagessen danach.
     days:
-      - date: 2026-09-23
-        dinner: { recipe: sommerrollen-mit-erdnusssauce }
-      - date: 2026-09-24
-        lunch: { leftovers: 2026-09-23 }
-        dinner: { recipe: kartoffelgratin-mit-veggie-cordon-bleu }
-      - date: 2026-09-25
-        lunch: { leftovers: 2026-09-24 }
-      - date: 2026-09-26
-        dinner: { recipe: ofenlachs-mit-kuerbis-und-kichererbsen }
-      - date: 2026-09-27
-        lunch: { leftovers: 2026-09-26 }
-        dinner: { recipe: gefuellte-paprika-mit-hackfleisch }
-  - note: Montag und Donnerstag geht es schnell, Dienstag gibt es die Spinat-Gemüse-Lasagne mit Beilagensalat, und die Reste sind jeweils das Mittagessen danach.
-    days:
-      - date: 2026-09-28
-        lunch: { text: "Reste: Gefüllte Paprika" }
-        dinner: { recipe: fischcurry-mit-reis }
-      - date: 2026-09-29
-        lunch: { leftovers: 2026-09-28 }
-        dinner: { recipe: vegetarische-spinat-gemuese-lasagne-mit-tomatensosse }
-      - date: 2026-09-30
-        lunch: { leftovers: 2026-09-29 }
-        dinner: { recipe: haehnchenschenkel-mit-rosmarinkartoffeln-moehren-und-apfel }
-      - date: 2026-10-01
-        lunch: { leftovers: 2026-09-30 }
-        dinner: { recipe: rosenkohl-gnocchi-pfanne-mit-salbei-und-feta }
-      - date: 2026-10-02
-        lunch: { leftovers: 2026-10-01 }
-        dinner: { recipe: hackbaellchen-in-senfsosse-mit-gemuesereis }
+      - date: 2026-10-05
+        lunch: { text: "Brote mit Radieschenquark" }
+        dinner: { recipe: cremige-haehnchen-rosenkohl-pasta }
+      - date: 2026-10-06
+        lunch: { leftovers: 2026-10-05 }
+        dinner: { recipe: ofen-feta-mit-kirschtomaten-weissen-bohnen-und-spinat }
+      - date: 2026-10-07
+        lunch: { leftovers: 2026-10-06 }
+        dinner: { recipe: mildes-linsen-moehren-dal-mit-reis }
+      - date: 2026-10-08
+        lunch: { leftovers: 2026-10-07 }
+        dinner: { recipe: flammkuchen-mit-porree-apfel-und-speck }
+      - date: 2026-10-09
+        lunch: { text: "Brot mit Feldsalat und Ei" }
+        dinner: { recipe: kuerbisrisotto-mit-salbei }

@@ -1,0 +1,30 @@
+title: Ofen-Feta mit Kirschtomaten, weißen Bohnen und Spinat
+description: Feta schmilzt im Ofen zwischen aufgeplatzten Kirschtomaten, weißen Bohnen und roten Zwiebeln, zum Schluss kommt frischer Spinat dazu. Zehn Minuten Arbeit, den Rest macht der Ofen; dazu warmes Fladenbrot zum Auftunken.
+author: becci
+added: 2026-10-03
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 20 }
+tags: [abendessen, mittagessen, vegetarisch, herbst]
+
+ingredients:
+  - { id: kirschtomaten, amount: 400, unit: g, name: Kirschtomaten }
+  - { id: bohnen, amount: 2, unit: Dose, name: weiße Bohnen, note: "je 400 g" }
+  - { id: zwiebel, amount: 1, name: rote Zwiebel, plural: rote Zwiebeln }
+  - { id: knoblauch, amount: 3, unit: Zehe, name: Knoblauch }
+  - { id: olivenoel, amount: 4, unit: EL, name: Olivenöl }
+  - { id: oregano, amount: 1, unit: TL, name: Oregano, note: getrocknet }
+  - { id: honig, amount: 1, unit: TL, name: Honig }
+  - { id: feta, amount: 300, unit: g, name: Feta, note: "2 kleine Packungen" }
+  - { id: spinat, amount: 150, unit: g, name: Babyspinat }
+  - { id: zitrone, amount: 0.5, name: Zitrone, plural: Zitronen }
+  - { id: fladenbrot, amount: 1, name: Fladenbrot, plural: Fladenbrote }
+  - { id: salz, name: Salz }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "Den Backofen auf 200 °C Ober-/Unterhitze vorheizen. {kirschtomaten} waschen, {zwiebel} in schmale Spalten schneiden, {knoblauch} schälen und andrücken. {bohnen} abgießen und abspülen."
+  - "Tomaten, Zwiebel, Knoblauch und Bohnen in einer großen Auflaufform mischen. {olivenoel:3/4}, {oregano}, {honig} und {pfeffer:name} dazugeben, nur ganz leicht salzen und alles vermengen."
+  - "{feta} in die Mitte setzen und das restliche Olivenöl ({olivenoel:1/4}) darüberträufeln. Etwa 20 Minuten backen, bis die Tomaten aufplatzen und der Feta weich ist. {fladenbrot} die letzten 5 Minuten mit in den Ofen legen."
+  - "{spinat} unter die heißen Bohnen heben, bis er zusammenfällt. Den Feta mit einer Gabel grob zerteilen und alles locker mischen."
+  - "{zitrone} auspressen und den Saft darübergeben, mit {salz:name} abschmecken. Für die Kleine Bohnen und Tomaten leicht zerdrücken und nur wenig Feta dazugeben, er ist salzig."

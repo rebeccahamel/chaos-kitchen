@@ -1,0 +1,34 @@
+title: Flammkuchen mit Porree, Apfel und Speck
+description: Knuspriger Flammkuchen vom Blech mit Crème fraîche, feinen Porreeringen, säuerlichem Apfel und Speck, dazu Feldsalat. Mit fertigem Teig aus dem Kühlregal in 25 Minuten fertig.
+author: becci
+added: 2026-10-03
+trial: true
+yield: { amount: 4, unit: Portionen, note: 2 Bleche }
+time: { prep: 10, cook: 15 }
+tags: [abendessen, fleisch, herbst, winter]
+
+ingredients:
+  - group: Für den Flammkuchen
+    items:
+      - { id: teig, amount: 2, unit: Päckchen, name: Flammkuchenteig, note: "aus dem Kühlregal, je etwa 260 g" }
+      - { id: creme, amount: 200, unit: g, name: Crème fraîche }
+      - { id: porree, amount: 1, unit: Stange, name: Porree }
+      - { id: zwiebel, amount: 1, name: rote Zwiebel, plural: rote Zwiebeln }
+      - { id: apfel, amount: 1, name: Apfel, plural: Äpfel, note: säuerlich }
+      - { id: speck, amount: 100, unit: g, name: Speckwürfel }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für den Feldsalat
+    items:
+      - { id: feldsalat, amount: 150, unit: g, name: Feldsalat }
+      - { id: olivenoel, amount: 2, unit: EL, name: Olivenöl }
+      - { id: essig, amount: 1, unit: EL, name: Weißweinessig }
+      - { id: senf, amount: 1, unit: TL, name: mittelscharfer Senf }
+      - { id: honig, amount: 1, unit: TL, name: Honig }
+
+steps:
+  - "Den Backofen auf 210 °C Umluft vorheizen. {porree} längs halbieren, waschen und in feine Halbringe schneiden. {zwiebel} in feine Ringe schneiden, {apfel} entkernen und in dünne Spalten schneiden."
+  - "{teig} mit dem Backpapier aus der Packung auf zwei Blechen ausrollen. {creme} glatt rühren, leicht salzen und pfeffern und auf beide Teige streichen, dabei einen schmalen Rand frei lassen."
+  - "Porree, Zwiebel und Apfel auf beiden Teigen verteilen, {speck} darüberstreuen. Für die Kleine eine Ecke ohne Speck belegen."
+  - "Beide Bleche zusammen 12–15 Minuten backen, bis der Rand knusprig braun ist; nach der Hälfte der Zeit die Bleche tauschen."
+  - "Inzwischen {feldsalat} waschen und trocken schleudern. {olivenoel}, {essig}, {senf} und {honig} verrühren, salzen und pfeffern und den Salat erst kurz vor dem Essen damit mischen."

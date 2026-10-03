@@ -1,0 +1,40 @@
+title: Mildes Linsen-Möhren-Dal mit Reis
+description: Rote Linsen und Möhren, mit Kokosmilch und milden Gewürzen cremig gekocht. Schärfe kommt erst am Tisch dazu, deshalb essen auch die Kleinen mit. Lässt sich gut verdoppeln und portionsweise mit dem Reis einfrieren.
+author: becci
+added: 2026-10-03
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 25 }
+tags: [abendessen, mittagessen, vegetarisch, herbst, winter, asiatisch]
+
+ingredients:
+  - group: Für das Dal
+    items:
+      - { id: linsen, amount: 250, unit: g, name: rote Linsen }
+      - { id: moehren, amount: 4, name: Möhre, plural: Möhren }
+      - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: ingwer, amount: 1, unit: Stück, name: Ingwer, note: daumengroß }
+      - { id: oel, amount: 2, unit: EL, name: Öl }
+      - { id: kreuzkuemmel, amount: 1, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: kurkuma, amount: 1, unit: TL, name: Kurkuma, note: gemahlen }
+      - { id: curry, amount: 1, unit: TL, name: Currypulver, note: mild }
+      - { id: tomatenmark, amount: 1, unit: EL, name: Tomatenmark }
+      - { id: bruehe, amount: 700, unit: ml, name: Gemüsebrühe, note: oder Hühnerbrühe }
+      - { id: kokosmilch, amount: 1, unit: Dose, name: Kokosmilch }
+      - { id: limette, amount: 1, name: Limette, plural: Limetten }
+      - { id: salz, name: Salz }
+  - group: Zum Servieren
+    items:
+      - { id: reis, amount: 300, unit: g, name: Basmatireis }
+      - { id: joghurt, amount: 150, unit: g, name: Joghurt }
+      - { id: chili, name: Chiliflocken, note: für die Erwachsenen, optional: true }
+
+steps:
+  - "{zwiebel} fein würfeln, {knoblauch} und {ingwer} schälen und fein reiben. {moehren} schälen und klein würfeln. {linsen} in einem Sieb abspülen."
+  - "{oel} in einem großen Topf erhitzen und die Zwiebel 3 Minuten glasig dünsten. Knoblauch, Ingwer, {kreuzkuemmel}, {kurkuma}, {curry} und {tomatenmark} dazugeben und 1 Minute unter Rühren anrösten."
+  - "Möhren und Linsen einrühren, {bruehe} und {kokosmilch} angießen und aufkochen. Bei niedriger Hitze 20 Minuten leise köcheln lassen und ab und zu umrühren, bis die Linsen zerfallen und die Möhren weich sind."
+  - "Inzwischen {reis} nach Packungsanweisung garen."
+  - "{limette} auspressen, den Saft unter das Dal rühren und mit {salz:name} abschmecken. Wer es feiner mag, püriert einen Teil kurz an."
+  - "Das Dal auf dem Reis anrichten und {joghurt} dazu reichen. Die Erwachsenen streuen {chili:name} darüber, die Portion für die Kleine bleibt mild."
+  - "Zum Einfrieren Dal und Reis zügig abkühlen lassen und portionsweise zusammen einfrieren, das hält etwa 3 Monate. Über Nacht im Kühlschrank auftauen und mit einem Schluck Wasser heiß durcherhitzen."

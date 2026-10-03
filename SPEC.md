@@ -697,9 +697,11 @@ SETUP.md and AGENTS.md added, MEAL_PLANNER.md reduced to general rules (househol
 the private profile, `planner/profile.example.md` as the model), planner manual owner-neutral
 with Todoist optional, tests on their own fixtures (§10).
 
-Next: check in the Bring! app that "Porree, 2 Stangen" arrives as Porree with the specification
-"2 Stangen", and that the notes arrive on the next week list ("Kartoffeln, 750 g, festkochend");
-plan the next week with prompt A.
+Week 2026-W41 planned the same day: five new trial recipes (5–9 October).
+
+Next: check in the Bring! app that "Porree, 1 Stange" arrives as Porree with the specification
+"1 Stange", and that the notes arrive on the week list ("Feta, 300 g, 2 kleine Packungen");
+review W41 with prompt B around 10 October.
 
 The remaining small tasks of version 1 (more recipes and photos, avatars, step pictures, defaults
 to confirm) are tracked on the `main` branch, not here.
