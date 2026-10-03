@@ -1,10 +1,18 @@
-# CLAUDE.md – Familien-Rezeptseite
+# CLAUDE.md – Wochenplaner und Familien-Rezeptseite
 
-Static family recipe website built with Astro and hosted on GitHub Pages.
-`SPEC.md` is the single source of truth for features, data model and rules. Read it before
-making changes, and keep it up to date when decisions change.
+A weekly meal planner run as a conversation with a coding agent, plus the static family recipe
+website (Astro, GitHub Pages) that shows the plan and the recipes.
 
-## About the owner
+- `SPEC.md` is the single source of truth for the site's features, data model and rules. Read it
+  before making changes, and keep it up to date when decisions change.
+- Planning or reviewing a week: read `planner/README.md` and follow it exactly.
+- A clone without `planner/private/profile.md` most likely belongs to a new owner. Say so and
+  offer the setup in `SETUP.md` before planning anything.
+
+## Owner
+
+This block describes the current owner and how they like to work. `SETUP.md` replaces it for a
+new owner; everything outside it applies to everyone.
 
 Becci owns and maintains this project. She is new to web development.
 
@@ -19,10 +27,12 @@ Becci owns and maintains this project. She is new to web development.
 - When something needs doing outside the code (GitHub settings, installing tools), give exact
   step-by-step instructions.
 
-## Environment
+Environment:
 
 - Windows 11, PowerShell, VS Code. Give commands for PowerShell, not bash.
 - Node.js LTS, npm, Git.
+
+End of the owner block.
 
 ## Commands
 
@@ -51,9 +61,12 @@ Run `npm run build` before declaring a task done. It must pass without errors.
   and `photos.ts` are build-time only.
 - Relative imports inside `src/lib` keep the `.ts` extension; the tests run on Node's own
   TypeScript support without a build step.
-- Build validation messages are German, because Becci reads them when a recipe file is wrong.
+- Build validation messages are German, like the site, because the owner reads them when a
+  recipe file is wrong.
 - Fonts are self-hosted from `src/assets/fonts/`; never load fonts or anything else from a
   third-party server (SPEC.md §6.7).
+- The unit tests use their own recipes and lists in `src/lib/fixtures/`, never the household's
+  files in `src/content/recipes/` and `src/data/`.
 
 ## Data model changes
 
@@ -66,11 +79,12 @@ Never weaken validation to make a build pass. Fix the data or ask.
 ## Design
 
 The design plan is confirmed and recorded in SPEC.md §13 (palette, typefaces, layout rules).
-Follow it. Propose and confirm with Becci before deviating from it or restyling.
+Follow it. Propose and confirm with the owner before deviating from it or restyling.
 
 ## Privacy
 
 Repository and site are public. Only family roles or first names for people, illustrated
 avatars, no personal data (addresses, phone numbers, full names) anywhere in the repository.
+Everything about the household goes into `planner/private/`, which git ignores.
 The single exception is the Impressum page (SPEC.md §6.7), which holds exactly the legally
-required contact details. Every page needs a footer link to it.
+required contact details of the current owner. Every page needs a footer link to it.
