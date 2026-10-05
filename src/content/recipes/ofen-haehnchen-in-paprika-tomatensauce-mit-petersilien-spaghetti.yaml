@@ -1,0 +1,31 @@
+title: Ofen-Hähnchen in Paprika-Tomatensauce mit Petersilien-Spaghetti
+description: Kurz angebratene Hähnchenbrust gart im Ofen in einer Tomatensauce mit Paprika und roten Zwiebeln, dazu Spaghetti mit Knoblauch und Petersilie. Die Schärfe kommt erst am Tisch dazu. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 30 }
+tags: [abendessen, mittagessen, fleisch, italienisch]
+
+ingredients:
+  - { id: haehnchen, amount: 500, unit: g, name: Hähnchenbrust }
+  - { id: zwiebel, amount: 2, name: rote Zwiebel, plural: rote Zwiebeln }
+  - { id: paprika, amount: 2, name: Paprika, plural: Paprika }
+  - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+  - { id: olivenoel, amount: 4, unit: EL, name: Olivenöl }
+  - { id: tomaten, amount: 600, unit: ml, name: passierte Tomaten }
+  - { id: oregano, amount: 1, unit: TL, name: Oregano, note: getrocknet }
+  - { id: zucker, name: Zucker, note: eine Prise }
+  - { id: spaghetti, amount: 500, unit: g, name: Spaghetti }
+  - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+  - { id: chili, name: Chiliflocken, note: für die Erwachsenen }
+  - { id: salz, name: Salz }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze (200 °C Umluft) vorheizen. {zwiebel} halbieren und in feine Streifen schneiden, {knoblauch} fein hacken. {paprika} entkernen und quer in dünne Streifen schneiden."
+  - "{haehnchen} von beiden Seiten salzen und pfeffern. {olivenoel:1/2} in einer großen Pfanne erhitzen, das Fleisch je Seite 1–2 Minuten anbraten und in eine Auflaufform legen."
+  - "Paprika, Zwiebeln und die Hälfte vom Knoblauch in der Pfanne 2 Minuten anschwitzen. {tomaten} und {oregano} einrühren und mit einer Prise {zucker:name}, {salz:name} und {pfeffer:name} abschmecken. Die Sauce um das Fleisch herum in die Form geben und etwa 20 Minuten backen, bis das Hähnchen innen nicht mehr rosa ist."
+  - "{spaghetti} in reichlich Salzwasser bissfest kochen und vor dem Abgießen eine halbe Tasse Kochwasser auffangen. {petersilie} fein hacken."
+  - "Die Pfanne auswischen und das restliche Olivenöl ({olivenoel:1/2}) darin leicht erhitzen. Den restlichen Knoblauch und die Petersilie 1 Minute anschwitzen, Spaghetti und Kochwasser dazugeben, durchschwenken, salzen und pfeffern."
+  - "Die Spaghetti mit der Sauce anrichten, das Hähnchen aufschneiden und darauflegen. Die Erwachsenen würzen am Tisch mit {chili:name}, die Portion für die Kleine bleibt mild."

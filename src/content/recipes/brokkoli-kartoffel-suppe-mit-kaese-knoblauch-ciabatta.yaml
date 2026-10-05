@@ -1,0 +1,39 @@
+title: Brokkoli-Kartoffel-Suppe mit Käse-Knoblauch-Ciabatta
+description: Cremig pürierte Suppe aus Brokkoli und Kartoffeln mit Crème fraîche und Muskat, dazu im Ofen überbackenes Ciabatta mit Käse, Knoblauch und Petersilie, obendrauf geröstete Pinienkerne. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 25 }
+tags: [abendessen, mittagessen, vegetarisch]
+
+ingredients:
+  - group: Für die Suppe
+    items:
+      - { id: brokkoli, amount: 1, name: Brokkoli, plural: Brokkoli }
+      - { id: kartoffeln, amount: 500, unit: g, name: Kartoffeln, note: mehligkochend }
+      - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: olivenoel-suppe, amount: 2, unit: EL, name: Olivenöl }
+      - { id: bruehe, amount: 800, unit: ml, name: Gemüsebrühe }
+      - { id: creme, amount: 200, unit: g, name: Crème fraîche }
+      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen }
+      - { id: pinienkerne, amount: 20, unit: g, name: Pinienkerne }
+      - { id: basilikum, amount: 0.5, unit: Bund, name: Basilikum }
+      - { id: muskat, name: Muskatnuss, note: frisch gerieben }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für das Ciabatta
+    items:
+      - { id: ciabatta, amount: 4, name: Ciabattabrötchen, plural: Ciabattabrötchen, note: zum Aufbacken }
+      - { id: kaese, amount: 150, unit: g, name: geriebener Käse, note: "z. B. würziger Gouda" }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: olivenoel-brot, amount: 4, unit: EL, name: Olivenöl }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze (200 °C Umluft) vorheizen. {zwiebel} grob würfeln, {kartoffeln} schälen und in etwa 3 cm große Würfel schneiden, {brokkoli} in kleine Röschen teilen."
+  - "{pinienkerne} in einem großen Topf ohne Fett 1–2 Minuten rösten, bis sie leicht gebräunt sind, und herausnehmen. {olivenoel-suppe} im selben Topf erhitzen und Zwiebeln, Kartoffeln und Brokkoli 2–3 Minuten anschwitzen. {bruehe} angießen, mit {muskat:name} würzen und zugedeckt etwa 15 Minuten köcheln lassen, bis die Kartoffeln weich sind."
+  - "{petersilie} und {basilikum} getrennt fein hacken. {kaese:1/2} mit der Petersilie mischen und {knoblauch} dazupressen."
+  - "{ciabatta} in 1–2 cm dicke Scheiben schneiden und auf einem Blech mit Backpapier verteilen. {olivenoel-brot} darüberträufeln, die Käsemischung daraufstreuen und auf der mittleren Schiene 6–8 Minuten knusprig backen."
+  - "{creme} zur Suppe geben und alles mit dem Pürierstab cremig pürieren. {zitrone} in Spalten schneiden und die Suppe mit {salz:name}, {pfeffer:name} und einigen Spritzern Zitronensaft abschmecken."
+  - "Die Suppe mit dem restlichen Käse ({kaese:1/2}), den Pinienkernen und dem Basilikum bestreuen und mit dem Knoblauchbrot und den Zitronenspalten servieren. Für die Kleine die Pinienkerne weglassen."

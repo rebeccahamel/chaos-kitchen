@@ -1,0 +1,29 @@
+title: Spätzle-Pfanne mit Bacon, Porree und Tomatenpesto
+description: Knusprig gebratene Spätzle mit Bacon und Porree in einer cremigen Sauce mit rotem Pesto, obendrauf Parmesan. Eine Pfanne, 30 Minuten. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 20 }
+tags: [abendessen, mittagessen, fleisch]
+
+ingredients:
+  - { id: spaetzle, amount: 800, unit: g, name: Spätzle, note: "frisch, aus dem Kühlregal" }
+  - { id: bacon, amount: 200, unit: g, name: Bacon, note: in Scheiben }
+  - { id: porree, amount: 2, unit: Stange, name: Porree }
+  - { id: schalotte, amount: 2, name: Schalotte, plural: Schalotten }
+  - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+  - { id: olivenoel, amount: 2, unit: EL, name: Olivenöl }
+  - { id: creme, amount: 200, unit: g, name: Crème fraîche }
+  - { id: pesto, amount: 50, unit: g, name: rotes Pesto }
+  - { id: bruehe, amount: 90, unit: ml, name: Hühnerbrühe }
+  - { id: parmesan, amount: 80, unit: g, name: Parmesan, note: am Stück }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{schalotte} und {knoblauch} fein hacken. {porree} längs halbieren, gründlich waschen und in 0,5 cm breite Halbringe schneiden. {bacon} in etwa 1 cm breite Streifen schneiden."
+  - "{olivenoel} in einer großen Pfanne bei mittlerer Hitze erhitzen und {spaetzle} darin 4–6 Minuten braten, bis sie knusprig und leicht gebräunt sind. In eine Schüssel umfüllen."
+  - "Den Bacon in derselben Pfanne ohne weiteres Fett 4–5 Minuten knusprig braten. Porree und Schalotten dazugeben und 5–6 Minuten mitbraten."
+  - "Die Hitze reduzieren, den Knoblauch dazugeben, leicht mit {pfeffer:name} würzen und 1 Minute mitbraten. {creme}, {pesto} und {bruehe} einrühren. Die Brühe dafür kräftig anrühren (bei 4 Portionen etwa 2 TL Instantpulver)."
+  - "Die Spätzle vorsichtig unter die Sauce heben und 1 Minute erhitzen."
+  - "{parmesan} reiben und darüberstreuen. Salz braucht es nicht, Bacon, Pesto und Brühe bringen genug mit; für die Kleine deshalb nur wenig Bacon."

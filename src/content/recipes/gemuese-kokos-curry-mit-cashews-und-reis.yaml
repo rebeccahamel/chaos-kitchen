@@ -1,0 +1,42 @@
+title: Gemüse-Kokos-Curry mit Cashews und Reis
+description: Ein mildes Curry mit Möhren, grünen Bohnen und Zucchini in Kokosmilch, mit Tomatenmark, Ingwer und Limette abgeschmeckt, dazu Basmatireis und geröstete Cashews. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 25 }
+tags: [abendessen, mittagessen, vegan, asiatisch]
+
+ingredients:
+  - group: Für den Reis
+    items:
+      - { id: reis, amount: 300, unit: g, name: Basmatireis }
+      - { id: wasser, amount: 600, unit: ml, name: Wasser }
+  - group: Für das Curry
+    items:
+      - { id: moehren, amount: 4, name: Möhre, plural: Möhren }
+      - { id: bohnen, amount: 200, unit: g, name: grüne Bohnen }
+      - { id: zucchini, amount: 2, name: Zucchini, plural: Zucchini }
+      - { id: fruehlingszwiebeln, amount: 4, name: Frühlingszwiebel, plural: Frühlingszwiebeln }
+      - { id: ingwer, amount: 1, unit: Stück, name: Ingwer, note: daumengroß }
+      - { id: cashews, amount: 40, unit: g, name: Cashewkerne, note: geröstet }
+      - { id: oel, amount: 1, unit: EL, name: Öl }
+      - { id: tomatenmark, amount: 1, unit: Dose, name: Tomatenmark, note: "klein, etwa 70 g" }
+      - { id: kurkuma, amount: 1.5, unit: TL, name: Kurkuma, note: gemahlen }
+      - { id: kreuzkuemmel, amount: 0.75, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: koriander, amount: 0.75, unit: TL, name: gemahlener Koriander }
+      - { id: paprikapulver, amount: 0.5, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: kokosmilch, amount: 1, unit: Dose, name: Kokosmilch }
+      - { id: bruehe, amount: 200, unit: ml, name: Gemüsebrühe }
+      - { id: sojasauce, amount: 3, unit: EL, name: Sojasauce }
+      - { id: limette, amount: 1, name: Limette, plural: Limetten }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{moehren} längs halbieren und in 0,5 cm dicke Halbmonde schneiden. {bohnen} putzen und quer halbieren, {zucchini} in 1,5 cm große Würfel schneiden. {fruehlingszwiebeln} in dünne Ringe schneiden, den weißen und den grünen Teil getrennt. {ingwer} schälen und fein reiben."
+  - "{wasser} mit etwas Salz in einem kleinen Topf aufkochen. {reis} dazugeben und zugedeckt bei niedriger Hitze 10 Minuten köcheln lassen, dann vom Herd nehmen und zugedeckt 10 Minuten ziehen lassen."
+  - "{cashews} in einer großen Pfanne ohne Fett 1–2 Minuten rösten, bis sie bräunen, und herausnehmen. {oel} in der Pfanne bei mittlerer Hitze erhitzen und die weißen Frühlingszwiebelringe 2 Minuten glasig braten. {tomatenmark}, {kurkuma}, {kreuzkuemmel}, {koriander}, {paprikapulver} und den Ingwer dazugeben und 1 Minute mit anbraten."
+  - "{kokosmilch} und {bruehe} angießen und aufkochen. Möhren, Bohnen und Zucchini dazugeben und offen bei mittlerer Hitze 15–18 Minuten köcheln lassen, bis das Gemüse weich ist."
+  - "{limette} halbieren, die Cashews grob hacken. Das Curry vom Herd nehmen, {sojasauce} einrühren, Limettensaft nach Geschmack dazupressen und mit {salz:name} und {pfeffer:name} abschmecken."
+  - "Den Reis mit einer Gabel auflockern, das Curry darauf anrichten und mit den grünen Frühlingszwiebelringen und den Cashews bestreuen. Die Portion für die Kleine bleibt ohne Cashews."

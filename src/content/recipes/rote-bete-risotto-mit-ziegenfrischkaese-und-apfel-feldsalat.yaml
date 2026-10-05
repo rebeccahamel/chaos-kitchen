@@ -1,0 +1,40 @@
+title: Rote-Bete-Risotto mit Ziegenfrischkäse und Apfel-Feldsalat
+description: Cremiges Risotto mit Roter Bete, Zitrone, Kräutern und Ziegenfrischkäse, dazu ein frischer Feldsalat mit Apfel und gerösteten Kürbiskernen. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 30 }
+tags: [abendessen, vegetarisch, herbst, winter, italienisch]
+
+ingredients:
+  - group: Für das Risotto
+    items:
+      - { id: reis, amount: 450, unit: g, name: Risottoreis }
+      - { id: fruehlingszwiebeln, amount: 2, name: Frühlingszwiebel, plural: Frühlingszwiebeln }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: oel-risotto, amount: 2, unit: EL, name: Öl }
+      - { id: bruehe, amount: 1.6, unit: l, name: Gemüsebrühe }
+      - { id: rote-bete, amount: 500, unit: g, name: Rote Bete, note: "vorgegart, vakuumiert" }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: thymian, amount: 3, unit: Zweig, name: Thymian }
+      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen, note: Bio }
+      - { id: ziegenkaese, amount: 200, unit: g, name: Ziegenfrischkäse }
+      - { id: honig, amount: 1, unit: TL, name: Honig }
+      - { id: parmesan, amount: 40, unit: g, name: Parmesan, note: am Stück }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für den Salat
+    items:
+      - { id: feldsalat, amount: 150, unit: g, name: Feldsalat }
+      - { id: apfel, amount: 2, name: Apfel, plural: Äpfel }
+      - { id: kuerbiskerne, amount: 20, unit: g, name: Kürbiskerne }
+      - { id: oel-salat, amount: 2, unit: EL, name: Öl }
+
+steps:
+  - "{fruehlingszwiebeln} in feine Ringe schneiden, den weißen und den grünen Teil getrennt. {knoblauch} fein hacken. {bruehe} erhitzen."
+  - "{oel-risotto} in einem großen Topf erhitzen und Knoblauch und weiße Frühlingszwiebelringe 1 Minute anschwitzen. {reis} dazugeben und 1 Minute mit anschwitzen. Die heiße Brühe angießen und offen bei mittlerer Hitze 20–25 Minuten köcheln lassen, dabei ab und zu rühren, bis die Brühe aufgesogen und das Risotto cremig ist."
+  - "{petersilie} fein hacken, {thymian} abzupfen und ebenfalls hacken. {zitrone} heiß waschen, die Schale fein abreiben und die Frucht in 6 Spalten schneiden. {apfel} achteln, entkernen und quer in 0,5 cm dicke Scheiben schneiden. {rote-bete} in 1 cm große Würfel schneiden; sie färbt stark, am besten mit Handschuhen."
+  - "{kuerbiskerne} in einer kleinen Pfanne ohne Fett 1–2 Minuten rösten, bis sie anfangen zu springen. {oel-salat} mit dem Saft von 2 Zitronenspalten, Salz und Pfeffer zu einem Dressing verrühren. {feldsalat}, die grünen Frühlingszwiebelringe, die Apfelscheiben und {ziegenkaese:1/2} dazugeben und vermengen."
+  - "Rote Bete, Kräuter und Zitronenabrieb unter das fertige Risotto rühren. Den restlichen Ziegenfrischkäse ({ziegenkaese:1/2}) und {honig} dazugeben, {parmesan} reiben und unterrühren. Mit dem Saft von 2 Zitronenspalten, {salz:name} und {pfeffer:name} abschmecken."
+  - "Das Risotto mit den Kürbiskernen bestreuen und den Apfel-Feldsalat daneben anrichten. Für die Kleine die Kürbiskerne weglassen."

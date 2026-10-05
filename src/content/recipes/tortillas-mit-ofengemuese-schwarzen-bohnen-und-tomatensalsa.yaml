@@ -1,0 +1,38 @@
+title: Tortillas mit Ofengemüse, schwarzen Bohnen und Tomatensalsa
+description: Weiche Weizentortillas mit rauchig gewürztem Ofengemüse und schwarzen Bohnen, dazu frische Tomatensalsa, Käse und zwei Dips aus saurer Sahne, einer mit Limette und einer mit Sriracha. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 20 }
+tags: [abendessen, vegetarisch]
+
+ingredients:
+  - group: Für das Ofengemüse
+    items:
+      - { id: champignons, amount: 400, unit: g, name: Champignons }
+      - { id: paprika, amount: 2, name: Paprika, plural: Paprika }
+      - { id: zwiebel, amount: 1, name: rote Zwiebel, plural: rote Zwiebeln }
+      - { id: bohnen, amount: 2, unit: Dose, name: schwarze Bohnen, note: "je 400 g" }
+      - { id: paprikapulver, amount: 2, unit: TL, name: geräuchertes Paprikapulver }
+      - { id: oel, amount: 4, unit: EL, name: Öl }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für Salsa und Dips
+    items:
+      - { id: tomate, amount: 4, name: Tomate, plural: Tomaten }
+      - { id: limette, amount: 1, name: Limette, plural: Limetten, note: Bio }
+      - { id: saure-sahne, amount: 400, unit: g, name: saure Sahne }
+      - { id: sriracha, name: Sriracha, note: nach Geschmack }
+  - group: Zum Füllen
+    items:
+      - { id: tortillas, amount: 8, name: Weizentortilla, plural: Weizentortillas }
+      - { id: kaese, amount: 100, unit: g, name: geriebener Käse, note: "z. B. junger Gouda" }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze (200 °C Umluft) vorheizen. {zwiebel} halbieren, eine Hälfte fein würfeln, die andere in feine Streifen schneiden. {paprika} entkernen und in 1 cm breite Streifen schneiden, {champignons} je nach Größe halbieren oder vierteln. {bohnen} abgießen und abspülen."
+  - "Champignons, Paprika und Zwiebelstreifen auf einem Blech mit Backpapier verteilen. {paprikapulver} und {oel:1/2} dazugeben, salzen, pfeffern, alles vermengen und 18–20 Minuten backen, bis das Gemüse weich ist. Die Bohnen für die letzten 5 Minuten mit aufs Blech geben."
+  - "{limette} heiß waschen, die Schale fein abreiben und die Frucht in Spalten schneiden. {saure-sahne:1/2} mit dem Limettenabrieb verrühren und mit {salz:name}, {pfeffer:name} und etwas Limettensaft abschmecken."
+  - "{tomate} in 1 cm große Würfel schneiden. Mit den Zwiebelwürfeln, dem Saft von zwei Limettenspalten und dem restlichen Öl ({oel:1/2}) mischen, salzen und pfeffern."
+  - "Die restliche saure Sahne ({saure-sahne:1/2}) nach Geschmack mit {sriracha:name} verrühren, salzen und pfeffern; für die Kleine vorher etwas saure Sahne ohne Schärfe abnehmen. {tortillas} 1–2 Minuten im Ofen erwärmen."
+  - "Die Tortillas mit dem Sriracha-Dip bestreichen, das Ofengemüse darauf verteilen, {kaese} und die Salsa darübergeben und mit dem Limettendip beträufeln. Mit den restlichen Limettenspalten servieren."

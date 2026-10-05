@@ -1,0 +1,43 @@
+title: Hackbällchen mit Kräuterkartoffeln, Preiselbeer-Salat und Senfsoße
+description: Würzige Rinderhackbällchen aus der Pfanne, dazu Kartoffeln in Kräuterbutter, ein Blattsalat mit Preiselbeer-Dressing und eine kalte Senfsoße mit Frühlingszwiebeln. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 25 }
+tags: [abendessen, fleisch]
+
+ingredients:
+  - group: Für Hackbällchen und Kartoffeln
+    items:
+      - { id: kartoffeln, amount: 1.2, unit: kg, name: Kartoffeln, note: vorwiegend festkochend }
+      - { id: kraeuterbutter, amount: 40, unit: g, name: Kräuterbutter }
+      - { id: hackfleisch, amount: 400, unit: g, name: Rinderhackfleisch }
+      - { id: semmelbroesel, amount: 50, unit: g, name: Semmelbrösel }
+      - { id: senf-hack, amount: 4, unit: TL, name: mittelscharfer Senf }
+      - { id: worcester, amount: 1, unit: EL, name: Worcestersauce }
+      - { id: oel, amount: 2, unit: EL, name: Öl, note: zum Anbraten }
+      - { id: butter, amount: 30, unit: g, name: Butter }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Senfsoße
+    items:
+      - { id: schmand, amount: 100, unit: g, name: Schmand }
+      - { id: senf-sosse, amount: 1, unit: EL, name: mittelscharfer Senf }
+      - { id: honig, amount: 1, unit: TL, name: Honig }
+      - { id: fruehlingszwiebeln, amount: 2, name: Frühlingszwiebel, plural: Frühlingszwiebeln }
+  - group: Für den Salat
+    items:
+      - { id: salat, amount: 100, unit: g, name: Salatmischung }
+      - { id: tomate, amount: 2, name: Tomate, plural: Tomaten }
+      - { id: preiselbeeren, amount: 50, unit: g, name: Wildpreiselbeeren, note: aus dem Glas }
+      - { id: balsamico, amount: 2, unit: TL, name: Balsamicoessig }
+      - { id: olivenoel, amount: 2, unit: EL, name: Olivenöl }
+
+steps:
+  - "{kartoffeln} nach Belieben schälen, halbieren oder vierteln und in Salzwasser 15–18 Minuten weich kochen. Abgießen."
+  - "{hackfleisch}, {semmelbroesel}, {senf-hack} und {worcester} in eine Schüssel geben, mit {salz:name} und {pfeffer:name} würzen und gut verkneten. Pro Portion 4 Bällchen formen."
+  - "{oel} und {butter} in einer großen Pfanne erhitzen und die Hackbällchen bei mittlerer Hitze 8–10 Minuten rundum braten, bis sie gar sind."
+  - "{fruehlingszwiebeln} in feine Ringe schneiden. {schmand}, {senf-sosse} und {honig} verrühren, die Frühlingszwiebeln unterheben und leicht salzen."
+  - "{tomate} in 1 cm große Würfel schneiden. {preiselbeeren}, {balsamico}, {olivenoel} und einen Esslöffel Wasser in einer großen Schüssel verrühren, salzen und pfeffern. Die Tomaten und {salat} erst kurz vor dem Essen unterheben."
+  - "Die Kartoffeln zurück in den Topf geben, {kraeuterbutter} bei niedriger Hitze darin schmelzen lassen, salzen und pfeffern. Hackbällchen, Kartoffeln und Salat anrichten und die Senfsoße dazu reichen."

@@ -1,0 +1,39 @@
+title: Risotto mit Champignons, karamellisierter Birne und Bacon
+description: Cremiges Risotto mit gebratenen Champignons und Thymian, obendrauf karamellisierte Birnenspalten, Walnüsse und knuspriger Bacon. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 30 }
+tags: [abendessen, fleisch, herbst, italienisch]
+
+ingredients:
+  - group: Für das Risotto
+    items:
+      - { id: reis, amount: 450, unit: g, name: Risottoreis }
+      - { id: zwiebel, amount: 2, name: rote Zwiebel, plural: rote Zwiebeln }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: olivenoel, amount: 2, unit: EL, name: Olivenöl }
+      - { id: bruehe, amount: 1.6, unit: l, name: Hühnerbrühe }
+      - { id: champignons, amount: 300, unit: g, name: Champignons, note: braun }
+      - { id: thymian, amount: 3, unit: Zweig, name: Thymian }
+      - { id: parmesan, amount: 80, unit: g, name: Parmesan, note: am Stück }
+      - { id: worcester, amount: 1, unit: EL, name: Worcestersauce }
+      - { id: butter, amount: 30, unit: g, name: Butter }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Zum Belegen
+    items:
+      - { id: bacon, amount: 200, unit: g, name: Bacon, note: in Scheiben }
+      - { id: birne, amount: 2, name: Birne, plural: Birnen }
+      - { id: walnuesse, amount: 40, unit: g, name: Walnüsse }
+      - { id: zucker, amount: 3, unit: TL, name: Zucker }
+      - { id: schnittlauch, amount: 0.5, unit: Bund, name: Schnittlauch }
+
+steps:
+  - "{zwiebel} und {knoblauch} fein hacken, {bruehe} erhitzen. {olivenoel} in einem großen Topf erhitzen und Zwiebeln und Knoblauch 1–2 Minuten anschwitzen. {reis} dazugeben und 1 Minute mit anschwitzen. Die heiße Brühe angießen und offen bei mittlerer Hitze 20–25 Minuten köcheln lassen, dabei ab und zu rühren, bis die Brühe aufgesogen und das Risotto cremig ist."
+  - "{champignons} in Scheiben schneiden. {birne} vierteln, entkernen und die Viertel noch einmal längs halbieren. {schnittlauch} in feine Röllchen schneiden, {thymian} abzupfen und hacken."
+  - "{bacon} halbieren, in eine große kalte Pfanne legen und bei mittlerer Hitze etwa 5 Minuten knusprig braten, dabei ab und zu wenden. Herausnehmen."
+  - "Die Champignons mit dem Thymian im Baconfett 3–4 Minuten anbraten, salzen, pfeffern und unter das Risotto rühren."
+  - "Die Pfanne mit Küchenpapier auswischen. Die Birnenspalten und {walnuesse} hineingeben und etwa 3 Minuten anbraten. {zucker} darüberstreuen und 2–3 Minuten leicht karamellisieren lassen."
+  - "{parmesan} reiben und unter das fertige Risotto rühren. {worcester} und {butter} dazugeben und mit {salz:name} und {pfeffer:name} abschmecken. Birnen, Walnüsse und Bacon darauf verteilen und mit dem Schnittlauch bestreuen. Für die Kleine die Walnüsse weglassen und nur wenig Bacon geben."

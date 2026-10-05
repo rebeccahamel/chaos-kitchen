@@ -1,0 +1,34 @@
+title: Schweinefilet mit Porree-Rahmsoße und Honig-Senf-Ofengemüse
+description: Kurz angebratenes Schweinefilet gart im Ofen neben Kartoffeln und Möhren mit Honig und körnigem Senf fertig, dazu eine schnelle Rahmsoße mit Porree. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 30 }
+tags: [abendessen, fleisch]
+
+ingredients:
+  - group: Für Fleisch und Ofengemüse
+    items:
+      - { id: schweinefilet, amount: 500, unit: g, name: Schweinefilet }
+      - { id: kartoffeln, amount: 800, unit: g, name: Kartoffeln, note: Drillinge }
+      - { id: moehren, amount: 4, name: Möhre, plural: Möhren }
+      - { id: honig, amount: 2, unit: TL, name: Honig }
+      - { id: senf, amount: 1, unit: EL, name: körniger Senf }
+      - { id: oel, amount: 6, unit: EL, name: Öl }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Soße
+    items:
+      - { id: porree, amount: 1, unit: Stange, name: Porree }
+      - { id: sahne, amount: 300, unit: ml, name: Sahne }
+      - { id: bruehe, amount: 100, unit: ml, name: Rinderbrühe }
+      - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze (200 °C Umluft) vorheizen. {moehren} schälen, längs vierteln und in 4–5 cm lange Stifte schneiden. {kartoffeln} gründlich waschen und vierteln. {honig}, {senf} und {oel:1/3} dazugeben, salzen, pfeffern und alles in einer Schüssel vermengen."
+  - "Das Gemüse auf einem Blech mit Backpapier verteilen, dabei etwas Platz für das Fleisch lassen, und 25–30 Minuten backen, bis es weich und außen leicht gebräunt ist."
+  - "{sahne}, {bruehe} und {paprikapulver} verrühren; die Brühe dafür kräftig anrühren (bei 4 Portionen etwa 2 TL Instantpulver). {porree} längs halbieren, gründlich waschen und in 1 cm breite Ringe schneiden."
+  - "{schweinefilet} trocken tupfen, {oel:1/3} darauf verreiben, salzen und pfeffern. Eine große Pfanne stark erhitzen und das Fleisch 3–4 Minuten rundherum scharf anbraten. Für die letzten 8–10 Minuten zum Gemüse aufs Blech legen, bis es innen nur noch leicht rosa ist."
+  - "Die Hitze reduzieren und das restliche Öl ({oel:1/3}) in der Pfanne erhitzen. Den Porree 2–3 Minuten anschwitzen, mit der Sahnemischung ablöschen und 3–4 Minuten einkochen lassen, bis die Soße eingedickt und der Porree weich ist. Mit {salz:name} und {pfeffer:name} abschmecken."
+  - "Das Fleisch aufschneiden und mit dem Ofengemüse und der Porreesoße anrichten."

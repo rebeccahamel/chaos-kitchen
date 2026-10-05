@@ -1,0 +1,42 @@
+title: Seehecht in Senf-Kräuter-Soße mit Apfel-Radieschen-Salat und Zitronenreis
+description: Zart gebratener Seehecht in einer Sahnesoße mit Senf, Dill und Petersilie, dazu Basmatireis mit Zitronenabrieb und ein knackiger Salat aus Apfel und Radieschen. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 25 }
+tags: [abendessen, fisch]
+
+ingredients:
+  - group: Für den Reis
+    items:
+      - { id: reis, amount: 300, unit: g, name: Basmatireis }
+      - { id: wasser-reis, amount: 600, unit: ml, name: Wasser }
+      - { id: zitrone, amount: 2, name: Zitrone, plural: Zitronen, note: Bio }
+  - group: Für den Salat
+    items:
+      - { id: radieschen, amount: 1, unit: Bund, name: Radieschen }
+      - { id: apfel, amount: 2, name: Apfel, plural: Äpfel }
+      - { id: essig, amount: 2, unit: EL, name: Weißweinessig }
+      - { id: zucker, amount: 2, unit: TL, name: Zucker }
+      - { id: sahne-salat, amount: 30, unit: ml, name: Sahne }
+  - group: Für Fisch und Soße
+    items:
+      - { id: seehecht, amount: 500, unit: g, name: Seehechtfilet }
+      - { id: schalotten, amount: 2, name: Schalotte, plural: Schalotten }
+      - { id: oel, amount: 2, unit: EL, name: Öl, note: zum Anbraten }
+      - { id: sahne-sosse, amount: 270, unit: ml, name: Sahne }
+      - { id: bruehe, amount: 200, unit: ml, name: Gemüsebrühe }
+      - { id: senf, amount: 4, unit: TL, name: mittelscharfer Senf }
+      - { id: dill, amount: 0.5, unit: Bund, name: Dill }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{wasser-reis} mit etwas Salz in einem kleinen Topf aufkochen. {reis} dazugeben und zugedeckt bei niedriger Hitze 15 Minuten köcheln lassen, dann vom Herd nehmen und zugedeckt 10 Minuten ziehen lassen."
+  - "{radieschen} vierteln. {apfel} vierteln, entkernen und in 1 cm große Würfel schneiden. {petersilie} und {dill} fein hacken, {schalotten} fein würfeln. {zitrone} heiß waschen, von der Hälfte der Früchte die Schale fein abreiben und alle vierteln."
+  - "{essig}, {zucker}, {sahne-salat} und den Saft von zwei Zitronenvierteln mit der Hälfte der Kräuter zu einem Dressing verrühren. Radieschen und Apfel unterheben und mit Salz und Pfeffer abschmecken."
+  - "{seehecht} trocken tupfen und rundum salzen. {oel} in einer großen Pfanne erhitzen und den Fisch mit den Schalottenwürfeln auf der Hautseite 1–2 Minuten anbraten."
+  - "Den Fisch behutsam wenden, er zerfällt leicht. {sahne-sosse} und {bruehe} angießen, {senf} und die restlichen Kräuter dazugeben, vorsichtig verrühren und 2–3 Minuten köcheln lassen. Die Brühe dafür kräftig anrühren (bei 4 Portionen etwa 2 TL Instantpulver). Mit {salz:name} und {pfeffer:name} abschmecken."
+  - "Den Reis mit einer Gabel auflockern und den Zitronenabrieb unterheben. Mit Salat, Fisch und Soße anrichten und die restlichen Zitronenviertel dazu reichen."

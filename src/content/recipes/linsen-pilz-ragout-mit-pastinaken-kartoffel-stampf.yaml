@@ -1,0 +1,44 @@
+title: Linsen-Pilz-Ragout mit Pastinaken-Kartoffel-Stampf
+description: Ein kräftiges Ragout aus braunen Linsen und Champignons mit Sojasauce, Senf und Thymian, dazu ein Stampf aus Kartoffeln und Pastinaken und ein Blattsalat mit Balsamico-Dressing. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 25 }
+tags: [abendessen, mittagessen, vegetarisch, herbst, winter]
+
+ingredients:
+  - group: Für den Stampf
+    items:
+      - { id: kartoffeln, amount: 800, unit: g, name: Kartoffeln, note: mehligkochend }
+      - { id: pastinaken, amount: 2, name: Pastinake, plural: Pastinaken }
+      - { id: butter, amount: 60, unit: g, name: Butter }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: muskat, name: Muskatnuss, note: frisch gerieben }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für das Ragout
+    items:
+      - { id: champignons, amount: 400, unit: g, name: Champignons, note: braun }
+      - { id: linsen, amount: 2, unit: Dose, name: braune Linsen, note: "je 400 g" }
+      - { id: olivenoel, amount: 4, unit: EL, name: Olivenöl }
+      - { id: thymian, amount: 3, unit: Zweig, name: Thymian }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: sojasauce, amount: 3, unit: EL, name: Sojasauce }
+      - { id: senf, amount: 4, unit: TL, name: mittelscharfer Senf }
+      - { id: tomatenmark, amount: 1, unit: Dose, name: Tomatenmark, note: "klein, etwa 70 g" }
+      - { id: balsamico, amount: 2, unit: TL, name: Balsamicoessig }
+      - { id: zucker, amount: 2, unit: TL, name: Zucker }
+      - { id: bruehe, amount: 300, unit: ml, name: Gemüsebrühe }
+  - group: Für den Salat
+    items:
+      - { id: salat, amount: 100, unit: g, name: Salatmischung }
+      - { id: balsamicocreme, amount: 1, unit: EL, name: Balsamicocreme }
+
+steps:
+  - "{kartoffeln} und {pastinaken} schälen, in 2 cm große Würfel schneiden und in Salzwasser 12–15 Minuten weich kochen."
+  - "{champignons} halbieren oder vierteln. {linsen} in ein Sieb gießen und abspülen. {petersilie} grob hacken, {thymian} abzupfen und hacken."
+  - "{butter:1/2} und {olivenoel:1/2} in einer großen Pfanne erhitzen und die Champignons 3–4 Minuten anbraten, bis sie Farbe bekommen. Linsen und Thymian dazugeben, {knoblauch} dazupressen und 3–4 Minuten mitbraten."
+  - "{sojasauce}, {senf}, {tomatenmark}, {balsamico}, {zucker} und {bruehe} einrühren, mit {muskat:name} würzen und 4–5 Minuten köcheln lassen, bis die Soße leicht eindickt."
+  - "{balsamicocreme}, das restliche Olivenöl ({olivenoel:1/2}) und einen Esslöffel Wasser in einer großen Schüssel verrühren, salzen und pfeffern. {salat} kurz vor dem Essen darin wenden."
+  - "Kartoffeln und Pastinaken abgießen, dabei eine halbe Tasse Kochwasser auffangen. Die restliche Butter ({butter:1/2}) und das Kochwasser dazugeben und alles zu einem Püree stampfen. Drei Viertel der Petersilie unterheben und mit Muskat, {salz:name} und {pfeffer:name} abschmecken. Mit Ragout und Salat anrichten und mit der restlichen Petersilie bestreuen."

@@ -1,0 +1,28 @@
+title: Pilz-Tortelloni mit Zucchini und Speck in Basilikum-Sahnesoße
+description: Frische Tortelloni mit Pilzfüllung in einer schnellen Sahnesoße mit Zucchini, Speck und Basilikum, obendrauf Parmesan. In 20 Minuten auf dem Tisch. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 5, cook: 15 }
+tags: [abendessen, mittagessen, fleisch, italienisch]
+
+ingredients:
+  - { id: tortelloni, amount: 600, unit: g, name: Tortelloni, note: "frisch, mit Pilzfüllung, aus dem Kühlregal" }
+  - { id: zucchini, amount: 2, name: Zucchini, plural: Zucchini }
+  - { id: speck, amount: 160, unit: g, name: Speckwürfel }
+  - { id: oel, amount: 2, unit: EL, name: Öl }
+  - { id: sahne, amount: 300, unit: ml, name: Sahne }
+  - { id: wasser, amount: 100, unit: ml, name: Wasser }
+  - { id: pesto, amount: 30, unit: g, name: grünes Pesto }
+  - { id: basilikum, amount: 0.5, unit: Bund, name: Basilikum }
+  - { id: parmesan, amount: 40, unit: g, name: Parmesan, note: am Stück }
+  - { id: salz, name: Salz }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{zucchini} längs halbieren und in 1 cm dicke Halbmonde schneiden. {basilikum} fein hacken."
+  - "{tortelloni} in reichlich Salzwasser nach Packungsangabe 5–6 Minuten garen und abgießen."
+  - "{oel} in einer großen Pfanne erhitzen. {speck} und die Zucchini darin etwa 2 Minuten anbraten."
+  - "{sahne} und {wasser} angießen, {pesto} einrühren und 1–2 Minuten einkochen lassen, bis die Soße eingedickt und die Zucchini weich ist."
+  - "Die Tortelloni vorsichtig unter die Soße heben, das Basilikum dazugeben und mit {salz:name} und {pfeffer:name} abschmecken. {parmesan} reiben und darüberstreuen."

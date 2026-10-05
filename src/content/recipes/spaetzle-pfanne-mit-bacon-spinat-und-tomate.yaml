@@ -1,0 +1,29 @@
+title: Spätzle-Pfanne mit Bacon, Spinat und Tomate
+description: Knusprig gebratene Spätzle in einer cremigen Sauce mit Bacon, Tomate und viel frischem Spinat, obendrauf Parmesan. Eine Pfanne, 30 Minuten. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 20 }
+tags: [abendessen, mittagessen, fleisch]
+
+ingredients:
+  - { id: spaetzle, amount: 800, unit: g, name: Spätzle, note: "frisch, aus dem Kühlregal" }
+  - { id: bacon, amount: 200, unit: g, name: Bacon, note: in Scheiben }
+  - { id: spinat, amount: 300, unit: g, name: Babyspinat }
+  - { id: tomate, amount: 2, name: Tomate, plural: Tomaten }
+  - { id: schalotte, amount: 2, name: Schalotte, plural: Schalotten }
+  - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+  - { id: olivenoel, amount: 2, unit: EL, name: Olivenöl }
+  - { id: creme, amount: 200, unit: g, name: Crème fraîche }
+  - { id: bruehe, amount: 60, unit: ml, name: Hühnerbrühe }
+  - { id: parmesan, amount: 80, unit: g, name: Parmesan, note: am Stück }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{tomate} grob würfeln, {schalotte} und {knoblauch} fein hacken. {bacon} in etwa 1 cm breite Streifen schneiden."
+  - "{olivenoel} in einer großen Pfanne bei mittlerer Hitze erhitzen und {spaetzle} darin 4–6 Minuten braten, bis sie knusprig und leicht gebräunt sind. In eine Schüssel umfüllen."
+  - "Den Bacon in derselben Pfanne ohne weiteres Fett 4–5 Minuten knusprig braten. Die Schalotten dazugeben und 2 Minuten mitbraten."
+  - "Die Hitze reduzieren, Knoblauch und Tomatenwürfel dazugeben, leicht mit {pfeffer:name} würzen und 2 Minuten köcheln lassen. {creme} und {bruehe} einrühren. Die Brühe dafür kräftig anrühren (bei 4 Portionen etwa 2 TL Instantpulver)."
+  - "{spinat} portionsweise unterheben und zusammenfallen lassen. Die Spätzle vorsichtig unter die Sauce heben und 1 Minute erhitzen."
+  - "{parmesan} reiben und darüberstreuen. Salz braucht es nicht, Bacon und Brühe bringen genug mit; für die Kleine deshalb nur wenig Bacon."

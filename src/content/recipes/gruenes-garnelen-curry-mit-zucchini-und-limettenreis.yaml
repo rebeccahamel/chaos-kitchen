@@ -1,0 +1,40 @@
+title: Grünes Garnelen-Curry mit Zucchini und Limettenreis
+description: Garnelen und gebratene Zucchini in einer Kokossoße mit grüner Currypaste und Limette, dazu duftender Jasminreis mit Limettenabrieb und gehackte Erdnüsse. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 20 }
+tags: [abendessen, fisch, asiatisch]
+
+ingredients:
+  - group: Für den Reis
+    items:
+      - { id: reis, amount: 300, unit: g, name: Jasminreis }
+      - { id: wasser-reis, amount: 600, unit: ml, name: Wasser }
+      - { id: kurkuma, amount: 0.5, unit: TL, name: Kurkuma, note: gemahlen }
+      - { id: kreuzkuemmel, amount: 0.25, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: koriander, amount: 0.25, unit: TL, name: gemahlener Koriander }
+  - group: Für das Curry
+    items:
+      - { id: garnelen, amount: 300, unit: g, name: Garnelen, note: ohne Schale }
+      - { id: zucchini, amount: 2, name: Zucchini, plural: Zucchini }
+      - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: limette, amount: 1, name: Limette, plural: Limetten, note: Bio }
+      - { id: kokosmilch, amount: 1, unit: Dose, name: Kokosmilch }
+      - { id: wasser-sosse, amount: 300, unit: ml, name: Wasser }
+      - { id: currypaste, amount: 2, unit: EL, name: grüne Currypaste, note: "scharf, nach Geschmack" }
+      - { id: oel, amount: 2, unit: EL, name: Öl }
+      - { id: erdnuesse, amount: 40, unit: g, name: Erdnüsse, note: geröstet und gesalzen }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{wasser-reis} mit etwas Salz in einem kleinen Topf aufkochen. {reis}, {kurkuma}, {kreuzkuemmel} und {koriander} dazugeben und zugedeckt bei niedriger Hitze 10 Minuten köcheln lassen, dann vom Herd nehmen und zugedeckt 10 Minuten ziehen lassen."
+  - "{limette} heiß waschen, die Schale fein abreiben und den Saft auspressen. {zwiebel} halbieren und in feine Streifen schneiden, {zucchini} längs vierteln und in 2 cm große Stücke schneiden. {knoblauch} fein hacken, {erdnuesse} grob hacken. {garnelen} abspülen und trocken tupfen."
+  - "{kokosmilch}, {wasser-sosse} und den Limettensaft verrühren, salzen und pfeffern."
+  - "{oel:1/2} in einer großen Pfanne erhitzen, Garnelen und Knoblauch 1 Minute rundum scharf anbraten und herausnehmen."
+  - "Das restliche Öl ({oel:1/2}) erhitzen und Zwiebeln und Zucchini 4–5 Minuten anbraten, bis die Zucchini leicht gebräunt ist. Mit der Kokossoße ablöschen, die Hitze reduzieren und 4–5 Minuten köcheln lassen, bis das Curry leicht eindickt."
+  - "Die Garnelen zurück in die Pfanne geben und zugedeckt 2–3 Minuten ziehen lassen, bis sie innen nicht mehr glasig sind. Die Portion für die Kleine abnehmen, dann {currypaste} einrühren, 1 Minute köcheln lassen und mit {salz:name} und {pfeffer:name} abschmecken."
+  - "Den Reis mit einer Gabel auflockern, den Limettenabrieb unterheben und mit dem Curry anrichten. Mit den Erdnüssen bestreuen, die Portion für die Kleine bleibt ohne."

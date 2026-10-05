@@ -702,6 +702,10 @@ before shopping: chicken with polenta instead of the creamy pasta on Monday, a S
 instead of the Flammkuchen on Thursday (planner/history/2026-W41.md). The pasta recipe stays as
 a trial outside the plan, so the build warns about it until a later week uses it.
 
+Done (2026-10-05): 28 recipes from HelloFresh cards the household enjoyed, written in the
+site's format with ordinary spices instead of the box's spice mixes, all as trials. They are
+outside the plan until a week uses them, so the build warns about each; that is accepted.
+
 Next: check in the Bring! app that "Porree, 1 Stange" arrives as Porree with the specification
 "1 Stange", and that the notes arrive on the week list ("Feta, 300 g, 2 kleine Packungen");
 review W41 with prompt B around 10 October.

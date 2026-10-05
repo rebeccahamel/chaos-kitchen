@@ -1,0 +1,33 @@
+title: Hähnchen-Zitronen-Suppe mit Kritharaki und Spinat
+description: Eine sämige Suppe aus einem Topf mit Hähnchen, kleinen reisförmigen Nudeln, Möhren und Spinat, mit Zitrone und Crème fraîche frisch und cremig abgeschmeckt. In 30 Minuten fertig. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 20 }
+tags: [abendessen, mittagessen, fleisch]
+
+ingredients:
+  - { id: haehnchen, amount: 500, unit: g, name: Hähnchenbrust }
+  - { id: kritharaki, amount: 180, unit: g, name: Kritharaki, note: "reisförmige Nudeln (Orzo)" }
+  - { id: moehren, amount: 2, name: Möhre, plural: Möhren }
+  - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+  - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+  - { id: olivenoel, amount: 4, unit: EL, name: Olivenöl }
+  - { id: bruehe, amount: 1, unit: l, name: Hühnerbrühe }
+  - { id: paprikapulver, amount: 2, unit: TL, name: Paprikapulver, note: edelsüß }
+  - { id: spinat, amount: 100, unit: g, name: Babyspinat }
+  - { id: zitrone, amount: 2, name: Zitrone, plural: Zitronen, note: Bio }
+  - { id: creme, amount: 200, unit: g, name: Crème fraîche }
+  - { id: oregano, amount: 3, unit: Zweig, name: Oregano, note: frisch }
+  - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+  - { id: salz, name: Salz }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{moehren} schälen und schräg in dünne Scheiben schneiden. {zwiebel} vierteln und in dünne Streifen schneiden, {knoblauch} fein hacken. {haehnchen} in 2 cm große Stücke schneiden."
+  - "{olivenoel} in einem großen Topf erhitzen und {kritharaki} mit Möhren, Zwiebeln und Knoblauch 2–3 Minuten andünsten. {bruehe} angießen, {paprikapulver} einrühren und leicht salzen."
+  - "Das Fleisch dazugeben, aufkochen und zugedeckt 10–12 Minuten kochen lassen, bis die Nudeln weich sind und das Fleisch durch ist. Ab und zu umrühren, die Nudeln setzen sonst an."
+  - "{zitrone} heiß waschen, von der Hälfte der Früchte die Schale fein abreiben und alle vierteln. {petersilie} fein hacken, {oregano} abzupfen und getrennt davon fein hacken."
+  - "{spinat} in die Suppe geben und zusammenfallen lassen. Den Zitronenabrieb, den Saft von der Hälfte der Zitronenviertel und {creme} unterrühren und mit dem Oregano, {salz:name} und {pfeffer:name} abschmecken."
+  - "Die Suppe mit der Petersilie bestreuen und die restlichen Zitronenviertel dazu reichen."

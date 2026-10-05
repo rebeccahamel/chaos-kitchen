@@ -1,0 +1,39 @@
+title: Seelachs auf Möhren-Kartoffel-Stampf mit Orangen-Kürbiskern-Gremolata
+description: Mit Paprika gewürzter Seelachs auf einem stückigen Stampf aus Kartoffeln, Möhren und Schalotten, obendrauf eine frische Gremolata aus Orange, gerösteten Kürbiskernen und Kräutern. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 20 }
+tags: [abendessen, fisch]
+
+ingredients:
+  - group: Für Fisch und Stampf
+    items:
+      - { id: seelachs, amount: 500, unit: g, name: Seelachsfilet }
+      - { id: paprikapulver, amount: 2, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: oel, amount: 2, unit: EL, name: Öl, note: zum Anbraten }
+      - { id: kartoffeln, amount: 800, unit: g, name: Kartoffeln, note: mehligkochend }
+      - { id: moehren, amount: 4, name: Möhre, plural: Möhren }
+      - { id: schalotten, amount: 4, name: Schalotte, plural: Schalotten }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: butter, amount: 30, unit: g, name: Butter }
+      - { id: bruehe, amount: 2, unit: TL, name: Gemüsebrühe, note: Instantpulver }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Gremolata
+    items:
+      - { id: kuerbiskerne, amount: 40, unit: g, name: Kürbiskerne }
+      - { id: orange, amount: 2, name: Orange, plural: Orangen }
+      - { id: zitrone, amount: 2, name: Zitrone, plural: Zitronen }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: schnittlauch, amount: 0.5, unit: Bund, name: Schnittlauch }
+      - { id: olivenoel, amount: 4, unit: EL, name: Olivenöl }
+
+steps:
+  - "Einen großen Topf Salzwasser zum Kochen bringen. {schalotten} fein würfeln, {knoblauch} schälen. {moehren} und {kartoffeln} schälen und in 2–3 cm große Stücke schneiden."
+  - "Möhren, Knoblauch und Kartoffeln zugedeckt 10 Minuten kochen, dann die Schalotten dazugeben und weitere 5 Minuten kochen."
+  - "{kuerbiskerne} in einer großen Pfanne ohne Fett 2–3 Minuten rösten, bis sie anfangen zu springen. {zitrone} in Spalten schneiden. {orange} bereitlegen: die Hälfte davon auspressen, den Rest so schälen, dass keine weiße Haut bleibt, und in 1 cm große Stücke schneiden. {petersilie} und {schnittlauch} fein hacken."
+  - "Kürbiskerne, Orangensaft, Orangenstücke und Kräuter in einer Schüssel mischen. {olivenoel} und den Saft von zwei Zitronenspalten dazugeben, salzen und pfeffern."
+  - "{seelachs} trocken tupfen. {paprikapulver} auf beiden Seiten darüberstreuen, salzen und pfeffern. {oel} in der Pfanne bei mittlerer Hitze erhitzen und den Fisch je Seite 2–3 Minuten braten, bis er innen nicht mehr glasig ist."
+  - "Das Gemüse abgießen und zurück in den Topf geben. {butter} und {bruehe} dazugeben, alles zu einem stückigen Stampf zerdrücken und mit {salz:name} und {pfeffer:name} abschmecken. Den Fisch auf dem Stampf anrichten, die Gremolata darübergeben und mit den restlichen Zitronenspalten servieren. Für die Kleine die Kürbiskerne weglassen."

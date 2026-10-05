@@ -1,0 +1,40 @@
+title: Hähnchen in Curry-Sahne-Soße mit Möhrenreis und grünen Bohnen
+description: Hähnchenbrust schmort in einer milden Soße aus Sahne, Tomatenmark und Currygewürzen, dazu Basmatireis mit geraspelten Möhren, Butterbohnen und geröstete Mandelblättchen. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 25 }
+tags: [abendessen, mittagessen, fleisch]
+
+ingredients:
+  - group: Für Reis und Bohnen
+    items:
+      - { id: reis, amount: 300, unit: g, name: Basmatireis }
+      - { id: moehren, amount: 2, name: Möhre, plural: Möhren }
+      - { id: wasser-reis, amount: 600, unit: ml, name: Wasser }
+      - { id: bohnen, amount: 300, unit: g, name: grüne Bohnen }
+      - { id: butter, amount: 10, unit: g, name: Butter }
+  - group: Für Hähnchen und Soße
+    items:
+      - { id: haehnchen, amount: 500, unit: g, name: Hähnchenbrust }
+      - { id: mandeln, amount: 20, unit: g, name: Mandelblättchen }
+      - { id: oel, amount: 2, unit: EL, name: Öl, note: zum Anbraten }
+      - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: tomatenmark, amount: 1, unit: Dose, name: Tomatenmark, note: "klein, etwa 70 g" }
+      - { id: sahne, amount: 300, unit: ml, name: Sahne }
+      - { id: bruehe, amount: 200, unit: ml, name: Hühnerbrühe }
+      - { id: kurkuma, amount: 1, unit: TL, name: Kurkuma, note: gemahlen }
+      - { id: kreuzkuemmel, amount: 0.5, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: koriander, amount: 0.5, unit: TL, name: gemahlener Koriander }
+      - { id: paprikapulver, amount: 0.5, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{bohnen} putzen und nach Belieben quer halbieren. {zwiebel} halbieren und in feine Streifen schneiden. {moehren} grob raspeln."
+  - "{wasser-reis} in einem kleinen Topf mit etwas Salz aufkochen. {reis} und die Möhrenraspel dazugeben und zugedeckt bei niedriger Hitze 10 Minuten köcheln lassen, dann vom Herd nehmen und zugedeckt 10 Minuten ziehen lassen."
+  - "Die Bohnen in Salzwasser 9–10 Minuten weich kochen und abgießen. {butter} dazugeben, durchschwenken und mit Salz und Pfeffer abschmecken."
+  - "{mandeln} in einer großen Pfanne ohne Fett 1–2 Minuten rösten, bis sie bräunen, und herausnehmen. {oel} in der Pfanne erhitzen und {haehnchen} von jeder Seite 2–3 Minuten anbraten. Herausnehmen, salzen und pfeffern."
+  - "Die Zwiebelstreifen in der Pfanne 2–3 Minuten glasig dünsten, {tomatenmark} einrühren und 1 Minute anrösten. {sahne} und {bruehe} angießen, {kurkuma}, {kreuzkuemmel}, {koriander} und {paprikapulver} unterrühren und mit {salz:name} und {pfeffer:name} würzen. Die Brühe dafür kräftig anrühren (bei 4 Portionen etwa 2 TL Instantpulver). Das Fleisch wieder hineinlegen und zugedeckt 5–7 Minuten köcheln lassen, bis es innen nicht mehr rosa ist."
+  - "Den Reis mit einer Gabel auflockern und mit Bohnen und Hähnchen anrichten, die Soße darübergeben und mit den Mandelblättchen bestreuen."

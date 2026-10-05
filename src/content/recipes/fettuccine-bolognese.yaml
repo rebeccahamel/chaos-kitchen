@@ -1,0 +1,31 @@
+title: Fettuccine Bolognese
+description: Eine schnelle Bolognese aus Rinderhack, geriebenen Möhren und stückigen Tomaten, kräftig mit Tomatenmark und italienischen Kräutern gewürzt, dazu Fettuccine und Parmesan. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 25 }
+tags: [abendessen, mittagessen, fleisch, italienisch]
+
+ingredients:
+  - { id: hackfleisch, amount: 400, unit: g, name: Rinderhackfleisch }
+  - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+  - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+  - { id: moehren, amount: 2, name: Möhre, plural: Möhren }
+  - { id: oel, amount: 2, unit: EL, name: Öl, note: zum Anbraten }
+  - { id: tomatenmark, amount: 2, unit: Dose, name: Tomatenmark, note: "klein, je etwa 70 g" }
+  - { id: kraeuter, amount: 2, unit: TL, name: italienische Kräuter }
+  - { id: tomaten, amount: 2, unit: Dose, name: stückige Tomaten, note: "je 400 g" }
+  - { id: bruehe, amount: 100, unit: ml, name: Rinderbrühe }
+  - { id: fettuccine, amount: 500, unit: g, name: Fettuccine }
+  - { id: parmesan, amount: 80, unit: g, name: Parmesan, note: am Stück }
+  - { id: salz, name: Salz }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{zwiebel} fein würfeln, {knoblauch} fein reiben oder pressen. {moehren} schälen und grob reiben."
+  - "{oel} in einem großen Topf bei hoher Hitze erhitzen und {hackfleisch} mit den Zwiebeln 3–4 Minuten braten, bis es gebräunt und krümelig ist. Auf mittlere Hitze schalten, Möhren und Knoblauch dazugeben und 2–3 Minuten mitbraten."
+  - "{tomatenmark} und {kraeuter} einrühren und kurz mitrösten, mit {salz:name} und {pfeffer:name} würzen. {tomaten} und {bruehe} dazugeben, umrühren und zugedeckt bei schwacher Hitze 10 Minuten köcheln lassen. Die Brühe dafür kräftig anrühren (bei 4 Portionen etwa 1 TL Instantpulver)."
+  - "Inzwischen {fettuccine} in reichlich Salzwasser nach Packungsangabe bissfest kochen und abgießen."
+  - "Den Deckel abnehmen und die Soße weitere 5 Minuten köcheln lassen, bis sie etwas eingedickt ist; ist sie zu dick, einen Schluck Wasser dazugeben."
+  - "{parmesan} reiben. Die Pasta mit der Bolognese anrichten und mit dem Parmesan bestreuen."

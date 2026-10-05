@@ -1,0 +1,27 @@
+title: Seehecht mit Käsebröseln auf Spinat-Sahne-Soße und Kartoffelspalten
+description: Seehecht gart im Ofen auf einer Sahnesoße mit frischem Spinat unter einer knusprigen Kruste aus Panko und Parmesan, daneben backen Kartoffelspalten auf dem Blech. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 30 }
+tags: [abendessen, fisch]
+
+ingredients:
+  - { id: kartoffeln, amount: 800, unit: g, name: Kartoffeln, note: vorwiegend festkochend }
+  - { id: olivenoel, amount: 2, unit: EL, name: Olivenöl }
+  - { id: seehecht, amount: 500, unit: g, name: Seehechtfilet }
+  - { id: parmesan, amount: 40, unit: g, name: Parmesan, note: am Stück }
+  - { id: panko, amount: 50, unit: g, name: Panko }
+  - { id: sahne, amount: 300, unit: ml, name: Sahne }
+  - { id: bruehe, amount: 100, unit: ml, name: Gemüsebrühe }
+  - { id: spinat, amount: 150, unit: g, name: Babyspinat }
+  - { id: salz, name: Salz }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze (200 °C Umluft) vorheizen. {kartoffeln} ungeschält in Spalten schneiden und auf einem Blech mit Backpapier verteilen, dabei Platz für eine Auflaufform lassen. {olivenoel} darüberträufeln, salzen, pfeffern und 20–30 Minuten backen, bis die Spalten weich sind."
+  - "{parmesan} reiben. {panko} dazugeben und vermengen."
+  - "{sahne} und {bruehe} in einem großen Topf bei mittlerer Hitze aufkochen; die Brühe dafür kräftig anrühren (bei 4 Portionen etwa 2 TL Instantpulver). {spinat} dazugeben und zusammenfallen lassen, mit {salz:name} und {pfeffer:name} abschmecken und in eine Auflaufform geben."
+  - "{seehecht} trocken tupfen, salzen und pfeffern, auf die Spinatsoße legen und mit den Käsebröseln bestreuen. Zu den Kartoffeln in den Ofen stellen und 12–15 Minuten backen, bis der Fisch gar ist und die Brösel goldbraun sind."
+  - "Die Kartoffelspalten mit dem Fisch und der Spinat-Sahne-Soße anrichten."

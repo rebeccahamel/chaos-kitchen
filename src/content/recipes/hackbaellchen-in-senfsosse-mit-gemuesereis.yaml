@@ -27,8 +27,7 @@ ingredients:
   - group: Für die Soße
     items:
       - { id: sahne, amount: 300, unit: ml, name: Sahne }
-      - { id: wasser-sosse, amount: 100, unit: ml, name: Wasser }
-      - { id: bruehe, amount: 2, unit: TL, name: Rinderbrühe, note: Instantpulver }
+      - { id: bruehe, amount: 100, unit: ml, name: Rinderbrühe }
       - { id: senf-koernig, amount: 2, unit: EL, name: körniger Senf }
       - { id: honig, amount: 2, unit: TL, name: Honig }
       - { id: schnittlauch, amount: 0.5, unit: Bund, name: Schnittlauch }
@@ -37,7 +36,7 @@ steps:
   - "{moehre} schälen und grob raspeln. {porree} der Länge nach halbieren und nur den weißen und hellgrünen Teil in feine Streifen schneiden. {zwiebel} fein würfeln."
   - "{petersilie} fein hacken, {schnittlauch} in feine Röllchen schneiden."
   - "{wasser-reis} in einem großen Topf mit Deckel zum Kochen bringen und leicht salzen. {reis}, {porree:name} und Möhrenraspel hineingeben und bei niedriger Hitze etwa 10 Minuten abgedeckt köcheln lassen. Dann den Topf vom Herd nehmen und mindestens 10 Minuten abgedeckt ziehen lassen."
-  - "Für die Soße {wasser-sosse}, {sahne}, {bruehe}, {senf-koernig} und {honig} in einem hohen Rührgefäß gut verrühren, sodass keine Klümpchen mehr vorhanden sind."
+  - "Für die Soße {sahne}, {bruehe}, {senf-koernig} und {honig} in einem hohen Rührgefäß gut verrühren. Die Brühe dafür kräftig anrühren (bei 4 Portionen etwa 2 TL Instantpulver)."
   - "In einer großen Schüssel {hackfleisch}, Zwiebelwürfel, {semmelbroesel}, {petersilie:name}, {senf-mittelscharf}, {salz} und {pfeffer} mit den Händen gut vermengen und daraus etwa 5 Bällchen pro Portion formen."
   - "{oel} in einer großen Pfanne bei hoher Hitze erwärmen und die Hackbällchen 2–3 Minuten rundherum scharf anbraten. Bällchen herausnehmen und das Fett abgießen."
   - "Die Pfanne auswischen, den Sahnemix hineingießen und einmal aufkochen lassen. Mit Salz und Pfeffer abschmecken. Hackbällchen in die Soße geben, Hitze reduzieren und 5–8 Minuten gar ziehen lassen. Wird die Soße zu dick, einen Schluck Wasser zugeben."

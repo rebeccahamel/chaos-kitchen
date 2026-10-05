@@ -1,0 +1,38 @@
+title: Bouletten mit Apfel-Speck-Soße und Kartoffelstampf
+description: Saftige Bouletten in einer Sahnesoße mit Apfelspalten, Speck und Zwiebeln, dazu buttriger Kartoffelstampf. Herbstliche Hausmannskost in 40 Minuten. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 25 }
+tags: [abendessen, fleisch, herbst, winter]
+
+ingredients:
+  - group: Für den Kartoffelstampf
+    items:
+      - { id: kartoffeln, amount: 1, unit: kg, name: Kartoffeln, note: mehligkochend }
+      - { id: butter, amount: 30, unit: g, name: Butter }
+  - group: Für die Bouletten
+    items:
+      - { id: hackfleisch, amount: 500, unit: g, name: gemischtes Hackfleisch }
+      - { id: ei, amount: 1, name: Ei, plural: Eier, whole: true }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: oel, amount: 1, unit: EL, name: Öl, note: zum Anbraten }
+  - group: Für die Soße
+    items:
+      - { id: speck, amount: 160, unit: g, name: Speckwürfel }
+      - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: apfel, amount: 2, name: Apfel, plural: Äpfel, note: säuerlich }
+      - { id: sahne, amount: 300, unit: ml, name: Sahne }
+      - { id: bruehe, amount: 150, unit: ml, name: Gemüsebrühe }
+      - { id: muskat, name: Muskatnuss, note: frisch gerieben }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{kartoffeln} schälen, in gleich große Stücke schneiden und in Salzwasser etwa 18 Minuten weich kochen."
+  - "{petersilie} fein hacken. {hackfleisch}, {ei} und die Hälfte der Petersilie mit {salz:name} und {pfeffer:name} verkneten und pro Portion eine Boulette formen."
+  - "{zwiebel} halbieren und in feine Streifen schneiden. {apfel} vierteln, entkernen und in dünne Spalten schneiden."
+  - "{oel} in einer großen Pfanne bei mittlerer Hitze erhitzen. Die Bouletten hineingeben, {speck} und die Zwiebelstreifen dazugeben und die Bouletten je Seite etwa 5 Minuten braten, bis sie innen nicht mehr rosa sind; Zwiebeln und Speck zwischendurch rühren. Die Bouletten herausnehmen und warm halten."
+  - "Die Apfelspalten in die Pfanne geben, {sahne} und {bruehe} angießen und kräftig mit {muskat:name} würzen. Etwa 5 Minuten einkochen lassen und mit Salz und Pfeffer abschmecken."
+  - "Die Kartoffeln abgießen, {butter} dazugeben und alles zu einem Stampf zerdrücken, mit Salz und Pfeffer abschmecken. Stampf und Bouletten mit der Soße anrichten und mit der restlichen Petersilie bestreuen."

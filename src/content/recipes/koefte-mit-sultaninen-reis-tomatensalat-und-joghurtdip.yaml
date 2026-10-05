@@ -1,0 +1,47 @@
+title: Köfte mit Sultaninen-Reis, Tomatensalat und Joghurtdip
+description: Mild orientalisch gewürzte Rinderköfte, dazu goldgelber Reis mit Sultaninen, ein schneller Tomatensalat mit Schnittlauch und ein Petersilien-Joghurt. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 25 }
+tags: [abendessen, mittagessen, fleisch]
+
+ingredients:
+  - group: Für den Reis
+    items:
+      - { id: reis, amount: 300, unit: g, name: Basmatireis }
+      - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: oel-reis, amount: 2, unit: EL, name: Öl }
+      - { id: paprika-reis, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: kurkuma, amount: 0.5, unit: TL, name: Kurkuma, note: gemahlen }
+      - { id: sultaninen, amount: 80, unit: g, name: Sultaninen }
+      - { id: wasser, amount: 700, unit: ml, name: Wasser }
+  - group: Für die Köfte
+    items:
+      - { id: hackfleisch, amount: 400, unit: g, name: Rinderhackfleisch }
+      - { id: semmelbroesel, amount: 50, unit: g, name: Semmelbrösel }
+      - { id: senf, amount: 4, unit: TL, name: mittelscharfer Senf }
+      - { id: joghurt-koefte, amount: 30, unit: g, name: Joghurt }
+      - { id: kreuzkuemmel, amount: 1, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: paprika-koefte, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: zimt, name: Zimt, note: eine Prise }
+      - { id: oel-koefte, amount: 2, unit: EL, name: Öl }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für Tomatensalat und Dip
+    items:
+      - { id: tomate, amount: 4, name: Tomate, plural: Tomaten }
+      - { id: schnittlauch, amount: 0.5, unit: Bund, name: Schnittlauch }
+      - { id: joghurt-dip, amount: 170, unit: g, name: Joghurt }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: zucker, name: Zucker, note: eine Prise }
+
+steps:
+  - "{zwiebel} und {knoblauch} fein hacken. {oel-reis} in einem großen Topf erhitzen und die Zwiebeln mit der Hälfte vom Knoblauch 1 Minute farblos anschwitzen. {reis}, {paprika-reis}, {kurkuma} und {sultaninen} einrühren, {wasser} angießen und salzen. Zugedeckt bei niedriger Hitze etwa 10 Minuten köcheln lassen, dann vom Herd nehmen und zugedeckt mindestens 10 Minuten ziehen lassen."
+  - "{schnittlauch} in feine Röllchen schneiden, {petersilie} fein hacken. {tomate} halbieren und in 1 cm breite Spalten schneiden."
+  - "{hackfleisch}, {semmelbroesel}, {senf}, {joghurt-koefte}, {kreuzkuemmel} und {paprika-koefte} in eine Schüssel geben. Eine Prise {zimt:name}, den restlichen Knoblauch und die Hälfte vom Schnittlauch dazugeben, salzen, pfeffern und gut verkneten. Pro Portion 3 längliche, etwa 1,5 cm dicke Köfte formen."
+  - "{oel-koefte} in einer großen Pfanne erhitzen und die Köfte rundherum 5–6 Minuten braten, bis sie durch sind."
+  - "Die Tomatenspalten mit dem restlichen Schnittlauch mischen, salzen und pfeffern. {joghurt-dip} mit der Petersilie verrühren und mit {salz:name}, {pfeffer:name} und einer Prise {zucker:name} abschmecken."
+  - "Den Reis mit einer Gabel auflockern und mit Köfte, Tomatensalat und Joghurtdip anrichten."

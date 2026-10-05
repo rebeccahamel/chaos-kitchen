@@ -1,0 +1,39 @@
+title: Kritharaki-Risotto mit Mozzarella, Ofen-Champignons und Kirschtomaten
+description: Reisförmige Nudeln, wie ein Risotto mit rotem Pesto, Thymian und Brühe gegart und mit Mozzarella, Spinat und Basilikum vollendet, obendrauf rauchig gewürzte Champignons und Kirschtomaten aus dem Ofen. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 25 }
+tags: [abendessen, mittagessen, vegetarisch, italienisch]
+
+ingredients:
+  - group: Für das Ofengemüse
+    items:
+      - { id: champignons, amount: 300, unit: g, name: Champignons, note: braun }
+      - { id: kirschtomaten, amount: 250, unit: g, name: Kirschtomaten }
+      - { id: paprikapulver, amount: 1, unit: TL, name: geräuchertes Paprikapulver }
+      - { id: oel, amount: 4, unit: EL, name: Öl }
+      - { id: zucker, name: Zucker, note: eine Prise }
+  - group: Für das Kritharaki-Risotto
+    items:
+      - { id: kritharaki, amount: 360, unit: g, name: Kritharaki, note: "reisförmige Nudeln (Orzo)" }
+      - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 4, unit: Zehe, name: Knoblauch }
+      - { id: pesto, amount: 50, unit: g, name: rotes Pesto }
+      - { id: thymian, amount: 3, unit: Zweig, name: Thymian }
+      - { id: basilikum, amount: 0.5, unit: Bund, name: Basilikum }
+      - { id: bruehe, amount: 900, unit: ml, name: Gemüsebrühe }
+      - { id: mozzarella, amount: 250, unit: g, name: Mozzarella, note: 2 Kugeln }
+      - { id: parmesan, amount: 40, unit: g, name: Parmesan, note: am Stück }
+      - { id: spinat, amount: 100, unit: g, name: Babyspinat }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze (200 °C Umluft) vorheizen. {champignons} vierteln oder achteln und in eine Schüssel geben. {paprikapulver} und {oel:1/2} dazugeben, salzen, pfeffern und vermengen. {zwiebel} in dünne Streifen schneiden, {kirschtomaten} halbieren."
+  - "Champignons und Tomatenhälften nebeneinander auf ein Blech mit Backpapier geben, die Tomaten mit Salz, Pfeffer und einer Prise {zucker:name} würzen und alles etwa 20 Minuten backen. {thymian} abzupfen. {basilikum} bereitlegen: die Blätter fein hacken, die Stiele aufheben."
+  - "Das restliche Öl ({oel:1/2}) in einer großen Pfanne bei mittlerer Hitze erhitzen und die Zwiebelstreifen 2–3 Minuten anbraten. {pesto}, {kritharaki}, Thymian und Basilikumstiele dazugeben, {knoblauch} dazupressen und alles 2–3 Minuten braten."
+  - "{bruehe} angießen und zugedeckt bei niedriger Hitze 12–14 Minuten köcheln lassen, dabei ab und zu umrühren. Verdunstet die Flüssigkeit zu schnell, schluckweise Wasser nachgießen."
+  - "{mozzarella} in etwa 1 cm große Stücke zupfen, {parmesan} reiben. Die Basilikumstiele entfernen, das gehackte Basilikum, den Mozzarella und die Hälfte vom Parmesan unterrühren und mit {salz:name} und {pfeffer:name} abschmecken. Zum Schluss {spinat} portionsweise unterheben."
+  - "Das Kritharaki-Risotto mit den Champignons, den Kirschtomaten und dem restlichen Parmesan anrichten."

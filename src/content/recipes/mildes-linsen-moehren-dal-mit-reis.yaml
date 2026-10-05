@@ -17,8 +17,8 @@ ingredients:
       - { id: ingwer, amount: 1, unit: Stück, name: Ingwer, note: daumengroß }
       - { id: oel, amount: 2, unit: EL, name: Öl }
       - { id: kreuzkuemmel, amount: 1, unit: TL, name: Kreuzkümmel, note: gemahlen }
-      - { id: kurkuma, amount: 1, unit: TL, name: Kurkuma, note: gemahlen }
-      - { id: curry, amount: 1, unit: TL, name: Currypulver, note: mild }
+      - { id: kurkuma, amount: 1.5, unit: TL, name: Kurkuma, note: gemahlen }
+      - { id: koriander, amount: 0.5, unit: TL, name: gemahlener Koriander }
       - { id: tomatenmark, amount: 1, unit: EL, name: Tomatenmark }
       - { id: bruehe, amount: 700, unit: ml, name: Gemüsebrühe, note: oder Hühnerbrühe }
       - { id: kokosmilch, amount: 1, unit: Dose, name: Kokosmilch }
@@ -32,7 +32,7 @@ ingredients:
 
 steps:
   - "{zwiebel} fein würfeln, {knoblauch} und {ingwer} schälen und fein reiben. {moehren} schälen und klein würfeln. {linsen} in einem Sieb abspülen."
-  - "{oel} in einem großen Topf erhitzen und die Zwiebel 3 Minuten glasig dünsten. Knoblauch, Ingwer, {kreuzkuemmel}, {kurkuma}, {curry} und {tomatenmark} dazugeben und 1 Minute unter Rühren anrösten."
+  - "{oel} in einem großen Topf erhitzen und die Zwiebel 3 Minuten glasig dünsten. Knoblauch, Ingwer, {kreuzkuemmel}, {kurkuma}, {koriander} und {tomatenmark} dazugeben und 1 Minute unter Rühren anrösten."
   - "Möhren und Linsen einrühren, {bruehe} und {kokosmilch} angießen und aufkochen. Bei niedriger Hitze 20 Minuten leise köcheln lassen und ab und zu umrühren, bis die Linsen zerfallen und die Möhren weich sind."
   - "Inzwischen {reis} nach Packungsanweisung garen."
   - "{limette} auspressen, den Saft unter das Dal rühren und mit {salz:name} abschmecken. Wer es feiner mag, püriert einen Teil kurz an."

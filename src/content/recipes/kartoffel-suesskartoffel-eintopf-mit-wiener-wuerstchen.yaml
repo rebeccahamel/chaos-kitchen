@@ -1,0 +1,27 @@
+title: Kartoffel-Süßkartoffel-Eintopf mit Wiener Würstchen
+description: Ein schneller Eintopf aus Kartoffeln, Süßkartoffel, Porree und Möhren, mit Bacon angeschwitzt und in Hühnerbrühe gekocht, zum Schluss kommen Wiener Würstchen und Schnittlauch dazu. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 20 }
+tags: [abendessen, mittagessen, fleisch, herbst, winter]
+
+ingredients:
+  - { id: kartoffeln, amount: 400, unit: g, name: Kartoffeln, note: mehligkochend }
+  - { id: suesskartoffel, amount: 1, name: Süßkartoffel, plural: Süßkartoffeln }
+  - { id: porree, amount: 2, unit: Stange, name: Porree }
+  - { id: moehren, amount: 2, name: Möhre, plural: Möhren }
+  - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+  - { id: bacon, amount: 100, unit: g, name: Bacon, note: in Scheiben }
+  - { id: bruehe, amount: 800, unit: ml, name: Hühnerbrühe }
+  - { id: wuerstchen, amount: 8, name: Wiener Würstchen, plural: Wiener Würstchen }
+  - { id: schnittlauch, amount: 0.5, unit: Bund, name: Schnittlauch }
+  - { id: salz, name: Salz }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{suesskartoffel} und {kartoffeln} schälen und in 1–2 cm große Stücke schneiden. {porree} längs halbieren, gründlich waschen und in 1 cm breite Halbringe schneiden. {moehren} schälen und in 0,5 cm dicke Scheiben schneiden. {zwiebel} halbieren und in feine Streifen schneiden, {bacon} in Streifen schneiden."
+  - "Zwiebeln und Bacon in einem großen Topf ohne Fett bei mittlerer Hitze 2–3 Minuten anschwitzen. Das restliche Gemüse dazugeben und weitere 2–3 Minuten anschwitzen."
+  - "{bruehe} angießen und zugedeckt 12–15 Minuten kochen lassen, bis das Gemüse weich ist. Mit {salz:name} und {pfeffer:name} abschmecken."
+  - "{wuerstchen} in 2 cm dicke, schräge Scheiben schneiden und für die letzten 3 Minuten in den Eintopf geben. {schnittlauch} in feine Röllchen schneiden und darüberstreuen. Für die Kleine die Wurstscheiben noch einmal längs halbieren."

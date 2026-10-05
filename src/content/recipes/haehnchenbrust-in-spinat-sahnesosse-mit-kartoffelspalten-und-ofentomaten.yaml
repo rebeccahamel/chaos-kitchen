@@ -1,0 +1,37 @@
+title: Hähnchenbrust in Spinat-Sahnesoße mit Kartoffelspalten und Ofentomaten
+description: Goldbraun angebratene Hähnchenbrust gart mit Kirschtomaten im Ofen fertig, daneben backen Paprika-Kartoffelspalten, dazu eine Sahnesoße mit Spinat, Oregano und Zitrone. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 30 }
+tags: [abendessen, fleisch]
+
+ingredients:
+  - group: Für Kartoffeln und Fleisch
+    items:
+      - { id: kartoffeln, amount: 800, unit: g, name: Kartoffeln, note: vorwiegend festkochend }
+      - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: oel, amount: 6, unit: EL, name: Öl }
+      - { id: haehnchen, amount: 500, unit: g, name: Hähnchenbrust }
+      - { id: kirschtomaten, amount: 375, unit: g, name: Kirschtomaten }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Soße
+    items:
+      - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 1, unit: Zehe, name: Knoblauch }
+      - { id: oregano, amount: 3, unit: Zweig, name: Oregano, note: frisch }
+      - { id: sahne, amount: 300, unit: ml, name: Sahne }
+      - { id: bruehe, amount: 100, unit: ml, name: Hühnerbrühe }
+      - { id: spinat, amount: 100, unit: g, name: Babyspinat }
+      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze (200 °C Umluft) vorheizen. {kartoffeln} waschen, halbieren und in 2 cm breite Spalten schneiden. {paprikapulver} und {oel:1/3} dazugeben, salzen, pfeffern und vermengen. Auf einem Blech mit Backpapier verteilen, dabei Platz für eine Auflaufform lassen oder ein zweites Blech nehmen, und 25–30 Minuten goldbraun backen."
+  - "{haehnchen} von beiden Seiten salzen und pfeffern. {oel:1/3} in einer großen Pfanne erhitzen und das Fleisch je Seite 3–4 Minuten goldbraun anbraten. Die Pfanne für die Soße beiseitestellen."
+  - "Das Fleisch in eine Auflaufform legen, {kirschtomaten} dazugeben und für die letzten 8–10 Minuten zu den Kartoffeln in den Ofen stellen, bis das Fleisch innen nicht mehr rosa ist. {zwiebel} und {knoblauch} fein hacken. {oregano} abzupfen und fein hacken, {petersilie} getrennt davon fein hacken."
+  - "Das restliche Öl ({oel:1/3}) in der Pfanne erhitzen. Zwiebeln, Knoblauch und Oregano 1–2 Minuten anschwitzen. {sahne} und {bruehe} angießen und 2–3 Minuten einkochen lassen. Die Brühe dafür kräftig anrühren (bei 4 Portionen etwa 2 TL Instantpulver)."
+  - "{zitrone} in Spalten schneiden. {spinat} in die Soße geben und etwa 1 Minute köcheln lassen, bis er zusammenfällt. Mit Zitronensaft, {salz:name} und {pfeffer:name} abschmecken."
+  - "Hähnchen und Kartoffelspalten anrichten, die Spinatsoße über das Fleisch geben, die Tomaten dazulegen und mit Petersilie bestreuen. Die restlichen Zitronenspalten dazu reichen."

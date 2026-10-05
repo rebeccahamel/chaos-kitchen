@@ -1,0 +1,40 @@
+title: Süßkartoffel-Eintopf mit Spinat, saurer Sahne und Mandeln
+description: Ein sämiger Eintopf aus Süßkartoffeln, Kartoffeln und Möhren mit Tomatenmark, Paprika und Thymian, zum Schluss kommt Spinat dazu. Obendrauf Petersilien-Sauerrahm, geröstete Mandelblättchen und ein paar Tropfen Kürbiskernöl. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 25 }
+tags: [abendessen, mittagessen, vegetarisch, herbst, winter]
+
+ingredients:
+  - group: Für den Eintopf
+    items:
+      - { id: suesskartoffel, amount: 2, name: Süßkartoffel, plural: Süßkartoffeln }
+      - { id: kartoffeln, amount: 1, unit: kg, name: Kartoffeln, note: mehligkochend }
+      - { id: moehren, amount: 2, name: Möhre, plural: Möhren }
+      - { id: zwiebel, amount: 4, name: Zwiebel, plural: Zwiebeln }
+      - { id: oel, amount: 2, unit: EL, name: Öl }
+      - { id: mehl, amount: 2, unit: EL, name: Mehl }
+      - { id: tomatenmark, amount: 2, unit: Dose, name: Tomatenmark, note: "klein, je etwa 70 g" }
+      - { id: paprikapulver, amount: 2, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: butter, amount: 10, unit: g, name: Butter }
+      - { id: bruehe, amount: 1, unit: l, name: Gemüsebrühe }
+      - { id: thymian, amount: 3, unit: Zweig, name: Thymian }
+      - { id: spinat, amount: 100, unit: g, name: Babyspinat }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Zum Anrichten
+    items:
+      - { id: saure-sahne, amount: 200, unit: g, name: saure Sahne }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: mandeln, amount: 20, unit: g, name: Mandelblättchen }
+      - { id: kuerbiskernoel, amount: 4, unit: TL, name: Kürbiskernöl }
+
+steps:
+  - "{zwiebel} in feine Streifen schneiden. {kartoffeln} und {suesskartoffel} schälen und in 1–2 cm große Würfel schneiden. {moehren} schälen, längs vierteln und in 1 cm große Stücke schneiden."
+  - "{oel} in einem großen Topf bei mittlerer Hitze erhitzen und die Zwiebeln mit den Kartoffelwürfeln 2–3 Minuten anbraten. {mehl} darüberstäuben, {tomatenmark}, {paprikapulver} und {butter} dazugeben und alles gut vermischen."
+  - "{bruehe} angießen, {thymian} dazugeben, salzen, pfeffern und aufkochen. Nach 3 Minuten Süßkartoffeln und Möhren dazugeben und zugedeckt 12–15 Minuten köcheln lassen, bis das Gemüse weich und der Eintopf etwas eingedickt ist."
+  - "{petersilie} fein hacken. {saure-sahne} mit der Petersilie verrühren, salzen und pfeffern. {mandeln} in einer kleinen Pfanne ohne Fett 1–2 Minuten rösten, bis sie duften."
+  - "Die Thymianzweige entfernen. {spinat} portionsweise unterrühren, bis er zusammengefallen ist, und den Eintopf mit {salz:name} und {pfeffer:name} abschmecken; ist er zu dick, schluckweise heißes Wasser dazugeben."
+  - "Den Eintopf in tiefe Teller füllen, einen Klecks saure Sahne in die Mitte geben und mit den Mandeln bestreuen. {kuerbiskernoel} darüberträufeln."
