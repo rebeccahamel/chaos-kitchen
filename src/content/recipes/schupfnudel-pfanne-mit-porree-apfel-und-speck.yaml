@@ -1,0 +1,41 @@
+title: Schupfnudel-Pfanne mit Porree, Apfel und Speck
+description: Goldbraun gebratene Schupfnudeln mit Porree, säuerlichem Apfel und knusprigem Speck, dazu ein Schnittlauch-Dip und Feldsalat. Ein schnelles Herbstessen aus einer Pfanne, in 30 Minuten fertig.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 20 }
+tags: [abendessen, mittagessen, fleisch, herbst, winter]
+
+ingredients:
+  - group: Für die Pfanne
+    items:
+      - { id: speck, amount: 100, unit: g, name: Speckwürfel }
+      - { id: porree, amount: 1, unit: Stange, name: Porree }
+      - { id: zwiebel, amount: 1, name: rote Zwiebel, plural: rote Zwiebeln }
+      - { id: apfel, amount: 2, name: Apfel, plural: Äpfel, note: säuerlich }
+      - { id: butter, amount: 20, unit: g, name: Butter }
+      - { id: schupfnudeln, amount: 1, unit: kg, name: Schupfnudeln, note: "aus dem Kühlregal, 2 Packungen" }
+      - { id: muskat, name: Muskatnuss }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für den Dip
+    items:
+      - { id: creme, amount: 150, unit: g, name: Crème fraîche }
+      - { id: schnittlauch, amount: 0.5, unit: Bund, name: Schnittlauch }
+  - group: Für den Feldsalat
+    items:
+      - { id: feldsalat, amount: 150, unit: g, name: Feldsalat }
+      - { id: olivenoel, amount: 2, unit: EL, name: Olivenöl }
+      - { id: essig, amount: 1, unit: EL, name: Weißweinessig }
+      - { id: senf, amount: 1, unit: TL, name: mittelscharfer Senf }
+      - { id: honig, amount: 1, unit: TL, name: Honig }
+
+steps:
+  - "{porree} längs halbieren, waschen und in feine Halbringe schneiden. {zwiebel} in schmale Spalten schneiden, {apfel} entkernen und in dünne Spalten schneiden."
+  - "{speck} in einer sehr großen Pfanne ohne Fett bei mittlerer Hitze 5 Minuten knusprig braten. Herausnehmen, das Fett bleibt in der Pfanne."
+  - "Porree und Zwiebel im Speckfett 4 Minuten anbraten, die Apfelspalten dazugeben und 2 Minuten mitbraten, bis sie leicht Farbe haben. Auf einen Teller geben."
+  - "{butter} in der Pfanne aufschäumen lassen und {schupfnudeln} darin etwa 8 Minuten goldbraun braten, dabei nur ab und zu wenden."
+  - "Porree, Zwiebel und Apfel wieder untermischen und mit {muskat:name}, {salz:name} und {pfeffer:name} abschmecken. Die Portion für die Kleine abnehmen, dann den Speck untermischen."
+  - "{creme} glatt rühren, {schnittlauch} in Röllchen schneiden und unterrühren, leicht salzen und als Dip dazu reichen."
+  - "{feldsalat} waschen und trocken schleudern. {olivenoel}, {essig}, {senf} und {honig} verrühren, salzen und pfeffern und den Salat erst kurz vor dem Essen damit mischen."

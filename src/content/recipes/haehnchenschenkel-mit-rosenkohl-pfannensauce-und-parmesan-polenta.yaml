@@ -1,0 +1,41 @@
+title: Hähnchenschenkel mit Rosenkohl, Pfannensauce und Parmesan-Polenta
+description: Knusprig gebratene Hähnchenschenkel und angerösteter Rosenkohl in einer Pfannensauce aus Hühnerbrühe, Senf, Thymian und Zitrone, dazu cremige Parmesan-Polenta. Ganz ohne Sahne und in 30 Minuten auf dem Tisch.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 20 }
+tags: [abendessen, mittagessen, fleisch, herbst, italienisch]
+
+ingredients:
+  - group: Für Hähnchen und Sauce
+    items:
+      - { id: haehnchen, amount: 500, unit: g, name: Hähnchenschenkel, note: "ohne Knochen, mit Haut" }
+      - { id: rosenkohl, amount: 250, unit: g, name: Rosenkohl }
+      - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: thymian, amount: 3, unit: Zweig, name: Thymian }
+      - { id: olivenoel, amount: 1, unit: EL, name: Olivenöl }
+      - { id: bruehe-sauce, amount: 300, unit: ml, name: Hühnerbrühe }
+      - { id: senf, amount: 1, unit: TL, name: mittelscharfer Senf }
+      - { id: butter-sauce, amount: 20, unit: g, name: Butter }
+      - { id: zitrone, amount: 0.5, name: Zitrone, plural: Zitronen }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Polenta
+    items:
+      - { id: bruehe-polenta, amount: 700, unit: ml, name: Hühnerbrühe }
+      - { id: milch, amount: 200, unit: ml, name: Milch }
+      - { id: polenta, amount: 200, unit: g, name: Polenta, note: "Minuten-Polenta (Maisgrieß)" }
+      - { id: butter-polenta, amount: 20, unit: g, name: Butter }
+      - { id: parmesan, amount: 50, unit: g, name: Parmesan, note: am Stück }
+      - { id: muskat, name: Muskatnuss }
+
+steps:
+  - "{rosenkohl} putzen und halbieren, große Röschen vierteln. {zwiebel} fein würfeln, {knoblauch} hacken, {thymian} abzupfen. {haehnchen} trocken tupfen, salzen und pfeffern."
+  - "{olivenoel} in einer großen, tiefen Pfanne erhitzen. Die Schenkel mit der Hautseite nach unten hineinlegen und bei mittelhoher Hitze 6–7 Minuten knusprig braten, wenden, 2 Minuten weiterbraten und herausnehmen."
+  - "Den Rosenkohl mit der Schnittfläche nach unten im Bratfett 4 Minuten kräftig anbraten. Zwiebel, Knoblauch und die Thymianblättchen dazugeben und 2 Minuten mitbraten."
+  - "{bruehe-sauce} angießen und {senf} einrühren. Die Schenkel mit der Hautseite nach oben wieder hineinsetzen und alles 8–10 Minuten offen köcheln lassen, bis das Fleisch durch, der Rosenkohl bissfest und die Sauce etwa um die Hälfte eingekocht ist."
+  - "Inzwischen {bruehe-polenta} und {milch} in einem Topf aufkochen und salzen. {polenta} unter Rühren einrieseln lassen und bei niedriger Hitze nach Packungsangabe etwa 3–5 Minuten cremig rühren. {parmesan} reiben. {butter-polenta} und den Parmesan unterrühren, mit {muskat:name} abschmecken und zugedeckt warm halten."
+  - "Die Pfanne vom Herd nehmen und {butter-sauce} kalt in die Sauce schwenken. {zitrone} auspressen, den Saft unterrühren und mit {salz:name} und {pfeffer:name} abschmecken; selbst gekochte Brühe braucht meist mehr Salz als gekaufte."
+  - "Die Polenta auf Teller geben, das Fleisch in Scheiben schneiden und mit Rosenkohl und Sauce darauf anrichten. Für die Kleine Fleisch und Rosenkohl klein schneiden."

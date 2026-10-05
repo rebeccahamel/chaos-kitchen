@@ -697,7 +697,10 @@ SETUP.md and AGENTS.md added, MEAL_PLANNER.md reduced to general rules (househol
 the private profile, `planner/profile.example.md` as the model), planner manual owner-neutral
 with Todoist optional, tests on their own fixtures (§10).
 
-Week 2026-W41 planned the same day: five new trial recipes (5–9 October).
+Week 2026-W41 planned the same day: five new trial recipes (5–9 October). Changed on 2026-10-05
+before shopping: chicken with polenta instead of the creamy pasta on Monday, a Schupfnudel pan
+instead of the Flammkuchen on Thursday (planner/history/2026-W41.md). The pasta recipe stays as
+a trial outside the plan, so the build warns about it until a later week uses it.
 
 Next: check in the Bring! app that "Porree, 1 Stange" arrives as Porree with the specification
 "1 Stange", and that the notes arrive on the week list ("Feta, 300 g, 2 kleine Packungen");

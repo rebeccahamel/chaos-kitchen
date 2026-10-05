@@ -10,7 +10,7 @@ ingredients:
   - group: Für das Blech
     items:
       - { id: kartoffeln, amount: 750, unit: g, name: Kartoffeln, note: festkochend }
-      - { id: moehren, amount: 5, name: Möhre, plural: Möhren }
+      - { id: moehren, amount: 3, name: Möhre, plural: Möhren }
       - { id: zwiebeln, amount: 2, name: rote Zwiebel, plural: rote Zwiebeln }
       - { id: knoblauch, amount: 4, unit: Zehe, name: Knoblauch, note: ungeschält }
       - { id: rosmarin, amount: 3, unit: Zweig, name: Rosmarin }

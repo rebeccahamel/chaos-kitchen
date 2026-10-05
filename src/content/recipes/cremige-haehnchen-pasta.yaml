@@ -1,16 +1,15 @@
-title: Cremige Hähnchen-Rosenkohl-Pasta
-description: Knusprig gebratene Hähnchenschenkel, angerösteter Rosenkohl und kurze Nudeln in einer leichten Sauce aus Hühnerbrühe, Crème fraîche und Parmesan. Eine Pfanne, ein Topf, in 30 Minuten auf dem Tisch.
+title: Cremige Hähnchen-Pasta
+description: Knusprig gebratene Hähnchenschenkel und kurze Nudeln in einer leichten Sauce aus Hühnerbrühe, Crème fraîche und Parmesan. Eine Pfanne, ein Topf, in 30 Minuten auf dem Tisch. Dazu passen ein grüner Salat oder in der Pfanne gerösteter Rosenkohl.
 author: becci
 added: 2026-10-03
 trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 20 }
-tags: [abendessen, mittagessen, fleisch, herbst, italienisch]
+tags: [abendessen, mittagessen, fleisch, italienisch]
 
 ingredients:
   - { id: nudeln, amount: 350, unit: g, name: Nudeln, note: "kurze Form, z. B. Penne oder Orecchiette" }
   - { id: haehnchen, amount: 500, unit: g, name: Hähnchenschenkel, note: "ohne Knochen, mit Haut" }
-  - { id: rosenkohl, amount: 250, unit: g, name: Rosenkohl }
   - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
   - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
   - { id: thymian, amount: 3, unit: Zweig, name: Thymian }
@@ -24,9 +23,9 @@ ingredients:
   - { id: pfeffer, name: Pfeffer }
 
 steps:
-  - "Einen großen Topf Salzwasser für die Nudeln aufsetzen. {rosenkohl} putzen und halbieren, große Röschen vierteln. {zwiebel} fein würfeln, {knoblauch} hacken, {thymian} abzupfen. {haehnchen} trocken tupfen, salzen und pfeffern."
+  - "Einen großen Topf Salzwasser für die Nudeln aufsetzen. {zwiebel} fein würfeln, {knoblauch} hacken, {thymian} abzupfen. {haehnchen} trocken tupfen, salzen und pfeffern."
   - "{olivenoel} in einer großen, tiefen Pfanne erhitzen. Die Schenkel mit der Hautseite nach unten hineinlegen und bei mittelhoher Hitze 6–7 Minuten knusprig braten, wenden und weitere 4–5 Minuten braten, bis sie durch sind. Herausnehmen."
   - "{nudeln} ins kochende Wasser geben und bissfest kochen. Vor dem Abgießen eine Tasse Kochwasser auffangen."
-  - "Den Rosenkohl mit der Schnittfläche nach unten im Bratfett 4 Minuten kräftig anbraten. Zwiebel, Knoblauch und die Thymianblättchen dazugeben und 2 Minuten mitbraten. {bruehe} angießen und 5 Minuten offen köcheln lassen, bis der Rosenkohl bissfest ist."
+  - "Zwiebel, Knoblauch und die Thymianblättchen im Bratfett 2–3 Minuten anbraten. {bruehe} angießen und 5 Minuten offen köcheln lassen."
   - "{creme} und {senf} in die Sauce rühren. {parmesan} reiben. Das Fleisch in Streifen schneiden und mit den abgetropften Nudeln und der Hälfte vom Parmesan unterheben; wenn nötig mit etwas Kochwasser cremig rühren."
-  - "{zitrone} auspressen, den Saft unterrühren und mit {salz:name} und {pfeffer:name} abschmecken. Mit dem restlichen Parmesan bestreuen. Für die Kleine Fleisch und Rosenkohl klein schneiden."
+  - "{zitrone} auspressen, den Saft unterrühren und mit {salz:name} und {pfeffer:name} abschmecken. Mit dem restlichen Parmesan bestreuen. Für die Kleine das Fleisch klein schneiden."
