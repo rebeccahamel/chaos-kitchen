@@ -1,0 +1,37 @@
+title: Nackensteaks mit Kräuterbutter, Ofenkartoffeln und grünen Bohnen
+description: Saftige Nackensteaks mit selbst gerührter Petersilien-Koriander-Schnittlauch-Butter, dazu gewürzte Kartoffeln aus dem Ofen und grüne Bohnen. Nach einem HelloFresh-Rezept.
+author: becci
+added: 2026-10-05
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 30 }
+tags: [abendessen, fleisch]
+
+ingredients:
+  - group: Für die Ofenkartoffeln
+    items:
+      - { id: kartoffeln, amount: 1.2, unit: kg, name: Kartoffeln, note: Drillinge }
+      - { id: paprikapulver, amount: 2, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: kurkuma, amount: 0.5, unit: TL, name: Kurkuma, note: gemahlen }
+      - { id: oel, amount: 6, unit: EL, name: Öl }
+  - group: Für Steaks und Kräuterbutter
+    items:
+      - { id: steaks, amount: 4, unit: Stück, name: Nackensteak, plural: Nackensteaks }
+      - { id: butter, amount: 90, unit: g, name: Butter, note: weich }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: koriandergruen, amount: 0.5, unit: Bund, name: Koriandergrün }
+      - { id: schnittlauch, amount: 0.5, unit: Bund, name: Schnittlauch }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Bohnen
+    items:
+      - { id: bohnen, amount: 400, unit: g, name: grüne Bohnen }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze (200 °C Umluft) vorheizen. {kartoffeln} waschen und in kleine Spalten schneiden. {paprikapulver}, {kurkuma} und {oel:1/3} dazugeben, salzen und vermengen. Auf einem Blech mit Backpapier verteilen und 25–30 Minuten goldbraun backen."
+  - "{bohnen} putzen und quer halbieren. In Salzwasser 9–11 Minuten bissfest kochen, abgießen und kalt abspülen."
+  - "{petersilie}, {koriandergruen} und {schnittlauch} fein hacken. {butter} mit den Kräutern mischen und mit etwas Salz und Pfeffer würzen."
+  - "{steaks} von beiden Seiten salzen und pfeffern. {oel:1/3} in einer großen Pfanne erhitzen und die Steaks bei mittlerer Hitze je Seite etwa 4–6 Minuten braten, bis sie vollständig durchgegart sind (wenn mit einem Thermometer gemessen: 70 °C Kerntemperatur für 2 Minuten)."
+  - "Das restliche Öl ({oel:1/3}) in der Bohnenpfanne bei mittlerer Hitze erhitzen und die Bohnen 2 Minuten anbraten. {knoblauch} dazupressen und 2–3 Minuten mitbraten. Mit {salz:name} und {pfeffer:name} würzen."
+  - "Kartoffeln, Bohnen und Steaks anrichten und die Kräuterbutter auf den Steaks verteilen."

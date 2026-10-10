@@ -1,0 +1,36 @@
+title: Ofenlachs mit Wurzelgemüse und Kichererbsen
+description: Lachs vom Blech mit gerösteten Möhren, Pastinaken und Kichererbsen, dazu frischer Zitronen-Joghurt. Ein herbstliches Ofengericht mit wenig Arbeit.
+author: becci
+added: 2026-10-10
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 35 }
+tags: [abendessen, mittagessen, fisch, herbst]
+
+ingredients:
+  - group: Für das Blech
+    items:
+      - { id: moehren, amount: 4, name: Möhre, plural: Möhren }
+      - { id: pastinaken, amount: 500, unit: g, name: Pastinake, plural: Pastinaken }
+      - { id: zwiebel, amount: 1, name: rote Zwiebel, plural: rote Zwiebeln }
+      - { id: kichererbsen, amount: 1, unit: Dose, name: Kichererbsen, note: 400 g }
+      - { id: olivenoel, amount: 3, unit: EL, name: Olivenöl }
+      - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: kreuzkuemmel, amount: 1, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: lachs, amount: 500, unit: g, name: Lachsfilet, note: "ohne Haut, 4 Stücke" }
+      - { id: zitrone, amount: 1, name: Bio-Zitrone, plural: Bio-Zitronen }
+      - { id: spinat, amount: 100, unit: g, name: Babyspinat }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für den Zitronenjoghurt
+    items:
+      - { id: joghurt, amount: 200, unit: g, name: Joghurt, note: "griechisch oder 3,5 %" }
+      - { id: knoblauch, amount: 1, unit: Zehe, name: Knoblauch }
+
+steps:
+  - "Den Backofen auf 220 °C Ober-/Unterhitze vorheizen. {moehren} und {pastinaken} schälen und in etwa 1,5 cm große Stücke schneiden. Die {zwiebel:name} in Spalten schneiden. {kichererbsen} abgießen und abspülen."
+  - "Möhren, Pastinaken, Zwiebel und Kichererbsen auf einem Blech mit {olivenoel:2/3}, {paprikapulver}, {kreuzkuemmel}, {salz:name} und {pfeffer:name} vermengen und 20 Minuten rösten."
+  - "{lachs} trocken tupfen, salzen und pfeffern. Die {zitrone:name} heiß waschen, die Schale abreiben und den Lachs damit würzen. Den Saft der halben Zitrone auspressen und für den Joghurt aufheben."
+  - "Für den Zitronenjoghurt {joghurt} mit dem fein geriebenen {knoblauch:name}, etwas Zitronensaft, Salz und Pfeffer verrühren."
+  - "Das Blech aus dem Ofen nehmen, das Gemüse wenden und den Lachs darauflegen. Mit dem restlichen Olivenöl ({olivenoel:1/3}) beträufeln und weitere 10–12 Minuten backen, bis der Lachs gerade eben gar ist."
+  - "{spinat} unter das heiße Gemüse heben, bis er zusammenfällt. Mit dem Zitronenjoghurt und der übrigen Zitrone servieren. Für die Kleine den Lachs in kleine Flocken zerteilen und die Kichererbsen leicht zerdrücken."

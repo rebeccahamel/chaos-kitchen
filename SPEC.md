@@ -710,6 +710,10 @@ Done (2026-10-10): week 2026-W41 reviewed. Polenta, dal, Schupfnudel-Pfanne and 
 kept; bean-and-feta recipe deleted. Pumpkin risotto updated with feta. Radieschenquark remains an
 untried use-up idea.
 
+Week 2026-W42 planned on 2026-10-10 for 12–18 October: three HelloFresh trials adapted, new
+root-vegetable salmon and lemon-honey oven ribs recipes; no pumpkin. Fresh-egg mayonnaise is
+planned for adults only and reused by Saturday.
+
 Next: check in the Bring! app that "Porree, 1 Stange" arrives as Porree with the specification
 "1 Stange", and that the notes arrive on the week list ("Feta, 300 g, 2 kleine Packungen").
 

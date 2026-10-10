@@ -19,6 +19,7 @@ ingredients:
       - { id: zucchini, amount: 2, name: Zucchini, plural: Zucchini }
       - { id: fruehlingszwiebeln, amount: 4, name: Frühlingszwiebel, plural: Frühlingszwiebeln }
       - { id: ingwer, amount: 1, unit: Stück, name: Ingwer, note: daumengroß }
+      - { id: koriandergruen, amount: 0.5, unit: Bund, name: Koriandergrün }
       - { id: cashews, amount: 40, unit: g, name: Cashewkerne, note: geröstet }
       - { id: oel, amount: 1, unit: EL, name: Öl }
       - { id: tomatenmark, amount: 1, unit: Dose, name: Tomatenmark, note: "klein, etwa 70 g" }
@@ -38,5 +39,5 @@ steps:
   - "{wasser} mit etwas Salz in einem kleinen Topf aufkochen. {reis} dazugeben und zugedeckt bei niedriger Hitze 10 Minuten köcheln lassen, dann vom Herd nehmen und zugedeckt 10 Minuten ziehen lassen."
   - "{cashews} in einer großen Pfanne ohne Fett 1–2 Minuten rösten, bis sie bräunen, und herausnehmen. {oel} in der Pfanne bei mittlerer Hitze erhitzen und die weißen Frühlingszwiebelringe 2 Minuten glasig braten. {tomatenmark}, {kurkuma}, {kreuzkuemmel}, {koriander}, {paprikapulver} und den Ingwer dazugeben und 1 Minute mit anbraten."
   - "{kokosmilch} und {bruehe} angießen und aufkochen. Möhren, Bohnen und Zucchini dazugeben und offen bei mittlerer Hitze 15–18 Minuten köcheln lassen, bis das Gemüse weich ist."
-  - "{limette} halbieren, die Cashews grob hacken. Das Curry vom Herd nehmen, {sojasauce} einrühren, Limettensaft nach Geschmack dazupressen und mit {salz:name} und {pfeffer:name} abschmecken."
-  - "Den Reis mit einer Gabel auflockern, das Curry darauf anrichten und mit den grünen Frühlingszwiebelringen und den Cashews bestreuen. Die Portion für die Kleine bleibt ohne Cashews."
+  - "{limette} halbieren, {koriandergruen} hacken und die Cashews grob hacken. Das Curry vom Herd nehmen, {sojasauce} einrühren, Limettensaft nach Geschmack dazupressen und mit {salz:name} und {pfeffer:name} abschmecken."
+  - "Den Reis mit einer Gabel auflockern, das Curry darauf anrichten und mit dem Koriandergrün, den grünen Frühlingszwiebelringen und den Cashews bestreuen. Die Portion für die Kleine bleibt ohne Cashews."

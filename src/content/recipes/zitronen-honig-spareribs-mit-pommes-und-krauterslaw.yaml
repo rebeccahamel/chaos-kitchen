@@ -1,0 +1,50 @@
+title: Zitronen-Honig-Spareribs mit Pommes und Kräuterslaw
+description: Zart im Ofen gegarte Spareribs mit einer frischen Zitronen-Honig-Glasur, dazu Pommes aus der Heißluftfritteuse, knackiger Apfel-Möhren-Slaw und selbst gemachte Zitronen-Senf-Mayonnaise.
+author: becci
+added: 2026-10-10
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 25, cook: 220 }
+tags: [abendessen, fleisch, herbst]
+
+ingredients:
+  - group: Für die Rippchen
+    items:
+      - { id: ribs, amount: 1.6, unit: kg, name: Spareribs }
+      - { id: salz-ribs, amount: 2, unit: TL, name: Salz }
+      - { id: paprikapulver-ribs, amount: 2, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: knoblauch-ribs, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: zitrone-ribs, amount: 2, name: Bio-Zitrone, plural: Bio-Zitronen }
+      - { id: honig, amount: 60, unit: g, name: Honig }
+      - { id: senf-ribs, amount: 1, unit: EL, name: mittelscharfer Senf }
+      - { id: oel-ribs, amount: 1, unit: EL, name: Öl }
+      - { id: pfeffer-ribs, name: Pfeffer }
+  - group: Für die Pommes
+    items:
+      - { id: pommes, amount: 800, unit: g, name: Pommes frites, note: tiefgekühlt }
+  - group: Für den Apfel-Möhren-Slaw
+    items:
+      - { id: moehren-slaw, amount: 2, name: Möhre, plural: Möhren }
+      - { id: apfel, amount: 1, name: Apfel, plural: Äpfel, note: säuerlich }
+      - { id: kohl, amount: 250, unit: g, name: Weißkohl }
+      - { id: essig, amount: 2, unit: EL, name: Apfelessig }
+      - { id: oel-slaw, amount: 1, unit: EL, name: Öl }
+      - { id: honig-slaw, amount: 1, unit: TL, name: Honig }
+      - { id: salz-slaw, name: Salz }
+      - { id: pfeffer-slaw, name: Pfeffer }
+  - group: Für die Zitronen-Senf-Mayonnaise
+    items:
+      - { id: ei-mayo, amount: 1, name: Ei, plural: Eier, whole: true, note: "frisch, roh" }
+      - { id: rapsoel, amount: 200, unit: ml, name: Rapsöl }
+      - { id: senf-mayo, amount: 1, unit: TL, name: mittelscharfer Senf }
+      - { id: zitrone-mayo, amount: 0.5, name: Bio-Zitrone, plural: Bio-Zitronen }
+      - { id: salz-mayo, name: Salz }
+
+steps:
+  - "Falls noch vorhanden, die dünne Silberhaut auf der Knochenseite der {ribs} mit einem stumpfen Messer lösen und abziehen. Die Rippchen trocken tupfen, rundum mit {salz-ribs}, {paprikapulver-ribs} und {pfeffer-ribs} würzen und bis zum Backen abgedeckt kalt stellen."
+  - "Den Backofen auf 120 °C Ober-/Unterhitze vorheizen. {knoblauch-ribs} fein reiben. Den Saft der {zitrone-ribs} mit {honig}, {senf-ribs}, {oel-ribs} und Knoblauch verrühren. Die Rippchen mit der Knochenseite nach unten dicht in Backpapier und anschließend Alufolie einschlagen, dabei die Hälfte der Zitronen-Honig-Mischung mit in das Päckchen geben. Auf ein Blech legen und 2 Stunden garen."
+  - "Inzwischen {moehren-slaw} grob raspeln, {apfel} entkernen und ebenfalls raspeln, {kohl} fein schneiden. Mit {essig}, {oel-slaw}, {honig-slaw}, {salz-slaw} und {pfeffer-slaw} vermengen und kalt stellen."
+  - "Die Rippchen vorsichtig aus der Folie nehmen und mit der Fleischseite nach oben auf das Blech legen. Bei 120 °C weitere etwa 1½ Stunden offen garen. Danach mit einem Zahnstocher zwischen den Knochen prüfen: Er soll mit wenig Widerstand hineingleiten. Falls nötig, in 15-Minuten-Schritten weitergaren."
+  - "Die Pommes nach Packungsangabe portionsweise in der Heißluftfritteuse knusprig garen."
+  - "Für die Mayonnaise nur ein ganz frisches, unbeschädigtes {ei-mayo} verwenden. Mit {senf-mayo}, {salz-mayo} und dem Saft der halben {zitrone-mayo} in ein schmales, hohes Gefäß geben. {rapsoel} daraufgießen, den Stabmixer bis auf den Boden stellen und ohne ihn zu bewegen mixen, bis eine Mayonnaise entsteht; dann langsam hochziehen. Hände, Mixer und Gefäß vorher gründlich reinigen. Die Mayonnaise sofort bei höchstens 4 °C kalt stellen und nur Erwachsenen servieren. Frische rohe Eier können Salmonellen enthalten; am Zubereitungstag und Folgetag aufbrauchen und spätestens 24 Stunden nach der Zubereitung entsorgen."
+  - "Die übrige Zitronen-Honig-Mischung auf die Rippchen pinseln und unter dem heißen Backofengrill 3–5 Minuten glasieren, dabei ständig beobachten, damit der Honig nicht verbrennt. Mit Pommes, Slaw und der Mayonnaise servieren. Für die Kleine zartes Fleisch vollständig vom Knochen lösen und klein zupfen; die Mayonnaise weglassen."

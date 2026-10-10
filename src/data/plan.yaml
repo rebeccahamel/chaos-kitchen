@@ -10,20 +10,17 @@
 # A day without lunch and dinner is a free day.
 
 weeks:
-  - note: Fünf neue Rezepte zum Ausprobieren. Montag, Dienstag und Donnerstag geht es schnell, Mittwoch gibt es Dal, das sich gut verdoppeln und einfrieren lässt, und die Reste sind meist das Mittagessen danach.
+  - note: Diese Woche gibt es schnelle Gerichte unter der Woche, frische Kräuter in der Kräuterbutter und am Freitag Ofenrippchen mit Pommes.
     days:
-      - date: 2026-10-05
-        lunch: { text: "Reste vom Sonntag: cremige Pasta" }
-        dinner: { recipe: haehnchenschenkel-mit-rosenkohl-pfannensauce-und-parmesan-polenta }
-      - date: 2026-10-06
-        lunch: { leftovers: 2026-10-05 }
-        dinner: { text: "Ofen-Feta mit Kirschtomaten, weißen Bohnen und Spinat" }
-      - date: 2026-10-07
-        lunch: { text: "Reste vom Ofen-Feta mit Kirschtomaten, weißen Bohnen und Spinat" }
-        dinner: { recipe: mildes-linsen-moehren-dal-mit-reis }
-      - date: 2026-10-08
-        lunch: { leftovers: 2026-10-07 }
-        dinner: { recipe: schupfnudel-pfanne-mit-porree-apfel-und-speck }
-      - date: 2026-10-09
-        lunch: { text: "Brote mit Radieschenquark und Ei, dazu Feldsalat" }
-        dinner: { recipe: kuerbisrisotto-mit-salbei }
+      - date: 2026-10-12
+        dinner: { recipe: nackensteaks-mit-kraeuterbutter-ofenkartoffeln-und-gruenen-bohnen }
+      - date: 2026-10-13
+        dinner: { recipe: gemuese-kokos-curry-mit-cashews-und-reis }
+      - date: 2026-10-14
+        dinner: { recipe: ofenlachs-mit-wurzelgemuese-und-kichererbsen }
+      - date: 2026-10-15
+        dinner: { recipe: cremige-haehnchen-pasta }
+      - date: 2026-10-16
+        dinner: { recipe: zitronen-honig-spareribs-mit-pommes-und-krauterslaw }
+      - date: 2026-10-17
+        lunch: { text: "Sparerib-Sandwich mit Zitronen-Senf-Mayonnaise und Slaw-Resten" }
