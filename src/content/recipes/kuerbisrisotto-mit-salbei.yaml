@@ -1,8 +1,7 @@
-title: Kürbisrisotto mit Salbei
-description: Cremiges Risotto mit Hokkaido, der beim Rühren fast zerfällt, dazu knusprige Salbeiblätter in brauner Butter und geröstete Kürbiskerne. Ein Abend zum Rühren, ganz ohne Wein gekocht.
+title: Kürbisrisotto mit Feta
+description: Cremiges Risotto mit Hokkaido, der beim Rühren fast zerfällt, dazu Feta untergerührt und geröstete Kürbiskerne. Ein Abend zum Rühren, ganz ohne Wein gekocht.
 author: becci
 added: 2026-10-03
-trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 30 }
 tags: [abendessen, mittagessen, vegetarisch, herbst, italienisch]
@@ -16,7 +15,7 @@ ingredients:
   - { id: butter, amount: 40, unit: g, name: Butter }
   - { id: bruehe, amount: 1, unit: l, name: Gemüsebrühe }
   - { id: parmesan, amount: 60, unit: g, name: Parmesan, note: am Stück }
-  - { id: salbei, amount: 1, unit: Bund, name: Salbei, note: "etwa 10 Blätter" }
+  - { id: feta, amount: 150, unit: g, name: Feta }
   - { id: kuerbiskerne, amount: 30, unit: g, name: Kürbiskerne }
   - { id: zitrone, amount: 0.5, name: Zitrone, plural: Zitronen }
   - { id: muskat, name: Muskatnuss }
@@ -27,6 +26,6 @@ steps:
   - "{kuerbis} waschen, entkernen und mit Schale in etwa 1 cm große Würfel schneiden. {zwiebel} und {knoblauch} fein würfeln. {bruehe} in einem kleinen Topf erhitzen und heiß halten."
   - "{olivenoel} und {butter:1/2} in einem breiten Topf erhitzen, Zwiebel und Knoblauch 3 Minuten glasig dünsten. Die Kürbiswürfel 3 Minuten mitdünsten, dann {reis} einrühren, bis die Körner glänzen."
   - "Eine Kelle heiße Brühe angießen und unter Rühren einkochen lassen. So nach und nach die ganze Brühe zugeben, etwa 20 Minuten lang, bis der Reis cremig, aber noch bissfest und der Kürbis weich ist."
-  - "Inzwischen {kuerbiskerne} in einer kleinen Pfanne ohne Fett rösten und herausnehmen. Die restliche Butter ({butter:1/2}) in der Pfanne aufschäumen lassen und die Blätter vom {salbei:name} darin knusprig braten."
-  - "{parmesan} reiben und unter das Risotto rühren. {zitrone} auspressen, den Saft dazugeben und mit {muskat:name}, {salz:name} und {pfeffer:name} abschmecken. 2 Minuten zugedeckt ruhen lassen."
-  - "Mit der Salbeibutter und den Kürbiskernen servieren. Für die Kleine die Kürbiskerne weglassen."
+  - "Inzwischen {kuerbiskerne} in einer kleinen Pfanne ohne Fett rösten und herausnehmen."
+  - "{parmesan} reiben und {feta} grob zerbröseln. Die restliche Butter ({butter:1/2}) und den Parmesan unter das Risotto rühren, dann den Feta vorsichtig unterheben. {zitrone} auspressen, den Saft dazugeben und mit {muskat:name}, {salz:name} und {pfeffer:name} abschmecken. 2 Minuten zugedeckt ruhen lassen."
+  - "Mit den Kürbiskernen servieren. Für die Kleine die Kürbiskerne weglassen."

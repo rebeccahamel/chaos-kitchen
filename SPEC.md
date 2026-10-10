@@ -706,9 +706,12 @@ Done (2026-10-05): 28 recipes from HelloFresh cards the household enjoyed, writt
 site's format with ordinary spices instead of the box's spice mixes, all as trials. They are
 outside the plan until a week uses them, so the build warns about each; that is accepted.
 
+Done (2026-10-10): week 2026-W41 reviewed. Polenta, dal, Schupfnudel-Pfanne and pumpkin risotto
+kept; bean-and-feta recipe deleted. Pumpkin risotto updated with feta. Radieschenquark remains an
+untried use-up idea.
+
 Next: check in the Bring! app that "Porree, 1 Stange" arrives as Porree with the specification
-"1 Stange", and that the notes arrive on the week list ("Feta, 300 g, 2 kleine Packungen");
-review W41 with prompt B around 10 October.
+"1 Stange", and that the notes arrive on the week list ("Feta, 300 g, 2 kleine Packungen").
 
 The remaining small tasks of version 1 (more recipes and photos, avatars, step pictures, defaults
 to confirm) are tracked on the `main` branch, not here.

@@ -17,9 +17,9 @@ weeks:
         dinner: { recipe: haehnchenschenkel-mit-rosenkohl-pfannensauce-und-parmesan-polenta }
       - date: 2026-10-06
         lunch: { leftovers: 2026-10-05 }
-        dinner: { recipe: ofen-feta-mit-kirschtomaten-weissen-bohnen-und-spinat }
+        dinner: { text: "Ofen-Feta mit Kirschtomaten, weißen Bohnen und Spinat" }
       - date: 2026-10-07
-        lunch: { leftovers: 2026-10-06 }
+        lunch: { text: "Reste vom Ofen-Feta mit Kirschtomaten, weißen Bohnen und Spinat" }
         dinner: { recipe: mildes-linsen-moehren-dal-mit-reis }
       - date: 2026-10-08
         lunch: { leftovers: 2026-10-07 }
