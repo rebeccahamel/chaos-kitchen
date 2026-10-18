@@ -2,7 +2,7 @@ title: Orangen-Tofu mit Paprikagemüse und Reis
 description: Knusprig gebratene Tofuwürfel in einer süß-salzigen Soße aus frischem Orangensaft, Sojasauce und Knoblauch, dazu gebratene Paprika, Basmatireis und gerösteter Sesam. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 20 }
 tags: [abendessen, mittagessen, vegan, asiatisch]

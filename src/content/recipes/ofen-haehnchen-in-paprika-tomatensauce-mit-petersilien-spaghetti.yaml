@@ -2,7 +2,7 @@ title: Ofen-Hähnchen in Paprika-Tomatensauce mit Petersilien-Spaghetti
 description: Kurz angebratene Hähnchenbrust gart im Ofen in einer Tomatensauce mit Paprika und roten Zwiebeln, dazu Spaghetti mit Knoblauch und Petersilie. Die Schärfe kommt erst am Tisch dazu. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 30 }
 tags: [abendessen, mittagessen, fleisch, italienisch]

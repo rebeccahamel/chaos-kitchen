@@ -2,7 +2,7 @@ title: Schweinelachssteaks mit Kräuterbutter, Ofenkartoffeln und Tomaten-Bohnen
 description: Saftig gebratene Schweinelachssteaks mit selbst gerührter Petersilien-Thymian-Butter, dazu gewürzte Kartoffeln aus dem Ofen und grüne Bohnen mit Tomate und Knoblauch. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 30 }
 tags: [abendessen, fleisch]

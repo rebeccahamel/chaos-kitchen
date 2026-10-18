@@ -2,7 +2,7 @@ title: Gemüse-Kokos-Curry mit Cashews und Reis
 description: Ein mildes Curry mit Möhren, grünen Bohnen und Zucchini in Kokosmilch, mit Tomatenmark, Ingwer und Limette abgeschmeckt, dazu Basmatireis und geröstete Cashews. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 25 }
 tags: [abendessen, mittagessen, vegan, asiatisch]

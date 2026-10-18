@@ -2,7 +2,7 @@ title: Hähnchen-Zitronen-Suppe mit Kritharaki und Spinat
 description: Eine sämige Suppe aus einem Topf mit Hähnchen, kleinen reisförmigen Nudeln, Möhren und Spinat, mit Zitrone und Crème fraîche frisch und cremig abgeschmeckt. In 30 Minuten fertig. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 20 }
 tags: [abendessen, mittagessen, fleisch]

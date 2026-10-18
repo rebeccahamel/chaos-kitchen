@@ -2,7 +2,7 @@ title: Kartoffel-Süßkartoffel-Eintopf mit Wiener Würstchen
 description: Ein schneller Eintopf aus Kartoffeln, Süßkartoffel, Porree und Möhren, mit Bacon angeschwitzt und in Hühnerbrühe gekocht, zum Schluss kommen Wiener Würstchen und Schnittlauch dazu. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 20 }
 tags: [abendessen, mittagessen, fleisch, herbst, winter]

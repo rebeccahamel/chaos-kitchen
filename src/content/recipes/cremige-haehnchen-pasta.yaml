@@ -2,7 +2,7 @@ title: Cremige Hähnchen-Pasta
 description: Knusprig gebratene Hähnchenschenkel und kurze Nudeln in einer leichten Sauce aus Hühnerbrühe, Crème fraîche und Parmesan. Eine Pfanne, ein Topf, in 30 Minuten auf dem Tisch. Dazu passen ein grüner Salat oder in der Pfanne gerösteter Rosenkohl.
 author: becci
 added: 2026-10-03
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 20 }
 tags: [abendessen, mittagessen, fleisch, italienisch]

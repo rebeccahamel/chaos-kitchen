@@ -2,7 +2,7 @@ title: Rote-Bete-Risotto mit Ziegenfrischkäse und Apfel-Feldsalat
 description: Cremiges Risotto mit Roter Bete, Zitrone, Kräutern und Ziegenfrischkäse, dazu ein frischer Feldsalat mit Apfel und gerösteten Kürbiskernen. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 30 }
 tags: [abendessen, vegetarisch, herbst, winter, italienisch]

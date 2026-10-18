@@ -2,7 +2,7 @@ title: Hähnchen in Curry-Sahne-Soße mit Möhrenreis und grünen Bohnen
 description: Hähnchenbrust schmort in einer milden Soße aus Sahne, Tomatenmark und Currygewürzen, dazu Basmatireis mit geraspelten Möhren, Butterbohnen und geröstete Mandelblättchen. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 25 }
 tags: [abendessen, mittagessen, fleisch]

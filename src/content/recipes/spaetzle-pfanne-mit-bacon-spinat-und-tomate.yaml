@@ -2,7 +2,7 @@ title: Spätzle-Pfanne mit Bacon, Spinat und Tomate
 description: Knusprig gebratene Spätzle in einer cremigen Sauce mit Bacon, Tomate und viel frischem Spinat, obendrauf Parmesan. Eine Pfanne, 30 Minuten. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 20 }
 tags: [abendessen, mittagessen, fleisch]

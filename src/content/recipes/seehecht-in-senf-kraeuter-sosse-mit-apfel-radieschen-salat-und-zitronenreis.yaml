@@ -2,7 +2,7 @@ title: Seehecht in Senf-Kräuter-Soße mit Apfel-Radieschen-Salat und Zitronenre
 description: Zart gebratener Seehecht in einer Sahnesoße mit Senf, Dill und Petersilie, dazu Basmatireis mit Zitronenabrieb und ein knackiger Salat aus Apfel und Radieschen. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: true
+trial: false
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 25 }
 tags: [abendessen, fisch]
