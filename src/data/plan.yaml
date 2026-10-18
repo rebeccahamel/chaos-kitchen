@@ -22,9 +22,25 @@ weeks:
       - date: 2026-10-16
       - date: 2026-10-17
       - date: 2026-10-18
-  - note: Am Samstag gibt es Zitronen-Honig-Spareribs; am Sonntag das Sandwich mit Slaw-Resten.
+  - note: Ein würziges Lammragout, herbstliches Gemüse und am Samstag Spareribs mit Resten am Sonntag.
     days:
+      - date: 2026-10-19
+        lunch: { text: "Brot mit Käse und Apfel" }
+        dinner: { recipe: indisches-lammragout-mit-riesenbohnen-und-spinat }
+      - date: 2026-10-20
+        lunch: { leftovers: 2026-10-19 }
+        dinner: { recipe: orangen-tofu-mit-paprikagemuese-und-reis }
+      - date: 2026-10-21
+        lunch: { text: "Rührei mit Brot und Möhrensticks" }
+        dinner: { recipe: seelachs-auf-moehren-kartoffel-stampf-mit-orangen-kuerbiskern-gremolata }
+      - date: 2026-10-22
+        lunch: { leftovers: 2026-10-21 }
+        dinner: { recipe: fettuccine-bolognese }
+      - date: 2026-10-23
+        lunch: { leftovers: 2026-10-22 }
+        dinner: { recipe: rosenkohl-gnocchi-pfanne-mit-salbei-und-feta }
       - date: 2026-10-24
+        lunch: { leftovers: 2026-10-23 }
         dinner: { recipe: zitronen-honig-spareribs-mit-pommes-und-krauterslaw }
       - date: 2026-10-25
         lunch: { text: "Sparerib-Sandwich mit Zitronen-Senf-Mayonnaise und Slaw-Resten" }

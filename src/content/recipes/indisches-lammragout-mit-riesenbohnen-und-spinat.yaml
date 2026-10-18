@@ -1,0 +1,40 @@
+title: Indisches Lammragout mit Riesenbohnen und Spinat
+description: Zartes Lammragout mit weißen Riesenbohnen und Blattspinat in einer würzigen Tomatensauce, serviert mit Fladenbrot.
+author: becci
+added: 2026-10-18
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 20, cook: 40 }
+tags: [abendessen, fleisch, herbst, asiatisch]
+
+ingredients:
+  - group: Für das Ragout
+    items:
+      - { id: lamm, amount: 600, unit: g, name: Lammgulasch }
+      - { id: zwiebeln, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 3, unit: Zehe, name: Knoblauch }
+      - { id: ingwer, amount: 1, unit: Stück, name: Ingwer, note: daumengroß }
+      - { id: oel, amount: 2, unit: EL, name: Öl }
+      - { id: kreuzkuemmel, amount: 2, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: koriander, amount: 2, unit: TL, name: gemahlener Koriander }
+      - { id: kurkuma, amount: 1, unit: TL, name: Kurkuma, note: gemahlen }
+      - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: tomaten, amount: 500, unit: ml, name: passierte Tomaten }
+      - { id: bruehe, amount: 250, unit: ml, name: Gemüsebrühe }
+      - { id: bohnen, amount: 2, unit: Dose, name: weiße Riesenbohnen, note: "je 400 g" }
+      - { id: spinat, amount: 200, unit: g, name: Blattspinat }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+      - { id: chili, name: Chiliflocken, optional: true }
+  - group: Zum Servieren
+    items:
+      - { id: fladenbrot, amount: 2, name: Fladenbrot, plural: Fladenbrote, note: vom Bäcker }
+
+steps:
+  - "Zwiebeln fein würfeln, {knoblauch} und {ingwer} schälen und fein reiben. {bohnen} abgießen und abspülen."
+  - "{oel} im Schnellkochtopf erhitzen. {lamm} portionsweise rundherum kräftig anbraten und herausnehmen."
+  - "Zwiebeln im Topf 3 Minuten anschwitzen. Knoblauch, Ingwer, {kreuzkuemmel}, {koriander}, {kurkuma} und {paprikapulver} einrühren und 1 Minute rösten."
+  - "{tomaten} und {bruehe} angießen, den Bratensatz lösen und das Lamm wieder in den Topf geben. Den Deckel schließen und das Ragout nach Erreichen des Drucks 25 Minuten garen. Den Druck nach Geräteanleitung ablassen."
+  - "Den Deckel öffnen, {bohnen} einrühren und das Ragout ohne Druck 8–10 Minuten köcheln lassen, bis das Lamm zart ist und die Sauce etwas eingedickt ist. Falls das Fleisch noch fest ist, weitere 5 Minuten unter Druck garen."
+  - "{spinat} portionsweise unterheben und zusammenfallen lassen. Mit {salz:name} und {pfeffer:name} abschmecken. Die Portion für die Kleine abnehmen, dann die Erwachsenen nach Wunsch mit {chili:name} würzen."
+  - "{fladenbrot} nach Bäckerangabe erwärmen und zum Ragout servieren."
