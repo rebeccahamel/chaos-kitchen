@@ -10,17 +10,21 @@
 # A day without lunch and dinner is a free day.
 
 weeks:
-  - note: Diese Woche gibt es schnelle Gerichte unter der Woche, frische Kräuter in der Kräuterbutter und am Freitag Ofenrippchen mit Pommes.
+  - note: Diese Woche gab es schnelle Gerichte unter der Woche und frische Kräuter in der Kräuterbutter.
     days:
       - date: 2026-10-12
         dinner: { recipe: nackensteaks-mit-kraeuterbutter-ofenkartoffeln-und-gruenen-bohnen }
       - date: 2026-10-13
         dinner: { recipe: gemuese-kokos-curry-mit-cashews-und-reis }
       - date: 2026-10-14
-        dinner: { recipe: ofenlachs-mit-wurzelgemuese-und-kichererbsen }
       - date: 2026-10-15
         dinner: { recipe: cremige-haehnchen-pasta }
       - date: 2026-10-16
-        dinner: { recipe: zitronen-honig-spareribs-mit-pommes-und-krauterslaw }
       - date: 2026-10-17
+      - date: 2026-10-18
+  - note: Am Samstag gibt es Zitronen-Honig-Spareribs; am Sonntag das Sandwich mit Slaw-Resten.
+    days:
+      - date: 2026-10-24
+        dinner: { recipe: zitronen-honig-spareribs-mit-pommes-und-krauterslaw }
+      - date: 2026-10-25
         lunch: { text: "Sparerib-Sandwich mit Zitronen-Senf-Mayonnaise und Slaw-Resten" }
