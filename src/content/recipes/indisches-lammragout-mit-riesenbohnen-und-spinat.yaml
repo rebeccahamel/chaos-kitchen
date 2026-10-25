@@ -26,15 +26,13 @@ ingredients:
       - { id: salz, name: Salz }
       - { id: pfeffer, name: Pfeffer }
       - { id: chili, name: Chiliflocken, optional: true }
-  - group: Zum Servieren
-    items:
-      - { id: fladenbrot, amount: 2, name: Fladenbrot, plural: Fladenbrote, note: vom Bäcker }
+      - { id: fladenbrot, amount: 2, name: Fladenbrot, plural: Fladenbrote, note: "als Beilage, alternativ Reis" }
 
 steps:
-  - "Zwiebeln fein würfeln, {knoblauch} und {ingwer} schälen und fein reiben. {bohnen} abgießen und abspülen."
   - "{oel} im Schnellkochtopf erhitzen. {lamm} portionsweise rundherum kräftig anbraten und herausnehmen."
-  - "Zwiebeln im Topf 3 Minuten anschwitzen. Knoblauch, Ingwer, {kreuzkuemmel}, {koriander}, {kurkuma} und {paprikapulver} einrühren und 1 Minute rösten."
-  - "{tomaten} und {bruehe} angießen, den Bratensatz lösen und das Lamm wieder in den Topf geben. Den Deckel schließen und das Ragout nach Erreichen des Drucks 25 Minuten garen. Den Druck nach Geräteanleitung ablassen."
-  - "Den Deckel öffnen, {bohnen} einrühren und das Ragout ohne Druck 8–10 Minuten köcheln lassen, bis das Lamm zart ist und die Sauce etwas eingedickt ist. Falls das Fleisch noch fest ist, weitere 5 Minuten unter Druck garen."
-  - "{spinat} portionsweise unterheben und zusammenfallen lassen. Mit {salz:name} und {pfeffer:name} abschmecken. Die Portion für die Kleine abnehmen, dann die Erwachsenen nach Wunsch mit {chili:name} würzen."
-  - "{fladenbrot} nach Bäckerangabe erwärmen und zum Ragout servieren."
+  - "Währenddessen {zwiebeln} fein würfeln, {knoblauch} und {ingwer} schälen und fein reiben."
+  - "Wenn das Fleisch fertig gebraten ist, Zwiebeln im Topf 3 Minuten anschwitzen. Knoblauch, Ingwer, {kreuzkuemmel}, {koriander}, {kurkuma} und {paprikapulver} einrühren und 1 Minute rösten."
+  - "{tomaten} und {bruehe} angießen, den Bratensatz lösen und das Lamm wieder in den Topf geben. Den Deckel schließen und das Ragout nach Erreichen des Drucks 30 Minuten garen. In der Zeit {bohnen} abgießen und abspülen und {spinat} waschen."
+  - "Den Deckel öffnen, {bohnen} einrühren und das Ragout ohne Druck 8–10 Minuten köcheln lassen, bis das Lamm zart ist und die Sauce etwas eingedickt ist."
+  - "Spinat portionsweise unterheben und zusammenfallen lassen. Mit {salz:name} und {pfeffer:name} abschmecken.Nach Wunsch mit {chili:name} würzen."
+  - "{fladenbrot} erwärmen und zum Ragout servieren."
