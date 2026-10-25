@@ -2,7 +2,7 @@ title: Hackbällchen mit Kräuterkartoffeln, Preiselbeer-Salat und Senfsoße
 description: Würzige Rinderhackbällchen aus der Pfanne, dazu Kartoffeln in Kräuterbutter, ein Blattsalat mit Preiselbeer-Dressing und eine kalte Senfsoße mit Frühlingszwiebeln. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 25 }
 tags: [abendessen, fleisch]

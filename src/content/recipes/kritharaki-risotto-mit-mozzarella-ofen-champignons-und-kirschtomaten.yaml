@@ -2,7 +2,7 @@ title: Kritharaki-Risotto mit Mozzarella, Ofen-Champignons und Kirschtomaten
 description: Reisförmige Nudeln, wie ein Risotto mit rotem Pesto, Thymian und Brühe gegart und mit Mozzarella, Spinat und Basilikum vollendet, obendrauf rauchig gewürzte Champignons und Kirschtomaten aus dem Ofen. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 25 }
 tags: [abendessen, mittagessen, vegetarisch, italienisch]

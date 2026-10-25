@@ -2,7 +2,7 @@ title: Spätzle-Pfanne mit Bacon, Porree und Tomatenpesto
 description: Knusprig gebratene Spätzle mit Bacon und Porree in einer cremigen Sauce mit rotem Pesto, obendrauf Parmesan. Eine Pfanne, 30 Minuten. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 20 }
 tags: [abendessen, mittagessen, fleisch]

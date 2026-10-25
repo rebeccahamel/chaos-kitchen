@@ -2,7 +2,7 @@ title: Hähnchenbrust in Spinat-Sahnesoße mit Kartoffelspalten und Ofentomaten
 description: Goldbraun angebratene Hähnchenbrust gart mit Kirschtomaten im Ofen fertig, daneben backen Paprika-Kartoffelspalten, dazu eine Sahnesoße mit Spinat, Oregano und Zitrone. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 30 }
 tags: [abendessen, fleisch]

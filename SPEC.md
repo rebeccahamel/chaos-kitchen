@@ -714,6 +714,15 @@ Week 2026-W42 planned on 2026-10-10 for 12–18 October: three HelloFresh trials
 root-vegetable salmon and lemon-honey oven ribs recipes; no pumpkin. Fresh-egg mayonnaise is
 planned for adults only and reused by Saturday.
 
+Done (2026-10-18, with GitHub Copilot): week 2026-W42 reviewed (three HelloFresh dinners kept
+without ratings, ribs moved to W43) and week 2026-W43 planned for 19–25 October with a new lamb
+stew. All 28 HelloFresh recipes were set to `trial: false` in the same session; reverted on
+2026-10-25: the 23 not yet cooked are trials again, the 6 cooked ones are in the collection.
+
+Done (2026-10-25): week 2026-W43 reviewed, all six dinners kept. Ribs recipe reduced to the ribs
+alone (90 g honey) and renamed `zitronen-honig-spareribs`; orange tofu reworked by Becci after
+cooking and renamed `orangen-tofu-mit-gemuese-und-reis`.
+
 Next: check in the Bring! app that "Porree, 1 Stange" arrives as Porree with the specification
 "1 Stange", and that the notes arrive on the week list ("Feta, 300 g, 2 kleine Packungen").
 

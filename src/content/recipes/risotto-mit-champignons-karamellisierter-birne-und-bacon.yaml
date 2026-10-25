@@ -2,7 +2,7 @@ title: Risotto mit Champignons, karamellisierter Birne und Bacon
 description: Cremiges Risotto mit gebratenen Champignons und Thymian, obendrauf karamellisierte Birnenspalten, Walnüsse und knuspriger Bacon. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 30 }
 tags: [abendessen, fleisch, herbst, italienisch]

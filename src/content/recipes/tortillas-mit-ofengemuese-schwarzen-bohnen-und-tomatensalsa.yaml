@@ -2,7 +2,7 @@ title: Tortillas mit Ofengemüse, schwarzen Bohnen und Tomatensalsa
 description: Weiche Weizentortillas mit rauchig gewürztem Ofengemüse und schwarzen Bohnen, dazu frische Tomatensalsa, Käse und zwei Dips aus saurer Sahne, einer mit Limette und einer mit Sriracha. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 20 }
 tags: [abendessen, vegetarisch]

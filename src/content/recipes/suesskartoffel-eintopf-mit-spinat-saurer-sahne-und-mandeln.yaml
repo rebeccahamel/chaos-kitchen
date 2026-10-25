@@ -2,7 +2,7 @@ title: Süßkartoffel-Eintopf mit Spinat, saurer Sahne und Mandeln
 description: Ein sämiger Eintopf aus Süßkartoffeln, Kartoffeln und Möhren mit Tomatenmark, Paprika und Thymian, zum Schluss kommt Spinat dazu. Obendrauf Petersilien-Sauerrahm, geröstete Mandelblättchen und ein paar Tropfen Kürbiskernöl. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 25 }
 tags: [abendessen, mittagessen, vegetarisch, herbst, winter]

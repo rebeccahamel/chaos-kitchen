@@ -2,7 +2,7 @@ title: Grünes Garnelen-Curry mit Zucchini und Limettenreis
 description: Garnelen und gebratene Zucchini in einer Kokossoße mit grüner Currypaste und Limette, dazu duftender Jasminreis mit Limettenabrieb und gehackte Erdnüsse. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 20 }
 tags: [abendessen, fisch, asiatisch]

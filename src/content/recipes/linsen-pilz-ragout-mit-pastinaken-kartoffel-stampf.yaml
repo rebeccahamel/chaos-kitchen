@@ -2,7 +2,7 @@ title: Linsen-Pilz-Ragout mit Pastinaken-Kartoffel-Stampf
 description: Ein kräftiges Ragout aus braunen Linsen und Champignons mit Sojasauce, Senf und Thymian, dazu ein Stampf aus Kartoffeln und Pastinaken und ein Blattsalat mit Balsamico-Dressing. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 25 }
 tags: [abendessen, mittagessen, vegetarisch, herbst, winter]

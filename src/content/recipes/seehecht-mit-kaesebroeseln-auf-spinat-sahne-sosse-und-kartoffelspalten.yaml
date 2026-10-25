@@ -2,7 +2,7 @@ title: Seehecht mit Käsebröseln auf Spinat-Sahne-Soße und Kartoffelspalten
 description: Seehecht gart im Ofen auf einer Sahnesoße mit frischem Spinat unter einer knusprigen Kruste aus Panko und Parmesan, daneben backen Kartoffelspalten auf dem Blech. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 30 }
 tags: [abendessen, fisch]

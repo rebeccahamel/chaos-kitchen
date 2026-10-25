@@ -1,0 +1,24 @@
+title: Zitronen-Honig-Spareribs
+description: Zart im Ofen gegarte Spareribs, erst im Päckchen geschmort und zum Schluss mit einer frischen Zitronen-Honig-Glasur überbacken.
+author: becci
+added: 2026-10-10
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 220 }
+tags: [abendessen, fleisch, herbst]
+
+ingredients:
+  - { id: ribs, amount: 1.6, unit: kg, name: Spareribs }
+  - { id: salz, amount: 2, unit: TL, name: Salz }
+  - { id: paprikapulver, amount: 2, unit: TL, name: Paprikapulver, note: edelsüß }
+  - { id: pfeffer, name: Pfeffer }
+  - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+  - { id: zitrone, amount: 2, name: Zitrone, plural: Zitronen }
+  - { id: honig, amount: 90, unit: g, name: Honig }
+  - { id: senf, amount: 1, unit: EL, name: mittelscharfer Senf }
+  - { id: oel, amount: 1, unit: EL, name: Öl }
+
+steps:
+  - "{ribs} trocken tupfen. Falls noch vorhanden, die dünne Silberhaut auf der Knochenseite mit einem stumpfen Messer lösen und abziehen. Die Rippchen rundum mit {salz}, {paprikapulver} und {pfeffer} würzen und bis zum Backen abgedeckt kalt stellen."
+  - "Den Backofen auf 120 °C Ober-/Unterhitze vorheizen. {knoblauch} fein reiben. {zitrone} auspressen und den Saft mit {honig}, {senf}, {oel} und Knoblauch verrühren. Die Rippchen mit der Knochenseite nach unten dicht in Backpapier und anschließend Alufolie einschlagen, dabei die Hälfte der Zitronen-Honig-Mischung mit in das Päckchen geben. Auf ein Blech legen und 2 Stunden garen."
+  - "Die Rippchen vorsichtig aus der Folie nehmen und mit der Fleischseite nach oben auf das Blech legen. Bei 120 °C weitere etwa 1½ Stunden offen garen. Danach mit einem Zahnstocher zwischen den Knochen prüfen: Er soll mit wenig Widerstand hineingleiten. Falls nötig, in 15-Minuten-Schritten weitergaren."
+  - "Die übrige Zitronen-Honig-Mischung auf die Rippchen pinseln und unter dem heißen Backofengrill 3–5 Minuten glasieren, dabei ständig beobachten, damit der Honig nicht verbrennt. Für die Kleine zartes Fleisch vollständig vom Knochen lösen und klein zupfen."

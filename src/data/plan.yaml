@@ -29,7 +29,7 @@ weeks:
         dinner: { recipe: indisches-lammragout-mit-riesenbohnen-und-spinat }
       - date: 2026-10-20
         lunch: { leftovers: 2026-10-19 }
-        dinner: { recipe: orangen-tofu-mit-paprikagemuese-und-reis }
+        dinner: { recipe: orangen-tofu-mit-gemuese-und-reis }
       - date: 2026-10-21
         lunch: { text: "Rührei mit Brot und Möhrensticks" }
         dinner: { recipe: seelachs-auf-moehren-kartoffel-stampf-mit-orangen-kuerbiskern-gremolata }
@@ -41,6 +41,6 @@ weeks:
         dinner: { recipe: rosenkohl-gnocchi-pfanne-mit-salbei-und-feta }
       - date: 2026-10-24
         lunch: { leftovers: 2026-10-23 }
-        dinner: { recipe: zitronen-honig-spareribs-mit-pommes-und-krauterslaw }
+        dinner: { recipe: zitronen-honig-spareribs }
       - date: 2026-10-25
         lunch: { text: "Sparerib-Sandwich mit Zitronen-Senf-Mayonnaise und Slaw-Resten" }

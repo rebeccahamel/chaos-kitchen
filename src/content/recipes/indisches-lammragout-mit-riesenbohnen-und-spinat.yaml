@@ -2,7 +2,6 @@ title: Indisches Lammragout mit Riesenbohnen und Spinat
 description: Zartes Lammragout mit weißen Riesenbohnen und Blattspinat in einer würzigen Tomatensauce, serviert mit Fladenbrot.
 author: becci
 added: 2026-10-18
-trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 20, cook: 40 }
 tags: [abendessen, fleisch, herbst, asiatisch]
@@ -34,5 +33,5 @@ steps:
   - "Wenn das Fleisch fertig gebraten ist, Zwiebeln im Topf 3 Minuten anschwitzen. Knoblauch, Ingwer, {kreuzkuemmel}, {koriander}, {kurkuma} und {paprikapulver} einrühren und 1 Minute rösten."
   - "{tomaten} und {bruehe} angießen, den Bratensatz lösen und das Lamm wieder in den Topf geben. Den Deckel schließen und das Ragout nach Erreichen des Drucks 30 Minuten garen. In der Zeit {bohnen} abgießen und abspülen und {spinat} waschen."
   - "Den Deckel öffnen, {bohnen} einrühren und das Ragout ohne Druck 8–10 Minuten köcheln lassen, bis das Lamm zart ist und die Sauce etwas eingedickt ist."
-  - "Spinat portionsweise unterheben und zusammenfallen lassen. Mit {salz:name} und {pfeffer:name} abschmecken.Nach Wunsch mit {chili:name} würzen."
+  - "Spinat portionsweise unterheben und zusammenfallen lassen. Mit {salz:name} und {pfeffer:name} abschmecken. Nach Wunsch mit {chili:name} würzen."
   - "{fladenbrot} erwärmen und zum Ragout servieren."

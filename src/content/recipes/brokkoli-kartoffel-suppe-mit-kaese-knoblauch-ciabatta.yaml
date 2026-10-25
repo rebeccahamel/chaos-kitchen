@@ -2,7 +2,7 @@ title: Brokkoli-Kartoffel-Suppe mit Käse-Knoblauch-Ciabatta
 description: Cremig pürierte Suppe aus Brokkoli und Kartoffeln mit Crème fraîche und Muskat, dazu im Ofen überbackenes Ciabatta mit Käse, Knoblauch und Petersilie, obendrauf geröstete Pinienkerne. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 25 }
 tags: [abendessen, mittagessen, vegetarisch]

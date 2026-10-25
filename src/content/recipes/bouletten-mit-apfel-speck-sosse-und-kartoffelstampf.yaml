@@ -2,7 +2,7 @@ title: Bouletten mit Apfel-Speck-Soße und Kartoffelstampf
 description: Saftige Bouletten in einer Sahnesoße mit Apfelspalten, Speck und Zwiebeln, dazu buttriger Kartoffelstampf. Herbstliche Hausmannskost in 40 Minuten. Nach einem HelloFresh-Rezept.
 author: becci
 added: 2026-10-05
-trial: false
+trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 15, cook: 25 }
 tags: [abendessen, fleisch, herbst, winter]
