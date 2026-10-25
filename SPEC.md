@@ -723,6 +723,10 @@ Done (2026-10-25): week 2026-W43 reviewed, all six dinners kept. Ribs recipe red
 alone (90 g honey) and renamed `zitronen-honig-spareribs`; orange tofu reworked by Becci after
 cooking and renamed `orangen-tofu-mit-gemuese-und-reis`.
 
+Week 2026-W44 planned the same day for 26 October – 1 November: new quesadillas with guacamole
+(trial), oven salmon with pumpkin, a HelloFresh chicken-lemon soup, Schupfnudel pan and lentil
+dal; W42 dropped from the plan file. Offer search dropped for good at the owner's request.
+
 Next: check in the Bring! app that "Porree, 1 Stange" arrives as Porree with the specification
 "1 Stange", and that the notes arrive on the week list ("Feta, 300 g, 2 kleine Packungen").
 

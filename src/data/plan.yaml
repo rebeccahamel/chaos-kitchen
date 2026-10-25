@@ -10,18 +10,6 @@
 # A day without lunch and dinner is a free day.
 
 weeks:
-  - note: Diese Woche gab es schnelle Gerichte unter der Woche und frische Kräuter in der Kräuterbutter.
-    days:
-      - date: 2026-10-12
-        dinner: { recipe: nackensteaks-mit-kraeuterbutter-ofenkartoffeln-und-gruenen-bohnen }
-      - date: 2026-10-13
-        dinner: { recipe: gemuese-kokos-curry-mit-cashews-und-reis }
-      - date: 2026-10-14
-      - date: 2026-10-15
-        dinner: { recipe: cremige-haehnchen-pasta }
-      - date: 2026-10-16
-      - date: 2026-10-17
-      - date: 2026-10-18
   - note: Ein würziges Lammragout, herbstliches Gemüse und am Samstag Spareribs mit Resten am Sonntag.
     days:
       - date: 2026-10-19
@@ -44,3 +32,22 @@ weeks:
         dinner: { recipe: zitronen-honig-spareribs }
       - date: 2026-10-25
         lunch: { text: "Sparerib-Sandwich mit Zitronen-Senf-Mayonnaise und Slaw-Resten" }
+  - note: Eine schnelle Woche mit Quesadillas, Ofenlachs mit Kürbis und einer Suppe aus einem Topf; die frischen Kräuter werden gleich zu Anfang aufgebraucht.
+    days:
+      - date: 2026-10-26
+        lunch: { text: "Reste vom Wochenende" }
+        dinner: { recipe: quesadillas-mit-bohnen-mais-und-guacamole }
+      - date: 2026-10-27
+        lunch: { leftovers: 2026-10-26 }
+        dinner: { recipe: ofenlachs-mit-kuerbis-und-kichererbsen }
+      - date: 2026-10-28
+        lunch: { text: "Lachs-Sandwich mit Frischkäse und Schnittlauch" }
+        dinner: { recipe: haehnchen-zitronen-suppe-mit-kritharaki-und-spinat }
+      - date: 2026-10-29
+        lunch: { leftovers: 2026-10-28 }
+        dinner: { recipe: schupfnudel-pfanne-mit-porree-apfel-und-speck }
+      - date: 2026-10-30
+        lunch: { leftovers: 2026-10-29 }
+        dinner: { recipe: mildes-linsen-moehren-dal-mit-reis }
+      - date: 2026-10-31
+      - date: 2026-11-01

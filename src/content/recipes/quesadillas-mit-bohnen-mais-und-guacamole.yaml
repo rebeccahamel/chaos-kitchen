@@ -1,0 +1,37 @@
+title: Quesadillas mit Bohnen, Mais und Guacamole
+description: Knusprige Tortillas mit einer würzigen Füllung aus schwarzen Bohnen, Mais, Tomate und geschmolzenem Käse, dazu eine schnelle Guacamole mit Limette und Koriander und saure Sahne. In 25 Minuten auf dem Tisch.
+author: becci
+added: 2026-10-25
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 15, cook: 10 }
+tags: [abendessen, mittagessen, vegetarisch]
+
+ingredients:
+  - group: Für die Füllung
+    items:
+      - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 1, unit: Zehe, name: Knoblauch }
+      - { id: tomaten, amount: 2, name: Tomate, plural: Tomaten }
+      - { id: oel, amount: 1, unit: EL, name: Öl }
+      - { id: kreuzkuemmel, amount: 1, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: paprikapulver, amount: 1, unit: TL, name: geräuchertes Paprikapulver }
+      - { id: bohnen, amount: 1, unit: Dose, name: schwarze Bohnen, note: "je 400 g" }
+      - { id: mais, amount: 1, unit: Dose, name: Mais, note: "klein, etwa 140 g Abtropfgewicht" }
+      - { id: kaese, amount: 200, unit: g, name: geriebener Käse, note: "z. B. Cheddar" }
+      - { id: tortillas, amount: 8, name: Weizentortilla, plural: Weizentortillas, note: "etwa 20 cm" }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Guacamole
+    items:
+      - { id: avocado, amount: 2, name: Avocado, plural: Avocados, note: reif }
+      - { id: limette, amount: 1, name: Limette, plural: Limetten }
+      - { id: koriander, amount: 0.5, unit: Bund, name: Koriandergrün }
+      - { id: saure-sahne, amount: 150, unit: g, name: saure Sahne }
+
+steps:
+  - "{zwiebel} und {knoblauch} fein würfeln, {tomaten} entkernen und klein würfeln. {bohnen} abgießen und abspülen, {mais} abtropfen lassen."
+  - "{oel} in einer großen Pfanne erhitzen und die Zwiebel glasig dünsten. Knoblauch, {kreuzkuemmel} und {paprikapulver} kurz mitrösten. Tomaten, Bohnen und Mais zugeben und etwa 5 Minuten köcheln, bis die Tomaten zerfallen und die Füllung trocken ist; dabei einen Teil der Bohnen mit der Gabel zerdrücken, damit sie bindet. Mit {salz:name} und {pfeffer:name} abschmecken und aus der Pfanne nehmen."
+  - "Für die Guacamole {limette} auspressen. {avocado} halbieren, das Fruchtfleisch mit einer Gabel zerdrücken und mit dem Limettensaft und {salz:name} abschmecken. {koriander} grob hacken, die Hälfte unterheben, den Rest zum Bestreuen aufheben."
+  - "{tortillas} und {kaese} bereitlegen. Pro Quesadilla eine Tortilla in die ausgewischte, trockene Pfanne legen, ein Viertel der Füllung und des Käses darauf verteilen, eine zweite Tortilla auflegen und bei mittlerer Hitze 2–3 Minuten pro Seite backen, bis der Käse geschmolzen und die Tortilla goldbraun ist. Fertige Quesadillas im Ofen bei 80 °C warm halten."
+  - "Die Quesadillas in Ecken schneiden und mit der Guacamole, {saure-sahne} und dem restlichen Koriander servieren."
