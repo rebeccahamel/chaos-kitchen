@@ -727,6 +727,15 @@ Week 2026-W44 planned the same day for 26 October – 1 November: new quesadilla
 (trial), oven salmon with pumpkin, a HelloFresh chicken-lemon soup, Schupfnudel pan and lentil
 dal; W42 dropped from the plan file. Offer search dropped for good at the owner's request.
 
+Done (2026-11-02): week 2026-W44 reviewed. Quesadillas kept with a mince filling as an
+alternative ingredient group (marked optional, so the shopping list shows it as such) and the
+tortillas folded in half; chicken-lemon soup loved and kept. The dal was not cooked and moved to
+Monday 2 November, the first day of W45 in the plan file; W43 dropped from the plan file.
+
+Week 2026-W45 planned the same day for 2–8 November: dal, Kartoffelgratin and the polenta
+chicken from the collection, two new trials (couscous pan with beef mince, creamy salmon pasta
+with cherry tomatoes); W44 dropped from the plan file.
+
 Next: check in the Bring! app that "Porree, 1 Stange" arrives as Porree with the specification
 "1 Stange", and that the notes arrive on the week list ("Feta, 300 g, 2 kleine Packungen").
 

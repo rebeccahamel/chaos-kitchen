@@ -1,0 +1,39 @@
+title: Couscous-Pfanne mit Rinderhack, Möhren und Joghurt-Dip
+description: Krümelig gebratenes Rinderhack mit geraspelten Möhren, Kreuzkümmel und einem Hauch Zimt, mit lockerem Couscous vermengt und mit Zitrone und Petersilie abgeschmeckt. Dazu ein kühler Knoblauch-Joghurt. In 25 Minuten auf dem Tisch.
+author: becci
+added: 2026-11-02
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 15 }
+tags: [abendessen, mittagessen, fleisch]
+
+ingredients:
+  - group: Für die Pfanne
+    items:
+      - { id: hackfleisch, amount: 400, unit: g, name: Rinderhackfleisch }
+      - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 2, unit: Zehe, name: Knoblauch }
+      - { id: moehren, amount: 3, name: Möhre, plural: Möhren }
+      - { id: olivenoel, amount: 1, unit: EL, name: Olivenöl }
+      - { id: kreuzkuemmel, amount: 1, unit: TL, name: Kreuzkümmel, note: gemahlen }
+      - { id: paprikapulver, amount: 1, unit: TL, name: Paprikapulver, note: edelsüß }
+      - { id: zimt, amount: 0.5, unit: TL, name: Zimt }
+      - { id: tomatenmark, amount: 1, unit: EL, name: Tomatenmark }
+      - { id: couscous, amount: 250, unit: g, name: Couscous }
+      - { id: bruehe, amount: 300, unit: ml, name: Rinderbrühe }
+      - { id: petersilie, amount: 0.5, unit: Bund, name: Petersilie, note: glatt }
+      - { id: zitrone, amount: 1, name: Zitrone, plural: Zitronen }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+      - { id: chili, name: Chiliflocken, note: für die Erwachsenen, optional: true }
+  - group: Für den Dip
+    items:
+      - { id: joghurt, amount: 250, unit: g, name: Joghurt, note: "griechisch oder 3,5 %" }
+      - { id: knoblauch-dip, amount: 1, unit: Zehe, name: Knoblauch }
+
+steps:
+  - "{zwiebel} fein würfeln, {knoblauch} hacken. {moehren} schälen und grob raspeln. {petersilie} grob hacken."
+  - "{olivenoel} in einer großen Pfanne erhitzen und {hackfleisch} darin bei starker Hitze krümelig braun anbraten. Zwiebel und Möhren zugeben und 4–5 Minuten mitbraten, bis die Möhren weich sind. Knoblauch, {kreuzkuemmel}, {paprikapulver}, {zimt} und {tomatenmark} 1 Minute mitrösten."
+  - "Inzwischen {bruehe} aufkochen, über {couscous} in einer Schüssel gießen, abdecken und 5 Minuten quellen lassen. Mit einer Gabel auflockern."
+  - "Für den Dip {knoblauch-dip} fein reiben und mit {joghurt} und {salz:name} verrühren."
+  - "{zitrone} auspressen. Den Couscous unter das Hackfleisch heben, mit dem Zitronensaft, {salz:name} und {pfeffer:name} abschmecken und die Petersilie unterziehen. Portion für die Kleine abnehmen, dann die übrigen Portionen nach Geschmack mit {chili} würzen. Mit dem Joghurt-Dip servieren."
