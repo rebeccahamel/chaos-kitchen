@@ -1,8 +1,7 @@
 title: Cremige Lachs-Pasta mit Kirschtomaten und Spinat
-description: Kurze Nudeln in einer leichten Sauce aus Crème fraîche, aufgeplatzten Kirschtomaten und Zitrone, mit zartem Lachs, Babyspinat und Parmesan. Eine Pfanne, ein Topf, in 30 Minuten fertig.
+description: Kurze Nudeln in einer leichten Sauce aus Crème fraîche, aufgeplatzten Kirschtomaten und Zitrone, mit in der Sauce gegartem Lachs, Babyspinat und Parmesan. Eine Pfanne, ein Topf, in 30 Minuten fertig.
 author: becci
 added: 2026-11-02
-trial: true
 yield: { amount: 4, unit: Portionen }
 time: { prep: 10, cook: 20 }
 tags: [abendessen, mittagessen, fisch, italienisch]
@@ -22,9 +21,9 @@ ingredients:
   - { id: pfeffer, name: Pfeffer }
 
 steps:
-  - "Einen großen Topf Salzwasser für die Nudeln aufsetzen. {zwiebel} fein würfeln, {knoblauch} in feine Scheiben schneiden, {kirschtomaten} halbieren. {lachs} trocken tupfen, in etwa 3 cm große Würfel schneiden und leicht salzen."
+  - "Einen großen Topf Salzwasser für die Nudeln aufsetzen. {zwiebel} fein würfeln, {knoblauch} in feine Scheiben schneiden, {kirschtomaten} halbieren, damit sie gleichmäßig garen. {lachs} trocken tupfen, in etwa 3 cm große Würfel schneiden und leicht salzen. {zitrone} heiß waschen, die Schale fein abreiben und den Saft auspressen. {parmesan} reiben."
   - "{nudeln} ins kochende Wasser geben und bissfest kochen. Vor dem Abgießen eine Tasse Kochwasser auffangen."
-  - "{olivenoel} in einer großen, tiefen Pfanne erhitzen und die Lachswürfel bei mittlerer Hitze rundum 3–4 Minuten braten, bis sie gerade eben durch sind. Herausnehmen."
-  - "Zwiebel und Knoblauch im Bratfett 2 Minuten andünsten. Die Tomaten zugeben und 3–4 Minuten braten, bis sie weich werden und aufplatzen. {creme} und etwa 100 ml Kochwasser einrühren und kurz aufkochen."
-  - "{zitrone} heiß waschen, die Schale fein abreiben und den Saft auspressen. {parmesan} reiben. Die abgetropften Nudeln und {spinat} in die Sauce geben und schwenken, bis der Spinat zusammenfällt. Zitronenschale, die Hälfte vom Saft und die Hälfte vom Parmesan unterrühren."
-  - "Den Lachs in groben Stücken unterheben und mit {salz:name}, {pfeffer:name} und dem restlichen Zitronensaft abschmecken; wenn nötig mit etwas Kochwasser cremig rühren. Mit dem restlichen Parmesan servieren."
+  - "Inzwischen {olivenoel} in einer großen, tiefen Pfanne erhitzen und Zwiebel und Knoblauch bei mittlerer Hitze 2 Minuten andünsten. Die Tomaten zugeben und 3–4 Minuten braten, bis sie weich werden und aufplatzen. {creme} und etwa 100 ml Nudelkochwasser einrühren und aufkochen."
+  - "Die Hitze reduzieren, die rohen Lachswürfel in die heiße Sauce legen und zugedeckt bei schwacher Hitze 5 Minuten gar ziehen lassen, bis sie gerade eben durch sind."
+  - "Die abgetropften Nudeln und {spinat} in die Pfanne geben und vorsichtig schwenken, bis der Spinat zusammenfällt; der Lachs darf dabei in grobe Stücke zerfallen. Zitronenschale, die Hälfte vom Saft und die Hälfte vom Parmesan unterrühren."
+  - "Mit {salz:name}, {pfeffer:name} und dem restlichen Zitronensaft abschmecken; wenn nötig mit etwas Kochwasser cremig rühren. Mit dem restlichen Parmesan servieren."

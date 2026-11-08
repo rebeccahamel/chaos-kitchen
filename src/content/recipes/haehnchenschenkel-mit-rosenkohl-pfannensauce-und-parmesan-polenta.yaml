@@ -31,10 +31,11 @@ ingredients:
       - { id: muskat, name: Muskatnuss }
 
 steps:
-  - "{rosenkohl} putzen und halbieren, große Röschen vierteln. {zwiebel} fein würfeln, {knoblauch} hacken, {thymian} abzupfen. {haehnchen} trocken tupfen, salzen und pfeffern."
-  - "{olivenoel} in einer großen, tiefen Pfanne erhitzen. Die Schenkel mit der Hautseite nach unten hineinlegen und bei mittelhoher Hitze 6–7 Minuten knusprig braten, wenden, 2 Minuten weiterbraten und herausnehmen."
-  - "{bruehe-polenta} und {milch} in einem Topf aufkochen und salzen. {polenta} unter Rühren einrieseln lassen und bei niedriger Hitze nach Packungsangabe etwa 3–5 Minuten cremig rühren. {parmesan} reiben. {butter-polenta} und den Parmesan unterrühren, mit {muskat:name} abschmecken und zugedeckt warm halten."
+  - "Alles vorbereiten, bevor der Herd angeht. Schneiden: {rosenkohl} putzen und halbieren, große Röschen vierteln. {zwiebel} fein würfeln, {knoblauch} hacken, {thymian} abzupfen. {haehnchen} trocken tupfen, salzen und pfeffern. {parmesan} reiben, {zitrone} auspressen."
+  - "Abwiegen und abmessen: {bruehe-polenta} und {milch} zusammen in einen großen Messbecher geben, {polenta} und {butter-polenta} abwiegen. {bruehe-sauce} abmessen und {senf} einrühren. {butter-sauce} abwiegen und bis zum Schluss kalt stellen. {olivenoel} bereitstellen."
+  - "Das Olivenöl in einer großen, tiefen Pfanne erhitzen. Die Schenkel mit der Hautseite nach unten hineinlegen und bei mittelhoher Hitze 6–7 Minuten knusprig braten, wenden, 2 Minuten weiterbraten und herausnehmen."
+  - "Brühe und Milch für die Polenta in einem Topf aufkochen und salzen. Die Polenta unter Rühren einrieseln lassen und bei niedriger Hitze nach Packungsangabe etwa 3–5 Minuten cremig rühren. Die Butter für die Polenta und den Parmesan unterrühren, mit {muskat:name} abschmecken und zugedeckt warm halten."
   - "Den Rosenkohl mit der Schnittfläche nach unten im Bratfett 4 Minuten kräftig anbraten. Zwiebel, Knoblauch und die Thymianblättchen dazugeben und 2 Minuten mitbraten."
-  - "{bruehe-sauce} angießen und {senf} einrühren. Die Schenkel mit der Hautseite nach oben wieder hineinsetzen und alles 8–10 Minuten offen köcheln lassen, bis das Fleisch durch, der Rosenkohl bissfest und die Sauce etwa um die Hälfte eingekocht ist."
-  - "Die Pfanne vom Herd nehmen und {butter-sauce} kalt in die Sauce schwenken. {zitrone} auspressen, den Saft unterrühren und mit {salz:name} und {pfeffer:name} abschmecken; selbst gekochte Brühe braucht meist mehr Salz als gekaufte."
+  - "Die Senf-Brühe angießen. Die Schenkel mit der Hautseite nach oben wieder hineinsetzen und alles 8–10 Minuten offen köcheln lassen, bis das Fleisch durch, der Rosenkohl bissfest und die Sauce etwa um die Hälfte eingekocht ist."
+  - "Die Pfanne vom Herd nehmen und die kalte Butter in die Sauce schwenken. Den Zitronensaft unterrühren und mit {salz:name} und {pfeffer:name} abschmecken; selbst gekochte Brühe braucht meist mehr Salz als gekaufte."
   - "Die Polenta vor dem Servieren bei Bedarf mit einem Schluck heißer Brühe cremig rühren. Auf Teller geben, das Fleisch in Scheiben schneiden und mit Rosenkohl und Sauce darauf anrichten. Für die Kleine Fleisch und Rosenkohl klein schneiden."
