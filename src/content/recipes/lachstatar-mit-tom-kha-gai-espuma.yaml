@@ -1,0 +1,57 @@
+title: Lachstatar mit Tom-Kha-Gai-Espuma
+description: "Eine festliche Vorspeise: kalter Lachstatar mit Limette, Kaffir-Limettenblatt und Sesam unter einer warmen, luftigen Espuma, die nach Tom Kha Gai schmeckt, mit Zitronengras, Galgant, Kokos, Fischsauce und Chili. Die Espuma lässt sich am Vortag vorbereiten."
+author: becci
+added: 2026-11-08
+trial: true
+yield: { amount: 4, unit: Portionen, note: als Vorspeise }
+time: { prep: 30, cook: 20, rest: 30 }
+tags: [abendessen, fisch, asiatisch, winter]
+
+ingredients:
+  - group: Für die Espuma
+    items:
+      - { id: zitronengras, amount: 2, unit: Stange, name: Zitronengras }
+      - { id: galgant, amount: 30, unit: g, name: Galgant, note: "frisch, aus dem Asialaden" }
+      - { id: schalotte-espuma, amount: 1, name: Schalotte, plural: Schalotten }
+      - { id: knoblauch, amount: 1, unit: Zehe, name: Knoblauch }
+      - { id: chili, amount: 1, name: rote Chili, plural: rote Chilis }
+      - { id: limettenblaetter-espuma, amount: 5, name: Kaffir-Limettenblatt, plural: Kaffir-Limettenblätter, note: "frisch oder tiefgekühlt" }
+      - { id: oel, amount: 1, unit: EL, name: Öl }
+      - { id: bruehe, amount: 250, unit: ml, name: Hühnerbrühe, note: "kräftig, z. B. Geflügelfond aus dem Glas" }
+      - { id: kokosmilch, amount: 1, unit: Dose, name: Kokosmilch, note: "400 ml, vollfett" }
+      - { id: gelatine, amount: 2, unit: Blatt, name: Gelatine, note: weiß }
+      - { id: fischsauce-espuma, amount: 2, unit: EL, name: Fischsauce }
+      - { id: zucker, amount: 1, unit: TL, name: Palmzucker, note: oder brauner Zucker }
+      - { id: limette-espuma, amount: 1, name: Limette, plural: Limetten }
+      - { id: kapsel, amount: 1, name: Sahnekapsel, plural: Sahnekapseln, whole: true, note: "N2O, für den 0,5-l-iSi" }
+  - group: Für den Tatar
+    items:
+      - { id: lachs, amount: 300, unit: g, name: Lachsfilet, note: "Sushi-Qualität, ohne Haut" }
+      - { id: schalotte-tatar, amount: 1, name: Schalotte, plural: Schalotten }
+      - { id: limette-tatar, amount: 1, name: Limette, plural: Limetten, note: Bio }
+      - { id: limettenblatt-tatar, amount: 1, name: Kaffir-Limettenblatt, plural: Kaffir-Limettenblätter }
+      - { id: sesamoel, amount: 1, unit: TL, name: Sesamöl, note: geröstet }
+      - { id: fischsauce-tatar, amount: 1, unit: TL, name: Fischsauce }
+  - group: Zum Anrichten
+    items:
+      - { id: roestschalotten, amount: 2, unit: EL, name: Röstschalotten, note: "asiatisch, knusprig" }
+      - { id: thai-basilikum, amount: 3, unit: Zweig, name: Thai-Basilikum, note: oder Koriander }
+      - { id: chilioel, amount: 1, unit: TL, name: Chiliöl, optional: true }
+
+steps:
+  - group: Espuma (am besten am Vortag)
+    items:
+      - "{zitronengras} putzen, mit dem Messerrücken flach klopfen und in 3 cm lange Stücke schneiden. {galgant} ungeschält in dünne Scheiben schneiden, {schalotte-espuma} und {knoblauch} grob hacken, {chili} längs halbieren. {limettenblaetter-espuma} grob zerreißen."
+      - "{oel} in einem Topf erhitzen und Zitronengras, Galgant, Schalotte, Knoblauch und Chili bei mittlerer Hitze 3–4 Minuten anschwitzen, bis es kräftig duftet, ohne zu bräunen. {bruehe} angießen und offen auf etwa die Hälfte einkochen; das konzentriert den Geschmack."
+      - "{kokosmilch} und die Limettenblätter zugeben, einmal aufkochen und sofort vom Herd nehmen. Zugedeckt 30 Minuten ziehen lassen."
+      - "{gelatine} in kaltem Wasser einweichen. Den Sud samt Aromaten im Standmixer 30 Sekunden mixen, dann durch ein feines Sieb oder ein Passiertuch gießen und die Rückstände kräftig ausdrücken. Jedes Fäserchen muss heraus, sonst verstopft die Düse."
+      - "Den Sud wieder erwärmen, aber nicht kochen. Die Gelatine ausdrücken und darin auflösen. {limette-espuma} auspressen. Mit {fischsauce-espuma}, {zucker} und dem Limettensaft abschmecken: kräftig salzig, sauer und leicht süß, deutlich intensiver als eine Suppe, denn die Luft im Schaum schwächt den Geschmack ab."
+      - "Höchstens bis zur Markierung (etwa 450 ml) in den 0,5-l-iSi füllen, verschließen, {kapsel} aufschrauben und kräftig schütteln. Bis zum Servieren im 60–65 °C warmen Wasserbad halten, höchstens 75 °C. Am Vortag gemacht: die Masse im Kühlschrank aufbewahren, vor dem Einfüllen im Topf sanft verflüssigen und noch einmal abschmecken."
+  - group: Tatar (kurz vor dem Servieren)
+    items:
+      - "{lachs} gut gekühlt mit einem sehr scharfen Messer in 5 mm kleine Würfel schneiden, nicht hacken. {schalotte-tatar} sehr fein würfeln. {limette-tatar} heiß waschen, die Schale fein abreiben und den Saft auspressen. {limettenblatt-tatar} ohne Mittelrippe hauchdünn schneiden. {thai-basilikum} abzupfen."
+      - "Lachs, Schalotte, Limettenabrieb und Limettenblatt mit {sesamoel}, {fischsauce-tatar} und 1–2 TL Limettensaft vorsichtig mischen. Erst unmittelbar vor dem Anrichten mischen, sonst gart die Säure den Fisch an."
+  - group: Anrichten
+    items:
+      - "Den Tatar mit einem Ring mittig in vorgekühlte tiefe Teller setzen. Den Siphon noch einmal schütteln, eine Probe aufsprühen und die Espuma dann großzügig rund um den Tatar und leicht darüber sprühen."
+      - "Mit {roestschalotten}, den Basilikumblättchen und nach Belieben ein paar Tropfen {chilioel} vollenden. Sofort servieren, solange die Espuma warm und der Tatar kalt ist. Roher Fisch ist nichts für die Kleine: für sie ein Stück Lachs kurz in der Pfanne garen."
