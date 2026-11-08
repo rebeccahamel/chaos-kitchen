@@ -1,0 +1,32 @@
+title: Weiße-Bohnen-Eintopf mit Grünkohl und bunten Möhren
+description: Ein toskanisch angehauchter Eintopf aus weißen Bohnen, Tomaten, Rosmarin und frischem Grünkohl, sämig durch ein paar zerdrückte Bohnen und frisch mit Zitrone und Parmesan. Dazu geröstetes Ciabatta. Schmeckt aufgewärmt noch besser.
+author: becci
+added: 2026-11-08
+trial: true
+yield: { amount: 4, unit: Portionen }
+time: { prep: 10, cook: 25 }
+tags: [abendessen, mittagessen, vegetarisch, herbst, winter, italienisch]
+
+ingredients:
+  - { id: zwiebel, amount: 1, name: Zwiebel, plural: Zwiebeln }
+  - { id: moehren, amount: 3, name: Möhre, plural: Möhren, note: bunte Möhren }
+  - { id: knoblauch, amount: 3, unit: Zehe, name: Knoblauch }
+  - { id: olivenoel, amount: 3, unit: EL, name: Olivenöl }
+  - { id: rosmarin, amount: 1, unit: Zweig, name: Rosmarin }
+  - { id: tomatenmark, amount: 1, unit: EL, name: Tomatenmark }
+  - { id: tomaten, amount: 1, unit: Dose, name: stückige Tomaten, note: 400 g }
+  - { id: bruehe, amount: 1, unit: l, name: Gemüsebrühe }
+  - { id: bohnen, amount: 2, unit: Dose, name: weiße Bohnen, note: "je 400 g, z. B. Cannellini" }
+  - { id: gruenkohl, amount: 200, unit: g, name: Grünkohl, note: "frisch, gehackt" }
+  - { id: parmesan, amount: 40, unit: g, name: Parmesan, note: am Stück }
+  - { id: ciabatta, amount: 1, unit: Stück, name: Ciabatta }
+  - { id: zitrone, amount: 0.5, name: Zitrone, plural: Zitronen }
+  - { id: salz, name: Salz }
+  - { id: pfeffer, name: Pfeffer }
+
+steps:
+  - "{zwiebel} fein würfeln. {moehren} schrubben oder schälen und in Scheiben schneiden. {knoblauch} in feine Scheiben schneiden."
+  - "{olivenoel:2/3} in einem großen Topf erhitzen. Zwiebel und Möhren bei mittlerer Hitze 5 Minuten anschwitzen. Knoblauch, {rosmarin} und {tomatenmark} zugeben und 1 Minute mitrösten."
+  - "{tomaten} und {bruehe} zugießen. {bohnen} abgießen, abspülen und dazugeben. Aufkochen und offen 10 Minuten köcheln lassen. Den Rosmarinzweig herausnehmen und etwa ein Viertel der Bohnen im Topf mit einem Kartoffelstampfer zerdrücken, damit der Eintopf sämig wird."
+  - "{gruenkohl} unterrühren und 5–7 Minuten mitköcheln, bis er weich, aber noch kräftig grün ist. Inzwischen {parmesan} reiben, {ciabatta} in Scheiben schneiden und toasten."
+  - "{zitrone} auspressen. Den Eintopf mit dem Saft, {salz:name} und {pfeffer:name} abschmecken. Mit Parmesan bestreut und mit dem restlichen Olivenöl beträufelt servieren, das Brot dazu."

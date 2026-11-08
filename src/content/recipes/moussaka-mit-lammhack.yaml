@@ -1,0 +1,46 @@
+title: Moussaka mit Lammhack
+description: "Der griechische Auflauf, wie er sein soll: geröstete Kartoffeln und Auberginen, eine Lammhacksauce mit Rotwein, Zimt und Oregano und obendrauf eine dicke, goldbraun gebackene Béchamel. Die Sauce lässt sich am Vortag kochen."
+author: becci
+added: 2026-11-08
+trial: true
+yield: { amount: 4, unit: Portionen, note: "für eine Auflaufform von etwa 30 × 20 cm" }
+time: { prep: 20, cook: 55, rest: 10 }
+tags: [abendessen, mittagessen, fleisch, herbst, winter]
+
+ingredients:
+  - group: Für das Gemüse
+    items:
+      - { id: kartoffeln, amount: 1, unit: kg, name: Kartoffeln, note: festkochend }
+      - { id: auberginen, amount: 2, name: Aubergine, plural: Auberginen }
+      - { id: olivenoel-gemuese, amount: 5, unit: EL, name: Olivenöl }
+  - group: Für die Hackfleischsauce
+    items:
+      - { id: lammhack, amount: 500, unit: g, name: Lammhackfleisch, note: oder Rinderhackfleisch }
+      - { id: zwiebel, amount: 2, name: Zwiebel, plural: Zwiebeln }
+      - { id: knoblauch, amount: 3, unit: Zehe, name: Knoblauch }
+      - { id: oregano, amount: 3, unit: Zweig, name: Oregano, note: frisch }
+      - { id: olivenoel-sauce, amount: 1, unit: EL, name: Olivenöl }
+      - { id: tomatenmark, amount: 2, unit: EL, name: Tomatenmark }
+      - { id: rotwein, amount: 100, unit: ml, name: Rotwein, note: trocken }
+      - { id: tomaten, amount: 1, unit: Dose, name: stückige Tomaten, note: 400 g }
+      - { id: zimt, amount: 0.5, unit: TL, name: Zimt }
+      - { id: piment, amount: 0.25, unit: TL, name: Piment, note: gemahlen }
+      - { id: lorbeer, amount: 1, unit: Blatt, name: Lorbeer }
+      - { id: salz, name: Salz }
+      - { id: pfeffer, name: Pfeffer }
+  - group: Für die Béchamel
+    items:
+      - { id: butter, amount: 60, unit: g, name: Butter }
+      - { id: mehl, amount: 60, unit: g, name: Mehl }
+      - { id: milch, amount: 600, unit: ml, name: Milch }
+      - { id: parmesan, amount: 50, unit: g, name: Parmesan, note: am Stück }
+      - { id: ei, amount: 2, name: Ei, plural: Eier, whole: true, note: nur das Eigelb }
+      - { id: muskat, name: Muskatnuss }
+
+steps:
+  - "Den Ofen auf 200 °C Umluft vorheizen und zwei Bleche mit Backpapier belegen. {kartoffeln} schälen und in 5 mm dicke Scheiben schneiden, {auberginen} in 1 cm dicke Scheiben. Kartoffeln auf das eine, Auberginen auf das andere Blech legen, mit {olivenoel-gemuese} bestreichen, salzen und 20–25 Minuten rösten, bis beides weich und leicht gebräunt ist."
+  - "Inzwischen {zwiebel} fein würfeln, {knoblauch} hacken und {oregano} abzupfen. {olivenoel-sauce} in einer großen Pfanne erhitzen und {lammhack} darin bei hoher Hitze krümelig und kräftig braun braten. Zwiebel und Knoblauch zugeben und 3 Minuten mitbraten."
+  - "{tomatenmark} einrühren und 1 Minute rösten. Mit {rotwein} ablöschen und fast ganz einkochen lassen. {tomaten}, {zimt}, {piment}, {lorbeer} und die Oreganoblättchen zugeben und offen bei mittlerer Hitze etwa 15 Minuten köcheln lassen, bis die Sauce dick ist. Das Lorbeerblatt entfernen und mit {salz:name} und {pfeffer:name} abschmecken."
+  - "Für die Béchamel {butter} in einem Topf schmelzen, {mehl} einrühren und 1 Minute anschwitzen. {milch} nach und nach unter ständigem Rühren zugießen und 3–4 Minuten dicklich köcheln lassen. Vom Herd nehmen. {parmesan} reiben und die Hälfte unterrühren, mit Salz und {muskat:name} würzen. {ei} trennen und die Eigelbe in die etwas abgekühlte Sauce rühren; das Eiweiß wird nicht gebraucht."
+  - "Den Ofen auf 180 °C Umluft herunterschalten. Die Kartoffeln in die Auflaufform schichten, die Hälfte der Auberginen darauflegen, dann die Hackfleischsauce und die restlichen Auberginen. Die Béchamel darüber verstreichen und mit dem restlichen Parmesan bestreuen."
+  - "30–35 Minuten backen, bis die Oberfläche goldbraun ist. Vor dem Anschneiden 10 Minuten ruhen lassen, dann lässt sich die Moussaka sauber schneiden."

@@ -28,3 +28,22 @@ weeks:
         dinner: { recipe: haehnchenschenkel-mit-rosenkohl-pfannensauce-und-parmesan-polenta }
       - date: 2026-11-07
       - date: 2026-11-08
+  - note: Ein Bohnen-Eintopf mit dem Grünkohl, eine klassische Moussaka, ein grünes Garnelen-Curry und eine schnelle Spätzle-Pfanne; am Freitag gehen wir essen.
+    days:
+      - date: 2026-11-09
+        lunch: { text: "Wrap mit Hummus, Möhren und Feldsalat" }
+        dinner: { recipe: weisse-bohnen-eintopf-mit-gruenkohl-und-bunten-moehren }
+      - date: 2026-11-10
+        lunch: { leftovers: 2026-11-09 }
+        dinner: { recipe: moussaka-mit-lammhack }
+      - date: 2026-11-11
+        lunch: { leftovers: 2026-11-10 }
+        dinner: { recipe: gruenes-garnelen-curry-mit-zucchini-und-limettenreis }
+      - date: 2026-11-12
+        lunch: { leftovers: 2026-11-11 }
+        dinner: { recipe: spaetzle-pfanne-mit-bacon-spinat-und-tomate }
+      - date: 2026-11-13
+        lunch: { leftovers: 2026-11-12 }
+        dinner: { text: "Essen gehen" }
+      - date: 2026-11-14
+      - date: 2026-11-15
